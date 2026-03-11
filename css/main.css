@@ -35,8 +35,8 @@ section {
   --primary-dark: #840132;
   --primary-light: #6a132c;
   --accent: #840132;
-  --ai-chain-accent: red;
-  --family-business-accent: blue;
+  --ai-chain-accent: gray;
+  --family-business-accent: DimGray;
   --pricing-accent: #3C955C;
   --innovate-accent: #854295;
   /* Default - overridden per page */
@@ -584,13 +584,12 @@ h3 {
   font-size: 28px;
   font-weight: 700;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
 }
 
 .instructor-title {
   font-size: 16px;
   color: var(--accent);
-  line-height: 1.6;
+  line-height: 1.3;
   margin-bottom: 1rem;
 }
 
@@ -648,7 +647,7 @@ h3 {
 .participant-content h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--text-muted);
   margin-bottom: 0.75rem;
 }
 

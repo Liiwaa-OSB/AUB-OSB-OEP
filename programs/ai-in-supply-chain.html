@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>under construction · fun internal</title>
+    <!-- Font Awesome for icons (lighthearted) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f5f2;
+            /* soft warm background */
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* main card — fun but clean */
+        .fun-card {
+            max-width: 680px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 48px 48px 32px 32px;
+            padding: 3rem 2rem 3rem 2rem;
+            box-shadow: 0 20px 30px -10px rgba(106, 19, 44, 0.2);
+            border: 4px solid #840132;
+            border-top-width: 18px;
+            /* playful thick top border */
+            position: relative;
+            text-align: center;
+        }
+
+        /* brand‑colored corner accents */
+        .fun-card::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: #6a132c;
+            border-radius: 50% 50% 0 50%;
+            opacity: 0.1;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+
+        .fun-card::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: #840132;
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        /* fun zone — all content sits above the blobs */
+        .fun-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* primary playful icon */
+        .fun-icon {
+            font-size: 5.5rem;
+            line-height: 1;
+            margin-bottom: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            color: #840132;
+            filter: drop-shadow(0 8px 10px rgba(132, 1, 50, 0.2));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fun-icon i:last-child {
+            color: #6a132c;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* main message with brand colors */
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #2c2c3a;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.3rem 1rem;
+        }
+
+        h1 .brand-red {
+            color: #840132;
+            background: rgba(132, 1, 50, 0.08);
+            padding: 0 0.5rem;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        h1 .brand-dark {
+            color: #6a132c;
+            background: rgba(106, 19, 44, 0.1);
+            padding: 0 0.5rem;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        /* friendly explanatory line — still no details */
+        .fun-sub {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #4a4a5c;
+            margin: 1.8rem 0 2.2rem;
+            background: #f1ece9;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 2px dashed #840132;
+        }
+
+        /* little construction buddies (illustration using only CSS & brand colors) */
+        .cone-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin: 2.2rem 0 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* simple traffic cone shape */
+        .mini-cone {
+            width: 0;
+            height: 0;
+            border-left: 22px solid transparent;
+            border-right: 22px solid transparent;
+            border-bottom: 52px solid #840132;
+            position: relative;
+            filter: drop-shadow(0 6px 4px rgba(0, 0, 0, 0.1));
+            animation: littleWiggle 2s infinite;
+        }
+
+        .mini-cone:nth-child(2) {
+            border-bottom-color: #6a132c;
+            animation-delay: 0.3s;
+        }
+
+        .mini-cone:nth-child(3) {
+            border-bottom-color: #840132;
+            animation-delay: 0.7s;
+        }
+
+        .mini-cone::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: -10px;
+            width: 20px;
+            height: 10px;
+            background: #f7d44a;
+            /* warm yellow for a fun pop */
+            border-radius: 20px;
+            border: 2px solid #6a132c;
+        }
+
+        @keyframes littleWiggle {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(2deg);
+            }
+
+            75% {
+                transform: rotate(-2deg);
+            }
+        }
+
+        /* extra fun: a little "hammer and wrench" line */
+        .tool-line {
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: #6a132c;
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .tool-line i {
+            background: #fff0e5;
+            padding: 0.5rem;
+            border-radius: 50%;
+            box-shadow: 0 2px 0 #840132;
+        }
+
+        /* fine print: nothing here — just a tiny design element */
+        .whimsy {
+            margin-top: 2.2rem;
+            font-size: 1rem;
+            color: #b39b92;
+            letter-spacing: 1px;
+        }
+
+        .whimsy span {
+            color: #840132;
+            font-weight: 600;
+        }
+
+        /* responsive */
+        @media (max-width: 500px) {
+            .fun-card {
+                padding: 2rem 1.5rem;
+                border-top-width: 12px;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            .fun-sub {
+                font-size: 1.3rem;
+            }
+
+            .fun-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fun-card">
+        <div class="fun-content">
+            <!-- fun floating icon duo -->
+            <div class="fun-icon">
+                <i class="fas fa-hard-hat"></i>
+                <i class="fas fa-wrench"></i>
+            </div>
+
+            <!-- main heading with brand colors -->
+            <h1>
+                <span class="brand-red">🚧</span>
+                <span class="brand-dark">under</span>
+                <span class="brand-red">construction</span>
+                <span class="brand-dark">🚧</span>
+            </h1>
+
+            <!-- simple submessage — still no details/percentage/contact -->
+            <div class="fun-sub">
+                <i class="fas fa-paint-roller" style="color:#840132;"></i>
+                this page is being built
+                <i class="fas fa-paint-brush" style="color:#6a132c;"></i>
+            </div>
+
+            <div class="program-footer">
+                <a href="../index.html" class="btn btn-primary btn-full-width">Back to Programs</a>
+            </div>
+
+            <!-- cone trio (pure css, brand colors) -->
+            <div class="cone-row">
+                <div class="mini-cone"></div>
+                <div class="mini-cone"></div>
+                <div class="mini-cone"></div>
+            </div>
+
+            <!-- tool line for extra playfulness -->
+            <div class="tool-line">
+                <i class="fas fa-hammer"></i>
+                <i class="fas fa-screwdriver"></i>
+                <i class="fas fa-tools"></i>
+            </div>
+
+            <!-- absolutely no contact / percentage — just a tiny design element (internal fun) -->
+            <div class="whimsy">
+                ✦ <span>be right back</span> ✦
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
