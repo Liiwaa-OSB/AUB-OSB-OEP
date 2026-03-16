@@ -4,7 +4,6 @@
 <head>
     <!-- not public - Lii -->
     <meta name="robots" content="noindex, nofollow">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Executive Education Programs</title>
@@ -15,254 +14,232 @@
     <link rel="stylesheet" href="css/main.css">
     <style>
         :root {
-            --accent: #840132;
-            --accent-dark: #6a132c;
-        }
-
-        .program-grid {
-            gap: 2rem;
-        }
-
-        .program-meta {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
+            --color-accent: #840132;
+            /* main burgundy for index */
+            --color-accent-dark: #6a132c;
         }
     </style>
 </head>
 
 <body>
-    <!-- HERO SECTION -->
-    <section class="hero-section hero-video">
-        <!-- Background Video -->
-        <video class="hero-video-element" autoplay muted loop playsinline>
-            <source src="videos/AUB-OSB-OEP-Programs-banner.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
-        <!-- Dark Overlay -->
-        <div class="hero-overlay"></div>
-
-        <!-- Content -->
-        <div class="container">
-            <div class="hero-content center">
-                <p>Short programs designed for professionals, leaders and innovators.</p>
-                <h1>Executive Education Programs</h1>
+    <main>
+        <!-- HERO SECTION with video -->
+        <section class="hero hero--video">
+            <video class="hero__video-element" autoplay muted loop playsinline>
+                <source src="videos/AUB-OSB-OEP-Programs-banner.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero__overlay"></div>
+            <div class="container">
+                <div class="hero__content hero__content--center">
+                    <p class="hero__text">Short programs designed for professionals, leaders and innovators.</p>
+                    <h1 class="hero__title">Executive Education Programs</h1>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PROGRAMS SECTION - white background -->
-    <section class="section-white">
-        <div class="container">
-            <!-- Programs Grid - 2 per row -->
-            <div class="program-grid">
-                <!-- PRICING ANALYTICS -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="images/AUB-OSB-OEP-Pricing-Analytics.jpg" alt="Pricing Analytics">
-                    </div>
-                    <div class="program-color pricing-bg">
-                    </div>
-                    <div class="program-content">
-                        <div class="program-title">PRICING ANALYTICS</div>
-                        <p class="program-text">This program focuses on pricing as a competitive driver balancing the
-                            trade between faster resource/inventory turnover and higher margins through data analytics
-                            capabilities. While advances in analytics are rapidly transforming pricing practices, this
-                            program sheds light on the enduring principles that form the foundation of effective pricing
-                            strategy.</p>
-                        <div class="program-meta">
-                            <span class="badge">Face-to-Face</span>
-                            <div class="meta-item"><i data-lucide="calendar" width="16"></i><span>Jun 12 2026</span>
+        <!-- PROGRAMS GRID -->
+        <section class="section">
+            <div class="container">
+                <div class="program-grid">
+                    <!-- PRICING ANALYTICS -->
+                    <div class="program-card">
+                        <div class="program-card__image">
+                            <img src="images/AUB-OSB-OEP-Pricing-Analytics.jpg" alt="Pricing Analytics">
+                        </div>
+                        <div class="program-card__accent" style="background-color: #3C955C;"></div>
+                        <div class="program-card__content">
+                            <div class="program-card__title">PRICING ANALYTICS</div>
+                            <p class="program-card__text">This program focuses on pricing as a competitive driver
+                                balancing the trade between faster resource/inventory turnover and higher margins
+                                through data analytics capabilities. While advances in analytics are rapidly
+                                transforming pricing practices, this program sheds light on the enduring principles that
+                                form the foundation of effective pricing strategy.</p>
+                            <div class="program-card__meta">
+                                <span class="badge">Face-to-Face</span>
+                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>Jun 12
+                                    2026</span>
+                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>5
+                                    Days</span>
                             </div>
-                            <div class="meta-item"><i data-lucide="clock" width="16"></i><span>5 Days</span></div>
-                        </div>
-                        <div class="program-footer">
-                            <a href="programs/pricing-analytics.html" class="btn btn-primary btn-full-width">Learn
-                                More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DESIGN THINKING -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="images/AUB-OSB-OEP-design-thinking.jpg" alt="DESIGN THINKING">
-                    </div>
-                    <div class="program-color innovate-bg">
-                    </div>
-                    <div class="program-content">
-                        <div class="program-title">DESIGN THINKING</div>
-                        <p class="program-text">This Design Thinking program explores the needed requirements for
-                            enabling customer focused innovation that is key for facing increasingly competitive
-                            environments.
-                            It aims to support aspiring entrepreneurs and professionals exploring intra-organizational
-                            innovation practices.
-                            The program aims to develop the ability to frame stakeholders’ needs and generate innovative
-                            and feasible solutions to address these needs.</p>
-                        <div class="program-meta">
-                            <span class="badge badge-online">Online</span>
-                            <div class="meta-item"><i data-lucide="calendar" width="16"></i><span>May 15 2026</span>
+                            <div class="program-card__footer">
+                                <a href="programs/pricing-analytics.html" class="btn btn--primary btn--full">Learn
+                                    More</a>
                             </div>
-                            <div class="meta-item"><i data-lucide="clock" width="16"></i><span>4 Weeks</span></div>
-                        </div>
-                        <div class="program-footer">
-                            <a href="programs/design-thinking.html" class="btn btn-primary btn-full-width">Learn
-                                More</a>
                         </div>
                     </div>
-                </div>
 
-                <!-- AI IN SUPPLY CHAIN -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="images/black.png" alt="AI in Supply Chain">
-                    </div>
-                    <div class="program-color ai-chain-bg">
-                    </div>
-                    <div class="program-content">
-                        <div class="program-title">AI IN SUPPLY CHAIN</div>
-                        <p class="program-text">This program focuses on real-world AI applications in production, demand
-                            forecasting, inventory management, logistics optimization, and risk mitigation. Participants
-                            will learn how AI-driven systems shape modern supply chains and how to interpret their
-                            outputs to make informed strategic decisions.</p>
-                        <div class="program-meta">
-                            <span class="badge">Face-to-Face</span>
-                            <div class="meta-item"><i data-lucide="calendar" width="16"></i><span>Apr 28 2026</span>
+                    <!-- DESIGN THINKING -->
+                    <div class="program-card">
+                        <div class="program-card__image">
+                            <img src="images/AUB-OSB-OEP-design-thinking.jpg" alt="DESIGN THINKING">
+                        </div>
+                        <div class="program-card__accent" style="background-color: #854295;"></div>
+                        <div class="program-card__content">
+                            <div class="program-card__title">DESIGN THINKING</div>
+                            <p class="program-card__text">This Design Thinking program explores the needed requirements
+                                for enabling customer focused innovation that is key for facing increasingly competitive
+                                environments. It aims to support aspiring entrepreneurs and professionals exploring
+                                intra-organizational innovation practices. The program aims to develop the ability to
+                                frame stakeholders’ needs and generate innovative and feasible solutions to address
+                                these needs.</p>
+                            <div class="program-card__meta">
+                                <span class="badge badge--online">Online</span>
+                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>May 15
+                                    2026</span>
+                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>4
+                                    Weeks</span>
                             </div>
-                            <div class="meta-item"><i data-lucide="clock" width="16"></i><span>3 Days</span></div>
-                        </div>
-                        <div class="program-footer">
-                            <a href="programs/ai-in-supply-chain.html" class="btn btn-primary btn-full-width">Learn
-                                More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAMILY BUSINESS GOVERNANCE -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="images/black.png" alt="Family Business Governance">
-                    </div>
-                    <div class="program-color family-business-bg">
-                    </div>
-                    <div class="program-content">
-                        <div class="program-title">FAMILY BUSINESS GOVERNANCE</div>
-                        <p class="program-text">This unique program equips family business leaders with tools and
-                            frameworks needed to design governance systems that manage complexity and ensure continuity
-                            without compromising family harmony. Topics include family governance structures, board
-                            composition, preserving family's wealth, planning succession, and managing conflicts.</p>
-                        <div class="program-meta">
-                            <span class="badge badge-online">Online</span>
-                            <div class="meta-item"><i data-lucide="calendar" width="16"></i><span>May 15 2026</span>
+                            <div class="program-card__footer">
+                                <a href="programs/design-thinking.html" class="btn btn--primary btn--full">Learn
+                                    More</a>
                             </div>
-                            <div class="meta-item"><i data-lucide="clock" width="16"></i><span>4 Weeks</span></div>
-                        </div>
-                        <div class="program-footer">
-                            <a href="programs/family-business-governance.html"
-                                class="btn btn-primary btn-full-width">Learn More</a>
                         </div>
                     </div>
-                </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- INFO SECTION - white background -->
-    <section class="section-white">
-        <div class="container">
-            <div class="info-grid">
-                <!-- Expert Instructors -->
-                <div class="info-item">
-                    <div class="info-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
+                    <!-- AI IN SUPPLY CHAIN -->
+                    <div class="program-card">
+                        <div class="program-card__image">
+                            <img src="images/AUB-OSB-OEP-AI-Supply Chain.jpg" alt="AI in Supply Chain">
+                        </div>
+                        <div class="program-card__accent" style="background-color: #3AA0E2;"></div>
+                        <div class="program-card__content">
+                            <div class="program-card__title">AI IN SUPPLY CHAIN</div>
+                            <p class="program-card__text">This program focuses on real-world AI applications in
+                                production, demand forecasting, inventory management, logistics optimization, and risk
+                                mitigation. Participants will learn how AI-driven systems shape modern supply chains and
+                                how to interpret their outputs to make informed strategic decisions.</p>
+                            <div class="program-card__meta">
+                                <span class="badge">Face-to-Face</span>
+                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>Apr 28
+                                    2026</span>
+                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>3
+                                    Days</span>
+                            </div>
+                            <div class="program-card__footer">
+                                <a href="programs/ai-in-supply-chain.html" class="btn btn--primary btn--full">Learn
+                                    More</a>
+                            </div>
+                        </div>
                     </div>
-                    <h4>Expert Instructors</h4>
-                    <p>Learn from industry leaders and experienced academics</p>
-                </div>
 
-                <!-- Certified Programs -->
-                <div class="info-item">
-                    <div class="info-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
+                    <!-- FAMILY BUSINESS GOVERNANCE -->
+                    <div class="program-card">
+                        <div class="program-card__image">
+                            <img src="images/black.png" alt="Family Business Governance">
+                        </div>
+                        <div class="program-card__accent" style="background-color: DimGray;"></div>
+                        <div class="program-card__content">
+                            <div class="program-card__title">FAMILY BUSINESS GOVERNANCE</div>
+                            <p class="program-card__text">This unique program equips family business leaders with tools
+                                and frameworks needed to design governance systems that manage complexity and ensure
+                                continuity without compromising family harmony. Topics include family governance
+                                structures, board composition, preserving family's wealth, planning succession, and
+                                managing conflicts.</p>
+                            <div class="program-card__meta">
+                                <span class="badge badge--online">Online</span>
+                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>May 15
+                                    2026</span>
+                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>4
+                                    Weeks</span>
+                            </div>
+                            <div class="program-card__footer">
+                                <a href="programs/family-business-governance.html"
+                                    class="btn btn--primary btn--full">Learn More</a>
+                            </div>
+                        </div>
                     </div>
-                    <h4>Certified Programs</h4>
-                    <p>Receive recognized certificates upon completion</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Flexible Learning -->
-                <div class="info-item">
-                    <div class="info-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
+        <!-- INFO SECTION (icons) -->
+        <section class="section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-item__icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h4 class="info-item__title">Expert Instructors</h4>
+                        <p class="info-item__text">Learn from industry leaders and experienced academics</p>
                     </div>
-                    <h4>Flexible Learning</h4>
-                    <p>Choose between online and face-to-face formats</p>
+                    <div class="info-item">
+                        <div class="info-item__icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                        </div>
+                        <h4 class="info-item__title">Certified Programs</h4>
+                        <p class="info-item__text">Receive recognized certificates upon completion</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item__icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h4 class="info-item__title">Flexible Learning</h4>
+                        <p class="info-item__text">Choose between online and face-to-face formats</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA SECTION -->
-    <section class="cta-section contact-us-section">
-        <div class="container">
-            <div class="cta-content center">
-                <h2>Can't Find What You're Looking For?</h2>
-                <p>We offer customized programs tailored to your organization's specific needs.<br />
-                    Contact us to discuss how we can help you achieve your goals.</p>
-                <button class="btn btn-white">Contact Us</button>
+        <!-- CTA SECTION -->
+        <section class="cta contact-us-section" style="background: rgba(67,68,68,0.6);">
+            <div class="cta__overlay" style="background: rgba(0,0,0,0.2);"></div>
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Can't Find What You're Looking For?</h2>
+                    <p class="cta__text">We offer customized programs tailored to your organization's specific
+                        needs.<br>Contact us to discuss how we can help you achieve your goals.</p>
+                    <button class="btn btn--white">Contact Us</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- FOOTER SECTION -->
-    <section class="footer-section">
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="container">
-            <!-- NEW: Accreditation image -->
-            <div class="footer-accred-image">
-                <img src="images/AUB-OSB-accreditations.png" alt="Accreditations"
-                    style="width: 100%; height: auto; display: block;">
+            <div class="footer__accred">
+                <img src="images/AUB-OSB-accreditations.png" alt="Accreditations">
             </div>
-            <!-- Top Footer - 4 column white squares with 2px gap -->
             <div class="footer-grid">
                 <div class="footer-item">
-                    <h2>Contact Us</h2>
-                    <p>For various questions, please try contacting us via social media first!</p>
-                    <a href="#">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2>Privacy Statement</h2>
-                    <p>We take data privacy seriously and adhere to all applicable data privacy laws and regulations.
+                    <h2 class="footer-item__title">Contact Us</h2>
+                    <p class="footer-item__text">For various questions, please try contacting us via social media first!
                     </p>
-                    <a href="#">read more</a>
+                    <a href="#" class="footer-item__link">read more</a>
                 </div>
                 <div class="footer-item">
-                    <h2>Copyright and Disclaimer</h2>
-                    <p>Written permission is needed to copy or disseminate all or part of the materials on the AUB
-                        website.</p>
-                    <a href="#">read more</a>
+                    <h2 class="footer-item__title">Privacy Statement</h2>
+                    <p class="footer-item__text">We take data privacy seriously and adhere to all applicable data
+                        privacy laws and regulations.</p>
+                    <a href="#" class="footer-item__link">read more</a>
                 </div>
                 <div class="footer-item">
-                    <h2>Title IX, Non-Discrimination, and Anti-Discriminatory Harassment</h2>
-                    <p>AUB is committed to providing a safe and respectful environment to all members of its community.
-                    </p>
-                    <a href="#">read more</a>
+                    <h2 class="footer-item__title">Copyright and Disclaimer</h2>
+                    <p class="footer-item__text">Written permission is needed to copy or disseminate all or part of the
+                        materials on the AUB website.</p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+                <div class="footer-item">
+                    <h2 class="footer-item__title">Title IX, Non-Discrimination, and Anti-Discriminatory Harassment</h2>
+                    <p class="footer-item__text">AUB is committed to providing a safe and respectful environment to all
+                        members of its community.</p>
+                    <a href="#" class="footer-item__link">read more</a>
                 </div>
             </div>
         </div>
 
-        <!-- Middle Footer - 3 columns maroon background with white vertical lines -->
-
-        <div class="bg-burgendy">
+        <div class="bg-burgundy">
             <div class="container footer-links-grid">
                 <div class="footer-links-column">
                     <ul>
@@ -277,7 +254,6 @@
                         <li><a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links-column">
                     <ul>
                         <li><a href="/emergency">Emergency</a></li>
@@ -290,7 +266,6 @@
                         <li><a href="/Employment">Jobs</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links-column">
                     <ul>
                         <li><a href="/libraries">Libraries</a></li>
@@ -305,7 +280,6 @@
             </div>
         </div>
 
-        <!-- Bottom Footer - Dark maroon with centered social icons only -->
         <div class="footer-bottom">
             <ul class="social-links">
                 <li><a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"
@@ -320,7 +294,8 @@
                         aria-label="Youtube">&nbsp;</a></li>
             </ul>
         </div>
-    </section>
+    </footer>
+
     <script>
         lucide.createIcons();
     </script>
