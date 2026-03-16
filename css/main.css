@@ -26,6 +26,11 @@ body {
   --color-dark-gray: #434444;
   --color-dark-gray-rgb: 67, 68, 68;
 
+  --color-pricing-analytics-accent: #3C955C;
+  --color-design-thinking-accent: #854295;
+  --color-ai-in-supply-chain-accent: #3AA0E2;
+  --color-family-business-governance-accent: DimGray;
+
   --font-family-base: 'Roboto', sans-serif;
   --spacing-unit: 1rem;
   --container-max-width: 1280px;
@@ -53,6 +58,21 @@ body {
     --section-title-size: 36px;
   }
 }
+
+/* ===== PROGRAMS COLORS USAGE ===== */
+.pricing-analytics-bg {
+  background-color: var(--color-pricing-analytics-accent);
+}
+.design-thinking-bg {
+  background-color: var(--color-design-thinking-accent);
+}
+.ai-in-supply-chain-bg {
+  background-color: var(--color-ai-in-supply-chain-accent);
+}
+.family-business-governance-bg {
+  background-color: var( --color-family-business-governance-accent);
+}
+
 
 /* ===== UTILITY CLASSES ===== */
 .container {
@@ -821,7 +841,6 @@ h3 {
   padding: 0.35rem 0.7rem;
   display: inline-block;
   color: #fff;
-  background: var(--color-text-muted);
 }
 
 /* ===== CTA SECTION ===== */
