@@ -508,6 +508,7 @@ h3 {
 }
 
 /* ===== PARTICIPANT CARDS (Who Should Enroll) ===== */
+.grid-2,
 .grid-3 {
   display: grid;
   grid-template-columns: 1fr;
@@ -516,6 +517,10 @@ h3 {
 }
 
 @media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -908,6 +913,10 @@ h3 {
 }
 
 /* Special Design */
+.contact-us-section {
+  background: rgba(67, 68, 68, 0.6);
+}
+
 .contact-us-section .btn--white {
   color: var(--color-primary);
 }
