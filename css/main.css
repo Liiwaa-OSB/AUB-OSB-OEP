@@ -163,9 +163,7 @@ h3 {
   padding: 1rem 2.5rem;
 }
 
-.cta-section.contact-us .btn-white {
-  color: var(--primary-dark);
-}
+
 
 .btn-white:hover {
   background: #f0f0f0;
@@ -860,7 +858,6 @@ h3 {
 
 /* ===== CTA SECTION ===== */
 .cta-section {
-  background: rgba(var(--dark-gray-rgb), 0.6);
   padding: 5rem 1.5rem;
   position: relative;
   overflow: hidden;
@@ -901,6 +898,10 @@ h3 {
   margin-top: 1rem;
 }
 
+.cta-section.contact-us-section .btn-white {
+  color: var(--primary-dark);
+}
+
 @media (min-width: 640px) {
   .contact-links {
     flex-direction: row;
@@ -927,9 +928,11 @@ h3 {
 }
 
 /* Special Design */
-.accent-bg {
+.contact-us-section {
+  background: rgba(var(--dark-gray-rgb), 0.6);
+}
+.register-section {
   background-color: var(--accent);
-  background-image: url('../images/Design-Thinking-bg.jpg');
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 100% 180%;
