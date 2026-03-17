@@ -489,7 +489,7 @@ h3 {
   aspect-ratio: 1 / 1;
   display: flex;
   max-width: 300px;
-  /* optional, prevents too wide */
+  margin-top: 15px;
 }
 
 .instructor-grid__image .img-wrapper {
@@ -509,10 +509,8 @@ h3 {
   object-fit: cover;
   max-height: 250px;
 
-  border: 5px solid white;
-  box-shadow:
-    rgba(0, 0, 0, 0.16) 0px 1px 4px,
-    rgba(51, 51, 51, 0.3) 0px 0px 0px 3px;
+  border: 5px solid #fff;
+  box-shadow: var(--color-gray-bg) 0px 0px 0px 3px;
 }
 
 .instructor-grid__name {
