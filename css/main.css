@@ -508,6 +508,11 @@ h3 {
   height: 100%;
   object-fit: cover;
   max-height: 250px;
+
+  border: 5px solid white;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 1px 4px,
+    rgba(51, 51, 51, 0.3) 0px 0px 0px 3px;
 }
 
 .instructor-grid__name {
