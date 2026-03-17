@@ -285,42 +285,81 @@
       <section class="section" style="background: #f5f5f5">
         <div class="container">
           <h2 class="section-title">Who Should Enroll</h2>
-          <div class="grid-2">
-            <!-- AUB Alumni -->
-            <div class="participant-card">
-              <div class="participant-card__image">
-                <img
-                  src="../images/AUB-OSB-OEP-ai-supply-chain-alumni.jpg"
-                  alt="AUB Alumni"
-                />
+
+          <!-- carousel component - reusable, dynamic -->
+          <div class="carousel js-carousel carousel-2" data-carousel>
+            <!-- previous button -->
+            <button
+              class="carousel__btn carousel__btn--prev js-carousel-prev"
+              aria-label="Previous"
+              disabled
+            >
+              &#10094;
+            </button>
+
+            <!-- scrollable container -->
+            <div class="carousel__container js-carousel-container">
+              <div class="carousel__track js-carousel-track">
+                <!-- original 3 cards (exact same content) -->
+                <div class="carousel__slide" style="width: calc(50% - 0.75rem);">
+                  <div class="participant-card">
+                    <div class="participant-card__image">
+                      <img
+                        src="../images/AUB-OSB-OEP-ai-supply-chain-alumni.jpg"
+                        alt="AUB Alumni"
+                        onerror="
+                          this.src =
+                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
+                        "
+                      />
+                    </div>
+                    <div class="participant-card__content">
+                      <h3 class="participant-card__title">AUB Alumni</h3>
+                      <p class="participant-card__text">
+                        Looking to reconnect with the AUB network and renew
+                        their learning journey.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel__slide" style="width: calc(50% - 0.75rem);">
+                  <div class="participant-card">
+                    <div class="participant-card__image">
+                      <img
+                        src="../images/AUB-OSB-OEP-ai-supply-chain-executives.jpg"
+                        alt="Supply Chain Executives"
+                        onerror="
+                          this.src =
+                            'https://placehold.co/400x300/2d5a27/white?text=Executives'
+                        "
+                      />
+                    </div>
+                    <div class="participant-card__content">
+                      <h3 class="participant-card__title">
+                        Supply Chain Executives, Managers & Decision-makers
+                      </h3>
+                      <p class="participant-card__text">
+                        Who are seeking to understand how AI technologies can
+                        optimize operations and drive business growth.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="participant-card__content">
-                <h3 class="participant-card__title">AUB Alumni</h3>
-                <p class="participant-card__text">
-                  Looking to reconnect with the AUB network and renew their
-                  learning journey.
-                </p>
-              </div>
+              <!-- /track -->
             </div>
-            <!-- Supply Chain Executives & Managers -->
-            <div class="participant-card">
-              <div class="participant-card__image">
-                <img
-                  src="../images/AUB-OSB-OEP-ai-supply-chain-executives.jpg"
-                  alt="Supply Chain Executives"
-                />
-              </div>
-              <div class="participant-card__content">
-                <h3 class="participant-card__title">
-                  Supply Chain Executives, Managers & Decision-makers
-                </h3>
-                <p class="participant-card__text">
-                  Who are seeking to understand how AI technologies can optimize
-                  operations and drive business growth.
-                </p>
-              </div>
-            </div>
+            <!-- /container -->
+
+            <!-- next button -->
+            <button
+              class="carousel__btn carousel__btn--next js-carousel-next"
+              aria-label="Next"
+            >
+              &#10095;
+            </button>
           </div>
+          <!-- /carousel -->
 
           <!-- Program Requirements (same layout) -->
           <div class="requirements-grid">

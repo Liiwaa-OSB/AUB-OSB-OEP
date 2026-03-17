@@ -529,31 +529,16 @@ h3 {
   opacity: 0.9;
 }
 
-/* ===== PARTICIPANT CARDS (Who Should Enroll) ===== */
-.grid-2,
-.grid-3 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-@media (min-width: 768px) {
-  .grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
+/* ===== CARD STYLES (exactly as provided, untouched) ===== */
 .participant-card {
   background: #fff;
   overflow: hidden;
   border: 1px solid var(--color-border-light);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
+  height: 100%; /* ensures uniformity inside carousel slide */
+  display: flex;
+  flex-direction: column;
 }
 
 .participant-card:hover {
@@ -578,6 +563,7 @@ h3 {
 
 .participant-card__content {
   padding: 1.5rem;
+  flex: 1;
 }
 
 .participant-card__title {
@@ -589,6 +575,100 @@ h3 {
 
 .participant-card__text {
   color: #374151;
+  line-height: 1.5;
+}
+
+/* ===== CAROUSEL (dynamic, reusable) ===== */
+.carousel {
+  position: relative;
+  margin-bottom: 3rem; /* replaces old .grid-3 margin */
+}
+
+/* container with native horizontal scroll + snap */
+.carousel__container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* smooth on iOS */
+  scrollbar-width: none; /* hide scrollbar firefox */
+  padding: 0.25rem 0 1rem 0; /* little space for shadows */
+}
+.carousel__container::-webkit-scrollbar {
+  display: none; /* hide scrollbar Chrome/Safari */
+}
+
+/* flex track – holds all slides */
+.carousel__track {
+  display: flex;
+  gap: 1.5rem; /* same gap as original grid-3 */
+  align-items: stretch;
+}
+
+/* each slide: fixed width to keep card size identical */
+.carousel__slide {
+  flex: 0 0 auto;
+  width: calc(33% - 0.75rem);
+  scroll-snap-align: start;
+}
+
+/* carousel buttons (prev/next) */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+}
+.carousel__btn:hover {
+  background: #f9fafb;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  opacity: 1;
+}
+.carousel__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.carousel__btn--prev {
+  left: 0.5rem;
+}
+.carousel__btn--next {
+  right: 0.5rem;
+}
+
+/* optional: hide buttons on small screens if you like */
+@media (max-width: 640px) {
+  .carousel__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Hide button for carousel 2 and 3 */
+.carousel-3 .carousel__btn,
+.carousel-2 .carousel__btn {
+  display: none;
+}
+
+/* small tweak for images (keep original paths / placeholders) */
+img {
+  display: block;
+  max-width: 100%;
 }
 
 /* ===== REQUIREMENTS ===== */
