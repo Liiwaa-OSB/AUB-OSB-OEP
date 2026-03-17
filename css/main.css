@@ -478,18 +478,7 @@ h3 {
   aspect-ratio: 1 / 1;
   display: flex;
   max-width: 300px;
-  margin-top: 15px;
-}
-
-.instructor-grid__image .img-wrapper {
-  width: 100%;
-  height: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  margin-top: 12px;
 }
 
 .instructor-grid__image img {
@@ -499,7 +488,9 @@ h3 {
   max-height: 250px;
 
   border: 5px solid #fff;
-  box-shadow: var(--color-gray-bg) 0px 0px 0px 3px;
+  box-shadow: #ccc 0px 0px 0px 1px;
+  -webkit-box-shadow: #ccc 0px 0px 0px 1px;
+  -moz-box-shadow: #ccc 0px 0px 0px 1px;
 }
 
 .instructor-grid__name {

@@ -22,12 +22,14 @@
         --color-accent-dark: #6a132c;
       }
     </style>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
 
   <body>
     <main>
       <!-- HERO SECTION with video -->
-      <section class="hero hero--video">
+      <section class="hero hero--video" data-aos="fade">
         <video class="hero__video-element" autoplay muted loop playsinline>
           <source
             src="videos/AUB-OSB-OEP-Programs-banner.mp4"
@@ -51,6 +53,7 @@
             <!-- PRICING ANALYTICS -->
             <div
               class="program-card"
+              data-aos="flip-right"
               data-url="programs/pricing-analytics.html"
             >
               <div class="program-card__image">
@@ -90,7 +93,11 @@
             </div>
 
             <!-- DESIGN THINKING -->
-            <div class="program-card" data-url="programs/design-thinking.html">
+            <div
+              class="program-card"
+              data-aos="flip-right"
+              data-url="programs/design-thinking.html"
+            >
               <div class="program-card__image">
                 <img
                   src="images/AUB-OSB-OEP-design-thinking.jpg"
@@ -131,6 +138,7 @@
             <!-- AI IN SUPPLY CHAIN -->
             <div
               class="program-card"
+              data-aos="flip-right"
               data-url="programs/ai-in-supply-chain.html"
             >
               <div class="program-card__image">
@@ -172,6 +180,7 @@
             <!-- FAMILY BUSINESS GOVERNANCE -->
             <div
               class="program-card"
+              data-aos="flip-right"
               data-url="programs/family-business-governance.html"
             >
               <div class="program-card__image">
@@ -220,7 +229,7 @@
       </section>
 
       <!-- INFO SECTION (icons) -->
-      <section class="section">
+      <section class="section" data-aos="slide-up">
         <div class="container">
           <div class="info-grid">
             <div class="info-item">
@@ -278,7 +287,7 @@
       <!-- CTA SECTION -->
       <section class="cta contact-us-section">
         <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
-        <div class="container">
+        <div class="container" data-aos="fade-right">
           <div class="cta__content">
             <h2 class="cta__title">Can't Find What You're Looking For?</h2>
             <p class="cta__text">
@@ -457,6 +466,10 @@
 
     <script>
       lucide.createIcons();
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
   </body>
 </html>
