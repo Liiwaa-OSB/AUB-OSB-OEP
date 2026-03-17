@@ -113,22 +113,11 @@ h3 {
 .section-title {
   font-size: var(--section-title-size);
   font-weight: 700;
-  color: var(--color-text-muted);
+  color: var(--color-accent-dark);
   display: inline-block;
   position: relative;
   padding-bottom: 12px;
-  padding-left: 20px;
   margin-bottom: 1rem;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  left: -5px;
-  bottom: 24%;
-  width: 5px;
-  height: 67%;
-  background: var(--color-accent);
 }
 
 .section-title--center {
