@@ -1,421 +1,462 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- not public - Lii -->
-    <meta name="robots" content="noindex, nofollow">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Education Programs</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&display=swap" rel="stylesheet">
+    <meta name="robots" content="noindex, nofollow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Enrollment Programs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/main.css" />
     <style>
-        :root {
-            --color-accent: #840132;
-            /* main burgundy for index */
-            --color-accent-dark: #6a132c;
-        }
+      :root {
+        --color-accent: #840132;
+        /* main burgundy for index */
+        --color-accent-dark: #6a132c;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <!-- HERO SECTION with video -->
-        <section class="hero hero--video">
-            <video class="hero__video-element" autoplay muted loop playsinline>
-                <source src="videos/AUB-OSB-OEP-Programs-banner.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="hero__overlay"></div>
-            <div class="container">
-                <div class="hero__content hero__content--center">
-                    <p class="hero__text">Short programs designed for professionals, leaders and innovators.</p>
-                    <h1 class="hero__title">Executive Education Programs</h1>
+      <!-- HERO SECTION with video -->
+      <section class="hero hero--video">
+        <video class="hero__video-element" autoplay muted loop playsinline>
+          <source
+            src="videos/AUB-OSB-OEP-Programs-banner.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div class="hero__overlay"></div>
+        <div class="container">
+          <div class="hero__content hero__content--center">
+            <p class="hero__text">Executive Education</p>
+            <h1 class="hero__title">Open Enrollment Programs</h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMS GRID -->
+      <section class="section">
+        <div class="container">
+          <div class="program-grid">
+            <!-- PRICING ANALYTICS -->
+            <div
+              class="program-card"
+              data-url="programs/pricing-analytics.html"
+            >
+              <div class="program-card__image">
+                <img
+                  src="images/AUB-OSB-OEP-Pricing-Analytics.jpg"
+                  alt="Pricing Analytics"
+                />
+              </div>
+              <div class="program-card__accent pricing-analytics-bg"></div>
+              <div class="program-card__content">
+                <div class="program-card__title">PRICING ANALYTICS</div>
+                <p class="program-card__text">
+                  This program focuses on pricing as a competitive driver
+                  balancing the trade between faster resource/inventory turnover
+                  and higher margins through data analytics capabilities. While
+                  advances in analytics are rapidly transforming pricing
+                  practices, this program sheds light on the enduring principles
+                  that form the foundation of effective pricing strategy.
+                </p>
+                <div class="program-card__meta">
+                  <span class="badge pricing-analytics-bg">Face-to-Face</span>
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="calendar" width="16"></i>Jun 12 2026</span
+                  >
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="clock" width="16"></i>5 Days</span
+                  >
                 </div>
-            </div>
-        </section>
-
-        <!-- PROGRAMS GRID -->
-        <section class="section">
-            <div class="container">
-                <div class="program-grid">
-                    <!-- PRICING ANALYTICS -->
-                    <div class="program-card">
-                        <div class="program-card__image">
-                            <img src="images/AUB-OSB-OEP-Pricing-Analytics.jpg" alt="Pricing Analytics">
-                        </div>
-                        <div class="program-card__accent pricing-analytics-bg"></div>
-                        <div class="program-card__content">
-                            <div class="program-card__title">PRICING ANALYTICS</div>
-                            <p class="program-card__text">This program focuses on pricing as a competitive driver
-                                balancing the trade between faster resource/inventory turnover and higher margins
-                                through data analytics capabilities. While advances in analytics are rapidly
-                                transforming pricing practices, this program sheds light on the enduring principles that
-                                form the foundation of effective pricing strategy.</p>
-                            <div class="program-card__meta">
-                                <span class="badge pricing-analytics-bg">Face-to-Face</span>
-                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>Jun 12
-                                    2026</span>
-                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>5
-                                    Days</span>
-                            </div>
-                            <div class="program-card__footer">
-                                <a href="programs/pricing-analytics.html" class="btn btn--primary btn--full">Learn
-                                    More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DESIGN THINKING -->
-                    <div class="program-card">
-                        <div class="program-card__image">
-                            <img src="images/AUB-OSB-OEP-design-thinking.jpg" alt="DESIGN THINKING">
-                        </div>
-                        <div class="program-card__accent design-thinking-bg"></div>
-                        <div class="program-card__content">
-                            <div class="program-card__title">DESIGN THINKING</div>
-                            <p class="program-card__text">This Design Thinking program explores the needed requirements
-                                for enabling customer focused innovation that is key for facing increasingly competitive
-                                environments. It aims to support aspiring entrepreneurs and professionals exploring
-                                intra-organizational innovation practices. The program aims to develop the ability to
-                                frame stakeholders’ needs and generate innovative and feasible solutions to address
-                                these needs.</p>
-                            <div class="program-card__meta">
-                                <span class="badge design-thinking-bg">Online</span>
-                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>May 15
-                                    2026</span>
-                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>4
-                                    Weeks</span>
-                            </div>
-                            <div class="program-card__footer">
-                                <a href="programs/design-thinking.html" class="btn btn--primary btn--full">Learn
-                                    More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AI IN SUPPLY CHAIN -->
-                    <div class="program-card">
-                        <div class="program-card__image">
-                            <img src="images/AUB-OSB-OEP-AI-Supply Chain.jpg" alt="AI in Supply Chain">
-                        </div>
-                        <div class="program-card__accent ai-in-supply-chain-bg"></div>
-                        <div class="program-card__content">
-                            <div class="program-card__title">AI IN SUPPLY CHAIN</div>
-                            <p class="program-card__text">This program focuses on real-world AI applications in
-                                production, demand forecasting, inventory management, logistics optimization, and risk
-                                mitigation. Participants will learn how AI-driven systems shape modern supply chains and
-                                how to interpret their outputs to make informed strategic decisions.</p>
-                            <div class="program-card__meta">
-                                <span class="badge ai-in-supply-chain-bg">Face-to-Face</span>
-                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>Apr 28
-                                    2026</span>
-                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>3
-                                    Days</span>
-                            </div>
-                            <div class="program-card__footer">
-                                <a href="programs/ai-in-supply-chain.html" class="btn btn--primary btn--full">Learn
-                                    More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAMILY BUSINESS GOVERNANCE -->
-                    <div class="program-card">
-                        <div class="program-card__image">
-                            <img src="images/AUB-OSB-OEP-Family-Business-governance.jpg" alt="Family Business Governance">
-                        </div>
-                        <div class="program-card__accent family-business-governance-bg"></div>
-                        <div class="program-card__content">
-                            <div class="program-card__title">FAMILY BUSINESS GOVERNANCE</div>
-                            <p class="program-card__text">This unique program equips family business leaders with tools
-                                and frameworks needed to design governance systems that manage complexity and ensure
-                                continuity without compromising family harmony. Topics include family governance
-                                structures, board composition, preserving family's wealth, planning succession, and
-                                managing conflicts.</p>
-                            <div class="program-card__meta">
-                                <span class="badge family-business-governance-bg">Online</span>
-                                <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>May 15
-                                    2026</span>
-                                <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>4
-                                    Weeks</span>
-                            </div>
-                            <div class="program-card__footer">
-                                <a href="programs/family-business-governance.html"
-                                    class="btn btn--primary btn--full">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="program-card__footer">
+                  <a
+                    href="programs/pricing-analytics.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
                 </div>
+              </div>
             </div>
-        </section>
 
-        <!-- INFO SECTION (icons) -->
-        <section class="section">
-            <div class="container">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-item__icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                        </div>
-                        <h4 class="info-item__title">Expert Instructors</h4>
-                        <p class="info-item__text">Learn from industry leaders and experienced academics</p>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-item__icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                            </svg>
-                        </div>
-                        <h4 class="info-item__title">Certified Programs</h4>
-                        <p class="info-item__text">Receive recognized certificates upon completion</p>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-item__icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </div>
-                        <h4 class="info-item__title">Flexible Learning</h4>
-                        <p class="info-item__text">Choose between online and face-to-face formats</p>
-                    </div>
+            <!-- DESIGN THINKING -->
+            <div class="program-card" data-url="programs/design-thinking.html">
+              <div class="program-card__image">
+                <img
+                  src="images/AUB-OSB-OEP-design-thinking.jpg"
+                  alt="DESIGN THINKING"
+                />
+              </div>
+              <div class="program-card__accent design-thinking-bg"></div>
+              <div class="program-card__content">
+                <div class="program-card__title">DESIGN THINKING</div>
+                <p class="program-card__text">
+                  This Design Thinking program explores the needed requirements
+                  for enabling customer focused innovation that is key for
+                  facing increasingly competitive environments. It aims to
+                  support aspiring entrepreneurs and professionals exploring
+                  intra-organizational innovation practices. The program aims to
+                  develop the ability to frame stakeholders’ needs and generate
+                  innovative and feasible solutions to address these needs.
+                </p>
+                <div class="program-card__meta">
+                  <span class="badge design-thinking-bg">Online</span>
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="calendar" width="16"></i>May 15 2026</span
+                  >
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="clock" width="16"></i>4 Weeks</span
+                  >
                 </div>
+                <div class="program-card__footer">
+                  <a
+                    href="programs/design-thinking.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
             </div>
-        </section>
 
-        <!-- CTA SECTION -->
-        <section class="cta contact-us-section">
-            <div class="cta__overlay" style="background: rgba(0,0,0,0.2);"></div>
-            <div class="container">
-                <div class="cta__content">
-                    <h2 class="cta__title">Can't Find What You're Looking For?</h2>
-                    <p class="cta__text">We offer customized programs tailored to your organization's specific
-                        needs.<br>Contact us to discuss how we can help you achieve your goals.</p>
-                    <button class="btn btn--white">Contact Us</button>
+            <!-- AI IN SUPPLY CHAIN -->
+            <div
+              class="program-card"
+              data-url="programs/ai-in-supply-chain.html"
+            >
+              <div class="program-card__image">
+                <img
+                  src="images/AUB-OSB-OEP-AI-Supply Chain.jpg"
+                  alt="AI in Supply Chain"
+                />
+              </div>
+              <div class="program-card__accent ai-in-supply-chain-bg"></div>
+              <div class="program-card__content">
+                <div class="program-card__title">AI IN SUPPLY CHAIN</div>
+                <p class="program-card__text">
+                  This program focuses on real-world AI applications in
+                  production, demand forecasting, inventory management,
+                  logistics optimization, and risk mitigation. Participants will
+                  learn how AI-driven systems shape modern supply chains and how
+                  to interpret their outputs to make informed strategic
+                  decisions.
+                </p>
+                <div class="program-card__meta">
+                  <span class="badge ai-in-supply-chain-bg">Face-to-Face</span>
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="calendar" width="16"></i>Apr 28 2026</span
+                  >
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="clock" width="16"></i>3 Days</span
+                  >
                 </div>
+                <div class="program-card__footer">
+                  <a
+                    href="programs/ai-in-supply-chain.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
             </div>
-        </section>
+
+            <!-- FAMILY BUSINESS GOVERNANCE -->
+            <div
+              class="program-card"
+              data-url="programs/family-business-governance.html"
+            >
+              <div class="program-card__image">
+                <img
+                  src="images/AUB-OSB-OEP-Family-Business-governance.jpg"
+                  alt="Family Business Governance"
+                />
+              </div>
+              <div
+                class="program-card__accent family-business-governance-bg"
+              ></div>
+              <div class="program-card__content">
+                <div class="program-card__title">
+                  FAMILY BUSINESS GOVERNANCE
+                </div>
+                <p class="program-card__text">
+                  This unique program equips family business leaders with tools
+                  and frameworks needed to design governance systems that manage
+                  complexity and ensure continuity without compromising family
+                  harmony. Topics include family governance structures, board
+                  composition, preserving family's wealth, planning succession,
+                  and managing conflicts.
+                </p>
+                <div class="program-card__meta">
+                  <span class="badge family-business-governance-bg"
+                    >Online</span
+                  >
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="calendar" width="16"></i>May 15 2026</span
+                  >
+                  <span class="program-card__meta-item"
+                    ><i data-lucide="clock" width="16"></i>4 Weeks</span
+                  >
+                </div>
+                <div class="program-card__footer">
+                  <a
+                    href="programs/family-business-governance.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFO SECTION (icons) -->
+      <section class="section">
+        <div class="container">
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-item__icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+              <h4 class="info-item__title">Expert Instructors</h4>
+              <p class="info-item__text">
+                Learn from industry leaders and experienced academics
+              </p>
+            </div>
+            <div class="info-item">
+              <div class="info-item__icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                  />
+                </svg>
+              </div>
+              <h4 class="info-item__title">Certified Programs</h4>
+              <p class="info-item__text">
+                Receive recognized certificates upon completion
+              </p>
+            </div>
+            <div class="info-item">
+              <div class="info-item__icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <h4 class="info-item__title">Flexible Learning</h4>
+              <p class="info-item__text">
+                Choose between online and face-to-face formats
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA SECTION -->
+      <section class="cta contact-us-section">
+        <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
+        <div class="container">
+          <div class="cta__content">
+            <h2 class="cta__title">Can't Find What You're Looking For?</h2>
+            <p class="cta__text">
+              We offer customized programs tailored to your organization's
+              specific needs.<br />Contact us to discuss how we can help you
+              achieve your goals.
+            </p>
+            <button class="btn btn--white">Contact Us</button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer__accred">
-                <img src="images/AUB-OSB-accreditations.png" alt="Accreditations">
-            </div>
-            <div class="footer-grid">
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Contact Us</h2>
-                    <p class="footer-item__text">For various questions, please try contacting us via social media first!
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Privacy Statement</h2>
-                    <p class="footer-item__text">We take data privacy seriously and adhere to all applicable data
-                        privacy laws and regulations.</p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Copyright and Disclaimer</h2>
-                    <p class="footer-item__text">Written permission is needed to copy or disseminate all or part of the
-                        materials on the AUB website.</p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Title IX, Non-Discrimination, and Anti-Discriminatory Harassment</h2>
-                    <p class="footer-item__text">AUB is committed to providing a safe and respectful environment to all
-                        members of its community.</p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer__accred">
+          <img src="images/AUB-OSB-accreditations.png" alt="Accreditations" />
         </div>
-
-        <div class="bg-burgundy">
-            <div class="container footer-links-grid">
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/Pages/AZ.aspx">A-Z</a></li>
-                        <li><a href="/admissions/Pages/default.aspx">Admissions</a></li>
-                        <li><a href="/admissions/applications/Pages/applications.aspx">Admissions Applications</a></li>
-                        <li><a href="/admissions/Pages/EnglishRequirements.aspx">Admissions English Requirements</a>
-                        </li>
-                        <li><a href="/Pages/AUBSIS.aspx">AUBSSI</a></li>
-                        <li><a href="https://careers.aub.edu.lb/Login" target="_blank">Career Portal</a></li>
-                        <li><a href="/comptroller">Comptroller</a></li>
-                        <li><a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/emergency">Emergency</a></li>
-                        <li><a href="/TestingCenter">AUB-EN</a></li>
-                        <li><a href="/TestingCenter/Pages/aub-endresults.aspx">AUB-EN Results</a></li>
-                        <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
-                        <li><a href="/comptroller/Pages/Student.aspx">Fees</a></li>
-                        <li><a href="/faid">Financial Aid</a></li>
-                        <li><a href="/Search/Pages/People.aspx">Find People</a></li>
-                        <li><a href="/Employment">Jobs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/libraries">Libraries</a></li>
-                        <li><a href="/academics/Pages/majors_programs.aspx">Majors and Programs</a></li>
-                        <li><a href="/comptroller/Pages/Payroll.aspx">Payroll</a></li>
-                        <li><a href="/registrar">Registrar</a></li>
-                        <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
-                        <li><a href="/search/Pages/default.aspx">Search</a></li>
-                        <li><a href="https://www.aub.edu.lb/Pages/Webmail.aspx" target="_blank">Webmail</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="footer-grid">
+          <div class="footer-item">
+            <h2 class="footer-item__title">Contact Us</h2>
+            <p class="footer-item__text">
+              For various questions, please try contacting us via social media
+              first!
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
+          <div class="footer-item">
+            <h2 class="footer-item__title">Privacy Statement</h2>
+            <p class="footer-item__text">
+              We take data privacy seriously and adhere to all applicable data
+              privacy laws and regulations.
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
+          <div class="footer-item">
+            <h2 class="footer-item__title">Copyright and Disclaimer</h2>
+            <p class="footer-item__text">
+              Written permission is needed to copy or disseminate all or part of
+              the materials on the AUB website.
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
+          <div class="footer-item">
+            <h2 class="footer-item__title">
+              Title IX, Non-Discrimination, and Anti-Discriminatory Harassment
+            </h2>
+            <p class="footer-item__text">
+              AUB is committed to providing a safe and respectful environment to
+              all members of its community.
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
         </div>
+      </div>
 
-        <div class="footer-bottom">
-            <ul class="social-links">
-                <li><a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"
-                        aria-label="Facebook">&nbsp;</a></li>
-                <li><a class="social-tw-icon" href="http://twitter.com/AUB_Lebanon" target="_blank"
-                        aria-label="Twitter">&nbsp;</a></li>
-                <li><a class="social-in-icon" href="https://www.linkedin.com/company/american-university-of-beirut"
-                        target="_blank" aria-label="LinkedIn">&nbsp;</a></li>
-                <li><a class="social-ig-icon" href="http://instagram.com/aub_lebanon" target="_blank"
-                        aria-label="Instagram">&nbsp;</a></li>
-                <li><a class="social-yt-icon" href="https://www.youtube.com/aubatlebanon" target="_blank"
-                        aria-label="Youtube">&nbsp;</a></li>
+      <div class="bg-burgundy">
+        <div class="container footer-links-grid">
+          <div class="footer-links-column">
+            <ul>
+              <li><a href="/Pages/AZ.aspx">A-Z</a></li>
+              <li><a href="/admissions/Pages/default.aspx">Admissions</a></li>
+              <li>
+                <a href="/admissions/applications/Pages/applications.aspx"
+                  >Admissions Applications</a
+                >
+              </li>
+              <li>
+                <a href="/admissions/Pages/EnglishRequirements.aspx"
+                  >Admissions English Requirements</a
+                >
+              </li>
+              <li><a href="/Pages/AUBSIS.aspx">AUBSSI</a></li>
+              <li>
+                <a href="https://careers.aub.edu.lb/Login" target="_blank"
+                  >Career Portal</a
+                >
+              </li>
+              <li><a href="/comptroller">Comptroller</a></li>
+              <li>
+                <a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a>
+              </li>
             </ul>
+          </div>
+          <div class="footer-links-column">
+            <ul>
+              <li><a href="/emergency">Emergency</a></li>
+              <li><a href="/TestingCenter">AUB-EN</a></li>
+              <li>
+                <a href="/TestingCenter/Pages/aub-endresults.aspx"
+                  >AUB-EN Results</a
+                >
+              </li>
+              <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
+              <li><a href="/comptroller/Pages/Student.aspx">Fees</a></li>
+              <li><a href="/faid">Financial Aid</a></li>
+              <li><a href="/Search/Pages/People.aspx">Find People</a></li>
+              <li><a href="/Employment">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-column">
+            <ul>
+              <li><a href="/libraries">Libraries</a></li>
+              <li>
+                <a href="/academics/Pages/majors_programs.aspx"
+                  >Majors and Programs</a
+                >
+              </li>
+              <li><a href="/comptroller/Pages/Payroll.aspx">Payroll</a></li>
+              <li><a href="/registrar">Registrar</a></li>
+              <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
+              <li><a href="/search/Pages/default.aspx">Search</a></li>
+              <li>
+                <a
+                  href="https://www.aub.edu.lb/Pages/Webmail.aspx"
+                  target="_blank"
+                  >Webmail</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <!-- Sticky action buttons -->
-        <div class="sticky-cta">
-            <a href="#" class="sticky-cta__btn" aria-label="Download Brochure">
-                <svg class="sticky-cta__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path
-                        d="M7 5.222V0h2v5.193l1.107-1.107L11.52 5.5 7.986 9.036 4.45 5.5l1.414-1.414L7 5.222zM16 11v5H0v-5h2v3h12v-3h2z" />
-                </svg>
-                <span class="sticky-cta__label">Download Brochure</span>
-            </a>
-            <a href="#" class="sticky-cta__btn" aria-label="Apply Now">
-                <svg class="sticky-cta__icon" viewBox="0 -0.5 21 21" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true">
-                    <path
-                        d="M384,209.210475 L384,219 L363,219 L363,199.42095 L373.5,199.42095 L373.5,201.378855 L365.1,201.378855 L365.1,217.042095 L381.9,217.042095 L381.9,209.210475 L384,209.210475 Z M370.35,209.51395 L378.7731,201.64513 L380.4048,203.643172 L371.88195,212.147332 L370.35,212.147332 L370.35,209.51395 Z M368.25,214.105237 L372.7818,214.105237 L383.18415,203.64513 L378.8298,199 L368.25,208.687714 L368.25,214.105237 Z"
-                        transform="translate(-363 -199)" />
-                </svg>
-                <span class="sticky-cta__label">Apply Now</span>
-            </a>
-            <a href="#" class="sticky-cta__btn" aria-label="Contact Us">
-                <svg class="sticky-cta__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="miter"
-                        stroke-linecap="butt">
-                        <rect x="1" y="4" width="22" height="16" />
-                        <polyline points="1 4 12 13 23 4" />
-                    </g>
-                </svg>
-                <span class="sticky-cta__label">Contact Us</span>
-            </a>
-        </div>
+      <div class="footer-bottom">
+        <ul class="social-links">
+          <li>
+            <a
+              class="social-fb-icon"
+              href="http://www.facebook.com/aub.edu.lb"
+              target="_blank"
+              aria-label="Facebook"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-tw-icon"
+              href="http://twitter.com/AUB_Lebanon"
+              target="_blank"
+              aria-label="Twitter"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-in-icon"
+              href="https://www.linkedin.com/company/american-university-of-beirut"
+              target="_blank"
+              aria-label="LinkedIn"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-ig-icon"
+              href="http://instagram.com/aub_lebanon"
+              target="_blank"
+              aria-label="Instagram"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-yt-icon"
+              href="https://www.youtube.com/aubatlebanon"
+              target="_blank"
+              aria-label="Youtube"
+              >&nbsp;</a
+            >
+          </li>
+        </ul>
+      </div>
     </footer>
 
     <script>
-        lucide.createIcons();
+      lucide.createIcons();
     </script>
-</body>
-<style>
-    /* ===== STICKY CTA BUTTONS ===== */
-    .sticky-cta {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .sticky-cta__btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 45px;
-        height: 45px;
-        background-color: var(--color-primary);
-        border-radius: 50%;
-        transition: background-color 0.2s, transform 0.2s;
-        position: relative;
-        color: #fff;
-        /* icon color */
-        text-decoration: none;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .sticky-cta__btn:hover {
-        background-color: var(--color-primary-dark);
-        transform: scale(1.05);
-    }
-
-    .sticky-cta__icon {
-        width: 20px;
-        height: 20px;
-        fill: currentColor;
-        stroke: currentColor;
-        display: block;
-    }
-
-    .sticky-cta__label {
-        position: absolute;
-        right: 100%;
-        /* position to the left of the button */
-        margin-right: 12px;
-        background: var(--color-primary);
-        color: #fff;
-        padding: 6px 14px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: 500;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .sticky-cta__btn:hover .sticky-cta__label {
-        opacity: 1;
-    }
-
-    /* optional adjustment for smaller screens */
-    @media (max-width: 640px) {
-        .sticky-cta {
-            bottom: 20px;
-            right: 20px;
-            gap: 12px;
-        }
-
-        .sticky-cta__btn {
-            width: 42px;
-            height: 42px;
-        }
-
-        .sticky-cta__icon {
-            width: 18px;
-            height: 18px;
-        }
-
-        .sticky-cta__label {
-            font-size: 13px;
-            padding: 4px 10px;
-        }
-    }
-</style>
-
+  </body>
 </html>

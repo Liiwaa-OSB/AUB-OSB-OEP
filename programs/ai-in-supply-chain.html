@@ -10,23 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../js/main.js" defer></script>
     <link rel="stylesheet" href="../css/main.css">
     <style>
         :root {
             /* AI in supply chain accent */
             --color-accent: #3AA0E2;
-            --color-accent-dark: #1E4A7A;
+            --color-accent-dark: #005E99;
         }
 
-        /* Program-specific hero background (solid fallback + overlay) */
+        /* Program-specific hero background */
         .hero--ai-supply-chain {
-            background-color: #1E2B3A;
-            /* dark base for contrast */
-            background-image: linear-gradient(45deg, #1E4A7A 0%, #2C5F8A 100%);
+            background-image: url('../images/AUB-OSB-OEP-AI-Supply Chain.jpg');
         }
-        .hero--ai-supply-chain {
-      background-image: url('../images/AUB-OSB-OEP-AI-Supply Chain.jpg');
-    }
     </style>
 </head>
 
@@ -310,7 +306,7 @@
                 <h2 class="section-title">You Might Also Be Interested In</h2>
                 <div class="program-grid program-grid--related">
                     <!-- PRICING ANALYTICS -->
-                    <div class="program-card">
+                    <div class="program-card" data-url="../programs/pricing-analytics.html">
                         <div class="program-card__image">
                             <img src="../images/AUB-OSB-OEP-Pricing-Analytics.jpg" alt="Pricing Analytics">
                         </div>
@@ -337,7 +333,7 @@
                     </div>
 
                     <!-- DESIGN THINKING -->
-                    <div class="program-card">
+                    <div class="program-card" data-url="../programs/design-thinking.html">
                         <div class="program-card__image">
                             <img src="../images/AUB-OSB-OEP-design-thinking.jpg" alt="DESIGN THINKING">
                         </div>
@@ -365,7 +361,7 @@
                     </div>
 
                     <!-- AI IN SUPPLY CHAIN -->
-                    <div class="program-card">
+                    <div class="program-card" style="display: none;" data-url="../programs/ai-in-supply-chain.html">
                         <div class="program-card__image">
                             <img src="../images/AUB-OSB-OEP-AI-Supply Chain.jpg" alt="AI in Supply Chain">
                         </div>
@@ -391,9 +387,10 @@
                     </div>
 
                     <!-- FAMILY BUSINESS GOVERNANCE -->
-                    <div class="program-card" style="display: none;">
+                    <div class="program-card" data-url="../programs/family-business-governance.html">
                         <div class="program-card__image">
-                            <img src="../images/AUB-OSB-OEP-Family-Business-governance.jpg" alt="Family Business Governance">
+                            <img src="../images/AUB-OSB-OEP-Family-Business-governance.jpg"
+                                alt="Family Business Governance">
                         </div>
                         <div class="program-card__accent family-business-governance-bg"></div>
                         <div class="program-card__content">
@@ -523,6 +520,8 @@
                         aria-label="Youtube">&nbsp;</a></li>
             </ul>
         </div>
+
+       
     </footer>
 
     <script>

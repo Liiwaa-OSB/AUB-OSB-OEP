@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #000;
   background: #fff;
   line-height: 1.6;
@@ -26,12 +26,12 @@ body {
   --color-dark-gray: #434444;
   --color-dark-gray-rgb: 67, 68, 68;
 
-  --color-pricing-analytics-accent: #3C955C;
+  --color-pricing-analytics-accent: #3c955c;
   --color-design-thinking-accent: #854295;
-  --color-ai-in-supply-chain-accent: #3AA0E2;
-  --color-family-business-governance-accent: #565EBB;
+  --color-ai-in-supply-chain-accent: #3aa0e2;
+  --color-family-business-governance-accent: #565ebb;
 
-  --font-family-base: 'Roboto', sans-serif;
+  --font-family-base: "Roboto", sans-serif;
   --spacing-unit: 1rem;
   --container-max-width: 1280px;
   --border-radius: 4px;
@@ -63,16 +63,18 @@ body {
 .pricing-analytics-bg {
   background-color: var(--color-pricing-analytics-accent);
 }
+
 .design-thinking-bg {
   background-color: var(--color-design-thinking-accent);
 }
+
 .ai-in-supply-chain-bg {
   background-color: var(--color-ai-in-supply-chain-accent);
 }
-.family-business-governance-bg {
-  background-color: var( --color-family-business-governance-accent);
-}
 
+.family-business-governance-bg {
+  background-color: var(--color-family-business-governance-accent);
+}
 
 /* ===== UTILITY CLASSES ===== */
 .container {
@@ -120,7 +122,7 @@ h3 {
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   left: -5px;
   bottom: 24%;
@@ -141,7 +143,7 @@ h3 {
 }
 
 .section-title--center::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -218,7 +220,7 @@ h3 {
   background-size: cover;
   background-position: center;
   padding: 4rem 1.5rem;
-  min-height: 400px;
+  min-height: 680px;
   display: flex;
   align-items: center;
 }
@@ -230,7 +232,7 @@ h3 {
 @media (min-width: 768px) {
   .hero {
     padding: 7rem 1.5rem;
-    min-height: 600px;
+    min-height: 680px;
   }
 }
 
@@ -287,7 +289,7 @@ h3 {
 }
 
 .hero__text {
-  font-size: 18px;
+  font-size: 24px;
   opacity: 0.9;
   margin: 1.5rem 0 0.5rem;
 }
@@ -688,7 +690,9 @@ h3 {
   background: white;
   padding: 1.5rem;
   border: 2px solid var(--color-border-light);
-  transition: transform 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
 }
 
 .info-card:hover {
@@ -760,10 +764,13 @@ h3 {
   background: #fff;
   border: 2px solid var(--color-border-light);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-  transition: transform 0.25s, border-color 0.25s;
+  transition:
+    transform 0.25s,
+    border-color 0.25s;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .program-card:hover {
@@ -923,7 +930,9 @@ h3 {
   color: white;
   text-decoration: none;
   font-size: 18px;
-  transition: background 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
 
 .cta__contact-link:hover {
@@ -965,7 +974,7 @@ h3 {
 .info-item__icon {
   width: 64px;
   height: 64px;
-  background: var(--color-accent);
+  background: var(--color-dark-gray);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1082,7 +1091,7 @@ h3 {
 
 /* Vertical dividers */
 .footer-links-column:not(:last-child)::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2rem;
   right: 0;
@@ -1174,27 +1183,32 @@ h3 {
 }
 
 .social-links .social-fb-icon {
-  background: url('https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/facebook.svg') center no-repeat;
+  background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/facebook.svg")
+    center no-repeat;
   background-size: contain;
 }
 
 .social-links .social-tw-icon {
-  background: url('https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/twitter.svg') center no-repeat;
+  background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/twitter.svg")
+    center no-repeat;
   background-size: contain;
 }
 
 .social-links .social-in-icon {
-  background: url('https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/linkedin.svg') center no-repeat;
+  background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/linkedin.svg")
+    center no-repeat;
   background-size: contain;
 }
 
 .social-links .social-ig-icon {
-  background: url('https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/instagram.svg') center no-repeat;
+  background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/instagram.svg")
+    center no-repeat;
   background-size: contain;
 }
 
 .social-links .social-yt-icon {
-  background: url('https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/youtube.svg') center no-repeat;
+  background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/youtube.svg")
+    center no-repeat;
   background-size: contain;
 }
 
@@ -1215,9 +1229,11 @@ h3 {
   justify-content: center;
   width: 45px;
   height: 45px;
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
   border-radius: 50%;
-  transition: background-color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
   position: relative;
   color: #fff;
   /* icon color */
@@ -1226,7 +1242,7 @@ h3 {
 }
 
 .sticky-cta__btn:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-accent-dark);
   transform: scale(1.05);
 }
 
@@ -1243,8 +1259,8 @@ h3 {
   right: 100%;
   /* position to the left of the button */
   margin-right: 12px;
-  background: var(--color-primary);
-  color: #fff;
+  background: var(--color-gray-bg);
+  color: #000;
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 14px;
