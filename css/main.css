@@ -21,6 +21,7 @@ body {
   --color-accent-dark: #6a132c;
 
   --color-text-muted: #515151;
+  --color-bg-light: #f9fafb;
   --color-border-light: #dadbdb;
   --color-gray-bg: #808080;
   --color-dark-gray: #434444;
@@ -227,8 +228,8 @@ h3 {
 
 .hero--video {
   padding: 0 1.5rem;
-  /* video hero uses its own height */
   min-height: 600px;
+  height: calc(100vh - 160px);
 }
 
 .hero__video-element {
@@ -288,6 +289,36 @@ h3 {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 10px;
+}
+
+.hero__logo-link {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 20; /* above video, overlay, and content */
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.hero__logo-link:hover {
+  opacity: 0.8;
+}
+
+.hero__logo {
+  display: block;
+  height: 160px;
+  width: auto;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .hero__logo-link {
+    top: 1rem;
+    left: 1rem;
+  }
+  .hero__logo {
+    max-width: 90px;
+  }
 }
 
 /* ===== DETAIL GRID ===== */
@@ -1386,4 +1417,430 @@ img {
     font-size: 13px;
     padding: 4px 10px;
   }
+}
+
+/* for menu */
+
+/* Reset & base overrides for navigation */
+.nav * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav {
+  font-family: "Roboto", sans-serif;
+  color: #333;
+}
+
+/* Utility bar */
+.nav-utility {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.nav-utility-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.nav-utility-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 0.5rem;
+}
+
+.nav-utility-link:hover {
+  text-decoration: underline;
+  font-weight: 800;
+}
+
+.nav-utility-separator {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Main header (sticky) */
+.nav-main-header {
+  background: var(--color-primary);
+  border-bottom: 1px solid #e5e7eb;
+  position: relative;
+  z-index: 40;
+  transition: all 0.3s;
+}
+
+.nav-main-header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust body padding when sticky active */
+body.nav-sticky-padding {
+  padding-top: 124px; /* approximate height of header + osb row */
+}
+
+.nav-main-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo img {
+  height: 70px;
+  width: auto;
+}
+
+/* Desktop main nav */
+.nav-desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item > a,
+.nav-item > button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+}
+
+.nav-item > a:hover,
+.nav-item > button:hover {
+  color: var(--color-border-light);
+}
+
+/* Mega dropdown */
+.nav-mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 11px 30px 7px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  min-width: 600px;
+  padding: 1.5rem;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
+}
+
+.nav-item:hover .nav-mega {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.nav-mega-column h4 {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-primary-dark);
+}
+
+.nav-mega-links {
+  list-style: none;
+}
+
+.nav-mega-links li {
+  margin-bottom: 0.5rem;
+}
+
+.nav-mega-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.nav-mega-links a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Mobile menu button */
+.nav-mobile-btn {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+@media (min-width: 1024px) {
+  .nav-mobile-btn {
+    display: none;
+  }
+}
+
+/* OSB Row */
+.nav-osb {
+  background-color: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+}
+
+/* container – full width, with horizontal padding */
+.nav-osb-container {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* navigation links wrapper – takes full available space */
+.nav-osb-links {
+  flex: 1; /* fills the whole container width (no logo on left) */
+  width: 100%;
+}
+
+/* desktop: show the navigation, mobile hidden (original breakpoint) */
+@media (min-width: 1024px) {
+  .nav-osb-links {
+    display: block;
+  }
+}
+
+/* main UL – flex container that spreads items evenly across full width */
+.nav-osb-links .osb-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  gap: 0; /* gap removed to allow flex items to fill edge-to-edge; spacing handled via text alignment and margins */
+}
+
+/* each top-level li – occupies equal share of the full width */
+.nav-osb-links .osb-nav-item {
+  flex: 1; /* each main item grows equally, filling whole section width */
+  position: relative;
+  text-align: center; /* center the link text inside the li block */
+}
+
+/* main link styling – block level to fill entire li area */
+.nav-osb-links .osb-nav-item > a {
+  display: block;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 0.5rem 0.25rem;
+  transition: color var(--transition);
+  white-space: normal; /* allows wrapping on narrow screens if needed */
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* hover effect for main links */
+.nav-osb-links .osb-nav-item > a:hover {
+  color: var(--color-primary);
+}
+
+/* ----- DROPDOWN MENU (appears on hover) ----- */
+.nav-osb-links .osb-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0 11px 30px 7px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  min-width: 260px;
+  padding: 0.5rem 0;
+  list-style: none;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition),
+    visibility var(--transition);
+  z-index: 200;
+  text-align: left; /* dropdown content left-aligned (clean readability) */
+}
+
+/* show dropdown on hover */
+.nav-osb-links .osb-nav-item.has-dropdown:hover .osb-dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* dropdown items */
+.nav-osb-links .osb-dropdown li {
+  margin: 0;
+}
+
+/* dropdown links */
+.nav-osb-links .osb-dropdown a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-text-soft);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+/* dropdown hover state */
+.nav-osb-links .osb-dropdown a:hover {
+  background-color: var(--color-bg-light);
+  color: var(--color-primary);
+}
+
+/* optional: ensure that very long words in dropdown break gracefully */
+.nav-osb-links .osb-dropdown a {
+  word-break: break-word;
+}
+
+/* small enhancement: keep the active/hover state consistent */
+.nav-osb-links .osb-nav-item.has-dropdown > a {
+  position: relative;
+}
+
+/* For mobile (under 1024px) the nav is hidden by default, 
+           but we keep the structure intact. If you need a mobile menu,
+           you'd add a hamburger; but original design hides .nav-osb-links 
+           below 1024px, we respect that. */
+@media (max-width: 1023px) {
+  .nav-osb-links {
+    display: none;
+  }
+}
+
+/* Optional: fine-tune container to ensure full width usage and no overflow */
+.nav-osb-container {
+  box-sizing: border-box;
+}
+
+/* ensure that any leftover spacing doesn't break the flex distribution */
+.nav-osb-links .osb-nav {
+  width: 100%;
+}
+
+/* Mobile menu overlay */
+.nav-mobile-menu {
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 1rem;
+  display: none;
+}
+
+.nav-mobile-menu.open {
+  display: block;
+}
+
+.nav-mobile-accordion {
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.nav-mobile-accordion-header {
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-mobile-accordion-content {
+  display: none;
+  padding-left: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.nav-mobile-accordion-content.open {
+  display: block;
+}
+
+.nav-mobile-subcategory {
+  font-weight: 600;
+  color: #515151;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.nav-mobile-links {
+  list-style: none;
+  margin-bottom: 0.75rem;
+}
+
+.nav-mobile-links li {
+  margin-bottom: 0.5rem;
+}
+
+.nav-mobile-links a {
+  color: #515151;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.nav-mobile-links a:hover {
+  color: var(--color-primary);
+}
+
+.nav-mobile-osb {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-primary);
+}
+
+.nav-mobile-osb h4 {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Ensure main content doesn't hide behind sticky header */
+body.nav-sticky-padding .hero {
+  margin-top: 0; /* Already has relative, but we need to push main? Actually we add padding to body */
 }
