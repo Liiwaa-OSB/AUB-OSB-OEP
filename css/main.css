@@ -375,7 +375,6 @@ h3 {
 /* ---------- OSB ROW (third level) - will become sticky ---------- */
 .nav-osb {
   background-color: var(--color-bg-light);
-  border-bottom: 1px solid var(--color-border-light);
   width: 100%;
   transition: all 0.3s ease;
   position: relative;
