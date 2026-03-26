@@ -9,23 +9,23 @@
   function updateSticky() {
     if (!mainHeader || !osbRow) return;
 
-    // Get actual visible heights (utility might be display:none on mobile -> offsetHeight = 0)
-    const utilityHeight = utilityBar ? utilityBar.offsetHeight : 0;
-    const mainHeaderHeight = mainHeader.offsetHeight;
+    // Force Chrome to recalculate layout
+    const utilityHeight = utilityBar ? utilityBar.getBoundingClientRect().height : 0;
+    const mainHeaderHeight = mainHeader.getBoundingClientRect().height;
     const totalTopHeight = utilityHeight + mainHeaderHeight;
 
-    const scrollY = window.scrollY;
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     const shouldStick = scrollY > totalTopHeight;
 
     if (shouldStick) {
       if (!bodyEl.classList.contains("nav-scrolled")) {
         bodyEl.classList.add("nav-scrolled");
-        // Dynamically set padding-top to match OSB row height to prevent content jump
-        const osbHeight = osbRow.offsetHeight;
+        // Force reflow for Chrome
+        void bodyEl.offsetHeight;
+        const osbHeight = osbRow.getBoundingClientRect().height;
         bodyEl.style.paddingTop = osbHeight + "px";
       } else {
-        // Already sticky, but ensure padding matches height on resize
-        const osbHeight = osbRow.offsetHeight;
+        const osbHeight = osbRow.getBoundingClientRect().height;
         bodyEl.style.paddingTop = osbHeight + "px";
       }
     } else {
@@ -36,460 +36,353 @@
     }
   }
 
-  // --- Debounced resize listener to recalc thresholds & padding
+  // Use requestAnimationFrame for smoother scrolling in Chrome
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        updateSticky();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  // --- Debounced resize listener
   let resizeTimer;
   function handleResize() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       updateSticky();
+      // Force mobile menu to recalculate if open
+      if (overlay && overlay.classList.contains("open")) {
+        const mobileContent = overlay.querySelector(".mobile-menu-sections");
+        if (mobileContent) {
+          mobileContent.style.opacity = "0.99";
+          setTimeout(() => {
+            mobileContent.style.opacity = "";
+          }, 10);
+        }
+      }
     }, 100);
   }
 
-  // --- Event binding
-  window.addEventListener("scroll", updateSticky);
+  // --- Event binding with Chrome compatibility
+  window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", handleResize);
-  updateSticky(); // initial check
+  
+  // Initial call with slight delay for Chrome to calculate properly
+  setTimeout(updateSticky, 100);
+  updateSticky();
 
   // --- Mobile overlay toggle
   const burger = document.getElementById("burgerBtn");
   const overlay = document.getElementById("mobileOverlay");
   const closeBtn = document.getElementById("closeOverlayBtn");
+
   function openOverlay() {
-    overlay.classList.add("open");
-    bodyEl.classList.add("menu-open");
+    if (overlay) {
+      overlay.classList.add("open");
+      bodyEl.classList.add("menu-open");
+      document.body.style.overflow = "hidden";
+      // Chrome needs this to trigger CSS transition
+      void overlay.offsetWidth;
+    }
   }
+
   function closeOverlay() {
-    overlay.classList.remove("open");
-    bodyEl.classList.remove("menu-open");
+    if (overlay) {
+      overlay.classList.remove("open");
+      bodyEl.classList.remove("menu-open");
+      document.body.style.overflow = "";
+    }
   }
-  if (burger) burger.addEventListener("click", openOverlay);
-  if (closeBtn) closeBtn.addEventListener("click", closeOverlay);
-  if (overlay)
+
+  if (burger) {
+    burger.addEventListener("click", openOverlay);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeOverlay);
+  }
+
+  if (overlay) {
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) closeOverlay();
     });
+  }
+
+  // Close overlay on escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && overlay && overlay.classList.contains("open")) {
+      closeOverlay();
+    }
+  });
 
   // ========================
-  // MOBILE MENU DATA (UPDATED)
-  // Exactly matching the HTML structure and href links
+  // MOBILE MENU DATA - EXACT MATCH WITH HTML
   // ========================
 
-  // Main navigation (desktop mega menu) data with real URLs
-  const mainNavData = [
+  // Main navigation data from desktop mega menu
+  const mainNavItems = [
     {
       title: "About AUB",
-      sub: [
+      sections: [
         {
-          category: "About AUB",
+          title: "About AUB",
           links: [
-            { text: "Overview", href: "/AboutUs/Pages/default.aspx" },
-            { text: "History", href: "/aboutus/Pages/history.aspx" },
-            { text: "Mission and Vision", href: "/aboutus/Pages/mission.aspx" },
-            { text: "Facts and Figures", href: "/aboutus/Pages/facts.aspx" },
-            { text: "Title IX", href: "/President/oeo-titleix" },
-          ],
+            { text: "Overview", url: "/AboutUs/Pages/default.aspx" },
+            { text: "History", url: "/aboutus/Pages/history.aspx" },
+            { text: "Mission and Vision", url: "/aboutus/Pages/mission.aspx" },
+            { text: "Facts and Figures", url: "/aboutus/Pages/facts.aspx" },
+            { text: "Title IX", url: "/President/oeo-titleix" }
+          ]
         },
         {
-          category: "Leadership & Media",
+          title: "Leadership & Media",
           links: [
-            { text: "AUB Leadership", href: "/AboutUs/Pages/leadership.aspx" },
-            { text: "Office of the President", href: "/president" },
-            { text: "New York Office", href: "/nyo" },
-            { text: "The MainGate Magazine", href: "/maingate" },
-            { text: "Office of Advancement", href: "/advancement" },
-          ],
+            { text: "AUB Leadership", url: "/AboutUs/Pages/leadership.aspx" },
+            { text: "Office of the President", url: "/president" },
+            { text: "New York Office", url: "/nyo" },
+            { text: "The MainGate Magazine", url: "/maingate" },
+            { text: "Office of Advancement", url: "/advancement" }
+          ]
         },
         {
-          category: "Campus & Heritage",
+          title: "Campus & Heritage",
           links: [
-            { text: "Campus", href: "/aboutus/Pages/campus.aspx" },
-            {
-              text: "About Beirut and Lebanon",
-              href: "/aboutus/Pages/beirut-lb.aspx",
-            },
-            { text: "Accreditation", href: "/accreditation" },
-            { text: "AUB 150", href: "https://150.aub.edu.lb/", external: true },
-          ],
-        },
-      ],
+            { text: "Campus", url: "/aboutus/Pages/campus.aspx" },
+            { text: "About Beirut and Lebanon", url: "/aboutus/Pages/beirut-lb.aspx" },
+            { text: "Accreditation", url: "/accreditation" },
+            { text: "AUB 150", url: "https://150.aub.edu.lb/", external: true }
+          ]
+        }
+      ]
     },
     {
       title: "Academics",
-      sub: [
+      sections: [
         {
-          category: "Programs & Faculties",
+          title: "Programs & Faculties",
           links: [
-            { text: "Faculties", href: "/academics/Pages/faculties.aspx" },
-            { text: "Departments and Centers", href: "/Pages/AZ.aspx" },
-            {
-              text: "Majors and Programs",
-              href: "/academics/pages/majors_programs.aspx",
-            },
-            {
-              text: "Search for a Course",
-              href: "https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg",
-              external: true,
-            },
-          ],
+            { text: "Faculties", url: "/academics/Pages/faculties.aspx" },
+            { text: "Departments and Centers", url: "/Pages/AZ.aspx" },
+            { text: "Majors and Programs", url: "/academics/pages/majors_programs.aspx" },
+            { text: "Search for a Course", url: "https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg", external: true }
+          ]
         },
         {
-          category: "Innovation & Support",
+          title: "Innovation & Support",
           links: [
-            {
-              text: "Institute for Academic Innovation and Development",
-              href: "/theinstitute",
-            },
-            { text: "Graduate Council", href: "/graduatecouncil" },
-            {
-              text: "General Education Program",
-              href: "/generaleducation",
-            },
-            {
-              text: "Office of International Programs",
-              href: "/oip",
-            },
-          ],
+            { text: "Institute for Academic Innovation and Development", url: "/theinstitute" },
+            { text: "Graduate Council", url: "/graduatecouncil" },
+            { text: "General Education Program", url: "/generaleducation" },
+            { text: "Office of International Programs", url: "/oip" }
+          ]
         },
         {
-          category: "Resources",
+          title: "Resources",
           links: [
-            { text: "Office of the Provost", href: "/provost" },
-            { text: "Office of the Registrar", href: "/registrar" },
-            { text: "Libraries", href: "/libraries" },
-          ],
-        },
-      ],
+            { text: "Office of the Provost", url: "/provost" },
+            { text: "Office of the Registrar", url: "/registrar" },
+            { text: "Libraries", url: "/libraries" }
+          ]
+        }
+      ]
     },
     {
       title: "Admissions",
-      sub: [
+      sections: [
         {
-          category: "Apply & Aid",
+          title: "Apply & Aid",
           links: [
-            { text: "Admissions", href: "/admissions" },
-            { text: "Financial Aid", href: "/faid" },
-            {
-              text: "Tuition and Fees Calculator",
-              href: "http://www.aub.edu.lb/admissions/Pages/TC/index.html",
-              external: true,
-            },
-            {
-              text: "Visiting Student",
-              href: "https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx",
-              external: true,
-            },
-          ],
+            { text: "Admissions", url: "/admissions" },
+            { text: "Financial Aid", url: "/faid" },
+            { text: "Tuition and Fees Calculator", url: "http://www.aub.edu.lb/admissions/Pages/TC/index.html", external: true },
+            { text: "Visiting Student", url: "https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx", external: true }
+          ]
         },
         {
-          category: "Scholarships",
+          title: "Scholarships",
           links: [
-            { text: "Scholarships", href: "/faid/Pages/Scholarships.aspx" },
-            {
-              text: "LEAD scholarship opportunities",
-              href: "/lead",
-            },
-            { text: "Office of Student Affairs", href: "/sao" },
-          ],
+            { text: "Scholarships", url: "/faid/Pages/Scholarships.aspx" },
+            { text: "LEAD scholarship opportunities", url: "/lead" },
+            { text: "Office of Student Affairs", url: "/sao" }
+          ]
         },
         {
-          category: "Pathways",
+          title: "Pathways",
           links: [
-            {
-              text: "Majors and Programs",
-              href: "/academics/pages/majors_programs.aspx",
-            },
-            { text: "Graduate Council", href: "/graduatecouncil" },
-            { text: "Office of International Programs", href: "/oip" },
-          ],
-        },
-      ],
+            { text: "Majors and Programs", url: "/academics/pages/majors_programs.aspx" },
+            { text: "Graduate Council", url: "/graduatecouncil" },
+            { text: "Office of International Programs", url: "/oip" }
+          ]
+        }
+      ]
     },
     {
       title: "Research",
-      sub: [
+      sections: [
         {
-          category: "Research Enterprise",
+          title: "Research Enterprise",
           links: [
-            { text: "Office of Research", href: "/research" },
-            {
-              text: "Research by Faculty/School",
-              href: "/Pages/ResearchbyFaculty.aspx",
-            },
-            {
-              text: "Interfaculty Research Centers",
-              href: "/Pages/ResearchCenters.aspx",
-            },
-            { text: "University Research Board", href: "/urb" },
-          ],
+            { text: "Office of Research", url: "/research" },
+            { text: "Research by Faculty/School", url: "/Pages/ResearchbyFaculty.aspx" },
+            { text: "Interfaculty Research Centers", url: "/Pages/ResearchCenters.aspx" },
+            { text: "University Research Board", url: "/urb" }
+          ]
         },
         {
-          category: "Funding & Integrity",
+          title: "Funding & Integrity",
           links: [
-            { text: "Research Funding", href: "/Pages/ResearchSupport.aspx" },
-            {
-              text: "Research Integrity",
-              href: "/urb/Pages/Researchintegrity.aspx",
-            },
-            {
-              text: "Human Research Protection Program / Institutional Review Board",
-              href: "/irb",
-            },
-          ],
+            { text: "Research Funding", url: "/Pages/ResearchSupport.aspx" },
+            { text: "Research Integrity", url: "/urb/Pages/Researchintegrity.aspx" },
+            { text: "Human Research Protection Program / Institutional Review Board", url: "/irb" }
+          ]
         },
         {
-          category: "Opportunities",
+          title: "Opportunities",
           links: [
-            {
-              text: "Medical Research Volunteer Program",
-              href: "/MRVP",
-            },
-            {
-              text: "Undergraduate Research Volunteer Program",
-              href: "/provost/urvp",
-            },
-            { text: "Research News", href: "/articles/Pages/research.aspx" },
-          ],
-        },
-      ],
+            { text: "Medical Research Volunteer Program", url: "/MRVP" },
+            { text: "Undergraduate Research Volunteer Program", url: "/provost/urvp" },
+            { text: "Research News", url: "/articles/Pages/research.aspx" }
+          ]
+        }
+      ]
     },
     {
       title: "Outreach",
-      sub: [
+      sections: [
         {
-          category: "Community",
+          title: "Community",
           links: [
-            { text: "Community Engagement", href: "/CCE" },
-            { text: "Neighborhood Initiative", href: "/Neighborhood" },
-            { text: "Nature Conservation", href: "/natureconservation" },
-            { text: "University for Seniors", href: "/seniors" },
-          ],
+            { text: "Community Engagement", url: "/CCE" },
+            { text: "Neighborhood Initiative", url: "/Neighborhood" },
+            { text: "Nature Conservation", url: "/natureconservation" },
+            { text: "University for Seniors", url: "/seniors" }
+          ]
         },
         {
-          category: "Institutes",
+          title: "Institutes",
           links: [
-            { text: "Issam Fares Institute", href: "/ifi" },
-            {
-              text: "iPark",
-              href: "https://sites.aub.edu.lb/ipark/",
-              external: true,
-            },
-            { text: "Knowledge to Policy Center", href: "/k2p" },
-            {
-              text: "The Munib and Angela Masri Institute of Energy and Natural Resources",
-              href: "/masri_institute",
-            },
-          ],
+            { text: "Issam Fares Institute", url: "/ifi" },
+            { text: "iPark", url: "https://sites.aub.edu.lb/ipark/", external: true },
+            { text: "Knowledge to Policy Center", url: "/k2p" },
+            { text: "The Munib and Angela Masri Institute of Energy and Natural Resources", url: "/masri_institute" }
+          ]
         },
         {
-          category: "Global Impact",
+          title: "Global Impact",
           links: [
-            {
-              text: "AI Hub",
-              href: "https://www.aub.edu.lb/hub/Pages/default.aspx",
-              external: true,
-            },
-            {
-              text: "Environment and Sustainable Development",
-              href: "/fafs/esdu",
-            },
-            {
-              text: "Global Health Institute",
-              href: "https://ghi.aub.edu.lb/",
-              external: true,
-            },
-          ],
-        },
-      ],
+            { text: "AI Hub", url: "https://www.aub.edu.lb/hub/Pages/default.aspx", external: true },
+            { text: "Environment and Sustainable Development", url: "/fafs/esdu" },
+            { text: "Global Health Institute", url: "https://ghi.aub.edu.lb/", external: true }
+          ]
+        }
+      ]
     },
     {
       title: "Boldly Campaign",
-      sub: [
+      sections: [
         {
-          category: "Campaign",
+          title: "Campaign",
           links: [
-            {
-              text: "Campaign Overview",
-              href: "http://boldly.aub.edu.lb/",
-              external: true,
-            },
-            {
-              text: "Impact Stories",
-              href: "http://boldly.aub.edu.lb/impact-stories/",
-              external: true,
-            },
-            {
-              text: "Campaign Objectives",
-              href: "http://boldly.aub.edu.lb/campaign-objectives/",
-              external: true,
-            },
-            {
-              text: "Ways to Support",
-              href: "http://boldly.aub.edu.lb/ways-to-support/",
-              external: true,
-            },
-            {
-              text: "Campaign Progress",
-              href: "http://boldly.aub.edu.lb/#funding-v2",
-              external: true,
-            },
-            {
-              text: "Join the Campaign",
-              href: "https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462",
-              external: true,
-            },
-          ],
-        },
-      ],
-    },
+            { text: "Campaign Overview", url: "http://boldly.aub.edu.lb/", external: true },
+            { text: "Impact Stories", url: "http://boldly.aub.edu.lb/impact-stories/", external: true },
+            { text: "Campaign Objectives", url: "http://boldly.aub.edu.lb/campaign-objectives/", external: true },
+            { text: "Ways to Support", url: "http://boldly.aub.edu.lb/ways-to-support/", external: true },
+            { text: "Campaign Progress", url: "http://boldly.aub.edu.lb/#funding-v2", external: true },
+            { text: "Join the Campaign", url: "https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462", external: true }
+          ]
+        }
+      ]
+    }
   ];
 
-  // OSB navigation data (from nav-osb section) with real URLs
-  const osbNavData = [
+  // OSB navigation data from nav-osb section
+  const osbNavItems = [
     {
       title: "About",
       links: [
-        { text: "Meet the Dean", href: "/osb/about/Pages/Meet-the-Dean.aspx" },
-        { text: "Mission And Vision", href: "/osb/about/Pages/default.aspx" },
-        {
-          text: "About Suliman Saleh Olayan",
-          href: "/osb/about/Pages/Olayan-.aspx",
-        },
-        {
-          text: "International Advisory Board",
-          href: "https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx",
-          external: true,
-        },
-        {
-          text: "Global Recognitions & Labels",
-          href: "/osb/about/Pages/Global-Recognition-.aspx",
-        },
-        { text: "Governance", href: "/osb/about/Pages/Governance.aspx" },
-        {
-          text: "Faculty and Staff Resources",
-          href: "/osb/about/Pages/recources.aspx",
-        },
-        {
-          text: "OSB 125",
-          href: "/osb/125/Pages/default.aspx",
-          external: true,
-        },
-        {
-          text: "OSB Strategic Plan 2029",
-          href: "https://sites.aub.edu.lb/osb2029/",
-          external: true,
-        },
-        {
-          text: "Job Opportunities",
-          href: "https://www.aub.edu.lb/osb/about/Pages/Employment.aspx",
-          external: true,
-        },
-      ],
+        { text: "Meet the Dean", url: "/osb/about/Pages/Meet-the-Dean.aspx" },
+        { text: "Mission And Vision", url: "/osb/about/Pages/default.aspx" },
+        { text: "About Suliman Saleh Olayan", url: "/osb/about/Pages/Olayan-.aspx" },
+        { text: "International Advisory Board", url: "https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx", external: true },
+        { text: "Global Recognitions & Labels", url: "/osb/about/Pages/Global-Recognition-.aspx" },
+        { text: "Governance", url: "/osb/about/Pages/Governance.aspx" },
+        { text: "Faculty and Staff Resources", url: "/osb/about/Pages/recources.aspx" },
+        { text: "OSB 125", url: "/osb/125/Pages/default.aspx", external: true },
+        { text: "OSB Strategic Plan 2029", url: "https://sites.aub.edu.lb/osb2029/", external: true },
+        { text: "Job Opportunities", url: "https://www.aub.edu.lb/osb/about/Pages/Employment.aspx", external: true }
+      ]
     },
     {
       title: "Academic Programs",
       links: [
-        {
-          text: "Undergraduate Program",
-          href: "/osb/UndergradProgram",
-          external: true,
-        },
-        {
-          text: "Specialized Masters",
-          href: "/osb/Pages/SpecializedMasters.aspx",
-          external: true,
-        },
-        { text: "MBA", href: "/osb/MBA", external: true },
-        {
-          text: "MBA Online",
-          href: "/osb/OMBA/Pages/default.aspx",
-          external: true,
-        },
-        { text: "Executive MBA", href: "/osb/EMBA", external: true },
-      ],
+        { text: "Undergraduate Program", url: "/osb/UndergradProgram", external: true },
+        { text: "Specialized Masters", url: "/osb/Pages/SpecializedMasters.aspx", external: true },
+        { text: "MBA", url: "/osb/MBA", external: true },
+        { text: "MBA Online", url: "/osb/OMBA/Pages/default.aspx", external: true },
+        { text: "Executive MBA", url: "/osb/EMBA", external: true }
+      ]
     },
     {
       title: "Executive Education",
-      href: "https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx",
+      url: "https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx",
       external: true,
+      isLink: true
     },
     {
       title: "OSB Online",
       links: [
-        {
-          text: "Entrepreneurship & Innovation Online Graduate Professional Diploma",
-          href: "https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx",
-          external: true,
-        },
-        {
-          text: "Combating Trade-Based Financial Crime Online Certificate",
-          href: "https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx",
-          external: true,
-        },
-        {
-          text: "Strategic Branding in the Digital Era Online Diploma",
-          href: "https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx",
-          external: true,
-        },
-        {
-          text: "Investment Analysis and Modern Portfolio Management Online Graduate Professional Diploma",
-          href: "https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx",
-          external: true,
-        },
-      ],
+        { text: "Entrepreneurship & Innovation Online Graduate Professional Diploma", url: "https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx", external: true },
+        { text: "Combating Trade-Based Financial Crime Online Certificate", url: "https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx", external: true },
+        { text: "Strategic Branding in the Digital Era Online Diploma", url: "https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx", external: true },
+        { text: "Investment Analysis and Modern Portfolio Management Online Graduate Professional Diploma", url: "https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx", external: true }
+      ]
     },
     {
       title: "Faculty",
-      href: "/osb/Pages/Faculty.aspx",
+      url: "/osb/Pages/Faculty.aspx",
+      isLink: true
     },
     {
       title: "Research",
-      href: "https://www.aub.edu.lb/osb/facultyresearch/Pages/default.aspx",
+      url: "https://www.aub.edu.lb/osb/facultyresearch/Pages/default.aspx",
       external: true,
+      isLink: true
     },
     {
       title: "News",
-      href: "https://www.aub.edu.lb/osb/news/Pages/default.aspx",
+      url: "https://www.aub.edu.lb/osb/news/Pages/default.aspx",
+      isLink: true
     },
     {
       title: "OSB Impacts",
-      href: "https://www.aub.edu.lb/osb/impact/Pages/default.aspx",
+      url: "https://www.aub.edu.lb/osb/impact/Pages/default.aspx",
       external: true,
-    },
+      isLink: true
+    }
   ];
 
-  // Utility links data (matches .nav-utility and mobile utility grid)
-  const utilityLinksData = [
-    { text: "A - Z", href: "/Pages/AZ.aspx" },
-    { text: "Find People", href: "/Search/Pages/People.aspx" },
-    { text: "AUBMC", href: "https://aubmc.org.lb/", external: true },
-    { text: "Libraries", href: "/libraries" },
-    { text: "Jobs", href: "/Employment" },
-    {
-      text: "Alumni",
-      href: "http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61",
-      external: true,
-    },
-    { text: "AUB Online", href: "https://online.aub.edu.lb", external: true },
-    {
-      text: "AUB – Mediterraneo",
-      href: "https://www.aubmed.ac.cy/",
-      external: true,
-    },
-    {
-      text: "Telehealth",
-      href: "https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login",
-      external: true,
-    },
-    {
-      text: "Give",
-      href: "/advancement/Development/Pages/HowToMakeAGift.aspx",
-    },
+  // Utility links data
+  const utilityLinks = [
+    { text: "A - Z", url: "/Pages/AZ.aspx" },
+    { text: "Find People", url: "/Search/Pages/People.aspx" },
+    { text: "AUBMC", url: "https://aubmc.org.lb/", external: true },
+    { text: "Libraries", url: "/libraries" },
+    { text: "Jobs", url: "/Employment" },
+    { text: "Alumni", url: "http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61", external: true },
+    { text: "AUB Online", url: "https://online.aub.edu.lb", external: true },
+    { text: "AUB – Mediterraneo", url: "https://www.aubmed.ac.cy/", external: true },
+    { text: "Telehealth", url: "https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login", external: true },
+    { text: "Give", url: "/advancement/Development/Pages/HowToMakeAGift.aspx" }
   ];
 
-  // Helper to create anchor element with proper href and target
+  // Helper function to create links (Chrome-optimized)
   function createLink(linkData, className = "") {
     const a = document.createElement("a");
-    a.href = linkData.href;
+    a.href = linkData.url;
     a.textContent = linkData.text;
     if (className) a.className = className;
     if (linkData.external) {
@@ -499,43 +392,55 @@
     return a;
   }
 
-  // Build mobile main navigation (from mainNavData)
+  // Build mobile main navigation
   function buildMobileMain() {
     const container = document.getElementById("mobileMainNav");
     if (!container) return;
     container.innerHTML = "";
 
-    mainNavData.forEach((item) => {
+    mainNavItems.forEach((item, index) => {
       const wrapper = document.createElement("div");
       wrapper.className = "mobile-nav-item";
 
-      const linkDiv = document.createElement("div");
-      linkDiv.className = "mobile-nav-link has-sub";
-      linkDiv.innerHTML = `<span>${item.title}</span><span class="chevron-icon"></span>`;
+      const button = document.createElement("div");
+      button.className = "mobile-nav-link has-sub";
+      button.setAttribute("data-menu-id", index);
+      button.innerHTML = `<span>${item.title}</span><span class="chevron-icon"></span>`;
 
       const submenu = document.createElement("div");
       submenu.className = "mobile-submenu";
 
-      // Loop through sub categories
-      item.sub.forEach((category) => {
-        const catTitle = document.createElement("div");
-        catTitle.className = "subcategory-title";
-        // catTitle.innerText = category.category;
-        submenu.appendChild(catTitle);
+      item.sections.forEach(section => {
+        const sectionTitle = document.createElement("div");
+        sectionTitle.className = "subcategory-title";
+        sectionTitle.textContent = section.title;
+        submenu.appendChild(sectionTitle);
 
-        category.links.forEach((link) => {
+        section.links.forEach(link => {
           const anchor = createLink(link);
           submenu.appendChild(anchor);
         });
       });
 
-      linkDiv.addEventListener("click", (e) => {
+      // Chrome-friendly click handler
+      button.addEventListener("click", function(e) {
         e.preventDefault();
-        linkDiv.classList.toggle("open");
+        e.stopPropagation();
+        
+        // Close other open menus
+        document.querySelectorAll(".mobile-nav-link.has-sub.open").forEach(openBtn => {
+          if (openBtn !== button) {
+            openBtn.classList.remove("open");
+            const siblingSubmenu = openBtn.parentElement?.querySelector(".mobile-submenu");
+            if (siblingSubmenu) siblingSubmenu.classList.remove("open");
+          }
+        });
+        
+        button.classList.toggle("open");
         submenu.classList.toggle("open");
       });
 
-      wrapper.appendChild(linkDiv);
+      wrapper.appendChild(button);
       wrapper.appendChild(submenu);
       container.appendChild(wrapper);
     });
@@ -547,71 +452,76 @@
     if (!container) return;
     container.innerHTML = "";
 
-    osbNavData.forEach((item) => {
+    osbNavItems.forEach((item, index) => {
       const wrapper = document.createElement("div");
       wrapper.className = "mobile-nav-item";
 
-      const linkDiv = document.createElement("div");
-
-      // Check if item has sub-links OR a direct href
-      const hasSub = item.links && item.links.length > 0;
-      const hasDirectLink = item.href && !hasSub;
-
-      if (hasDirectLink) {
-        // Single link without submenu
-        linkDiv.className = "mobile-nav-link";
-        const anchor = createLink(
-          { text: item.title, href: item.href, external: item.external },
-          ""
-        );
-        linkDiv.appendChild(anchor);
-        wrapper.appendChild(linkDiv);
-      } else if (hasSub) {
-        // Item with dropdown
-        linkDiv.className = "mobile-nav-link has-sub";
-        linkDiv.innerHTML = `<span>${item.title}</span><span class="chevron-icon"></span>`;
+      if (item.isLink && item.url) {
+        // Single link item
+        const link = createLink({ text: item.title, url: item.url, external: item.external }, "mobile-nav-link");
+        wrapper.appendChild(link);
+      } else if (item.links && item.links.length > 0) {
+        // Dropdown item
+        const button = document.createElement("div");
+        button.className = "mobile-nav-link has-sub";
+        button.setAttribute("data-osb-id", index);
+        button.innerHTML = `<span>${item.title}</span><span class="chevron-icon"></span>`;
 
         const submenu = document.createElement("div");
         submenu.className = "mobile-submenu";
 
-        item.links.forEach((link) => {
+        item.links.forEach(link => {
           const anchor = createLink(link);
           submenu.appendChild(anchor);
         });
 
-        linkDiv.addEventListener("click", (e) => {
+        button.addEventListener("click", function(e) {
           e.preventDefault();
-          linkDiv.classList.toggle("open");
+          e.stopPropagation();
+          
+          // Close other open OSB menus
+          document.querySelectorAll("#mobileOsbNav .mobile-nav-link.has-sub.open").forEach(openBtn => {
+            if (openBtn !== button) {
+              openBtn.classList.remove("open");
+              const siblingSubmenu = openBtn.parentElement?.querySelector(".mobile-submenu");
+              if (siblingSubmenu) siblingSubmenu.classList.remove("open");
+            }
+          });
+          
+          button.classList.toggle("open");
           submenu.classList.toggle("open");
         });
 
-        wrapper.appendChild(linkDiv);
+        wrapper.appendChild(button);
         wrapper.appendChild(submenu);
-      } else {
-        // Fallback: just text with no action (should not happen)
-        linkDiv.className = "mobile-nav-link";
-        linkDiv.innerHTML = `<span>${item.title}</span>`;
-        wrapper.appendChild(linkDiv);
       }
 
       container.appendChild(wrapper);
     });
   }
 
-  // Build utility grid for mobile
+  // Build utility grid
   function buildUtilityGrid() {
-    const gridContainer = document.getElementById("mobileUtilityGrid");
-    if (!gridContainer) return;
-
-    gridContainer.innerHTML = "";
-    utilityLinksData.forEach((link) => {
+    const container = document.getElementById("mobileUtilityGrid");
+    if (!container) return;
+    container.innerHTML = "";
+    
+    utilityLinks.forEach(link => {
       const anchor = createLink(link);
-      gridContainer.appendChild(anchor);
+      container.appendChild(anchor);
     });
   }
 
-  // Initialize mobile menus
-  buildMobileMain();
-  buildMobileOsb();
-  buildUtilityGrid();
+  // Initialize mobile menus when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      buildMobileMain();
+      buildMobileOsb();
+      buildUtilityGrid();
+    });
+  } else {
+    buildMobileMain();
+    buildMobileOsb();
+    buildUtilityGrid();
+  }
 })();
