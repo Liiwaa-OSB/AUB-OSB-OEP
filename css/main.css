@@ -291,36 +291,6 @@ h3 {
   margin-top: 10px;
 }
 
-.hero__logo-link {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  z-index: 20; /* above video, overlay, and content */
-  display: inline-block;
-  transition: opacity 0.3s ease;
-}
-
-.hero__logo-link:hover {
-  opacity: 0.8;
-}
-
-.hero__logo {
-  display: block;
-  height: 160px;
-  width: auto;
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .hero__logo-link {
-    top: 1rem;
-    left: 1rem;
-  }
-  .hero__logo {
-    max-width: 90px;
-  }
-}
-
 /* ===== DETAIL GRID ===== */
 .detail-grid {
   display: grid;
@@ -1603,7 +1573,8 @@ body.nav-sticky-padding {
   z-index: 45;
 }
 .nav-osb-container {
-  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
   padding: 0 1rem;
   display: flex;
   align-items: center;
@@ -1643,10 +1614,10 @@ body.nav-sticky-padding {
 }
 .nav-osb-links .osb-nav-item > a {
   display: block;
-  color: var(--color-primary-dark);
+  color: #000;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 800;
+  /* font-weight: 800; */
   padding: 0.5rem 0.25rem;
   transition: color var(--transition);
   white-space: normal;
@@ -1788,4 +1759,44 @@ body.nav-scrolled .nav-osb-logo {
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
+}
+/* OSB Row container – already good */
+.nav-osb-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* The wrapper that holds the navigation list */
+.nav-osb-links {
+  flex: 1;                /* take remaining space after logo */
+  display: flex;
+  justify-content: center; /* center the nav inside this space */
+}
+
+/* The navigation list itself */
+.nav-osb-links .osb-nav {
+   display: flex;
+  justify-content: space-between; /* even spacing between items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;          /* spacing between items, adjust as needed */
+}
+
+/* Each navigation item – no flex-grow, width based on content */
+.nav-osb-links .osb-nav-item {
+  flex: 0 0 auto;   /* prevents stretching */
+  position: relative;
+  text-align: center;
+}
+
+/* Optional: adjust link padding for better readability */
+.nav-osb-links .osb-nav-item > a {
+  display: inline-block;   /* change from block to inline-block to fit text */
+  padding: 0.5rem 0.25rem;
+  white-space: nowrap;     /* prevent text wrapping (optional) */
 }
