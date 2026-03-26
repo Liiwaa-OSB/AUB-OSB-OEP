@@ -342,11 +342,12 @@ h3 {
   gap: 2rem;
 }
 
-.nav-mega-column h4 {
+.nav-mega h4 {
   font-weight: 700;
   margin-bottom: 0.75rem;
   padding-bottom: 0.4rem;
   border-bottom: 2px solid var(--color-primary);
+  text-transform: uppercase;
   color: var(--color-primary-dark);
   font-size: 1rem;
 }
@@ -705,6 +706,34 @@ body.nav-scrolled .nav-osb .osb-dropdown a {
 
 body.menu-open {
   overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+  /* On mobile, when scrolled, make the main header fixed at top */
+  body.nav-scrolled .nav-main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transform: none; /* override any transform from desktop */
+  }
+  /* Add padding to body to prevent content jump when header becomes fixed */
+  body.nav-scrolled {
+    padding-top: 70px; /* adjust to match your main header height */
+  }
+  /* Ensure the utility bar stays hidden (it's already hidden on mobile) */
+  /* Ensure OSB row remains hidden and not sticky */
+  body.nav-scrolled .nav-osb {
+    position: relative;
+    top: auto;
+    background-color: var(--color-bg-light);
+    box-shadow: none;
+  }
+  /* Keep OSB logo hidden even if scrolled class is present */
+  body.nav-scrolled .nav-osb-logo {
+    display: none !important;
+  }
 }
 
 /* ===== HERO ===== */
@@ -1889,5 +1918,79 @@ img {
   .sticky-cta__label {
     font-size: 13px;
     padding: 4px 10px;
+  }
+}
+
+
+
+/* Fix for mega menu overflow - add these styles */
+.nav-item {
+  position: relative;
+}
+
+/* Make mega menus position themselves to the right when near edge */
+.nav-mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  min-width: 680px;
+  padding: 1.8rem;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s;
+}
+
+/* Responsive adjustments for smaller desktop screens */
+@media (max-width: 1280px) {
+  .nav-mega {
+    min-width: 580px;
+    max-width: 90vw;
+    right: 0;
+    left: auto;
+  }
+  
+  /* Override for the first few items to keep them left-aligned */
+  .nav-item:first-child .nav-mega,
+  .nav-item:nth-child(2) .nav-mega {
+    left: 0;
+    right: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-mega {
+    min-width: 500px;
+    max-width: 85vw;
+  }
+}
+
+/* If you want all mega menus to be centered/contained */
+@media (min-width: 1025px) {
+  .nav-desktop {
+    position: relative;
+  }
+  
+  .nav-item {
+    position: static;
+  }
+  
+  .nav-mega {
+    width: 100vw;
+    max-width: 1280px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+  }
+  
+  /* Ensure container context works */
+  .nav-main-container {
+    position: relative;
+  }
+  
+  .nav-desktop {
+    position: static;
   }
 }
