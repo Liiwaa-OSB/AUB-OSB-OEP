@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AUB OSB Navigation - Redesigned</title>
+  
+    <script src="js/menu.js" defer></script>
+    <link rel="stylesheet" href="css/main-copy.css" />
+  <style>
+    
+
+    :root {
+      --color-bg-light: #f8fafc;
+      --header-main-height: 90px;     /* fallback, will be dynamic via JS */
+    }
+
+   
+    /* ========== NEW TOP BAR (main site mega menu) ========== */
+    .nav-top-links {
+      background-color: var(--color-primary-dark);
+      color: #fff;
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 45;
+    }
+
+    .nav-top-container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2rem;
+    }
+
+    /* Desktop mega menu items (horizontal) */
+    .nav-desktop-top {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin: auto;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item > button {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-item > button:hover {
+      opacity: 0.85;
+    }
+
+    /* mega dropdown panel */
+    .nav-mega {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      min-width: 680px;
+      padding: 1.8rem;
+      z-index: 60;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s;
+    }
+
+    .nav-item:hover .nav-mega {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-mega-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .nav-mega h4 {
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--color-primary);
+      text-transform: uppercase;
+      color: var(--color-primary-dark);
+      font-size: 1rem;
+    }
+
+    .nav-mega-links {
+      list-style: none;
+    }
+
+    .nav-mega-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .nav-mega-links a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .nav-mega-links a:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    /* ========== MAIN HEADER (logo + OSB nav + burger) ========== */
+    .nav-main-header {
+      background: var(--color-primary);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 40;
+      transition: all 0.3s ease;
+    }
+
+    .nav-main-container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo img {
+      height: 70px;
+      width: auto;
+      display: block;
+    }
+
+    /* OSB navigation - horizontal beside logo */
+    .osb-nav-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .osb-nav {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .osb-nav-item {
+      position: relative;
+    }
+
+    .osb-nav-item > a {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 0;
+      transition: color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .osb-nav-item > a:hover {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .osb-nav-item.has-dropdown > a::after {
+      content: "";
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: 6px;
+      transition: transform 0.2s;
+    }
+
+    /* OSB dropdowns */
+    .osb-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      min-width: 260px;
+      padding: 0.6rem 0;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+      z-index: 200;
+      text-align: left;
+      border: 1px solid #edf2f7;
+    }
+
+    .osb-nav-item.has-dropdown:hover .osb-dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .osb-dropdown li a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #2d3748;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .osb-dropdown li a:hover {
+      background-color: #f7fafc;
+      color: var(--color-primary);
+    }
+
+    /* Mobile burger button */
+    .nav-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 0.4rem;
+    }
+
+    /* ========== STICKY BEHAVIOR ========== */
+    body.nav-scrolled .nav-top-links {
+      transform: translateY(-100%);
+    }
+
+    body.nav-scrolled .nav-main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1100;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      background: var(--color-primary);
+      transform: none;
+    }
+
+    /* ========== RESPONSIVE (Desktop first, then mobile) ========== */
+    @media (max-width: 1023px) {
+      .nav-top-links {
+        display: none;            /* hide top bar on mobile, burger handles everything */
+      }
+
+      .osb-nav-wrapper {
+        display: none;           /* hide OSB desktop nav on mobile */
+      }
+
+      .nav-mobile-btn {
+        display: block;
+      }
+
+      /* Adjust main header for mobile */
+      .nav-main-container {
+        padding: 0.6rem 1rem;
+      }
+
+      .nav-logo img {
+        height: 55px;
+      }
+    }
+
+    /* Desktop only: ensure OSB nav visible */
+    @media (min-width: 1024px) {
+      .nav-mobile-btn {
+        display: none;
+      }
+      .osb-nav-wrapper {
+        display: block;
+      }
+    }
+
+    /* Small desktop fine-tuning */
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      .osb-nav {
+        gap: 0.9rem;
+      }
+      .osb-nav-item > a {
+        font-size: 0.75rem;
+      }
+      .nav-top-container {
+        gap: 1rem;
+      }
+      .nav-desktop-top {
+        gap: 1.2rem;
+      }
+    }
+
+    /* ========== MOBILE OVERLAY (burger menu) ========== */
+    .nav-mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 2000;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-mobile-overlay.open {
+      transform: translateX(0);
+    }
+
+    .mobile-overlay-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: var(--color-primary);
+    }
+
+    .mobile-overlay-header .mobile-logo img {
+      height: 45px;
+      width: auto;
+    }
+
+    .mobile-close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+    }
+
+    .mobile-menu-sections {
+      flex: 1;
+      padding: 1.5rem 1rem;
+    }
+
+    .mobile-section {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 1rem;
+    }
+
+    .mobile-section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      letter-spacing: -0.2px;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      font-weight: 600;
+      color: #1a202c;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .mobile-nav-link.has-sub {
+      cursor: pointer;
+    }
+
+    .chevron-icon {
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      transition: transform 0.2s;
+    }
+
+    .mobile-nav-link.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .mobile-submenu {
+      display: none;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+      background-color: #fafbfc;
+      border-radius: 8px;
+    }
+
+    .mobile-submenu.open {
+      display: block;
+    }
+
+    .mobile-submenu a {
+      display: block;
+      padding: 0.6rem 0;
+      color: #4a5568;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .mobile-submenu a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-submenu .subcategory-title {
+      font-weight: 700;
+      margin: 0.75rem 0 0.25rem 0;
+      color: var(--color-primary-dark);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<div class="nav">
+  <!-- NEW TOP BAR: main site mega menu (About AUB, Academics, etc) -->
+  <div class="nav-top-links" id="topBar">
+    <div class="nav-top-container">
+      <div class="nav-desktop-top">
+        <!-- About AUB -->
+        <div class="nav-item">
+          <button>About AUB<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-mega"><h4>About AUB</h4><div class="nav-mega-grid"><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/AboutUs/Pages/default.aspx">Overview</a></li><li><a href="/aboutus/Pages/history.aspx">History</a></li><li><a href="/aboutus/Pages/mission.aspx">Mission and Vision</a></li><li><a href="/aboutus/Pages/facts.aspx">Facts and Figures</a></li><li><a href="/President/oeo-titleix">Title IX</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/AboutUs/Pages/leadership.aspx">AUB Leadership</a></li><li><a href="/president">Office of the President</a></li><li><a href="/nyo">New York Office</a></li><li><a href="/maingate">The MainGate Magazine</a></li><li><a href="/advancement">Office of Advancement</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/aboutus/Pages/campus.aspx">Campus</a></li><li><a href="/aboutus/Pages/beirut-lb.aspx">About Beirut and Lebanon</a></li><li><a href="/accreditation">Accreditation</a></li><li><a href="https://150.aub.edu.lb/" target="_blank">AUB 150</a></li></ul></div></div></div>
+        </div>
+        <!-- Academics -->
+        <div class="nav-item">
+          <button>Academics<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-mega"><h4>ACADEMICS</h4><div class="nav-mega-grid"><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/academics/Pages/faculties.aspx">Faculties</a></li><li><a href="/Pages/AZ.aspx">Departments and Centers</a></li><li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li><li><a href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg" target="_blank">Search for a Course</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/theinstitute">Institute for Academic Innovation and Development</a></li><li><a href="/graduatecouncil">Graduate Council</a></li><li><a href="/generaleducation">General Education Program</a></li><li><a href="/oip">Office of International Programs</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/provost">Office of the Provost</a></li><li><a href="/registrar">Office of the Registrar</a></li><li><a href="/libraries">Libraries</a></li></ul></div></div></div>
+        </div>
+        <!-- Admissions -->
+        <div class="nav-item">
+          <button>Admissions<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-mega"><h4>ADMISSIONS</h4><div class="nav-mega-grid"><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/admissions">Admissions</a></li><li><a href="/faid">Financial Aid</a></li><li><a href="http://www.aub.edu.lb/admissions/Pages/TC/index.html" target="_blank">Tuition and Fees Calculator</a></li><li><a href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx" target="_blank">Visiting Student</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li><li><a href="/lead">LEAD scholarship opportunities</a></li><li><a href="/sao">Office of Student Affairs</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li><li><a href="/graduatecouncil">Graduate Council</a></li><li><a href="/oip">Office of International Programs</a></li></ul></div></div></div>
+        </div>
+        <!-- Research -->
+        <div class="nav-item">
+          <button>Research<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-mega"><h4>Research</h4><div class="nav-mega-grid"><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/research">Office of Research</a></li><li><a href="/Pages/ResearchbyFaculty.aspx">Research by Faculty/School</a></li><li><a href="/Pages/ResearchCenters.aspx">Interfaculty Research Centers</a></li><li><a href="/urb">University Research Board</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/Pages/ResearchSupport.aspx">Research Funding</a></li><li><a href="/urb/Pages/Researchintegrity.aspx">Research Integrity</a></li><li><a href="/irb">Human Research Protection Program / Institutional Review Board</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/MRVP">Medical Research Volunteer Program</a></li><li><a href="/provost/urvp">Undergraduate Research Volunteer Program</a></li><li><a href="/articles/Pages/research.aspx">Research News</a></li></ul></div></div></div>
+        </div>
+        <!-- Outreach -->
+        <div class="nav-item">
+          <button>Outreach<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-mega"><h4>Outreach</h4><div class="nav-mega-grid"><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/CCE">Community Engagement</a></li><li><a href="/Neighborhood">Neighborhood Initiative</a></li><li><a href="/natureconservation">Nature Conservation</a></li><li><a href="/seniors">University for Seniors</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="/ifi">Issam Fares Institute</a></li><li><a href="https://sites.aub.edu.lb/ipark/" target="_blank">iPark</a></li><li><a href="/k2p">Knowledge to Policy Center</a></li><li><a href="/masri_institute">The Munib and Angela Masri Institute of Energy and Natural Resources</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="https://www.aub.edu.lb/hub/Pages/default.aspx" target="_blank">AI Hub</a></li><li><a href="/fafs/esdu">Environment and Sustainable Development</a></li><li><a href="https://ghi.aub.edu.lb/" target="_blank">Global Health Institute</a></li></ul></div></div></div>
+        </div>
+        <!-- Boldly Campaign -->
+        <div class="nav-item">
+          <button>Boldly Campaign<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="nav-mega"><h4>Boldly Campaign</h4><div class="nav-mega-grid"><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="http://boldly.aub.edu.lb/" target="_blank">Campaign Overview</a></li><li><a href="http://boldly.aub.edu.lb/impact-stories/" target="_blank">Impact Stories</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="http://boldly.aub.edu.lb/campaign-objectives/" target="_blank">Campaign Objectives</a></li><li><a href="http://boldly.aub.edu.lb/ways-to-support/" target="_blank">Ways to Support</a></li></ul></div><div class="nav-mega-column"><ul class="nav-mega-links"><li><a href="http://boldly.aub.edu.lb/#funding-v2" target="_blank">Campaign Progress</a></li><li><a href="https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462" target="_blank">Join the Campaign</a></li></ul></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER: logo + OSB nav (beside logo) + burger -->
+  <div class="nav-main-header" id="mainHeader">
+    <div class="nav-main-container">
+      <div class="nav-logo">
+        <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
+          <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
+        </a>
+      </div>
+      <!-- OSB navigation (beside logo) -->
+      <div class="osb-nav-wrapper">
+        <ul class="osb-nav">
+          <li class="osb-nav-item has-dropdown">
+            <a href="#">About OSB</a>
+            <ul class="osb-dropdown">
+              <li><a href="/osb/about/Pages/Meet-the-Dean.aspx">Meet the Dean</a></li>
+              <li><a href="/osb/about/Pages/default.aspx">Mission And Vision</a></li>
+              <li><a href="/osb/about/Pages/Olayan-.aspx">About Suliman Saleh Olayan</a></li>
+              <li><a href="https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx" target="_blank">International Advisory Board</a></li>
+              <li><a href="/osb/about/Pages/Global-Recognition-.aspx">Global Recognitions & Labels</a></li>
+              <li><a href="/osb/about/Pages/Governance.aspx">Governance</a></li>
+              <li><a href="/osb/about/Pages/recources.aspx">Faculty and Staff Resources</a></li>
+              <li><a href="/osb/125/Pages/default.aspx" target="_blank">OSB 125</a></li>
+              <li><a href="https://sites.aub.edu.lb/osb2029/" target="_blank">OSB Strategic Plan 2029</a></li>
+              <li><a href="https://www.aub.edu.lb/osb/about/Pages/Employment.aspx" target="_blank">Job Opportunities</a></li>
+            </ul>
+          </li>
+          <li class="osb-nav-item has-dropdown">
+            <a href="#">Academic Programs</a>
+            <ul class="osb-dropdown">
+              <li><a href="/osb/UndergradProgram" target="_blank">Undergraduate Program</a></li>
+              <li><a href="/osb/Pages/SpecializedMasters.aspx" target="_blank">Specialized Masters</a></li>
+              <li><a href="/osb/MBA" target="_blank">MBA</a></li>
+              <li><a href="/osb/OMBA/Pages/default.aspx" target="_blank">MBA Online</a></li>
+              <li><a href="/osb/EMBA" target="_blank">Executive MBA</a></li>
+            </ul>
+          </li>
+          <li class="osb-nav-item"><a href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" target="_blank">Executive Education</a></li>
+          <li class="osb-nav-item has-dropdown">
+            <a href="#">OSB Online</a>
+            <ul class="osb-dropdown">
+              <li><a href="https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx" target="_blank">Entrepreneurship & Innovation Online Graduate Professional Diploma</a></li>
+              <li><a href="https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx" target="_blank">Combating Trade-Based Financial Crime Online Certificate</a></li>
+              <li><a href="https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx" target="_blank">Strategic Branding in the Digital Era Online Diploma</a></li>
+              <li><a href="https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx" target="_blank">Investment Analysis and Modern Portfolio Management Online Graduate Professional Diploma</a></li>
+            </ul>
+          </li>
+          <li class="osb-nav-item"><a href="/osb/Pages/Faculty.aspx">Faculty</a></li>
+          <li class="osb-nav-item"><a href="https://www.aub.edu.lb/osb/facultyresearch/Pages/default.aspx" target="_blank">Research</a></li>
+          <li class="osb-nav-item"><a href="https://www.aub.edu.lb/osb/news/Pages/default.aspx">News</a></li>
+          <li class="osb-nav-item"><a href="https://www.aub.edu.lb/osb/impact/Pages/default.aspx" target="_blank">OSB Impacts</a></li>
+        </ul>
+      </div>
+      <button class="nav-mobile-btn" id="burgerBtn" aria-label="Menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE OVERLAY (burger menu) -->
+<div class="nav-mobile-overlay" id="mobileOverlay">
+  <div class="mobile-overlay-header">
+    <div class="mobile-logo"><img src="images/AUB+OSB-Merged-Logo-white.png" alt="Logo"></div>
+    <button class="mobile-close-btn" id="closeMobileBtn"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="mobile-menu-sections" id="mobileMenuSections"></div>
+</div>
+
+<script>
+  (function() {
+    // ---------- STICKY HEADER LOGIC ----------
+    const topBar = document.getElementById('topBar');
+    const mainHeader = document.getElementById('mainHeader');
+    let headerHeight = mainHeader ? mainHeader.offsetHeight : 90;
+    function updateSticky() {
+      if (!mainHeader) return;
+      const scrollY = window.scrollY;
+      if (scrollY > 60) {
+        document.body.classList.add('nav-scrolled');
+        document.body.style.paddingTop = headerHeight + 'px';
+      } else {
+        document.body.classList.remove('nav-scrolled');
+        document.body.style.paddingTop = '';
+      }
+    }
+    function recalcHeaderHeight() {
+      if (mainHeader) headerHeight = mainHeader.offsetHeight;
+      if (document.body.classList.contains('nav-scrolled')) {
+        document.body.style.paddingTop = headerHeight + 'px';
+      }
+    }
+    window.addEventListener('scroll', updateSticky);
+    window.addEventListener('resize', () => { recalcHeaderHeight(); updateSticky(); });
+    updateSticky();
+
+    // ---------- MOBILE MENU GENERATION (AUB main links + OSB links) ----------
+    const mobileContainer = document.getElementById('mobileMenuSections');
+    if (mobileContainer) {
+      // Data for main AUB mega items (from desktop top bar)
+      const mainSections = [
+        { title: "About AUB", links: [
+          { text: "Overview", url: "/AboutUs/Pages/default.aspx" },
+          { text: "History", url: "/aboutus/Pages/history.aspx" },
+          { text: "Mission and Vision", url: "/aboutus/Pages/mission.aspx" },
+          { text: "Facts and Figures", url: "/aboutus/Pages/facts.aspx" },
+          { text: "Title IX", url: "/President/oeo-titleix" },
+          { text: "AUB Leadership", url: "/AboutUs/Pages/leadership.aspx" },
+          { text: "Office of the President", url: "/president" },
+          { text: "New York Office", url: "/nyo" },
+          { text: "The MainGate Magazine", url: "/maingate" },
+          { text: "Office of Advancement", url: "/advancement" },
+          { text: "Campus", url: "/aboutus/Pages/campus.aspx" },
+          { text: "About Beirut and Lebanon", url: "/aboutus/Pages/beirut-lb.aspx" },
+          { text: "Accreditation", url: "/accreditation" },
+          { text: "AUB 150", url: "https://150.aub.edu.lb/", external: true }
+        ] },
+        { title: "Academics", links: [
+          { text: "Faculties", url: "/academics/Pages/faculties.aspx" },
+          { text: "Departments and Centers", url: "/Pages/AZ.aspx" },
+          { text: "Majors and Programs", url: "/academics/pages/majors_programs.aspx" },
+          { text: "Search for a Course", url: "https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg", external: true },
+          { text: "Institute for Academic Innovation", url: "/theinstitute" },
+          { text: "Graduate Council", url: "/graduatecouncil" },
+          { text: "General Education", url: "/generaleducation" },
+          { text: "Office of International Programs", url: "/oip" },
+          { text: "Office of the Provost", url: "/provost" },
+          { text: "Registrar", url: "/registrar" },
+          { text: "Libraries", url: "/libraries" }
+        ] },
+        { title: "Admissions", links: [
+          { text: "Admissions", url: "/admissions" },
+          { text: "Financial Aid", url: "/faid" },
+          { text: "Tuition & Fees Calculator", url: "http://www.aub.edu.lb/admissions/Pages/TC/index.html", external: true },
+          { text: "Visiting Student", url: "https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx", external: true },
+          { text: "Scholarships", url: "/faid/Pages/Scholarships.aspx" },
+          { text: "LEAD Scholarship", url: "/lead" },
+          { text: "Student Affairs", url: "/sao" }
+        ] },
+        { title: "Research", links: [
+          { text: "Office of Research", url: "/research" },
+          { text: "Research by Faculty", url: "/Pages/ResearchbyFaculty.aspx" },
+          { text: "Interfaculty Research Centers", url: "/Pages/ResearchCenters.aspx" },
+          { text: "University Research Board", url: "/urb" },
+          { text: "Research Funding", url: "/Pages/ResearchSupport.aspx" },
+          { text: "Research Integrity", url: "/urb/Pages/Researchintegrity.aspx" },
+          { text: "IRB", url: "/irb" },
+          { text: "Medical Research Volunteer", url: "/MRVP" },
+          { text: "URVP", url: "/provost/urvp" }
+        ] },
+        { title: "Outreach", links: [
+          { text: "Community Engagement", url: "/CCE" },
+          { text: "Neighborhood Initiative", url: "/Neighborhood" },
+          { text: "Nature Conservation", url: "/natureconservation" },
+          { text: "University for Seniors", url: "/seniors" },
+          { text: "Issam Fares Institute", url: "/ifi" },
+          { text: "iPark", url: "https://sites.aub.edu.lb/ipark/", external: true },
+          { text: "Knowledge to Policy", url: "/k2p" },
+          { text: "Masri Institute", url: "/masri_institute" },
+          { text: "AI Hub", url: "https://www.aub.edu.lb/hub/Pages/default.aspx", external: true }
+        ] },
+        { title: "Boldly Campaign", links: [
+          { text: "Campaign Overview", url: "http://boldly.aub.edu.lb/", external: true },
+          { text: "Impact Stories", url: "http://boldly.aub.edu.lb/impact-stories/", external: true },
+          { text: "Campaign Objectives", url: "http://boldly.aub.edu.lb/campaign-objectives/", external: true },
+          { text: "Ways to Support", url: "http://boldly.aub.edu.lb/ways-to-support/", external: true },
+          { text: "Campaign Progress", url: "http://boldly.aub.edu.lb/#funding-v2", external: true }
+        ] }
+      ];
+
+      // OSB mobile data (dropdown groups + single links)
+      const osbGroups = [
+        { name: "About OSB", links: [
+          "Meet the Dean:/osb/about/Pages/Meet-the-Dean.aspx",
+          "Mission And Vision:/osb/about/Pages/default.aspx",
+          "About Suliman Saleh Olayan:/osb/about/Pages/Olayan-.aspx",
+          "International Advisory Board:https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx",
+          "Global Recognitions:/osb/about/Pages/Global-Recognition-.aspx",
+          "Governance:/osb/about/Pages/Governance.aspx",
+          "Faculty and Staff Resources:/osb/about/Pages/recources.aspx",
+          "OSB 125:/osb/125/Pages/default.aspx",
+          "OSB Strategic Plan 2029:https://sites.aub.edu.lb/osb2029/",
+          "Job Opportunities:https://www.aub.edu.lb/osb/about/Pages/Employment.aspx"
+        ] },
+        { name: "Academic Programs", links: [
+          "Undergraduate Program:/osb/UndergradProgram",
+          "Specialized Masters:/osb/Pages/SpecializedMasters.aspx",
+          "MBA:/osb/MBA",
+          "MBA Online:/osb/OMBA/Pages/default.aspx",
+          "Executive MBA:/osb/EMBA"
+        ] },
+        { name: "OSB Online", links: [
+          "Entrepreneurship & Innovation Diploma:https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx",
+          "Combating Trade-Based Financial Crime:https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx",
+          "Strategic Branding Diploma:https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx",
+          "Investment Analysis Diploma:https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx"
+        ] },
+        { name: "Executive Education", singleUrl: "https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" },
+        { name: "Faculty", singleUrl: "/osb/Pages/Faculty.aspx" },
+        { name: "Research", singleUrl: "https://www.aub.edu.lb/osb/facultyresearch/Pages/default.aspx" },
+        { name: "News", singleUrl: "https://www.aub.edu.lb/osb/news/Pages/default.aspx" },
+        { name: "OSB Impacts", singleUrl: "https://www.aub.edu.lb/osb/impact/Pages/default.aspx" }
+      ];
+
+      let html = '<div class="mobile-section"><div class="mobile-section-title">AUB Main</div>';
+      mainSections.forEach(section => {
+        html += `<div class="mobile-nav-item"><div class="mobile-nav-link has-sub">${section.title}<span class="chevron-icon"></span></div><div class="mobile-submenu">`;
+        section.links.forEach(link => {
+          const target = link.external ? ' target="_blank"' : '';
+          html += `<a href="${link.url}"${target}>${link.text}</a>`;
+        });
+        html += `</div></div>`;
+      });
+      html += `</div><div class="mobile-section"><div class="mobile-section-title">OSB</div>`;
+      osbGroups.forEach(group => {
+        if (group.singleUrl) {
+          html += `<div class="mobile-nav-item"><a href="${group.singleUrl}" class="mobile-nav-link" ${group.singleUrl.startsWith('http') ? 'target="_blank"' : ''}>${group.name}</a></div>`;
+        } else {
+          html += `<div class="mobile-nav-item"><div class="mobile-nav-link has-sub">${group.name}<span class="chevron-icon"></span></div><div class="mobile-submenu">`;
+          group.links.forEach(linkStr => {
+            let [text, url] = linkStr.split(':');
+            const external = url.startsWith('http') ? ' target="_blank"' : '';
+            html += `<a href="${url}"${external}>${text}</a>`;
+          });
+          html += `</div></div>`;
+        }
+      });
+      html += `</div>`;
+      mobileContainer.innerHTML = html;
+
+      // attach toggle events
+      document.querySelectorAll('.mobile-nav-link.has-sub').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const parentItem = btn.closest('.mobile-nav-item');
+          const submenu = parentItem?.querySelector('.mobile-submenu');
+          if (submenu) {
+            submenu.classList.toggle('open');
+            btn.classList.toggle('open');
+          }
+        });
+      });
+    }
+
+    // burger and overlay controls
+    const burger = document.getElementById('burgerBtn');
+    const overlay = document.getElementById('mobileOverlay');
+    const closeBtn = document.getElementById('closeMobileBtn');
+    function openMenu() { overlay.classList.add('open'); document.body.classList.add('menu-open'); }
+    function closeMenu() { overlay.classList.remove('open'); document.body.classList.remove('menu-open'); }
+    if (burger) burger.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    overlay?.addEventListener('click', (e) => { if(e.target === overlay) closeMenu(); });
+  })();
+</script>
+</body>
+</html>

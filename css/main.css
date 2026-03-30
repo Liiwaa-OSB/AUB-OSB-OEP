@@ -398,7 +398,7 @@ h3 {
 /* hidden logo that appears only when sticky */
 .nav-osb-logo {
   display: none;
-  margin-right: 1.5rem;
+  margin: 1rem 0.5rem 1rem 0;
 }
 
 .nav-osb-logo img {
@@ -419,6 +419,7 @@ h3 {
   justify-content: space-between;
   list-style: none;
   width: 100%;
+  padding: 0; 
   gap: 0.2rem;
 }
 
@@ -430,7 +431,6 @@ h3 {
 .nav-osb-links .osb-nav-item > a {
   display: flex;
   align-items: center;
-  gap: 6px;
   color: #1a202c;
   text-decoration: none;
   font-size: 0.85rem;
@@ -540,7 +540,6 @@ body.nav-scrolled .nav-osb-logo {
 body.nav-scrolled .nav-osb-logo img {
   height: 70px;
   width: auto;
-  padding: 6px 0;
 }
 
 /* dropdowns stay readable when OSB is sticky */
