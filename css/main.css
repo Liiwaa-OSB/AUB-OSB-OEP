@@ -143,6 +143,13 @@ h3 {
   background: var(--color-primary);
 }
 
+/* descriptive text style */
+.section-description {
+    margin: 0 auto 2rem auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 /* ===== BUTTONS ===== */
 .btn {
   display: inline-block;
@@ -1362,18 +1369,25 @@ img {
   }
 }
 
-/* Related programs: 2 columns on tablet, 3 on desktop */
+/* Related programs / Experience Program: 2 columns on tablet, 3 on desktop */
+.experience-grid{
+  display: grid;
+  gap: 1rem;
+}
+.experience-grid,
 .program-grid--related {
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
+  .experience-grid,
   .program-grid--related {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
+  .experience-grid,
   .program-grid--related {
     grid-template-columns: repeat(3, 1fr);
   }
