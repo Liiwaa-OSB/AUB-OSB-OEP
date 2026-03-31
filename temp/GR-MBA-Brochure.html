@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MBA</title>
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script src="build/js/intlTelInput.js"></script>
+    <script src="js/mailchimp-subscribe.js"></script>
+    <script src="js/validatorv2.js"></script>
+
+    <script>
+        var mcurl = 'https://aub.us19.list-manage.com/subscribe/post?u=XXXXXXXXXXXXXXXX';
+    </script>
+
+    <style>
+        :root {
+            --color-primary: #840132;
+            --color-primary-dark: #6a132c;
+            --bg-light: #f3f3f3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-light);
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--color-primary);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+            /* makes logo white if needed */
+        }
+
+        .header h1 {
+            color: white;
+        }
+
+        .header a {
+            background: #fff;
+            color: var(--color-primary);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            background: #eee;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* FORM CARD */
+        .form-card {
+            background: #fff;
+            padding: 30px;
+            border: 1px solid #ddd;
+        }
+
+        .form-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* INPUTS */
+        .wrap-input100 {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .label-input100 {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .input100 {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .input100:focus {
+            border-color: var(--color-primary);
+        }
+
+        /* BUTTON */
+        .contact100-form-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contact100-form-btn:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* FOOTER WRAPPER */
+        footer {
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        /* TOP SECTION (PRIMARY COLOR) */
+        .footer-top {
+            background: var(--color-primary);
+            color: #fff;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+        }
+
+        .footer-bottom {
+            background: #69132c;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links li {
+            display: inline-block;
+        }
+
+        .social-links a {
+            display: block;
+            width: 28px;
+            height: 28px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* ✅ USE SVG URLs (THIS IS THE REAL FIX) */
+        .social-links .social-fb-icon {
+            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/facebook.svg") center no-repeat;
+            background-size: contain;
+        }
+
+        .social-links .social-tw-icon {
+            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/twitter.svg") center no-repeat;
+            background-size: contain;
+        }
+
+        .social-links .social-in-icon {
+            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/linkedin.svg") center no-repeat;
+            background-size: contain;
+        }
+
+        .social-links .social-ig-icon {
+            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/instagram.svg") center no-repeat;
+            background-size: contain;
+        }
+
+        .social-links .social-yt-icon {
+            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/youtube.svg") center no-repeat;
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <img src="images/AUB+OSB-Merged-Logo-white.png" alt="logo">
+        <h1>Master's in Business Administration
+        </h1>
+        <a href="https://www.aub.edu.lb" target="_blank">Visit Website</a>
+    </div>
+
+    <div class="container">
+        <div class="form-card">
+
+            <div class="form-title">
+                Fill the form to access the application
+            </div>
+
+            <form class="contact100-form validate-form" id="myform"
+                action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="post"
+                name="myform">
+
+                <!-- HIDDEN FIELDS (UNCHANGED) -->
+                <input type="hidden" name="oid" value="00D0Y000001Xrwc">
+                <input type="hidden" id="recordType" name="recordType" value="0120Y000000ymGb">
+                <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="7011n000000S0gqAAC">
+                <input type="hidden" id="member_status" name="member_status" value="Interested">
+                <input type="hidden" name="lead_source" id="lead_source" value="Website">
+                <input type="hidden" name="00N0Y00000QGkma" id="00N0Y00000QGkma" value="Brochure MBA">
+                <input type="hidden" name="country_code" id="country_code" value="LB">
+                <input type="hidden" name="campaign" id="campaign" value="">
+                <input type="hidden" name="rating" id="rating" value="Cold">
+                <input type="hidden" id="00N0Y00000RODiR" name="00N0Y00000RODiR" value="Work Email">
+                <input type="hidden" id="00N0Y00000RODr9" name="00N0Y00000RODr9" value="Work Phone">
+                <input type="hidden" name="retURL" value="https://www.aub.edu.lb/osb/MBA/Documents/MBAbrochure.pdf">
+
+                <!-- INPUTS -->
+                <div class="wrap-input100">
+                    <label class="label-input100">First Name</label>
+                    <input class="input100" id="first_name" name="first_name" required type="text">
+                </div>
+
+                <div class="wrap-input100">
+                    <label class="label-input100">Last Name</label>
+                    <input class="input100" id="last_name" name="last_name" required type="text">
+                </div>
+
+                <div class="wrap-input100">
+                    <label class="label-input100">Email</label>
+                    <input class="input100" id="email" name="00N0Y00000QGl8W" required type="text">
+                </div>
+
+                <div class="wrap-input100">
+                    <label class="label-input100">Phone</label>
+                    <input class="input100" id="phone" name="intphone" required type="tel">
+                </div>
+
+                <div class="wrap-input100">
+                    <label class="label-input100">Company</label>
+                    <input class="input100" id="employer" name="00N0Y00000QGku0" required type="text">
+                </div>
+
+                <button class="contact100-form-btn" type="submit" name="submitbtn" id="submitbtn">
+                    DOWNLOAD BROCHURE
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+
+        <!-- TOP FOOTER -->
+        <div class="footer-top">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <em>
+                        By submitting this form you are undertaking that the information provided is accurate.
+                        You are also consenting to processing of your information for the specified purpose
+                        in accordance with relevant data protection laws. The University will maintain
+                        confidentiality of the personal information. The information may be used by the
+                        University to communicate with you and inform you about our programs and higher
+                        education offerings.
+                    </em>
+                </div>
+
+                <div class="footer-copy">
+                    <span>©2020 American University of Beirut, OSB All Rights Reserved.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM FOOTER -->
+        <div class="footer-bottom">
+            <ul class="social-links">
+                <li>
+                    <a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"></a>
+                </li>
+                <li>
+                    <a class="social-tw-icon" href="http://twitter.com/AUB_Lebanon" target="_blank"></a>
+                </li>
+                <li>
+                    <a class="social-in-icon" href="https://www.linkedin.com/company/american-university-of-beirut"
+                        target="_blank"></a>
+                </li>
+                <li>
+                    <a class="social-ig-icon" href="http://instagram.com/aub_lebanon" target="_blank"></a>
+                </li>
+                <li>
+                    <a class="social-yt-icon" href="https://www.youtube.com/aubatlebanon" target="_blank"></a>
+                </li>
+            </ul>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
