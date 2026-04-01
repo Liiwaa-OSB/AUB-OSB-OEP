@@ -1,0 +1,170 @@
+/* Accordion Container */
+.accordion-container {
+  max-width: 720px;
+  width: 100%;
+  background: transparent;
+  margin: 0 auto;
+}
+
+/* Accordion Header / Wrapper */
+.accordion {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* Individual Accordion Item */
+.accordion-item {
+  border-bottom: 1px solid #eef2f6;
+  transition: all 0.2s;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+/* Accordion Title Button (clickable area) */
+.accordion-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 1.25rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+  gap: 1rem;
+  letter-spacing: -0.2px;
+}
+
+.accordion-title:hover {
+  background: #fafcff;
+}
+
+/* .accordion-title:focus-visible {
+            outline: 2px solid #2c7da0;
+            outline-offset: -2px;
+            background: #f8fafd;
+        } */
+
+/* Title text wrapper */
+.title-text {
+  flex: 1;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Icon button (+ / x) - pure CSS / JS managed */
+.accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-bg-light);
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.accordion-title:hover .accordion-icon {
+  background: var(--color-border-light);
+  transform: scale(1.02);
+}
+
+/* Accordion content panel (hidden by default) */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  background: #ffffff;
+  padding: 0 1.5rem;
+}
+
+/* Inner content styling */
+.accordion-content-inner {
+  padding: 0 0 1.5rem 0;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  font-size: 0.96rem;
+  border-top: 1px solid #eef2f6;
+  margin-top: 0;
+}
+
+/* When accordion item is active (open), content gets max-height set via js inline style, but we define base */
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+  /* will be overwritten by JS dynamic measurement for smoothness, but fallback */
+}
+
+/* optional: different spacing for first/last */
+.accordion-item:first-child .accordion-title {
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+
+/* smooth animation for icon rotation/text */
+.accordion-icon {
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+/* Header section / title */
+.faq-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.faq-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e3c4c, #2a5f7a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.faq-header p {
+  color: #4a627a;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Demo extras */
+.attribution {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #5e6f8d;
+}
+
+/* responsive */
+@media (max-width: 560px) {
+  .accordion-title {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .accordion-content-inner {
+    font-size: 0.9rem;
+  }
+
+  .accordion-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 1.3rem;
+  }
+}

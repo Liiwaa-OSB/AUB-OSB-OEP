@@ -1,50 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customized Programs | AUB OSB Executive Education</title>
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="noindex, nofollow" />
 
     <!-- Google Fonts + Lucide + AOS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="../js/main.js" defer></script>
     <script src="../js/menu.js" defer></script>
     <script src="../js/carousel.js" defer></script>
+    <script src="../js/accordion.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Main styles (reset + brand colors) -->
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/accordion.css" />
     <style>
-        /* Override: remove all border-radius, keep sharp corners */
-        * {
-            border-radius: 0 !important;
-        }
-
         /* Use brand identity colors (burgundy) */
         :root {
-            --color-primary: #840132;
-            --color-primary-dark: #6a132c;
             --color-accent: #840132;
             --color-accent-dark: #6a132c;
         }
 
-        body {
-            background: #fff;
-            color: #111;
-            font-family: 'Roboto', sans-serif;
+        .nav-osb-links .osb-nav-item>a#executive-education-link {
+            color: var(--color-primary);
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        body.nav-scrolled .nav-osb .osb-nav-item>a#executive-education-link {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 6px;
         }
+
+        .nav-osb-links .osb-dropdown li a#customized-programs {
+            color: var(--color-primary);
+        }
+
 
         /* Hero video */
         .hero-custom {
@@ -92,7 +90,6 @@
             max-width: 700px;
             margin: 0 auto;
         }
-
 
         /* two-column layout for overview (image first) */
         .overview-grid {
@@ -314,7 +311,6 @@
         }
 
         .logo-item img {
-            max-width: 200px;
             width: 100%;
             height: auto;
             display: inline-block;
@@ -322,34 +318,176 @@
         }
 
         /* faculty cards */
+        /* faculty card - modern design */
         .faculty-card {
-            border: 1px solid #ddd;
-            background: #fff;
-            text-align: center;
+            background: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid #eef2f8;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 40px rgba(0, 0, 0, 0.12);
+            border-color: #cbdde9;
+        }
+
+        /* image container with overlay effect */
+        .faculty-image {
+            position: relative;
+            overflow: hidden;
+            background: #e2e8f0;
         }
 
         .faculty-card img {
             width: 100%;
-            height: 240px;
+            height: 260px;
             object-fit: cover;
-            background: #eee;
+            transition: transform 0.5s ease;
         }
 
+        .faculty-card:hover img {
+            transform: scale(1.03);
+        }
+
+        /* faculty info wrapper */
         .faculty-info {
-            padding: 1.2rem;
+            padding: 1.5rem;
         }
 
         .faculty-name {
             font-weight: 800;
-            font-size: 1.2rem;
-            margin-bottom: 0.25rem;
-            color: var(--color-primary-dark);
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-muted);
+            letter-spacing: -0.2px;
         }
 
         .faculty-title {
             font-size: 0.85rem;
-            color: #666;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .faculty-department {
+            font-size: 0.9rem;
+            color: var(--color-primary-dark);
             margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #e9edf2;
+            font-weight: 500;
+        }
+
+        /* contact details styling (tel & email) */
+        .faculty-contact {
+            margin: 1rem 0 1.25rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            color: #2d3e50;
+            transition: color 0.2s;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-bg-light);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .contact-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--color-primary);
+            stroke-width: 1.8;
+            fill: none;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--color-gray-bg);
+            transform: scale(1.02);
+        }
+
+        .contact-text {
+            color: #000;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .contact-text:hover {
+            color: var(--color-primary-dark);
+            text-decoration: underline;
+        }
+
+        /* button style */
+        .btn-outline-custom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 2px solid var(--color-primary-dark);
+            color: var(--color-primary);
+            font-weight: 700;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            width: fit-content;
+            margin-top: 0.25rem;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateX(4px);
+            border-color: var(--color-primary-dark);
+        }
+
+        /* dummy note */
+        .demo-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        /* responsive adjustments */
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .faculty-info {
+                padding: 1.2rem;
+            }
+
+            .contact-item {
+                font-size: 0.8rem;
+            }
+
+            .btn-outline-custom {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.8rem;
+            }
         }
 
         /* team learning & benefits */
@@ -415,13 +553,6 @@
             }
         }
 
-
-
-
-
-
-
-
         .section-divider {
             margin-top: 2rem;
             margin-bottom: 2rem;
@@ -477,10 +608,10 @@
             color: #5b6e8c;
         }
     </style>
+
 </head>
 
 <body>
-
     <div class="nav">
         <!-- UTILITY BAR (desktop only) -->
         <div class="nav-utility">
@@ -596,8 +727,7 @@
                                         </li>
                                         <li>
                                             <a href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg"
-                                                target="_blank">Search
-                                                for a Course</a>
+                                                target="_blank">Search for a Course</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -645,8 +775,7 @@
                                         <li><a href="/faid">Financial Aid</a></li>
                                         <li>
                                             <a href="http://www.aub.edu.lb/admissions/Pages/TC/index.html"
-                                                target="_blank">Tuition and Fees
-                                                Calculator</a>
+                                                target="_blank">Tuition and Fees Calculator</a>
                                         </li>
                                         <li>
                                             <a href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx"
@@ -868,8 +997,7 @@
                                 </li>
                                 <li>
                                     <a href="/osb/about/Pages/Olayan-.aspx" id="about-suliman-saleh-olayan">About
-                                        Suliman Saleh
-                                        Olayan</a>
+                                        Suliman Saleh Olayan</a>
                                 </li>
                                 <li>
                                     <a href="https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx" target="_blank"
@@ -877,24 +1005,21 @@
                                 </li>
                                 <li>
                                     <a href="/osb/about/Pages/Global-Recognition-.aspx"
-                                        id="global-recognitions-labels">Global
-                                        Recognitions & Labels</a>
+                                        id="global-recognitions-labels">Global Recognitions & Labels</a>
                                 </li>
                                 <li>
                                     <a href="/osb/about/Pages/Governance.aspx" id="governance">Governance</a>
                                 </li>
                                 <li>
                                     <a href="/osb/about/Pages/recources.aspx" id="faculty-staff-resources">Faculty and
-                                        Staff
-                                        Resources</a>
+                                        Staff Resources</a>
                                 </li>
                                 <li>
                                     <a href="/osb/125/Pages/default.aspx" target="_blank" id="osb-125">OSB 125</a>
                                 </li>
                                 <li>
                                     <a href="https://sites.aub.edu.lb/osb2029/" target="_blank"
-                                        id="osb-strategic-plan-2029">OSB
-                                        Strategic Plan 2029</a>
+                                        id="osb-strategic-plan-2029">OSB Strategic Plan 2029</a>
                                 </li>
                                 <li>
                                     <a href="https://www.aub.edu.lb/osb/about/Pages/Employment.aspx" target="_blank"
@@ -912,8 +1037,7 @@
                                 </li>
                                 <li>
                                     <a href="/osb/Pages/SpecializedMasters.aspx" target="_blank"
-                                        id="specialized-masters">Specialized
-                                        Masters</a>
+                                        id="specialized-masters">Specialized Masters</a>
                                 </li>
                                 <li>
                                     <a href="/osb/MBA" target="_blank" id="mba">MBA</a>
@@ -934,13 +1058,11 @@
                             <ul class="osb-dropdown">
                                 <li>
                                     <a href="/osb/executive-education/OEP" target="_blank"
-                                        id="open-enrollment-programs">Open Enrollment
-                                        Programs</a>
+                                        id="open-enrollment-programs">Open Enrollment Programs</a>
                                 </li>
                                 <li>
                                     <a href="/osb/executive-education/CP" target="_blank"
-                                        id="customized-programs">Customized
-                                        Programs</a>
+                                        id="customized-programs">Customized Programs</a>
                                 </li>
                             </ul>
                         </li>
@@ -951,28 +1073,26 @@
                                 <li>
                                     <a href="https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx"
                                         target="_blank" id="entrepreneurship-innovation-online-diploma">Entrepreneurship
-                                        & Innovation
-                                        Online Graduate Professional
-                                        Diploma</a>
+                                        & Innovation Online Graduate
+                                        Professional Diploma</a>
                                 </li>
                                 <li>
                                     <a href="https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx"
                                         target="_blank" id="combating-trade-based-financial-crime-certificate">Combating
-                                        Trade-Based
-                                        Financial Crime Online Certificate</a>
+                                        Trade-Based Financial Crime Online
+                                        Certificate</a>
                                 </li>
                                 <li>
                                     <a href="https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx"
                                         target="_blank" id="strategic-branding-digital-era-diploma">Strategic Branding
-                                        in the Digital Era Online
-                                        Diploma</a>
+                                        in the Digital Era Online Diploma</a>
                                 </li>
                                 <li>
                                     <a href="https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx"
                                         target="_blank"
                                         id="investment-analysis-modern-portfolio-management-diploma">Investment Analysis
-                                        and Modern Portfolio Management Online Graduate
-                                        Professional Diploma</a>
+                                        and Modern Portfolio Management
+                                        Online Graduate Professional Diploma</a>
                                 </li>
                             </ul>
                         </li>
@@ -992,8 +1112,7 @@
                         <!-- OSB Impacts -->
                         <li class="osb-nav-item">
                             <a href="https://www.aub.edu.lb/osb/impact/Pages/default.aspx" target="_blank"
-                                id="osb-impacts">OSB
-                                Impacts</a>
+                                id="osb-impacts">OSB Impacts</a>
                         </li>
                         <!-- "Recent" hidden item (present but not shown visually) -->
                         <li class="osb-nav-item" style="display: none">
@@ -1008,13 +1127,16 @@
         <!-- Video banner -->
         <div class="hero-custom" data-aos="fade">
             <video autoplay muted loop playsinline>
-                <source src="../videos/AUB-OSB-OEP-Programs-banner.mp4" type="video/mp4">
+                <source src="../videos/AUB-OSB-CP-banner-video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div class="overlay"></div>
             <div class="hero-content">
                 <h1>Customized Programs</h1>
-                <p>Tailored learning solutions for your organization’s unique challenges</p>
+                <p>
+                    Tailored learning solutions for your organization’s unique
+                    challenges
+                </p>
             </div>
         </div>
 
@@ -1026,12 +1148,16 @@
                         <img src="../images/black.png" alt="Innovation workshop" />
                     </div>
                     <div class="overview-grid__text">
-                        <h2 class="section-title">Overview</h2>
+                        <h2 class="section-title">Custom Programs</h2>
                         <p>
-                            OSB Executive Education partners with you to design courses that specifically meet your
-                            organization's development goals. Our team of experts develop unique learning experiences
-                            specifically tailored for the skill sets of your leaders and executives. Our programs can be
-                            delivered worldwide or on campus according to your convenience.
+                            Enhance the management and leadership capabilities of your
+                            organization to sustain and grow your business performance. OSB
+                            Executive Education partners with you to design courses that
+                            specifically meet your organization's development goals. Our
+                            team of experts develop unique learning experiences specifically
+                            tailored for the skill sets of your leaders and executives. Our
+                            programs can be delivered worldwide or on campus according to
+                            your convenience.
                         </p>
                     </div>
                 </div>
@@ -1041,32 +1167,37 @@
         <!-- Featured Solutions (cards with lorem ipsum) -->
         <div class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Featured Solutions</h2>
                 <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
                     <div class="custom-card">
-                        <img src="../images/black.png" alt="placeholder">
+                        <img src="../images/black.png" alt="placeholder" />
                         <div class="custom-card-content">
                             <div class="custom-card-title">Lorem ipsum dolor</div>
-                            <div class="custom-card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                            <div class="custom-card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </div>
                             <a href="#" class="btn-outline-custom">Learn more →</a>
                         </div>
                     </div>
                     <div class="custom-card">
-                        <img src="../images/black.png" alt="placeholder">
+                        <img src="../images/black.png" alt="placeholder" />
                         <div class="custom-card-content">
                             <div class="custom-card-title">Consectetur adipiscing</div>
-                            <div class="custom-card-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat.</div>
+                            <div class="custom-card-text">
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
                             <a href="#" class="btn-outline-custom">Learn more →</a>
                         </div>
                     </div>
                     <div class="custom-card">
-                        <img src="../images/black.png" alt="placeholder">
+                        <img src="../images/black.png" alt="placeholder" />
                         <div class="custom-card-content">
                             <div class="custom-card-title">Elit sed do eiusmod</div>
-                            <div class="custom-card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur.</div>
+                            <div class="custom-card-text">
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur.
+                            </div>
                             <a href="#" class="btn-outline-custom">Learn more →</a>
                         </div>
                     </div>
@@ -1077,41 +1208,74 @@
         <!-- Customization Process: Our Approach -->
         <div class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Customization Process: Our Approach</h2>
-                <p class="section-sub" data-aos="fade-up" data-aos-delay="50">We collaborate with you to design programs
-                    that specifically meet your organization's development goals. Our team of experts develop unique
-                    learning experiences tailored for the skill sets of your leaders and executives. Our programs can be
-                    delivered worldwide or on campus according to your convenience.</p>
+                <h2 class="section-title" data-aos="fade-up">
+                    Customization Process: Our Approach
+                </h2>
+                <p class="section-description" data-aos="fade-up" data-aos-delay="50">
+                    We collaborate with you to design programs that specifically meet
+                    your organization's development goals. Our team of experts develop
+                    unique learning experiences tailored for the skill sets of your
+                    leaders and executives. Our programs can be delivered worldwide or
+                    on campus according to your convenience. Throughout our programs we
+                    integrate best practices, case studies, toolkits, and frameworks to
+                    enable your executives to transfer the knowledge back to the
+                    workplace and apply their learning effectively.
+                </p>
+                <p class="section-description" data-aos="fade-up" data-aos-delay="50"> Your program's
+                    development process begins with the completion of a Preliminary
+                    Needs Assessment that helps us learn more about your organization.
+                    We will then analyze your need to design, develop, and implement an
+                    academically fit program.
+                </p>
+                <p class="section-description" data-aos="fade-up" data-aos-delay="50"></p>Learn more about our work
+                process and
+                how
+                we can partner with you.
+                </p>
 
                 <!-- Wide portrait image -->
                 <div class="wide-image" data-aos="fade-up">
-                    <img src="../images/black.png" alt="customization process">
+                    <img src="../images/black.png" alt="customization process" />
                 </div>
+
+
 
                 <!-- Steps 1-4 cards -->
                 <div class="steps-grid" data-aos="fade-up" data-aos-delay="100">
                     <div class="step-card">
-                        <div class="step-number">01</div>
-                        <div class="step-title">Discovery & Assessment</div>
-                        <div class="step-desc">We analyze your strategic goals, culture, and capability gaps through
-                            deep consultation.</div>
+                        <div class="step-number">STEP 01</div>
+                        <div class="step-title">NEEDS ASSESSMENT</div>
+                        <div class="step-desc">
+                            Discuss objectives, desired outcomes, and expectations while assessing the organization’s
+                            background, culture, and challenges.
+                            Define program goals and scope to ensure relevance, alignment, and high impact.
+                        </div>
                     </div>
                     <div class="step-card">
-                        <div class="step-number">02</div>
-                        <div class="step-title">Co‑Creation</div>
-                        <div class="step-desc">Jointly design curriculum, format, and learning journey with your
-                            stakeholders.</div>
+                        <div class="step-number">STEP 02</div>
+                        <div class="step-title">DESIGN</div>
+                        <div class="step-desc">
+                            Collaboratively develop tailored curriculum, instructional methods, and feedback tools based
+                            on identified needs.
+                            Ensure the program structure aligns with objectives and maximizes learning effectiveness.
+                        </div>
                     </div>
                     <div class="step-card">
-                        <div class="step-number">03</div>
-                        <div class="step-title">Delivery & Engagement</div>
-                        <div class="step-desc">World-class faculty deliver immersive, interactive sessions on‑site or
-                            online.</div>
+                        <div class="step-number">STEP 03</div>
+                        <div class="step-title">DELIVERY</div>
+                        <div class="step-desc">
+                            Deliver the program through flexible formats, combining engaging content with a high-quality
+                            teaching experience.
+                            Align learning delivery with organizational culture, schedules, and participant needs.
+                        </div>
                     </div>
                     <div class="step-card">
-                        <div class="step-number">04</div>
-                        <div class="step-title">Impact & Evolution</div>
-                        <div class="step-desc">Measure outcomes and refine programs for sustained organizational growth.
+                        <div class="step-number">STEP 04</div>
+                        <div class="step-title">IMPACT</div>
+                        <div class="step-desc">
+                            Measure program effectiveness through evaluations, surveys, and performance insights.
+                            Summarize outcomes and provide recommendations as part of a follow-up and continuous
+                            improvement process.
                         </div>
                     </div>
                 </div>
@@ -1121,47 +1285,95 @@
         <!-- Active Learning Experience (testimonials) -->
         <div class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Active Learning Experience</h2>
-                <div class="testimonials-grid" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-item">
-                        <div class="testimonial-quote">“The customized program blended theory with real‑world
-                            simulations, enabling our executives to apply insights immediately. The facilitators adapted
-                            to our industry context seamlessly.”</div>
-                        <div class="testimonial-author">Lina Mansour</div>
-                        <div class="testimonial-role">Chief Learning Officer, regional bank</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-quote">“Our leadership team experienced a tangible shift in strategic
-                            thinking. The hands-on workshops and peer learning were exceptional.”</div>
-                        <div class="testimonial-author">Rami Khalil</div>
-                        <div class="testimonial-role">VP HR, multinational FMCG</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-quote">“A truly bespoke journey that addressed our specific digital
-                            transformation hurdles. Highly recommended for any organization serious about upskilling.”
-                        </div>
-                        <div class="testimonial-author">Nadia Haddad</div>
-                        <div class="testimonial-role">Director of Innovation, tech firm</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-quote">“From design to delivery, the partnership was flawless. Our
-                            managers returned with actionable strategies and renewed motivation.”</div>
-                        <div class="testimonial-author">Fadi Abou Zeid</div>
-                        <div class="testimonial-role">CEO, family business group</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <h2 class="section-title" data-aos="fade-up">
+                    Active Learning Experience
+                </h2>
+                <div class="carousel js-carousel carousel-5" data-carousel>
+                    <!-- previous button -->
+                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
+                        &#10094;
+                    </button>
 
-        <!-- Partners (logos) -->
-        <div class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Selected Clients Partner With</h2>
-                <div class="logos-grid" data-aos="fade-up" data-aos-delay="100">
-                    <div class="logo-item"><img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo"></div>
-                    <div class="logo-item"><img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo"></div>
-                    <div class="logo-item"><img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo"></div>
-                    <div class="logo-item"><img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo"></div>
+                    <!-- scrollable container -->
+                    <div class="carousel__container js-carousel-container">
+                        <div class="carousel__track js-carousel-track">
+                            <!-- original 3 cards (exact same content) -->
+                            <div class="carousel__slide two-slides">
+
+                                <div class="testimonial-item">
+                                    <div class="testimonial-quote">
+                                        “I would recommend it to managers with high potential. AMP gave me the
+                                        opportunity to
+                                        review, refresh and update my knowledge about management in banking industry. It
+                                        highlighted
+                                        the banking trend in the future through social media, customer segmentation,
+                                        etc. More
+                                        importantly, it stimulated in me the need to be aware when taking decisions in
+                                        both inside
+                                        and outside the working environment in order to check the impact of my decisions
+                                        on others.
+                                        I would say that AMP made me more self-conscious, more motivated and more loyal
+                                        to Bank
+                                        Audi. It gave me the opportunity to explore more my colleagues and benefit from
+                                        their
+                                        strengths and competencies."
+                                    </div>
+                                    <div class="testimonial-author">Carol Abou Jaoude,</div>
+                                    <div class="testimonial-role">
+                                        Bank Audi  | Regional Manager
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="carousel__slide two-slides">
+
+                                <div class="testimonial-item">
+                                    <div class="testimonial-quote">
+                                        “Great program with highly relevant material for our evolutionary stage as an
+                                        organization.
+                                        Every week we have many things that we can directly implement at our
+                                        organization. We meet
+                                        excellent high caliber participants with whom we share knowledge and expertise.
+                                        Professionally, this program has enabled me to take a different view of our
+                                        organization and
+                                        rethink the way we work every day with a helicopter view."
+                                    </div>
+                                    <div class="testimonial-author">Jalil Allabadi,</div>
+                                    <div class="testimonial-role">Al Tibbi  | Managing Partner</div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="carousel__slide two-slides">
+
+                                <div class="testimonial-item">
+                                    <div class="testimonial-quote">
+                                        "It was a great training, subjects were chosen carefully, examples and workshops
+                                        were
+                                        perfectly tailored to Hikma's business. The pre-reading materials were excellent
+                                        and
+                                        assignments made the final outcome of great value."
+                                    </div>
+                                    <div class="testimonial-author">Ahmad Nazzal,</div>
+                                    <div class="testimonial-role">
+                                        Hikma  |  Marketing Manager​
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                        <!-- /track -->
+                    </div>
+                    <!-- /container -->
+
+                    <!-- next button -->
+                    <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
+                        &#10095;
+                    </button>
                 </div>
             </div>
         </div>
@@ -1169,12 +1381,14 @@
         <!-- Discuss Your Program -->
         <div class="cta-custom" data-aos="fade-up">
             <div class="container">
-                <h2>Discuss Your Program</h2>
-                <p style="max-width: 700px; margin: 0 auto 1rem;">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <button class="btn-large" onclick="alert('Contact our team at execed@aub.edu.lb')">Start a
-                    conversation</button>
+                <h2>Discuss your program customization</h2>
+                <p style="max-width: 700px; margin: 0 auto 1rem">
+                    Are you ready to start a conversation? We welcome the opportunity to discuss your interest in a
+                    custom program. Contact us and we'll help you find the best choice for you and your organization.
+                </p>
+                <button class="btn-large" onclick="alert('Contact our team at execed@aub.edu.lb')">
+                    Start a conversation
+                </button>
             </div>
         </div>
 
@@ -1183,28 +1397,119 @@
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">Our Faculty Experts</h2>
                 <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
+
+                    <!-- Card 1: Gary Saliba -->
                     <div class="faculty-card">
-                        <img src="../images/black.png" alt="faculty">
+                        <div class="faculty-image">
+                            <img src="../images/black.png" alt="Gary Saliba - Faculty Expert">
+                        </div>
                         <div class="faculty-info">
-                            <div class="faculty-name">John Doe</div>
-                            <div class="faculty-title">Professor of Strategy</div>
-                            <a href="#" class="btn-outline-custom" style="margin-top: 0.5rem;">View profile</a>
+                            <div class="faculty-name">Gary Saliba</div>
+                            <div class="faculty-title">Business Development Executive</div>
+                            <div class="faculty-department">
+                                Executive Education Programs
+                            </div>
+
+                            <!-- Contact details: tel & email with icons -->
+                            <div class="faculty-contact">
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
+                                            <path
+                                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                        </svg>
+                                    </span>
+                                    <a href="tel:+1234567890" class="contact-text">+961 1 374 374 <strong>Ext:</strong>
+                                        3748</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
+                                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                                            <polyline points="22,7 12,13 2,7"></polyline>
+                                        </svg>
+                                    </span>
+                                    <a href="mailto:gary.saliba@example.com" class="contact-text">gs52@aub.edu.lb​​​</a>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-outline-custom">View profile →</a>
                         </div>
                     </div>
+
+                    <!-- Card 2: Jane Smith -->
                     <div class="faculty-card">
-                        <img src="../images/black.png" alt="faculty">
+                        <div class="faculty-image">
+                            <img src="../images/black.png" alt="Jane Smith - Faculty Expert">
+                        </div>
                         <div class="faculty-info">
                             <div class="faculty-name">Jane Smith</div>
                             <div class="faculty-title">Executive Leadership Coach</div>
-                            <a href="#" class="btn-outline-custom" style="margin-top: 0.5rem;">View profile</a>
+                            <div class="faculty-department">
+                                Leadership Development • C-Suite Advisory
+                            </div>
+
+                            <div class="faculty-contact">
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
+                                            <path
+                                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                        </svg>
+                                    </span>
+                                    <a href="tel:+1987654321" class="contact-text">+1 (555) 876-5432</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
+                                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                                            <polyline points="22,7 12,13 2,7"></polyline>
+                                        </svg>
+                                    </span>
+                                    <a href="mailto:jane.smith@example.com"
+                                        class="contact-text">jane.smith@example.com</a>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-outline-custom">View profile →</a>
                         </div>
                     </div>
+
+                    <!-- Card 3: Michael Lee -->
                     <div class="faculty-card">
-                        <img src="../images/black.png" alt="faculty">
+                        <div class="faculty-image">
+                            <img src="../images/black.png" alt="Michael Lee - Faculty Expert">
+                        </div>
                         <div class="faculty-info">
                             <div class="faculty-name">Michael Lee</div>
                             <div class="faculty-title">Organizational Behavior</div>
-                            <a href="#" class="btn-outline-custom" style="margin-top: 0.5rem;">View profile</a>
+                            <div class="faculty-department">
+                                Change Management • Team Dynamics
+                            </div>
+
+                            <div class="faculty-contact">
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
+                                            <path
+                                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                        </svg>
+                                    </span>
+                                    <a href="tel:+15551234567" class="contact-text">+1 (555) 123-4567</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
+                                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                                            <polyline points="22,7 12,13 2,7"></polyline>
+                                        </svg>
+                                    </span>
+                                    <a href="mailto:michael.lee@example.com"
+                                        class="contact-text">michael.lee@example.com</a>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-outline-custom">View profile →</a>
                         </div>
                     </div>
                 </div>
@@ -1214,76 +1519,200 @@
         <!-- Team Learning & Benefits with testimonials -->
         <div class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Team Learning & Benefits</h2>
-                <div class="exec-option-card__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                    anim id est laborum.</div>
+                <h2 class="section-title" data-aos="fade-up">
+                    Team Learning & Benefits
+                </h2>
+                <div class="exec-option-card__desc">
+                    <p>Active learning experiences that combine profession skills with a solid foundation of business
+                        concepts and tools.
+                    </p>
+                    <p>Hear it from our clients.</p>
+                </div>
                 <div class="section-divider"></div>
 
-                <!-- Additional testimonials -->
-                <div data-aos="fade-up" data-aos-delay="200">
+                <!-- Horizontal Testimonials Carousel -->
+                <div class="carousel js-carousel carousel-5" data-carousel>
+                    <!-- previous button -->
+                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
+                        &#10094;
+                    </button>
+
+                    <!-- scrollable container -->
+                    <div class="carousel__container js-carousel-container">
+                        <div class="carousel__track js-carousel-track">
+                            <!-- original 3 cards (exact same content) -->
+                            <div class="carousel__slide one-slide">
+                                <div class="testimonial-card-horizontal">
+                                    <div class="testimonial-card-horizontal__image">
+                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
+                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
+                                    </div>
+                                    <div class="testimonial-card-horizontal__content">
+                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
+                                        <p class="testimonial-card-horizontal__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Sed do eiusmod tempor incididunt.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel__slide one-slide">
+
+                                <div class="testimonial-card-horizontal">
+                                    <div class="testimonial-card-horizontal__image">
+                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
+                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
+                                    </div>
+                                    <div class="testimonial-card-horizontal__content">
+                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
+                                        <p class="testimonial-card-horizontal__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Sed do eiusmod tempor incididunt.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="carousel__slide one-slide">
+                                <div class="testimonial-card-horizontal">
+                                    <div class="testimonial-card-horizontal__image">
+                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
+                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
+                                    </div>
+                                    <div class="testimonial-card-horizontal__content">
+                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
+                                        <p class="testimonial-card-horizontal__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Sed do eiusmod tempor incididunt.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="carousel__slide one-slide">
+                                <div class="testimonial-card-horizontal">
+                                    <div class="testimonial-card-horizontal__image">
+                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
+                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
+                                    </div>
+                                    <div class="testimonial-card-horizontal__content">
+                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
+                                        <p class="testimonial-card-horizontal__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Sed do eiusmod tempor incididunt.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="carousel__slide one-slide">
+                                <div class="testimonial-card-horizontal">
+                                    <div class="testimonial-card-horizontal__image">
+                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
+                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
+                                    </div>
+                                    <div class="testimonial-card-horizontal__content">
+                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
+                                        <p class="testimonial-card-horizontal__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Sed do eiusmod tempor incididunt.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /track -->
+                    </div>
+                    <!-- /container -->
+
+                    <!-- next button -->
+                    <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
+                        &#10095;
+                    </button>
+                </div>
+
+                <!-- Additional testimonials carousel (vertical cards) -->
+                <div data-aos="fade-up" data-aos-delay="200" style="display:none;">
                     <div class="carousel js-carousel carousel-3" data-carousel>
                         <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous"
-                            disabled>❮</button>
+                            disabled>
+                            ❮
+                        </button>
                         <div class="carousel__container js-carousel-container">
                             <div class="carousel__track js-carousel-track">
                                 <div class="carousel__slide">
                                     <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">“The mix of theory and real case studies
-                                            made me immediately apply pricing frameworks. World-class faculty.”</div>
+                                        <div class="testimonial-card__quote">
+                                            “The mix of theory and real case studies made me
+                                            immediately apply pricing frameworks. World-class
+                                            faculty.”
+                                        </div>
                                         <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar"
-                                                style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg'); background-size: cover;">
-                                            </div>
+                                            <div class="testimonial-card__avatar" style="
+                                    background-image: url(&quot;https://randomuser.me/api/portraits/women/44.jpg&quot;);
+                                    background-size: cover;
+                                  "></div>
                                             <div>
                                                 <div class="testimonial-card__name">Rana H.</div>
-                                                <div class="testimonial-card__role">Pricing Director, Retail Corp</div>
+                                                <div class="testimonial-card__role">
+                                                    Pricing Director, Retail Corp
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">“Design Thinking shifted our whole
-                                            innovation culture. Highly interactive and transformative.”</div>
+                                        <div class="testimonial-card__quote">
+                                            “Design Thinking shifted our whole innovation culture.
+                                            Highly interactive and transformative.”
+                                        </div>
                                         <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar"
-                                                style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg'); background-size: cover;">
-                                            </div>
+                                            <div class="testimonial-card__avatar" style="
+                                    background-image: url(&quot;https://randomuser.me/api/portraits/men/32.jpg&quot;);
+                                    background-size: cover;
+                                  "></div>
                                             <div>
                                                 <div class="testimonial-card__name">Karim M.</div>
-                                                <div class="testimonial-card__role">Head of Strategy, Fintech</div>
+                                                <div class="testimonial-card__role">
+                                                    Head of Strategy, Fintech
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">“AI in Supply Chain gave me the confidence
-                                            to lead digital transformation. The networking was invaluable.”</div>
+                                        <div class="testimonial-card__quote">
+                                            “AI in Supply Chain gave me the confidence to lead
+                                            digital transformation. The networking was invaluable.”
+                                        </div>
                                         <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar"
-                                                style="background-image: url('https://randomuser.me/api/portraits/men/75.jpg'); background-size: cover;">
-                                            </div>
+                                            <div class="testimonial-card__avatar" style="
+                                    background-image: url(&quot;https://randomuser.me/api/portraits/men/75.jpg&quot;);
+                                    background-size: cover;
+                                  "></div>
                                             <div>
                                                 <div class="testimonial-card__name">Omar K.</div>
-                                                <div class="testimonial-card__role">Logistics Director</div>
+                                                <div class="testimonial-card__role">
+                                                    Logistics Director
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">“A transformative learning experience that
-                                            helped me structure our family business governance for future generations.”
+                                        <div class="testimonial-card__quote">
+                                            “A transformative learning experience that helped me
+                                            structure our family business governance for future
+                                            generations.”
                                         </div>
                                         <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar"
-                                                style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg'); background-size: cover;">
-                                            </div>
+                                            <div class="testimonial-card__avatar" style="
+                                    background-image: url(&quot;https://randomuser.me/api/portraits/women/68.jpg&quot;);
+                                    background-size: cover;
+                                  "></div>
                                             <div>
                                                 <div class="testimonial-card__name">Layla S.</div>
                                                 <div class="testimonial-card__role">Board Member</div>
@@ -1293,7 +1722,152 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">❯</button>
+                        <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
+                            ❯
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partners (logos) -->
+        <div class="section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">
+                    Selected Clients We Partner With
+                </h2>
+                <div class="carousel js-carousel carousel-5" data-carousel>
+                    <!-- previous button -->
+                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
+                        &#10094;
+                    </button>
+
+                    <!-- scrollable container -->
+                    <div class="carousel__container js-carousel-container">
+                        <div class="carousel__track js-carousel-track">
+                            <!-- original 3 cards (exact same content) -->
+                            <div class="carousel__slide">
+                                <div class="logo-item">
+                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
+                                </div>
+                            </div>
+                            <div class="carousel__slide">
+                                <div class="logo-item">
+                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
+                                </div>
+
+                            </div>
+                            <div class="carousel__slide">
+                                <div class="logo-item">
+                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
+                                </div>
+
+                            </div>
+                            <div class="carousel__slide">
+                                <div class="logo-item">
+                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
+                                </div>
+
+                            </div>
+                            <div class="carousel__slide">
+                                <div class="logo-item">
+                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /track -->
+                    </div>
+                    <!-- /container -->
+
+                    <!-- next button -->
+                    <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
+                        &#10095;
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container text-center">
+                <h2 class="section-title" data-aos="fade-up">
+                    Frequently Asked Questions
+                </h2>
+                <div class="accordion-container">
+                    <div class="accordion" id="accordionRoot">
+                        <!-- Accordion Item 1 -->
+                        <div class="accordion-item" data-accordion-item="1">
+                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-1">
+                                <span class="title-text">1 - Needs Assessment</span>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="accordion-content" id="accordion-content-1" role="region"
+                                aria-labelledby="accordion-title-1">
+                                <div class="accordion-content-inner">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="accordion-item" data-accordion-item="2">
+                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-2">
+                                <span class="title-text">2 - Program Design</span>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="accordion-content" id="accordion-content-2" role="region"
+                                aria-labelledby="accordion-title-2">
+                                <div class="accordion-content-inner">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="accordion-item" data-accordion-item="3">
+                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-3">
+                                <span class="title-text">3 - Program Delivery</span>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="accordion-content" id="accordion-content-3" role="region"
+                                aria-labelledby="accordion-title-3">
+                                <div class="accordion-content-inner">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="accordion-item" data-accordion-item="4">
+                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-4">
+                                <span class="title-text">4 - Measuring Impact</span>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="accordion-content" id="accordion-content-4" role="region"
+                                aria-labelledby="accordion-title-4">
+                                <div class="accordion-content-inner">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum. </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1445,7 +2019,7 @@
         AOS.init({
             duration: 800,
             once: true,
-            offset: 100
+            offset: 100,
         });
     </script>
 </body>

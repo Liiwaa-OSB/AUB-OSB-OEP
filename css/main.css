@@ -10,7 +10,7 @@ body {
   color: #000;
   background: #fff;
   line-height: 1.6;
-  padding-top: 0;
+  padding-top: 0 !important;
 }
 
 /* ===== DESIGN TOKENS ===== */
@@ -122,26 +122,8 @@ h3 {
   margin-bottom: 1rem;
 }
 
-.section-title--center {
-  font-size: var(--section-title-size);
-  font-weight: 700;
-  color: var(--color-text-muted);
-  display: block;
-  position: relative;
-  padding-bottom: 12px;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.section-title--center::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -5px;
-  width: 60%;
-  height: 4px;
-  background: var(--color-primary);
+.text-center {
+  text-align: center !important;
 }
 
 /* descriptive text style */
@@ -500,7 +482,6 @@ h3 {
 }
 
 .nav-osb-links .osb-dropdown li a:hover {
-  background-color: #f7fafc;
   color: var(--color-primary);
 }
 
@@ -1042,7 +1023,7 @@ body.menu-open {
   opacity: 0.9;
 }
 
-/* ===== CARD STYLES (exactly as provided, untouched) ===== */
+/* ===== Participants CARD STYLES (exactly as provided, untouched) ===== */
 .participant-card {
   background: #fff;
   overflow: hidden;
@@ -1091,10 +1072,121 @@ body.menu-open {
   line-height: 1.5;
 }
 
+/* ===== Testimonials CARD STYLES (HORIZONTAL) ===== */
+.testimonial-card-horizontal {
+  background: #fff;
+  border: 1px solid var(--color-border-light, #e5e7eb);
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+
+.testimonial-card-horizontal:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card-horizontal__image {
+  flex-shrink: 0;
+  width: 40%; /* Image takes 40% of card width */
+  overflow: hidden;
+}
+
+.testimonial-card-horizontal__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonial-card-horizontal__content {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.testimonial-card-horizontal__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #4b5563);
+  margin-bottom: 0.75rem;
+}
+
+.testimonial-card-horizontal__text {
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Responsive - stack on mobile */
+@media (max-width: 768px) {
+  .testimonial-card-horizontal {
+    flex-direction: column;
+  }
+  
+  .testimonial-card-horizontal__image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .testimonial-card-horizontal__content {
+    padding: 1.5rem;
+  }
+}
+
+/* ===== ORIGINAL TESTIMONIAL CARD STYLES (kept for second carousel) ===== */
+.testimonial-card {
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card__quote {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonial-card__profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  flex-shrink: 0;
+}
+
+.testimonial-card__name {
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.testimonial-card__role {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Original participant-card styles removed as requested */
+
 /* ===== CAROUSEL (dynamic, reusable) ===== */
 .carousel {
   position: relative;
-  margin-bottom: 3rem;
 }
 
 /* container with native horizontal scroll + snap */
@@ -1142,6 +1234,35 @@ body.menu-open {
     width: 100% !important; /* 1 slide – gap only between slides when scrolling */
   }
 }
+
+
+/* Desktop: 1 slides per view (default) */
+.carousel__slide.one-slide {
+  width: 100% !important;
+}
+
+
+/* Desktop: 2 slides per view (default) */
+.carousel__slide.two-slides {
+  width: calc((100% - 3rem) / 2); 
+}
+
+/* Tablet: 2 slides per view */
+@media (max-width: 1024px) {
+  /* adjust breakpoint as needed */
+  .carousel__slide.two-slides {
+    width: calc((100% - 1.5rem) / 2); /* 2 slides → 1 gap of 1.5rem */
+  }
+}
+
+/* Mobile: 1 slide per view */
+@media (max-width: 640px) {
+  .carousel__slide.two-slides {
+    width: 100% !important; /* 1 slide – gap only between slides when scrolling */
+  }
+}
+ 
+
 
 /* carousel buttons (prev/next) */
 .carousel__btn {
