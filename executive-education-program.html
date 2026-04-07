@@ -23,12 +23,6 @@
     <!-- Main Styles + additional custom styles for this page -->
     <link rel="stylesheet" href="css/main.css" />
     <style>
-      /* additional / unique styling for Executive Education landing page */
-      :root {
-        --exec-option-glow: rgba(132, 1, 50, 0.08);
-        --card-border-soft: #f0f0f0;
-      }
-
       .nav-osb-links .osb-nav-item > a#executive-education-link {
         color: var(--color-primary);
       }
@@ -41,234 +35,138 @@
     </style>
     <style>
       /* two-card grid: responsive */
-      .exec-option-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+  .exec-option-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 
-      @media (min-width: 768px) {
-        .exec-option-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-        }
-      }
+  @media (min-width: 768px) {
+    .exec-option-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
 
-      /* ===== BASE BUTTON STYLES (shared by both button types) ===== */
-/* two-card grid: responsive */
-      .exec-option-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+  /* ========= CARD BASE ========= */
+  /* no border-radius anywhere on cards or buttons */
+  .exec-option-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: none;
+    overflow: hidden; /* keep image corners sharp as well */
+  }
 
-      @media (min-width: 768px) {
-        .exec-option-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-        }
-      }
+  /* Card hover effect (lift) */
+  .exec-option-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 36px rgba(0, 0, 0, 0.12);
+  }
 
-      /* ========= CARD BASE ========= */
-      /* no border-radius anywhere on cards or buttons */
-      .exec-option-card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        border: none;
-        overflow: hidden; /* keep image corners sharp as well */
-      }
+  /* BOTH CARDS: Light background, dark text (same as current second card) */
+  .exec-option-card {
+    background-color: var(--color-border-light);
+    color: #1e2a3a;
+  }
 
-      /* Card hover effect (lift) */
-      .exec-option-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 22px 36px rgba(0, 0, 0, 0.12);
-      }
+  /* IMAGE SECTION – flush top, no padding, no margin */
+  .exec-option-card__image {
+    width: 100%;
+    display: block;
+    line-height: 0;
+    background: transparent;
+  }
 
-      /* ----- CARD 1: DARK BACKGROUND, WHITE TEXT ----- */
-      .exec-option-card:first-child {
-        background-color: var(
-          --color-dark-gray
-        ); /* deep navy/dark solid background */
-        color: white;
-      }
+  .exec-option-card__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    background: #ccc;
+  }
 
-      /* ----- CARD 2: LIGHT BACKGROUND, DARK TEXT ----- */
-      .exec-option-card:last-child {
-        background-color: var(
-          --color-border-light
-        ); /* soft light gray/off-white solid background */
-        color: #1e2a3a;
-      }
+  /* CONTENT area: padding only inside, not affecting image */
+  .exec-option-card__content {
+    padding: 2rem 1.8rem 2.2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 
-      /* IMAGE SECTION – flush top, no padding, no margin */
-      .exec-option-card__image {
-        width: 100%;
-        display: block;
-        line-height: 0; /* remove extra spacing */
-        background: transparent;
-      }
+  /* Title styling */
+  .exec-option-card__title {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    color: var(--color-dark-gray);
+  }
 
-      .exec-option-card__image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-        aspect-ratio: 16 / 9; /* consistent proportion, but image fills naturally */
-        background: #ccc; /* fallback while loading */
-      }
+  /* Category pill - sharp corners */
+  .exec-option-card__category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(15, 43, 61, 0.1);
+    padding: 0.35rem 0.9rem;
+    color: var(--color-dark-gray);
+    width: fit-content;
+    margin-bottom: 1.25rem;
+    border-radius: 8px;
+  }
 
-      /* CONTENT area: padding only inside, not affecting image */
-      .exec-option-card__content {
-        padding: 2rem 1.8rem 2.2rem 1.8rem;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
+  /* Description text */
+  .exec-option-card__desc {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+    font-weight: 450;
+    color: #2d3a48;
+  }
 
-      /* Title styling */
-      .exec-option-card__title {
-        font-size: 1.9rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        line-height: 1.25;
-        margin-bottom: 0.75rem;
-      }
+  /* BUTTONS container */
+  .exec-option-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 0.25rem;
+  }
 
-      /* Card 1 title (dark card) -> white */
-      .exec-option-card:first-child .exec-option-card__title {
-        color: white;
-      }
+  /* ===== BASE BUTTON STYLES ===== */
+  .btn--primary-grey {
+    background: var(--color-text-muted);
+  }
+  .btn--secondary-grey {
+    color:  var(--color-text-muted);
+    border-color:  var(--color-text-muted);
+  }
+  .btn--primary-grey:hover {
+    background: black;
+  }
+  .btn--secondary-grey:hover {
+      background: var(--color-text-muted);
 
-      /* Card 2 title (light card) -> dark */
-      .exec-option-card:last-child .exec-option-card__title {
-        color: var(--color-dark-gray);
-      }
+  }
 
-      /* Category pill - but keep sharp? category can have slight rounding? no border-radius on buttons only, but category tag can have optional rounding? but requirement only says cards and buttons no border-radius. For category it's fine but not essential. I'll make it sharp as well (no rounding). */
-      .exec-option-card__category {
-        display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        background: rgba(0, 0, 0, 0.12);
-        padding: 0.35rem 0.9rem;
-        color: inherit;
-        width: fit-content;
-        margin-bottom: 1.25rem;
-        border-radius: 8px;
-      }
 
-      /* For light card, category background slightly darker */
-      .exec-option-card:last-child .exec-option-card__category {
-        background: rgba(15, 43, 61, 0.1);
-        color: var(--color-dark-gray);
-      }
-
-      /* For dark card category: light overlay */
-      .exec-option-card:first-child .exec-option-card__category {
-        background: rgba(255, 255, 255, 0.15);
-        color: #f0f0f0;
-      }
-
-      /* Description text */
-      .exec-option-card__desc {
-        font-size: 1rem;
-        line-height: 1.55;
-        margin-bottom: 2rem;
-        font-weight: 450;
-      }
-
-      .exec-option-card:first-child .exec-option-card__desc {
-        color: rgba(255, 255, 255, 0.92);
-      }
-
-      .exec-option-card:last-child .exec-option-card__desc {
-        color: #2d3a48;
-      }
-
-      /* BUTTONS container */
-      .exec-option-card__actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1.25rem;
-        margin-top: 0.25rem;
-      }
-
-      /* ===== BUTTON COLOR LOGIC: buttons take color from the OTHER card's background ===== */
-      /* Card 1 (dark background) -> contact buttons use light card's background color (var(--color-border-light)) with dark text */
-      .exec-option-card:first-child .btn-contact,
-      .exec-option-card:first-child .btn-learn {
-        background-color: var(
-          --color-border-light
-        ); /* light background from card 2 */
-        color: var(--color-dark-gray); /* dark text to match contrast */
-      }
-
-      /* Card 1 buttons hover: slightly darker light shade */
-      .exec-option-card:first-child .btn-contact:hover,
-      .exec-option-card:first-child .btn-learn:hover {
-        background-color: var(--color-bg-light);
-        color: var(--color-dark-gray);
-        transform: translateX(4px);
-      }
-
-      /* Card 2 (light background) -> contact buttons use dark card's background color (var(--color-dark-gray)) with white text */
-      .exec-option-card:last-child .btn-contact,
-      .exec-option-card:last-child .btn-learn {
-        background-color: var(
-          --color-dark-gray
-        );
-        color: white;
-      }
-
-      /* Card 2 buttons hover: slightly lighter dark tone */
-      .exec-option-card:last-child .btn-contact:hover,
-      .exec-option-card:last-child .btn-learn:hover {
-        background-color: var(--color-gray-bg);
-        color: white;
-        transform: translateX(4px);
-      }
-
-      /* ===== LEARN MORE BUTTONS – OVERRIDE: transparent + border ===== */
-      /* Card 1: border & text = var(--color-border-light) (contact bg), transparent bg */
-      .exec-option-card:first-child .btn-learn {
-        background-color: transparent;
-        border: 2px solid var(--color-border-light);
-        color: var(--color-border-light);
-      }
-      .exec-option-card:first-child .btn-learn:hover {
-        background-color: var(--color-border-light);
-        color: var(--color-dark-gray);
-        transform: translateX(4px);
-      }
-
-      /* Card 2: border & text = var(--color-dark-gray) (contact bg), transparent bg */
-      .exec-option-card:last-child .btn-learn {
-        background-color: transparent;
-        border: 2px solid var(--color-dark-gray);
-        color: var(--color-dark-gray);
-      }
-      .exec-option-card:last-child .btn-learn:hover {
-        background-color: var(--color-dark-gray);
-        color: white;
-        transform: translateX(4px);
-      }
-
-      @media (max-width: 480px) {
-        .exec-option-card__actions {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .btn {
-          justify-content: center;
-        }
-      }
-
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .exec-option-card__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn {
+      justify-content: center;
+    }
+  }
       /* AOS simulation (optional, just keep for data-aos attribute support) */
       [data-aos] {
         transition-property: transform, opacity;
@@ -1348,79 +1246,79 @@
             </div>
           </div>
           <div class="programs-container">
-            <div
-              class="exec-option-grid"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <!-- CARD 1: Open Enrollment Programs (DARK BG, WHITE TEXT) -->
-              <div class="exec-option-card">
-                <!-- Image at the top, flush, no padding -->
-                <div class="exec-option-card__image">
-                  <img
-                    src="images/AUB-OSB-CP-card.jpg"
-                    alt="Open Enrollment Programs - professionals collaborating"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="exec-option-card__content">
-                  <div class="exec-option-card__title">
-                    Open Enrollment Programs
-                  </div>
-                  <div class="exec-option-card__category">FOR INDIVIDUALS</div>
-                  <div class="exec-option-card__desc">
-                    Get in touch with us to help you find the right program for
-                    you. Whatever your managerial experience, our open
-                    enrollment programs will equip you with the right skillsets
-                    to accelerate your career growth.
-                  </div>
-                  <div class="exec-option-card__actions">
-                    <!-- Contact us button (color from other card: light background) -->
-                    <a href="#contact-individuals" class="btn btn-contact">
-                      Contact us
-                    </a>
-                    <!-- Learn more button (also uses other card background) -->
-                    <a href="#learn-individuals" class="btn btn-learn">
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
+  <div
+    class="exec-option-grid"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    <!-- CARD 1: Open Enrollment Programs (LIGHT BG, DARK TEXT - same as current second card) -->
+    <div class="exec-option-card">
+      <!-- Image at the top, flush, no padding -->
+      <div class="exec-option-card__image">
+        <img
+          src="images/AUB-OSB-CP-card.jpg"
+          alt="Open Enrollment Programs - professionals collaborating"
+          loading="lazy"
+        />
+      </div>
+      <div class="exec-option-card__content">
+        <div class="exec-option-card__title">
+          Open Enrollment Programs
+        </div>
+        <div class="exec-option-card__category">FOR INDIVIDUALS</div>
+        <div class="exec-option-card__desc">
+          Get in touch with us to help you find the right program for
+          you. Whatever your managerial experience, our open
+          enrollment programs will equip you with the right skillsets
+          to accelerate your career growth.
+        </div>
+        <div class="exec-option-card__actions">
+          <!-- btn--primary for Contact us -->
+          <a href="#contact-individuals" class="btn btn--primary">
+            Contact us
+          </a>
+          <!-- btn--secondary for Learn more -->
+          <a href="#learn-individuals" class="btn btn--secondary">
+            Learn more
+          </a>
+        </div>
+      </div>
+    </div>
 
-              <!-- CARD 2: Customized Programs (LIGHT BG, DARK TEXT) -->
-              <div class="exec-option-card">
-                <!-- Image at the top, flush, no padding -->
-                <div class="exec-option-card__image">
-                  <img
-                    src="images/AUB-OSB-OEP-crad.jpg"
-                    alt="Customized Programs - team strategy meeting"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="exec-option-card__content">
-                  <div class="exec-option-card__title">Customized Programs</div>
-                  <div class="exec-option-card__category">FOR COMPANIES</div>
-                  <div class="exec-option-card__desc">
-                    Connect with our team to discuss how we can meet your
-                    company’s learning objectives. Our experts will work with
-                    you to develop a high impact learning experience that
-                    provides your team with the tools and frameworks to grow
-                    your business.
-                  </div>
-                  <div class="exec-option-card__actions">
-                    <!-- Contact us button (color from other card: dark background) -->
-                    <a href="#contact-companies" class="btn btn-contact">
-                      Contact us
-                    </a>
-                    <!-- Learn more button (also from other card: dark background) -->
-                    <a href="#learn-companies" class="btn btn-learn">
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- CARD 2: Customized Programs (LIGHT BG, DARK TEXT - same as current second card) -->
+    <div class="exec-option-card">
+      <!-- Image at the top, flush, no padding -->
+      <div class="exec-option-card__image">
+        <img
+          src="images/AUB-OSB-OEP-crad.jpg"
+          alt="Customized Programs - team strategy meeting"
+          loading="lazy"
+        />
+      </div>
+      <div class="exec-option-card__content">
+        <div class="exec-option-card__title">Customized Programs</div>
+        <div class="exec-option-card__category">FOR COMPANIES</div>
+        <div class="exec-option-card__desc">
+          Connect with our team to discuss how we can meet your
+          company's learning objectives. Our experts will work with
+          you to develop a high impact learning experience that
+          provides your team with the tools and frameworks to grow
+          your business.
+        </div>
+        <div class="exec-option-card__actions">
+          <!-- btn--primary for Contact us -->
+          <a href="#contact-companies" class="btn btn--primary btn--primary-grey">
+            Contact us
+          </a>
+          <!-- btn--secondary with outline and --color-text-muted -->
+          <a href="#learn-companies" class="btn btn--secondary btn--secondary-grey">
+            Learn more
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
       </section>
 

@@ -124,9 +124,9 @@ h3 {
 
 /* descriptive text style */
 .section-description {
-    margin: 0 auto 2rem auto;
-    font-size: 1.1rem;
-    line-height: 1.6;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 /* ===== BUTTONS ===== */
@@ -188,6 +188,19 @@ h3 {
 
 .btn--full {
   width: 100%;
+}
+
+/* New btn--secondary outline style */
+.btn--secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn--secondary:hover {
+  background: var(--color-primary);
+  color: #fff;
+  transform: scale(1.03);
 }
 
 /*==============  MENU  ====================*/
@@ -405,7 +418,7 @@ h3 {
   justify-content: space-between;
   list-style: none;
   width: 100%;
-  padding: 0; 
+  padding: 0;
   gap: 0.2rem;
 }
 
@@ -822,7 +835,7 @@ body.menu-open {
 
 @media (min-width: 1024px) {
   .detail-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -1123,12 +1136,12 @@ body.menu-open {
   .testimonial-card-horizontal {
     flex-direction: column;
   }
-  
+
   .testimonial-card-horizontal__image {
     width: 100%;
     height: 200px;
   }
-  
+
   .testimonial-card-horizontal__content {
     padding: 1.5rem;
   }
@@ -1232,16 +1245,14 @@ body.menu-open {
   }
 }
 
-
 /* Desktop: 1 slides per view (default) */
 .carousel__slide.one-slide {
   width: 100% !important;
 }
 
-
 /* Desktop: 2 slides per view (default) */
 .carousel__slide.two-slides {
-  width: calc((100% - 3rem) / 2); 
+  width: calc((100% - 3rem) / 2);
 }
 
 /* Tablet: 2 slides per view */
@@ -1258,8 +1269,6 @@ body.menu-open {
     width: 100% !important; /* 1 slide – gap only between slides when scrolling */
   }
 }
- 
-
 
 /* carousel buttons (prev/next) */
 .carousel__btn {
@@ -1413,14 +1422,16 @@ img {
 }
 
 /* ===== INFO CARDS (Timing, Fees & Location) ===== */
-.grid-4 {
+.grid-5, .grid-4 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
+
+
 @media (min-width: 640px) {
-  .grid-4 {
+  .grid-5, .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1428,6 +1439,9 @@ img {
 @media (min-width: 1024px) {
   .grid-4 {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-5 {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -1489,7 +1503,7 @@ img {
 }
 
 /* Related programs / Experience Program: 2 columns on tablet, 3 on desktop */
-.experience-grid{
+.experience-grid {
   display: grid;
   gap: 1rem;
 }
@@ -1715,7 +1729,13 @@ img {
 
 @media (min-width: 768px) {
   .info-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .info-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -2052,8 +2072,6 @@ img {
   }
 }
 
-
-
 /* Fix for mega menu overflow - add these styles */
 .nav-item {
   position: relative;
@@ -2071,7 +2089,9 @@ img {
   z-index: 50;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s;
 }
 
 /* Responsive adjustments for smaller desktop screens */
@@ -2082,7 +2102,7 @@ img {
     right: 0;
     left: auto;
   }
-  
+
   /* Override for the first few items to keep them left-aligned */
   .nav-item:first-child .nav-mega,
   .nav-item:nth-child(2) .nav-mega {
@@ -2103,11 +2123,11 @@ img {
   .nav-desktop {
     position: relative;
   }
-  
+
   .nav-item {
     position: static;
   }
-  
+
   .nav-mega {
     width: 100vw;
     max-width: 1280px;
@@ -2115,12 +2135,12 @@ img {
     transform: translateX(-50%);
     margin-top: 0;
   }
-  
+
   /* Ensure container context works */
   .nav-main-container {
     position: relative;
   }
-  
+
   .nav-desktop {
     position: static;
   }

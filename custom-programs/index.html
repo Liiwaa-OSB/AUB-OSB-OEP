@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customized Programs | AUB OSB Executive Education</title>
@@ -10,7 +9,10 @@
     <!-- Google Fonts + Lucide + AOS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="../js/main.js" defer></script>
@@ -23,2005 +25,2539 @@
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/accordion.css" />
     <style>
-        /* Use brand identity colors (burgundy) */
-        :root {
-            --color-accent: #840132;
-            --color-accent-dark: #6a132c;
-        }
+      /* Use brand identity colors (burgundy) */
+      :root {
+        --color-accent: #840132;
+        --color-accent-dark: #6a132c;
+      }
 
-        .nav-osb-links .osb-nav-item>a#executive-education-link {
-            color: var(--color-primary);
-        }
+      .nav-osb-links .osb-nav-item > a#executive-education-link {
+        color: var(--color-primary);
+      }
 
-        body.nav-scrolled .nav-osb .osb-nav-item>a#executive-education-link {
-            color: white;
-            text-decoration: underline;
-            text-underline-offset: 6px;
-        }
+      body.nav-scrolled .nav-osb .osb-nav-item > a#executive-education-link {
+        color: white;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
 
-        .nav-osb-links .osb-dropdown li a#customized-programs {
-            color: var(--color-primary);
-        }
+      .nav-osb-links .osb-dropdown li a#customized-programs {
+        color: var(--color-primary);
+      }
 
+      /* two-column layout for overview (image first) */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
 
-        /* Hero video */
-        .hero-custom {
-            position: relative;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-custom video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .hero-custom .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 1;
-        }
-
-        .hero-custom .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-        }
-
-        .hero-custom h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .hero-custom p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* two-column layout for overview (image first) */
+      @media (min-width: 768px) {
         .overview-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: center;
+          grid-template-columns: 1fr 1fr;
         }
+      }
 
-        @media (min-width: 768px) {
-            .overview-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+      .overview-text p {
+        line-height: 1.7;
+        margin-bottom: 1rem;
+        color: #222;
+      }
 
-        .overview-text p {
-            line-height: 1.7;
-            margin-bottom: 1rem;
-            color: #222;
-        }
+      /* card grid */
+      .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
 
-        /* card grid */
+      @media (min-width: 768px) {
         .card-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
+          grid-template-columns: repeat(3, 1fr);
         }
+      }
 
-        @media (min-width: 768px) {
-            .card-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+      .custom-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        box-shadow: none;
+        transition: transform 0.2s ease;
+      }
 
-        .custom-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            box-shadow: none;
-            transition: transform 0.2s ease;
-        }
+      .custom-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      }
 
-        .custom-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-        }
+      .custom-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        background: #f0f0f0;
+      }
 
-        .custom-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            background: #f0f0f0;
-        }
+      .custom-card-content {
+        padding: 1.5rem;
+      }
 
-        .custom-card-content {
-            padding: 1.5rem;
-        }
+      .custom-card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: #111;
+      }
 
-        .custom-card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: #111;
-        }
+      .custom-card-text {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+      }
 
-        .custom-card-text {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.5;
-            margin-bottom: 1.2rem;
-        }
+      .btn-primary-custom {
+        display: inline-block;
+        background: var(--color-primary);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        text-decoration: none;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
 
-        .btn-primary-custom {
-            display: inline-block;
-            background: var(--color-primary);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
+      .btn-primary-custom:hover {
+        background: var(--color-primary-dark);
+      }
 
-        .btn-primary-custom:hover {
-            background: var(--color-primary-dark);
-        }
+      .btn-outline-custom {
+        background: transparent;
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        padding: 0.6rem 1.2rem;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.2s;
+      }
 
-        .btn-outline-custom {
-            background: transparent;
-            border: 1px solid var(--color-primary);
-            color: var(--color-primary);
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.2s;
-        }
+      .btn-outline-custom:hover {
+        background: var(--color-primary);
+        color: white;
+      }
 
-        .btn-outline-custom:hover {
-            background: var(--color-primary);
-            color: white;
-        }
+      /* wide image */
+      .wide-image {
+        width: 100%;
+        margin: 2rem 0;
+      }
 
-        /* wide image */
-        .wide-image {
-            width: 100%;
-            margin: 2rem 0;
-        }
+      .wide-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: #e0e0e0;
+      }
 
-        .wide-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            background: #e0e0e0;
-        }
+      /* steps cards */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
 
-        /* steps cards */
+      @media (min-width: 768px) {
         .steps-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
+          grid-template-columns: repeat(4, 1fr);
         }
+      }
 
-        @media (min-width: 768px) {
-            .steps-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+      .step-card {
+        border: 1px solid #ddd;
+        padding: 1.5rem;
+        text-align: center;
+        background: #fefefe;
+      }
 
-        .step-card {
-            border: 1px solid #ddd;
-            padding: 1.5rem;
-            text-align: center;
-            background: #fefefe;
-        }
+      .step-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 0.5rem;
+      }
 
-        .step-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
+      .step-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+      }
 
-        .step-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-        }
+      .step-desc {
+        font-size: 0.9rem;
+        color: #555;
+      }
 
-        .step-desc {
-            font-size: 0.9rem;
-            color: #555;
-        }
+      /* testimonials grid */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
 
-        /* testimonials grid */
+      @media (min-width: 768px) {
         .testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
+          grid-template-columns: repeat(2, 1fr);
         }
+      }
 
-        @media (min-width: 768px) {
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+      .testimonial-item {
+        border: 1px solid #e0e0e0;
+        padding: 1.8rem;
+        background: #fff;
+      }
 
-        .testimonial-item {
-            border: 1px solid #e0e0e0;
-            padding: 1.8rem;
-            background: #fff;
-        }
+      .testimonial-quote {
+        font-style: italic;
+        color: #333;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
 
-        .testimonial-quote {
-            font-style: italic;
-            color: #333;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
+      .testimonial-author {
+        font-weight: 700;
+        margin-top: 0.5rem;
+        color: var(--color-primary-dark);
+      }
 
-        .testimonial-author {
-            font-weight: 700;
-            margin-top: 0.5rem;
-            color: var(--color-primary-dark);
-        }
+      .testimonial-role {
+        font-size: 0.8rem;
+        color: #777;
+      }
 
-        .testimonial-role {
-            font-size: 0.8rem;
-            color: #777;
-        }
+      /* client logos */
+      .logos-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+        align-items: center;
+      }
 
-        /* client logos */
+      @media (min-width: 768px) {
         .logos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-            align-items: center;
+          grid-template-columns: repeat(4, 1fr);
         }
+      }
 
-        @media (min-width: 768px) {
-            .logos-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+      .logo-item {
+        text-align: center;
+        filter: grayscale(100%);
+        transition: filter 0.2s;
+        cursor: default;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 120px; /* Set a fixed height for consistent vertical alignment */
+      }
 
-        .logo-item {
-            text-align: center;
-            filter: grayscale(100%);
-            transition: filter 0.2s;
-            cursor: default;
-        }
+      .logo-item:hover {
+        filter: grayscale(0%);
+      }
 
-        .logo-item:hover {
-            filter: grayscale(0%);
-        }
+      .logo-item img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        padding: 0.5rem;
+      }
 
-        .logo-item img {
-            width: 100%;
-            height: auto;
-            display: inline-block;
-            padding: 0.5rem;
-        }
+      /* faculty cards */
+      /* faculty card - modern design */
+      .faculty-card {
+        background: #ffffff;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        border: 1px solid #eef2f8;
+      }
 
-        /* faculty cards */
-        /* faculty card - modern design */
+      .faculty-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 40px rgba(0, 0, 0, 0.12);
+        border-color: #cbdde9;
+      }
+
+      /* image container with overlay effect */
+      .faculty-image {
+        position: relative;
+        overflow: hidden;
+        background: #e2e8f0;
+      }
+
+      .faculty-card img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .faculty-card:hover img {
+        transform: scale(1.03);
+      }
+
+      /* faculty info wrapper */
+
+      /* Faculty Card - Horizontal layout (image left, text right) */
+      .faculty-card {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 2rem;
+        background: transparent; /* no background color */
+        color: inherit; /* default text color */
+        border: none;
+        box-shadow: none;
+        max-width: 750px;
+        margin: auto;
+        border: 1px solid var(--color-border-light, #e5e7eb);
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+      }
+
+      /* Image container - fixed width, responsive */
+      .faculty-image {
+        flex-shrink: 0;
+        width: 280px;
+      }
+
+      .faculty-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        aspect-ratio: 1 / 1; /* square image, adjust as needed */
+      }
+
+      /* Text content area */
+      .faculty-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1.5rem;
+        gap: 0.5rem;
+      }
+
+      .faculty-name {
+        color: var(--color-primary);
+      }
+
+      /* Contact details styling */
+      .faculty-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin: 0.75rem 0 1.25rem 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .contact-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--color-bg-light);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all 0.2s;
+        padding: 5px;
+        color: var(--color-accent-dark);
+      }
+
+      .contact-icon svg {
+        stroke-width: 1.8;
+        fill: none;
+        width: 100%;
+        height: 100%;
+        stroke: currentColor;
+      }
+
+      .contact-item:hover .contact-icon {
+        background: var(--color-gray-bg);
+        transform: scale(1.02);
+      }
+
+      .contact-text {
+        text-decoration: none;
+        color: inherit;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+      }
+
+      .contact-text:hover {
+        opacity: 0.7;
+      }
+
+      /* Buttons container (if you place both buttons side by side) */
+      .faculty-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Responsive: stack on smaller screens */
+      @media (max-width: 768px) {
         .faculty-card {
-            background: #ffffff;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid #eef2f8;
+          flex-direction: column;
+          gap: 1.5rem;
         }
 
-        .faculty-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 40px rgba(0, 0, 0, 0.12);
-            border-color: #cbdde9;
-        }
-
-        /* image container with overlay effect */
         .faculty-image {
-            position: relative;
-            overflow: hidden;
-            background: #e2e8f0;
+          width: 100%;
+          max-width: 320px;
+          margin: 0 auto;
         }
 
-        .faculty-card img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .faculty-card:hover img {
-            transform: scale(1.03);
-        }
-
-        /* faculty info wrapper */
         .faculty-info {
-            padding: 1.5rem;
-        }
-
-        .faculty-name {
-            font-weight: 800;
-            font-size: 1.35rem;
-            margin-bottom: 0.5rem;
-            color: var(--color-text-muted);
-            letter-spacing: -0.2px;
-        }
-
-        .faculty-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
-        }
-
-        .faculty-department {
-            font-size: 0.9rem;
-            color: var(--color-primary-dark);
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid #e9edf2;
-            font-weight: 500;
-        }
-
-        /* contact details styling (tel & email) */
-        .faculty-contact {
-            margin: 1rem 0 1.25rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
+          text-align: center;
+          align-items: center;
         }
 
         .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.85rem;
-            color: #2d3e50;
-            transition: color 0.2s;
+          justify-content: center;
         }
 
-        .contact-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--color-bg-light);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.2s;
+        .btn {
+          justify-content: center;
+        }
+      }
+
+      /* responsive adjustments */
+      @media (max-width: 640px) {
+        .section-title {
+          font-size: 1.9rem;
         }
 
-        .contact-icon svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--color-primary);
-            stroke-width: 1.8;
-            fill: none;
+        .faculty-info {
+          padding: 1.2rem;
         }
 
-        .contact-item:hover .contact-icon {
-            background: var(--color-gray-bg);
-            transform: scale(1.02);
+        .contact-item {
+          font-size: 0.8rem;
         }
 
-        .contact-text {
-            color: #000;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-weight: 500;
-            word-break: break-all;
-        }
-
-        .contact-text:hover {
-            color: var(--color-primary-dark);
-            text-decoration: underline;
-        }
-
-        /* button style */
         .btn-outline-custom {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: transparent;
-            border: 2px solid var(--color-primary-dark);
-            color: var(--color-primary);
-            font-weight: 700;
-            padding: 0.6rem 1.4rem;
-            font-size: 0.85rem;
-            transition: all 0.25s ease;
-            text-decoration: none;
-            width: fit-content;
-            margin-top: 0.25rem;
+          padding: 0.5rem 1.2rem;
+          font-size: 0.8rem;
         }
+      }
 
-        .btn-outline-custom:hover {
-            background: var(--color-primary);
-            color: white;
-            transform: translateX(4px);
-            border-color: var(--color-primary-dark);
-        }
+      /* team learning & benefits */
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
 
-        /* dummy note */
-        .demo-note {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-        }
-
-        /* responsive adjustments */
-        @media (max-width: 640px) {
-            .section-title {
-                font-size: 1.9rem;
-            }
-
-            .faculty-info {
-                padding: 1.2rem;
-            }
-
-            .contact-item {
-                font-size: 0.8rem;
-            }
-
-            .btn-outline-custom {
-                padding: 0.5rem 1.2rem;
-                font-size: 0.8rem;
-            }
-        }
-
-        /* team learning & benefits */
+      @media (min-width: 768px) {
         .benefits-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .benefit-item {
+        border-left: 3px solid var(--color-primary);
+        padding-left: 1.2rem;
+      }
+
+      .benefit-title {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--color-primary-dark);
+      }
+
+      /* CTA section */
+      .cta-custom {
+        background: #f8f8f8;
+        /* text-align: center; */
+        padding: 3rem 1.5rem;
+      }
+      /* 
+      .cta-custom h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--color-primary-dark);
+      } */
+
+      .btn-large {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        background: var(--color-primary);
+        color: white;
+        border: none;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .btn-large:hover {
+        background: var(--color-primary-dark);
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          padding: 2rem 0;
         }
 
-        @media (min-width: 768px) {
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .hero-custom h1 {
+          font-size: 2rem;
         }
+      }
 
-        .benefit-item {
-            border-left: 3px solid var(--color-primary);
-            padding-left: 1.2rem;
-        }
+      .section-divider {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
 
-        .benefit-title {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--color-primary-dark);
-        }
+      .testimonial-card {
+        background: #ffffff;
+        padding: 1.8rem;
+        box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f0eef2;
+        height: 100%;
+        transition: 0.2s;
+      }
 
-        /* CTA section */
-        .cta-custom {
-            background: #f8f8f8;
-            text-align: center;
-            padding: 3rem 1.5rem;
-        }
+      .testimonial-card:hover {
+        border-color: var(--color-primary);
+      }
 
-        .cta-custom h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--color-primary-dark);
-        }
+      .testimonial-card__quote {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #2c3e50;
+        margin-bottom: 1.2rem;
+        font-style: italic;
+        position: relative;
+        padding-left: 1rem;
+        border-left: 3px solid var(--color-primary);
+      }
 
-        .btn-large {
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            margin-top: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
+      .testimonial-card__profile {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+      }
 
-        .btn-large:hover {
-            background: var(--color-primary-dark);
-        }
+      .testimonial-card__avatar {
+        width: 48px;
+        height: 48px;
+        background: #e2e8f0;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+      }
 
-        @media (max-width: 768px) {
-            .section {
-                padding: 2rem 0;
-            }
+      .testimonial-card__name {
+        font-weight: 800;
+        color: #1e293b;
+      }
 
-            .hero-custom h1 {
-                font-size: 2rem;
-            }
-        }
-
-        .section-divider {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .testimonial-card {
-            background: #ffffff;
-            padding: 1.8rem;
-            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f0eef2;
-            height: 100%;
-            transition: 0.2s;
-        }
-
-        .testimonial-card:hover {
-            border-color: var(--color-primary);
-        }
-
-        .testimonial-card__quote {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #2c3e50;
-            margin-bottom: 1.2rem;
-            font-style: italic;
-            position: relative;
-            padding-left: 1rem;
-            border-left: 3px solid var(--color-primary);
-        }
-
-        .testimonial-card__profile {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-top: 0.8rem;
-        }
-
-        .testimonial-card__avatar {
-            width: 48px;
-            height: 48px;
-            background: #e2e8f0;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .testimonial-card__name {
-            font-weight: 800;
-            color: #1e293b;
-        }
-
-        .testimonial-card__role {
-            font-size: 0.75rem;
-            color: #5b6e8c;
-        }
+      .testimonial-card__role {
+        font-size: 0.75rem;
+        color: #5b6e8c;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="nav">
-        <!-- UTILITY BAR (desktop only) -->
-        <div class="nav-utility">
-            <div class="nav-utility-container">
-                <a href="/Pages/AZ.aspx" class="nav-utility-link">A - Z</a><span class="nav-utility-separator">|</span>
-                <a href="/Search/Pages/People.aspx" class="nav-utility-link">Find People</a><span
-                    class="nav-utility-separator">|</span>
-                <a href="https://aubmc.org.lb/" class="nav-utility-link" target="_blank">AUBMC</a><span
-                    class="nav-utility-separator">|</span>
-                <a href="/libraries" class="nav-utility-link">Libraries</a><span class="nav-utility-separator">|</span>
-                <a href="/Employment" class="nav-utility-link">Jobs</a><span class="nav-utility-separator">|</span>
-                <a href="http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61" class="nav-utility-link"
-                    target="_blank">Alumni</a><span class="nav-utility-separator">|</span>
-                <a href="https://online.aub.edu.lb" class="nav-utility-link" target="_blank">AUB Online</a><span
-                    class="nav-utility-separator">|</span>
-                <a href="https://www.aubmed.ac.cy/" class="nav-utility-link" target="_blank">AUB – Mediterraneo</a><span
-                    class="nav-utility-separator">|</span>
-                <a href="https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login" class="nav-utility-link"
-                    target="_blank">Telehealth</a><span class="nav-utility-separator">|</span>
-                <a href="/advancement/Development/Pages/HowToMakeAGift.aspx" class="nav-utility-link">Give</a>
-            </div>
+      <!-- UTILITY BAR (desktop only) -->
+      <div class="nav-utility">
+        <div class="nav-utility-container">
+          <a href="/Pages/AZ.aspx" class="nav-utility-link">A - Z</a
+          ><span class="nav-utility-separator">|</span>
+          <a href="/Search/Pages/People.aspx" class="nav-utility-link"
+            >Find People</a
+          ><span class="nav-utility-separator">|</span>
+          <a
+            href="https://aubmc.org.lb/"
+            class="nav-utility-link"
+            target="_blank"
+            >AUBMC</a
+          ><span class="nav-utility-separator">|</span>
+          <a href="/libraries" class="nav-utility-link">Libraries</a
+          ><span class="nav-utility-separator">|</span>
+          <a href="/Employment" class="nav-utility-link">Jobs</a
+          ><span class="nav-utility-separator">|</span>
+          <a
+            href="http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61"
+            class="nav-utility-link"
+            target="_blank"
+            >Alumni</a
+          ><span class="nav-utility-separator">|</span>
+          <a
+            href="https://online.aub.edu.lb"
+            class="nav-utility-link"
+            target="_blank"
+            >AUB Online</a
+          ><span class="nav-utility-separator">|</span>
+          <a
+            href="https://www.aubmed.ac.cy/"
+            class="nav-utility-link"
+            target="_blank"
+            >AUB – Mediterraneo</a
+          ><span class="nav-utility-separator">|</span>
+          <a
+            href="https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login"
+            class="nav-utility-link"
+            target="_blank"
+            >Telehealth</a
+          ><span class="nav-utility-separator">|</span>
+          <a
+            href="/advancement/Development/Pages/HowToMakeAGift.aspx"
+            class="nav-utility-link"
+            >Give</a
+          >
         </div>
+      </div>
 
-        <!-- MAIN HEADER (logo + desktop mega + burger) -->
-        <div class="nav-main-header" id="mainHeader">
-            <div class="nav-main-container">
-                <div class="nav-logo">
-                    <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
-                        <img src="../images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
-                    </a>
-                </div>
-                <!-- Desktop mega menu (updated with full JSON structure) -->
-                <div class="nav-desktop">
-                    <!-- About AUB -->
-                    <div class="nav-item">
-                        <button>
-                            About AUB<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div class="nav-mega">
-                            <h4>About AUB</h4>
-                            <div class="nav-mega-grid">
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/AboutUs/Pages/default.aspx">Overview</a>
-                                        </li>
-                                        <li>
-                                            <a href="/aboutus/Pages/history.aspx">History</a>
-                                        </li>
-                                        <li>
-                                            <a href="/aboutus/Pages/mission.aspx">Mission and Vision</a>
-                                        </li>
-                                        <li>
-                                            <a href="/aboutus/Pages/facts.aspx">Facts and Figures</a>
-                                        </li>
-                                        <li><a href="/President/oeo-titleix">Title IX</a></li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/AboutUs/Pages/leadership.aspx">AUB Leadership</a>
-                                        </li>
-                                        <li>
-                                            <a href="/president">Office of the President</a>
-                                        </li>
-                                        <li><a href="/nyo">New York Office</a></li>
-                                        <li><a href="/maingate">The MainGate Magazine</a></li>
-                                        <li>
-                                            <a href="/advancement">Office of Advancement</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li><a href="/aboutus/Pages/campus.aspx">Campus</a></li>
-                                        <li>
-                                            <a href="/aboutus/Pages/beirut-lb.aspx">About Beirut and Lebanon</a>
-                                        </li>
-                                        <li><a href="/accreditation">Accreditation</a></li>
-                                        <li>
-                                            <a href="https://150.aub.edu.lb/" target="_blank">AUB 150</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Academics -->
-                    <div class="nav-item">
-                        <button>
-                            Academics<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div class="nav-mega">
-                            <h4>ACADEMICS</h4>
-                            <div class="nav-mega-grid">
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/academics/Pages/faculties.aspx">Faculties</a>
-                                        </li>
-                                        <li>
-                                            <a href="/Pages/AZ.aspx">Departments and Centers</a>
-                                        </li>
-                                        <li>
-                                            <a href="/academics/pages/majors_programs.aspx">Majors and Programs</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg"
-                                                target="_blank">Search for a Course</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/theinstitute">Institute for Academic Innovation and
-                                                Development</a>
-                                        </li>
-                                        <li><a href="/graduatecouncil">Graduate Council</a></li>
-                                        <li>
-                                            <a href="/generaleducation">General Education Program</a>
-                                        </li>
-                                        <li>
-                                            <a href="/oip">Office of International Programs</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li><a href="/provost">Office of the Provost</a></li>
-                                        <li>
-                                            <a href="/registrar">Office of the Registrar</a>
-                                        </li>
-                                        <li><a href="/libraries">Libraries</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Admissions -->
-                    <div class="nav-item">
-                        <button>
-                            Admissions<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div class="nav-mega">
-                            <h4>ADMISSIONS</h4>
-                            <div class="nav-mega-grid">
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li><a href="/admissions">Admissions</a></li>
-                                        <li><a href="/faid">Financial Aid</a></li>
-                                        <li>
-                                            <a href="http://www.aub.edu.lb/admissions/Pages/TC/index.html"
-                                                target="_blank">Tuition and Fees Calculator</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx"
-                                                target="_blank">Visiting Student</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/faid/Pages/Scholarships.aspx">Scholarships</a>
-                                        </li>
-                                        <li>
-                                            <a href="/lead">LEAD scholarship opportunities</a>
-                                        </li>
-                                        <li><a href="/sao">Office of Student Affairs</a></li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/academics/pages/majors_programs.aspx">Majors and Programs</a>
-                                        </li>
-                                        <li><a href="/graduatecouncil">Graduate Council</a></li>
-                                        <li>
-                                            <a href="/oip">Office of International Programs</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Research -->
-                    <div class="nav-item">
-                        <button>
-                            Research<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div class="nav-mega">
-                            <h4>Research</h4>
-                            <div class="nav-mega-grid">
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li><a href="/research">Office of Research</a></li>
-                                        <li>
-                                            <a href="/Pages/ResearchbyFaculty.aspx">Research by Faculty/School</a>
-                                        </li>
-                                        <li>
-                                            <a href="/Pages/ResearchCenters.aspx">Interfaculty Research Centers</a>
-                                        </li>
-                                        <li><a href="/urb">University Research Board</a></li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/Pages/ResearchSupport.aspx">Research Funding</a>
-                                        </li>
-                                        <li>
-                                            <a href="/urb/Pages/Researchintegrity.aspx">Research Integrity</a>
-                                        </li>
-                                        <li>
-                                            <a href="/irb">Human Research Protection Program / Institutional
-                                                Review Board</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="/MRVP">Medical Research Volunteer Program</a>
-                                        </li>
-                                        <li>
-                                            <a href="/provost/urvp">Undergraduate Research Volunteer Program</a>
-                                        </li>
-                                        <li>
-                                            <a href="/articles/Pages/research.aspx">Research News</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Outreach -->
-                    <div class="nav-item">
-                        <button>
-                            Outreach<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div class="nav-mega">
-                            <h4>Outreach</h4>
-                            <div class="nav-mega-grid">
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li><a href="/CCE">Community Engagement</a></li>
-                                        <li>
-                                            <a href="/Neighborhood">Neighborhood Initiative</a>
-                                        </li>
-                                        <li>
-                                            <a href="/natureconservation">Nature Conservation</a>
-                                        </li>
-                                        <li><a href="/seniors">University for Seniors</a></li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li><a href="/ifi">Issam Fares Institute</a></li>
-                                        <li>
-                                            <a href="https://sites.aub.edu.lb/ipark/" target="_blank">iPark</a>
-                                        </li>
-                                        <li><a href="/k2p">Knowledge to Policy Center</a></li>
-                                        <li>
-                                            <a href="/masri_institute">The Munib and Angela Masri Institute of Energy
-                                                and
-                                                Natural Resources</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="https://www.aub.edu.lb/hub/Pages/default.aspx" target="_blank">AI
-                                                Hub</a>
-                                        </li>
-                                        <li>
-                                            <a href="/fafs/esdu">Environment and Sustainable Development</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://ghi.aub.edu.lb/" target="_blank">Global Health
-                                                Institute</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Boldly Campaign -->
-                    <div class="nav-item">
-                        <button>
-                            Boldly Campaign<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-                        <div class="nav-mega">
-                            <h4>Boldly Campaign</h4>
-                            <div class="nav-mega-grid">
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="http://boldly.aub.edu.lb/" target="_blank">Campaign Overview</a>
-                                        </li>
-                                        <li>
-                                            <a href="http://boldly.aub.edu.lb/impact-stories/" target="_blank">Impact
-                                                Stories</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="http://boldly.aub.edu.lb/campaign-objectives/"
-                                                target="_blank">Campaign Objectives</a>
-                                        </li>
-                                        <li>
-                                            <a href="http://boldly.aub.edu.lb/ways-to-support/" target="_blank">Ways to
-                                                Support</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-mega-column">
-                                    <ul class="nav-mega-links">
-                                        <li>
-                                            <a href="http://boldly.aub.edu.lb/#funding-v2" target="_blank">Campaign
-                                                Progress</a>
-                                        </li>
-                                        <li>
-                                            <a href="https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462"
-                                                target="_blank">Join the Campaign</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="nav-mobile-btn" id="burgerBtn" aria-label="Menu">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <line x1="3" y1="12" x2="21" y2="12" />
-                        <line x1="3" y1="6" x2="21" y2="6" />
-                        <line x1="3" y1="18" x2="21" y2="18" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- OSB ROW (third level, becomes sticky) updated with provided nav-osb structure -->
-        <div class="nav-osb" id="osbRow">
-            <div class="nav-osb-container">
-                <div class="nav-osb-logo">
-                    <a href="/"><img src="../images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a>
-                </div>
-                <div class="nav-osb-links">
-                    <ul class="osb-nav">
-                        <!-- About OSB with dropdown -->
-                        <li class="osb-nav-item has-dropdown">
-                            <a href="#" id="about-osb-link">About OSB</a>
-                            <ul class="osb-dropdown">
-                                <li>
-                                    <a href="/osb/about/Pages/Meet-the-Dean.aspx" id="meet-the-dean">Meet the Dean</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/about/Pages/default.aspx" id="mission-and-vision">Mission And
-                                        Vision</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/about/Pages/Olayan-.aspx" id="about-suliman-saleh-olayan">About
-                                        Suliman Saleh Olayan</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx" target="_blank"
-                                        id="international-advisory-board">International Advisory Board</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/about/Pages/Global-Recognition-.aspx"
-                                        id="global-recognitions-labels">Global Recognitions & Labels</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/about/Pages/Governance.aspx" id="governance">Governance</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/about/Pages/recources.aspx" id="faculty-staff-resources">Faculty and
-                                        Staff Resources</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/125/Pages/default.aspx" target="_blank" id="osb-125">OSB 125</a>
-                                </li>
-                                <li>
-                                    <a href="https://sites.aub.edu.lb/osb2029/" target="_blank"
-                                        id="osb-strategic-plan-2029">OSB Strategic Plan 2029</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.aub.edu.lb/osb/about/Pages/Employment.aspx" target="_blank"
-                                        id="job-opportunities">Job Opportunities</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- Academic Programs with dropdown -->
-                        <li class="osb-nav-item has-dropdown">
-                            <a href="#" id="academic-programs-link">Academic Programs</a>
-                            <ul class="osb-dropdown">
-                                <li>
-                                    <a href="/osb/UndergradProgram" target="_blank"
-                                        id="undergraduate-program">Undergraduate Program</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/Pages/SpecializedMasters.aspx" target="_blank"
-                                        id="specialized-masters">Specialized Masters</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/MBA" target="_blank" id="mba">MBA</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/OMBA/Pages/default.aspx" target="_blank" id="mba-online">MBA
-                                        Online</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/EMBA" target="_blank" id="executive-mba">Executive MBA</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- Executive Education (external link + dropdown) -->
-                        <li class="osb-nav-item has-dropdown">
-                            <a href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" target="_blank"
-                                id="executive-education-link">Executive Education</a>
-                            <ul class="osb-dropdown">
-                                <li>
-                                    <a href="/osb/executive-education/OEP" target="_blank"
-                                        id="open-enrollment-programs">Open Enrollment Programs</a>
-                                </li>
-                                <li>
-                                    <a href="/osb/executive-education/CP" target="_blank"
-                                        id="customized-programs">Customized Programs</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- OSB Online with dropdown -->
-                        <li class="osb-nav-item has-dropdown">
-                            <a href="#" id="osb-online-link">OSB Online</a>
-                            <ul class="osb-dropdown">
-                                <li>
-                                    <a href="https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx"
-                                        target="_blank" id="entrepreneurship-innovation-online-diploma">Entrepreneurship
-                                        & Innovation Online Graduate
-                                        Professional Diploma</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx"
-                                        target="_blank" id="combating-trade-based-financial-crime-certificate">Combating
-                                        Trade-Based Financial Crime Online
-                                        Certificate</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx"
-                                        target="_blank" id="strategic-branding-digital-era-diploma">Strategic Branding
-                                        in the Digital Era Online Diploma</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx"
-                                        target="_blank"
-                                        id="investment-analysis-modern-portfolio-management-diploma">Investment Analysis
-                                        and Modern Portfolio Management
-                                        Online Graduate Professional Diploma</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- Faculty -->
-                        <li class="osb-nav-item">
-                            <a href="/osb/Pages/Faculty.aspx" id="faculty">Faculty</a>
-                        </li>
-                        <!-- Research -->
-                        <li class="osb-nav-item">
-                            <a href="https://www.aub.edu.lb/osb/facultyresearch/Pages/default.aspx" target="_blank"
-                                id="research">Research</a>
-                        </li>
-                        <!-- News -->
-                        <li class="osb-nav-item">
-                            <a href="https://www.aub.edu.lb/osb/news/Pages/default.aspx" id="news">News</a>
-                        </li>
-                        <!-- OSB Impacts -->
-                        <li class="osb-nav-item">
-                            <a href="https://www.aub.edu.lb/osb/impact/Pages/default.aspx" target="_blank"
-                                id="osb-impacts">OSB Impacts</a>
-                        </li>
-                        <!-- "Recent" hidden item (present but not shown visually) -->
-                        <li class="osb-nav-item" style="display: none">
-                            <a href="/osb" id="recent">Recent</a>
-                        </li>
+      <!-- MAIN HEADER (logo + desktop mega + burger) -->
+      <div class="nav-main-header" id="mainHeader">
+        <div class="nav-main-container">
+          <div class="nav-logo">
+            <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
+              <img
+                src="../images/AUB+OSB-Merged-Logo-white.png"
+                alt="AUB OSB Logo"
+              />
+            </a>
+          </div>
+          <!-- Desktop mega menu (updated with full JSON structure) -->
+          <div class="nav-desktop">
+            <!-- About AUB -->
+            <div class="nav-item">
+              <button>
+                About AUB<svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="nav-mega">
+                <h4>About AUB</h4>
+                <div class="nav-mega-grid">
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/AboutUs/Pages/default.aspx">Overview</a>
+                      </li>
+                      <li>
+                        <a href="/aboutus/Pages/history.aspx">History</a>
+                      </li>
+                      <li>
+                        <a href="/aboutus/Pages/mission.aspx"
+                          >Mission and Vision</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/aboutus/Pages/facts.aspx"
+                          >Facts and Figures</a
+                        >
+                      </li>
+                      <li><a href="/President/oeo-titleix">Title IX</a></li>
                     </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/AboutUs/Pages/leadership.aspx"
+                          >AUB Leadership</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/president">Office of the President</a>
+                      </li>
+                      <li><a href="/nyo">New York Office</a></li>
+                      <li><a href="/maingate">The MainGate Magazine</a></li>
+                      <li>
+                        <a href="/advancement">Office of Advancement</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li><a href="/aboutus/Pages/campus.aspx">Campus</a></li>
+                      <li>
+                        <a href="/aboutus/Pages/beirut-lb.aspx"
+                          >About Beirut and Lebanon</a
+                        >
+                      </li>
+                      <li><a href="/accreditation">Accreditation</a></li>
+                      <li>
+                        <a href="https://150.aub.edu.lb/" target="_blank"
+                          >AUB 150</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
             </div>
+            <!-- Academics -->
+            <div class="nav-item">
+              <button>
+                Academics<svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="nav-mega">
+                <h4>ACADEMICS</h4>
+                <div class="nav-mega-grid">
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/academics/Pages/faculties.aspx">Faculties</a>
+                      </li>
+                      <li>
+                        <a href="/Pages/AZ.aspx">Departments and Centers</a>
+                      </li>
+                      <li>
+                        <a href="/academics/pages/majors_programs.aspx"
+                          >Majors and Programs</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg"
+                          target="_blank"
+                          >Search for a Course</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/theinstitute"
+                          >Institute for Academic Innovation and Development</a
+                        >
+                      </li>
+                      <li><a href="/graduatecouncil">Graduate Council</a></li>
+                      <li>
+                        <a href="/generaleducation"
+                          >General Education Program</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/oip">Office of International Programs</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li><a href="/provost">Office of the Provost</a></li>
+                      <li>
+                        <a href="/registrar">Office of the Registrar</a>
+                      </li>
+                      <li><a href="/libraries">Libraries</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Admissions -->
+            <div class="nav-item">
+              <button>
+                Admissions<svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="nav-mega">
+                <h4>ADMISSIONS</h4>
+                <div class="nav-mega-grid">
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li><a href="/admissions">Admissions</a></li>
+                      <li><a href="/faid">Financial Aid</a></li>
+                      <li>
+                        <a
+                          href="http://www.aub.edu.lb/admissions/Pages/TC/index.html"
+                          target="_blank"
+                          >Tuition and Fees Calculator</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx"
+                          target="_blank"
+                          >Visiting Student</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/faid/Pages/Scholarships.aspx">Scholarships</a>
+                      </li>
+                      <li>
+                        <a href="/lead">LEAD scholarship opportunities</a>
+                      </li>
+                      <li><a href="/sao">Office of Student Affairs</a></li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/academics/pages/majors_programs.aspx"
+                          >Majors and Programs</a
+                        >
+                      </li>
+                      <li><a href="/graduatecouncil">Graduate Council</a></li>
+                      <li>
+                        <a href="/oip">Office of International Programs</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Research -->
+            <div class="nav-item">
+              <button>
+                Research<svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="nav-mega">
+                <h4>Research</h4>
+                <div class="nav-mega-grid">
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li><a href="/research">Office of Research</a></li>
+                      <li>
+                        <a href="/Pages/ResearchbyFaculty.aspx"
+                          >Research by Faculty/School</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/Pages/ResearchCenters.aspx"
+                          >Interfaculty Research Centers</a
+                        >
+                      </li>
+                      <li><a href="/urb">University Research Board</a></li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/Pages/ResearchSupport.aspx"
+                          >Research Funding</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/urb/Pages/Researchintegrity.aspx"
+                          >Research Integrity</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/irb"
+                          >Human Research Protection Program / Institutional
+                          Review Board</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="/MRVP">Medical Research Volunteer Program</a>
+                      </li>
+                      <li>
+                        <a href="/provost/urvp"
+                          >Undergraduate Research Volunteer Program</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/articles/Pages/research.aspx"
+                          >Research News</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Outreach -->
+            <div class="nav-item">
+              <button>
+                Outreach<svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="nav-mega">
+                <h4>Outreach</h4>
+                <div class="nav-mega-grid">
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li><a href="/CCE">Community Engagement</a></li>
+                      <li>
+                        <a href="/Neighborhood">Neighborhood Initiative</a>
+                      </li>
+                      <li>
+                        <a href="/natureconservation">Nature Conservation</a>
+                      </li>
+                      <li><a href="/seniors">University for Seniors</a></li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li><a href="/ifi">Issam Fares Institute</a></li>
+                      <li>
+                        <a
+                          href="https://sites.aub.edu.lb/ipark/"
+                          target="_blank"
+                          >iPark</a
+                        >
+                      </li>
+                      <li><a href="/k2p">Knowledge to Policy Center</a></li>
+                      <li>
+                        <a href="/masri_institute"
+                          >The Munib and Angela Masri Institute of Energy and
+                          Natural Resources</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a
+                          href="https://www.aub.edu.lb/hub/Pages/default.aspx"
+                          target="_blank"
+                          >AI Hub</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/fafs/esdu"
+                          >Environment and Sustainable Development</a
+                        >
+                      </li>
+                      <li>
+                        <a href="https://ghi.aub.edu.lb/" target="_blank"
+                          >Global Health Institute</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Boldly Campaign -->
+            <div class="nav-item">
+              <button>
+                Boldly Campaign<svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="nav-mega">
+                <h4>Boldly Campaign</h4>
+                <div class="nav-mega-grid">
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a href="http://boldly.aub.edu.lb/" target="_blank"
+                          >Campaign Overview</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="http://boldly.aub.edu.lb/impact-stories/"
+                          target="_blank"
+                          >Impact Stories</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a
+                          href="http://boldly.aub.edu.lb/campaign-objectives/"
+                          target="_blank"
+                          >Campaign Objectives</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="http://boldly.aub.edu.lb/ways-to-support/"
+                          target="_blank"
+                          >Ways to Support</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="nav-mega-column">
+                    <ul class="nav-mega-links">
+                      <li>
+                        <a
+                          href="http://boldly.aub.edu.lb/#funding-v2"
+                          target="_blank"
+                          >Campaign Progress</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462"
+                          target="_blank"
+                          >Join the Campaign</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="nav-mobile-btn" id="burgerBtn" aria-label="Menu">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+            >
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
         </div>
+      </div>
+
+      <!-- OSB ROW (third level, becomes sticky) updated with provided nav-osb structure -->
+      <div class="nav-osb" id="osbRow">
+        <div class="nav-osb-container">
+          <div class="nav-osb-logo">
+            <a href="/"
+              ><img
+                src="../images/AUB+OSB-Merged-Logo-white.png"
+                alt="AUB OSB Logo"
+            /></a>
+          </div>
+          <div class="nav-osb-links">
+            <ul class="osb-nav">
+              <!-- About OSB with dropdown -->
+              <li class="osb-nav-item has-dropdown">
+                <a href="#" id="about-osb-link">About OSB</a>
+                <ul class="osb-dropdown">
+                  <li>
+                    <a
+                      href="/osb/about/Pages/Meet-the-Dean.aspx"
+                      id="meet-the-dean"
+                      >Meet the Dean</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/about/Pages/default.aspx"
+                      id="mission-and-vision"
+                      >Mission And Vision</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/about/Pages/Olayan-.aspx"
+                      id="about-suliman-saleh-olayan"
+                      >About Suliman Saleh Olayan</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx"
+                      target="_blank"
+                      id="international-advisory-board"
+                      >International Advisory Board</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/about/Pages/Global-Recognition-.aspx"
+                      id="global-recognitions-labels"
+                      >Global Recognitions & Labels</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/osb/about/Pages/Governance.aspx" id="governance"
+                      >Governance</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/about/Pages/recources.aspx"
+                      id="faculty-staff-resources"
+                      >Faculty and Staff Resources</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/125/Pages/default.aspx"
+                      target="_blank"
+                      id="osb-125"
+                      >OSB 125</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://sites.aub.edu.lb/osb2029/"
+                      target="_blank"
+                      id="osb-strategic-plan-2029"
+                      >OSB Strategic Plan 2029</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.aub.edu.lb/osb/about/Pages/Employment.aspx"
+                      target="_blank"
+                      id="job-opportunities"
+                      >Job Opportunities</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- Academic Programs with dropdown -->
+              <li class="osb-nav-item has-dropdown">
+                <a href="#" id="academic-programs-link">Academic Programs</a>
+                <ul class="osb-dropdown">
+                  <li>
+                    <a
+                      href="/osb/UndergradProgram"
+                      target="_blank"
+                      id="undergraduate-program"
+                      >Undergraduate Program</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/Pages/SpecializedMasters.aspx"
+                      target="_blank"
+                      id="specialized-masters"
+                      >Specialized Masters</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/osb/MBA" target="_blank" id="mba">MBA</a>
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/OMBA/Pages/default.aspx"
+                      target="_blank"
+                      id="mba-online"
+                      >MBA Online</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/osb/EMBA" target="_blank" id="executive-mba"
+                      >Executive MBA</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- Executive Education (external link + dropdown) -->
+              <li class="osb-nav-item has-dropdown">
+                <a
+                  href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx"
+                  target="_blank"
+                  id="executive-education-link"
+                  >Executive Education</a
+                >
+                <ul class="osb-dropdown">
+                  <li>
+                    <a
+                      href="/osb/executive-education/OEP"
+                      target="_blank"
+                      id="open-enrollment-programs"
+                      >Open Enrollment Programs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/osb/executive-education/CP"
+                      target="_blank"
+                      id="customized-programs"
+                      >Customized Programs</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- OSB Online with dropdown -->
+              <li class="osb-nav-item has-dropdown">
+                <a href="#" id="osb-online-link">OSB Online</a>
+                <ul class="osb-dropdown">
+                  <li>
+                    <a
+                      href="https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx"
+                      target="_blank"
+                      id="entrepreneurship-innovation-online-diploma"
+                      >Entrepreneurship & Innovation Online Graduate
+                      Professional Diploma</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx"
+                      target="_blank"
+                      id="combating-trade-based-financial-crime-certificate"
+                      >Combating Trade-Based Financial Crime Online
+                      Certificate</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx"
+                      target="_blank"
+                      id="strategic-branding-digital-era-diploma"
+                      >Strategic Branding in the Digital Era Online Diploma</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx"
+                      target="_blank"
+                      id="investment-analysis-modern-portfolio-management-diploma"
+                      >Investment Analysis and Modern Portfolio Management
+                      Online Graduate Professional Diploma</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- Faculty -->
+              <li class="osb-nav-item">
+                <a href="/osb/Pages/Faculty.aspx" id="faculty">Faculty</a>
+              </li>
+              <!-- Research -->
+              <li class="osb-nav-item">
+                <a
+                  href="https://www.aub.edu.lb/osb/facultyresearch/Pages/default.aspx"
+                  target="_blank"
+                  id="research"
+                  >Research</a
+                >
+              </li>
+              <!-- News -->
+              <li class="osb-nav-item">
+                <a
+                  href="https://www.aub.edu.lb/osb/news/Pages/default.aspx"
+                  id="news"
+                  >News</a
+                >
+              </li>
+              <!-- OSB Impacts -->
+              <li class="osb-nav-item">
+                <a
+                  href="https://www.aub.edu.lb/osb/impact/Pages/default.aspx"
+                  target="_blank"
+                  id="osb-impacts"
+                  >OSB Impacts</a
+                >
+              </li>
+              <!-- "Recent" hidden item (present but not shown visually) -->
+              <li class="osb-nav-item" style="display: none">
+                <a href="/osb" id="recent">Recent</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <main>
-        <!-- Video banner -->
-        <div class="hero-custom" data-aos="fade">
-            <video autoplay muted loop playsinline>
-                <source src="../videos/AUB-OSB-CP-banner-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <div class="overlay"></div>
-            <div class="hero-content">
-                <h1>Customized Programs</h1>
-                <p>
-                    Tailored learning solutions for your organization’s unique
-                    challenges
-                </p>
-            </div>
+      <!-- Video banner -->
+      <section class="hero hero--video" data-aos="fade">
+        <video class="hero__video-element" autoplay muted loop playsinline>
+          <source
+            src="../videos/AUB-OSB-CP-banner-video.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div class="hero__overlay"></div>
+        <div class="container">
+          <div class="hero__content hero__content--center">
+            <p class="hero__text">Executive Education</p>
+            <h1 class="hero__title">Customized Programs</h1>
+          </div>
         </div>
+      </section>
 
-        <!-- PROGRAM OVERVIEW -->
-        <section class="section">
-            <div class="container">
-                <div class="overview-grid">
-                    <div class="overview-grid__image">
-                        <img src="../images/black.png" alt="Innovation workshop" />
-                    </div>
-                    <div class="overview-grid__text">
-                        <h2 class="section-title">Custom Programs</h2>
-                        <p>
-                            Enhance the management and leadership capabilities of your
-                            organization to sustain and grow your business performance. OSB
-                            Executive Education partners with you to design courses that
-                            specifically meet your organization's development goals. Our
-                            team of experts develop unique learning experiences specifically
-                            tailored for the skill sets of your leaders and executives. Our
-                            programs can be delivered worldwide or on campus according to
-                            your convenience.
-                        </p>
-                    </div>
-                </div>
+      <!-- PROGRAM OVERVIEW -->
+      <section class="section">
+        <div class="container">
+          <div class="overview-grid">
+            <div class="overview-grid__image">
+              <img
+                src="../images/AUB-OSB-CP-Overview.jpg"
+                alt="Innovation workshop"
+              />
             </div>
-        </section>
-
-        <!-- Featured Solutions (cards with lorem ipsum) -->
-        <div class="section">
-            <div class="container">
-                <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
-                    <div class="custom-card">
-                        <img src="../images/black.png" alt="placeholder" />
-                        <div class="custom-card-content">
-                            <div class="custom-card-title">Lorem ipsum dolor</div>
-                            <div class="custom-card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </div>
-                            <a href="#" class="btn-outline-custom">Learn more →</a>
-                        </div>
-                    </div>
-                    <div class="custom-card">
-                        <img src="../images/black.png" alt="placeholder" />
-                        <div class="custom-card-content">
-                            <div class="custom-card-title">Consectetur adipiscing</div>
-                            <div class="custom-card-text">
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat.
-                            </div>
-                            <a href="#" class="btn-outline-custom">Learn more →</a>
-                        </div>
-                    </div>
-                    <div class="custom-card">
-                        <img src="../images/black.png" alt="placeholder" />
-                        <div class="custom-card-content">
-                            <div class="custom-card-title">Elit sed do eiusmod</div>
-                            <div class="custom-card-text">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur.
-                            </div>
-                            <a href="#" class="btn-outline-custom">Learn more →</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="overview-grid__text">
+              <h2 class="section-title">Custom Programs</h2>
+              <p>
+                Enhance the management and leadership capabilities of your
+                organization to sustain and grow your business performance. OSB
+                Executive Education partners with you to design courses that
+                specifically meet your organization's development goals. Our
+                team of experts develop unique learning experiences specifically
+                tailored for the skill sets of your leaders and executives. Our
+                programs can be delivered worldwide or on campus according to
+                your convenience.
+              </p>
             </div>
+          </div>
         </div>
+      </section>
 
-        <!-- Customization Process: Our Approach -->
-        <div class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">
-                    Customization Process: Our Approach
-                </h2>
-                <p class="section-description" data-aos="fade-up" data-aos-delay="50">
-                    We collaborate with you to design programs that specifically meet
-                    your organization's development goals. Our team of experts develop
-                    unique learning experiences tailored for the skill sets of your
-                    leaders and executives. Our programs can be delivered worldwide or
-                    on campus according to your convenience. Throughout our programs we
-                    integrate best practices, case studies, toolkits, and frameworks to
-                    enable your executives to transfer the knowledge back to the
-                    workplace and apply their learning effectively.
-                </p>
-                <p class="section-description" data-aos="fade-up" data-aos-delay="50"> Your program's
-                    development process begins with the completion of a Preliminary
-                    Needs Assessment that helps us learn more about your organization.
-                    We will then analyze your need to design, develop, and implement an
-                    academically fit program.
-                </p>
-                <p class="section-description" data-aos="fade-up" data-aos-delay="50"></p>Learn more about our work
-                process and
-                how
-                we can partner with you.
-                </p>
-
-                <!-- Wide portrait image -->
-                <div class="wide-image" data-aos="fade-up">
-                    <img src="../images/black.png" alt="customization process" />
+      <!-- Featured Solutions (cards with lorem ipsum) -->
+      <div class="section">
+        <div class="container">
+          <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="custom-card">
+              <img src="../images/black.png" alt="placeholder" />
+              <div class="custom-card-content">
+                <div class="custom-card-title">Lorem ipsum dolor</div>
+                <div class="custom-card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </div>
-
-
-
-                <!-- Steps 1-4 cards -->
-                <div class="steps-grid" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-card">
-                        <div class="step-number">STEP 01</div>
-                        <div class="step-title">NEEDS ASSESSMENT</div>
-                        <div class="step-desc">
-                            Discuss objectives, desired outcomes, and expectations while assessing the organization’s
-                            background, culture, and challenges.
-                            Define program goals and scope to ensure relevance, alignment, and high impact.
-                        </div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">STEP 02</div>
-                        <div class="step-title">DESIGN</div>
-                        <div class="step-desc">
-                            Collaboratively develop tailored curriculum, instructional methods, and feedback tools based
-                            on identified needs.
-                            Ensure the program structure aligns with objectives and maximizes learning effectiveness.
-                        </div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">STEP 03</div>
-                        <div class="step-title">DELIVERY</div>
-                        <div class="step-desc">
-                            Deliver the program through flexible formats, combining engaging content with a high-quality
-                            teaching experience.
-                            Align learning delivery with organizational culture, schedules, and participant needs.
-                        </div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">STEP 04</div>
-                        <div class="step-title">IMPACT</div>
-                        <div class="step-desc">
-                            Measure program effectiveness through evaluations, surveys, and performance insights.
-                            Summarize outcomes and provide recommendations as part of a follow-up and continuous
-                            improvement process.
-                        </div>
-                    </div>
-                </div>
+                <a href="#" class="btn-outline-custom">Learn more →</a>
+              </div>
             </div>
-        </div>
-
-        <!-- Active Learning Experience (testimonials) -->
-        <div class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">
-                    Active Learning Experience
-                </h2>
-                <div class="carousel js-carousel carousel-5" data-carousel>
-                    <!-- previous button -->
-                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
-                        &#10094;
-                    </button>
-
-                    <!-- scrollable container -->
-                    <div class="carousel__container js-carousel-container">
-                        <div class="carousel__track js-carousel-track">
-                            <!-- original 3 cards (exact same content) -->
-                            <div class="carousel__slide two-slides">
-
-                                <div class="testimonial-item">
-                                    <div class="testimonial-quote">
-                                        “I would recommend it to managers with high potential. AMP gave me the
-                                        opportunity to
-                                        review, refresh and update my knowledge about management in banking industry. It
-                                        highlighted
-                                        the banking trend in the future through social media, customer segmentation,
-                                        etc. More
-                                        importantly, it stimulated in me the need to be aware when taking decisions in
-                                        both inside
-                                        and outside the working environment in order to check the impact of my decisions
-                                        on others.
-                                        I would say that AMP made me more self-conscious, more motivated and more loyal
-                                        to Bank
-                                        Audi. It gave me the opportunity to explore more my colleagues and benefit from
-                                        their
-                                        strengths and competencies."
-                                    </div>
-                                    <div class="testimonial-author">Carol Abou Jaoude,</div>
-                                    <div class="testimonial-role">
-                                        Bank Audi  | Regional Manager
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="carousel__slide two-slides">
-
-                                <div class="testimonial-item">
-                                    <div class="testimonial-quote">
-                                        “Great program with highly relevant material for our evolutionary stage as an
-                                        organization.
-                                        Every week we have many things that we can directly implement at our
-                                        organization. We meet
-                                        excellent high caliber participants with whom we share knowledge and expertise.
-                                        Professionally, this program has enabled me to take a different view of our
-                                        organization and
-                                        rethink the way we work every day with a helicopter view."
-                                    </div>
-                                    <div class="testimonial-author">Jalil Allabadi,</div>
-                                    <div class="testimonial-role">Al Tibbi  | Managing Partner</div>
-                                </div>
-
-
-
-                            </div>
-                            <div class="carousel__slide two-slides">
-
-                                <div class="testimonial-item">
-                                    <div class="testimonial-quote">
-                                        "It was a great training, subjects were chosen carefully, examples and workshops
-                                        were
-                                        perfectly tailored to Hikma's business. The pre-reading materials were excellent
-                                        and
-                                        assignments made the final outcome of great value."
-                                    </div>
-                                    <div class="testimonial-author">Ahmad Nazzal,</div>
-                                    <div class="testimonial-role">
-                                        Hikma  |  Marketing Manager​
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-
-                        </div>
-                        <!-- /track -->
-                    </div>
-                    <!-- /container -->
-
-                    <!-- next button -->
-                    <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-                        &#10095;
-                    </button>
+            <div class="custom-card">
+              <img src="../images/black.png" alt="placeholder" />
+              <div class="custom-card-content">
+                <div class="custom-card-title">Consectetur adipiscing</div>
+                <div class="custom-card-text">
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
                 </div>
+                <a href="#" class="btn-outline-custom">Learn more →</a>
+              </div>
             </div>
+            <div class="custom-card">
+              <img src="../images/black.png" alt="placeholder" />
+              <div class="custom-card-content">
+                <div class="custom-card-title">Elit sed do eiusmod</div>
+                <div class="custom-card-text">
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur.
+                </div>
+                <a href="#" class="btn-outline-custom">Learn more →</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Discuss Your Program -->
-        <div class="cta-custom" data-aos="fade-up">
-            <div class="container">
-                <h2>Discuss your program customization</h2>
-                <p style="max-width: 700px; margin: 0 auto 1rem">
-                    Are you ready to start a conversation? We welcome the opportunity to discuss your interest in a
-                    custom program. Contact us and we'll help you find the best choice for you and your organization.
-                </p>
-                <button class="btn-large" onclick="alert('Contact our team at execed@aub.edu.lb')">
-                    Start a conversation
+      <!-- Customization Process: Our Approach -->
+      <div class="section">
+        <div class="container">
+          <h2 class="section-title" data-aos="fade-up">
+            Customization Process: Our Approach
+          </h2>
+          <p class="section-description" data-aos="fade-up" data-aos-delay="50">
+            We collaborate with you to design programs that specifically meet
+            your organization's development goals. Our team of experts develop
+            unique learning experiences tailored for the skill sets of your
+            leaders and executives. Our programs can be delivered worldwide or
+            on campus according to your convenience. Throughout our programs we
+            integrate best practices, case studies, toolkits, and frameworks to
+            enable your executives to transfer the knowledge back to the
+            workplace and apply their learning effectively.
+          </p>
+          <p class="section-description" data-aos="fade-up" data-aos-delay="50">
+            Your program's development process begins with the completion of a
+            Preliminary Needs Assessment that helps us learn more about your
+            organization. We will then analyze your need to design, develop, and
+            implement an academically fit program. Learn more about our work
+            process and how we can partner with you.
+          </p>
+
+          <!-- Wide portrait image -->
+          <div class="wide-image" data-aos="fade-up">
+            <img
+              src="../images/AUB-OSB-CP-Approach-Infograph.jpg"
+              alt="customization process"
+            />
+          </div>
+
+          <!-- Steps 1-4 cards -->
+          <div class="steps-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="step-card">
+              <div class="step-number">STEP 01</div>
+              <div class="step-title">NEEDS ASSESSMENT</div>
+              <div class="step-desc">
+                Discuss objectives, desired outcomes, and expectations while
+                assessing the organization’s background, culture, and
+                challenges. Define program goals and scope to ensure relevance,
+                alignment, and high impact.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">STEP 02</div>
+              <div class="step-title">DESIGN</div>
+              <div class="step-desc">
+                Collaboratively develop tailored curriculum, instructional
+                methods, and feedback tools based on identified needs. Ensure
+                the program structure aligns with objectives and maximizes
+                learning effectiveness.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">STEP 03</div>
+              <div class="step-title">DELIVERY</div>
+              <div class="step-desc">
+                Deliver the program through flexible formats, combining engaging
+                content with a high-quality teaching experience. Align learning
+                delivery with organizational culture, schedules, and participant
+                needs.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">STEP 04</div>
+              <div class="step-title">IMPACT</div>
+              <div class="step-desc">
+                Measure program effectiveness through evaluations, surveys, and
+                performance insights. Summarize outcomes and provide
+                recommendations as part of a follow-up and continuous
+                improvement process.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Learning Experience (testimonials) -->
+      <div class="section">
+        <div class="container">
+          <div class="text-center">
+            <h2 class="section-title" data-aos="fade-up">
+              Active Learning Experience
+            </h2>
+          </div>
+          <div class="carousel js-carousel carousel-5" data-carousel>
+            <!-- previous button -->
+            <button
+              class="carousel__btn carousel__btn--prev js-carousel-prev"
+              aria-label="Previous"
+              disabled
+            >
+              &#10094;
+            </button>
+
+            <!-- scrollable container -->
+            <div class="carousel__container js-carousel-container">
+              <div class="carousel__track js-carousel-track">
+                <!-- original 3 cards (exact same content) -->
+                <div class="carousel__slide two-slides">
+                  <div class="testimonial-item">
+                    <div class="testimonial-quote">
+                      “I would recommend it to managers with high potential. AMP
+                      gave me the opportunity to review, refresh and update my
+                      knowledge about management in banking industry. It
+                      highlighted the banking trend in the future through social
+                      media, customer segmentation, etc. More importantly, it
+                      stimulated in me the need to be aware when taking
+                      decisions in both inside and outside the working
+                      environment in order to check the impact of my decisions
+                      on others. I would say that AMP made me more
+                      self-conscious, more motivated and more loyal to Bank
+                      Audi. It gave me the opportunity to explore more my
+                      colleagues and benefit from their strengths and
+                      competencies."
+                    </div>
+                    <div class="testimonial-author">Carol Abou Jaoude,</div>
+                    <div class="testimonial-role">
+                      Bank Audi  | Regional Manager
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel__slide two-slides">
+                  <div class="testimonial-item">
+                    <div class="testimonial-quote">
+                      “Great program with highly relevant material for our
+                      evolutionary stage as an organization. Every week we have
+                      many things that we can directly implement at our
+                      organization. We meet excellent high caliber participants
+                      with whom we share knowledge and expertise.
+                      Professionally, this program has enabled me to take a
+                      different view of our organization and rethink the way we
+                      work every day with a helicopter view."
+                    </div>
+                    <div class="testimonial-author">Jalil Allabadi,</div>
+                    <div class="testimonial-role">
+                      Al Tibbi  | Managing Partner
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel__slide two-slides">
+                  <div class="testimonial-item">
+                    <div class="testimonial-quote">
+                      "It was a great training, subjects were chosen carefully,
+                      examples and workshops were perfectly tailored to Hikma's
+                      business. The pre-reading materials were excellent and
+                      assignments made the final outcome of great value."
+                    </div>
+                    <div class="testimonial-author">Ahmad Nazzal,</div>
+                    <div class="testimonial-role">
+                      Hikma  |  Marketing Manager​
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /track -->
+            </div>
+            <!-- /container -->
+
+            <!-- next button -->
+            <button
+              class="carousel__btn carousel__btn--next js-carousel-next"
+              aria-label="Next"
+            >
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discuss Your Program -->
+      <div class="cta-custom" data-aos="fade-up">
+        <div class="container">
+          <div class="text-center">
+            <h2 class="section-title" data-aos="fade-up">
+              Discuss your program customization
+            </h2>
+            <p style="margin: 0 auto 2rem">
+              Are you ready to start a conversation? We welcome the opportunity
+              to discuss your interest in a custom program. Contact us and we'll
+              help you find the best choice for you and your organization.
+            </p>
+          </div>
+          <div class="faculty-card">
+            <div class="faculty-image">
+              <img
+                src="../images/AUB-OSB-Dr.Gary-Profile.JPG"
+                alt="Gary Saliba - Faculty Expert"
+              />
+            </div>
+            <div class="faculty-info">
+              <h2 class="faculty-name">Gary Saliba</h2>
+              <h4 class="faculty-title">Business Development Executive</h4>
+              <h4 class="faculty-department">Executive Education Programs</h4>
+
+              <!-- Contact details: tel & email with icons -->
+              <div class="faculty-contact">
+                <div class="contact-item">
+                  <span class="contact-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      fill="none"
+                    >
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                      />
+                    </svg>
+                  </span>
+                  <a href="tel:+1234567890" class="contact-text"
+                    >+961 1 374 374 <strong>Ext:</strong> 3748</a
+                  >
+                </div>
+                <div class="contact-item">
+                  <span class="contact-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      fill="none"
+                    >
+                      <rect
+                        x="2"
+                        y="4"
+                        width="20"
+                        height="16"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <polyline points="22,7 12,13 2,7"></polyline>
+                    </svg>
+                  </span>
+                  <a href="mailto:gary.saliba@example.com" class="contact-text"
+                    >gs52@aub.edu.lb​​​</a
+                  >
+                </div>
+              </div>
+
+              <div class="faculty-actions">
+                <a href="#" class="btn btn--primary">Start a Conversation</a>
+                <a href="#" class="btn btn--secondary">View profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Faculty Experts -->
+      <div class="section" style="display: none">
+        <div class="container">
+          <h2 class="section-title" data-aos="fade-up">Our Faculty Experts</h2>
+          <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
+            <!-- Card 1: Gary Saliba -->
+            <div class="faculty-card">
+              <div class="faculty-image">
+                <img
+                  src="../images/black.png"
+                  alt="Gary Saliba - Faculty Expert"
+                />
+              </div>
+              <div class="faculty-info">
+                <div class="faculty-name">Gary Saliba</div>
+                <div class="faculty-title">Business Development Executive</div>
+                <div class="faculty-department">
+                  Executive Education Programs
+                </div>
+
+                <!-- Contact details: tel & email with icons -->
+                <div class="faculty-contact">
+                  <div class="contact-item">
+                    <span class="contact-icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        fill="none"
+                      >
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                        />
+                      </svg>
+                    </span>
+                    <a href="tel:+1234567890" class="contact-text"
+                      >+961 1 374 374 <strong>Ext:</strong> 3748</a
+                    >
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        fill="none"
+                      >
+                        <rect
+                          x="2"
+                          y="4"
+                          width="20"
+                          height="16"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <polyline points="22,7 12,13 2,7"></polyline>
+                      </svg>
+                    </span>
+                    <a
+                      href="mailto:gary.saliba@example.com"
+                      class="contact-text"
+                      >gs52@aub.edu.lb​​​</a
+                    >
+                  </div>
+                </div>
+
+                <a href="#" class="btn-outline-custom">View profile →</a>
+              </div>
+            </div>
+
+            <!-- Card 2: Jane Smith -->
+            <div class="faculty-card">
+              <div class="faculty-image">
+                <img
+                  src="../images/black.png"
+                  alt="Jane Smith - Faculty Expert"
+                />
+              </div>
+              <div class="faculty-info">
+                <div class="faculty-name">Jane Smith</div>
+                <div class="faculty-title">Executive Leadership Coach</div>
+                <div class="faculty-department">
+                  Leadership Development • C-Suite Advisory
+                </div>
+
+                <div class="faculty-contact">
+                  <div class="contact-item">
+                    <span class="contact-icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        fill="none"
+                      >
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                        />
+                      </svg>
+                    </span>
+                    <a href="tel:+1987654321" class="contact-text"
+                      >+1 (555) 876-5432</a
+                    >
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        fill="none"
+                      >
+                        <rect
+                          x="2"
+                          y="4"
+                          width="20"
+                          height="16"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <polyline points="22,7 12,13 2,7"></polyline>
+                      </svg>
+                    </span>
+                    <a href="mailto:jane.smith@example.com" class="contact-text"
+                      >jane.smith@example.com</a
+                    >
+                  </div>
+                </div>
+
+                <a href="#" class="btn-outline-custom">View profile →</a>
+              </div>
+            </div>
+
+            <!-- Card 3: Michael Lee -->
+            <div class="faculty-card">
+              <div class="faculty-image">
+                <img
+                  src="../images/black.png"
+                  alt="Michael Lee - Faculty Expert"
+                />
+              </div>
+              <div class="faculty-info">
+                <div class="faculty-name">Michael Lee</div>
+                <div class="faculty-title">Organizational Behavior</div>
+                <div class="faculty-department">
+                  Change Management • Team Dynamics
+                </div>
+
+                <div class="faculty-contact">
+                  <div class="contact-item">
+                    <span class="contact-icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        fill="none"
+                      >
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                        />
+                      </svg>
+                    </span>
+                    <a href="tel:+15551234567" class="contact-text"
+                      >+1 (555) 123-4567</a
+                    >
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        fill="none"
+                      >
+                        <rect
+                          x="2"
+                          y="4"
+                          width="20"
+                          height="16"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <polyline points="22,7 12,13 2,7"></polyline>
+                      </svg>
+                    </span>
+                    <a
+                      href="mailto:michael.lee@example.com"
+                      class="contact-text"
+                      >michael.lee@example.com</a
+                    >
+                  </div>
+                </div>
+
+                <a href="#" class="btn-outline-custom">View profile →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Learning & Benefits with testimonials -->
+      <div class="section">
+        <div class="container">
+          <div class="text-center">
+            <h2 class="section-title" data-aos="fade-up">
+              Team Learning & Benefits
+            </h2>
+            <div class="exec-option-card__desc">
+              <p>
+                Active learning experiences that combine profession skills with
+                a solid foundation of business concepts and tools.
+              </p>
+              <p>Hear it from our clients.</p>
+            </div>
+          </div>
+          <div class="section-divider"></div>
+
+          <!-- Horizontal Testimonials Carousel -->
+          <div class="carousel js-carousel carousel-5" data-carousel>
+            <!-- previous button -->
+            <button
+              class="carousel__btn carousel__btn--prev js-carousel-prev"
+              aria-label="Previous"
+              disabled
+            >
+              &#10094;
+            </button>
+
+            <!-- scrollable container -->
+            <div class="carousel__container js-carousel-container">
+              <div class="carousel__track js-carousel-track">
+                <!-- original 3 cards (exact same content) -->
+                <div class="carousel__slide one-slide">
+                  <div class="testimonial-card-horizontal">
+                    <div class="testimonial-card-horizontal__image">
+                      <img
+                        src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg"
+                        alt="AUB Alumni"
+                        onerror="
+                          this.src =
+                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
+                        "
+                      />
+                    </div>
+                    <div class="testimonial-card-horizontal__content">
+                      <h3 class="testimonial-card-horizontal__title">
+                        AUB Alumni
+                      </h3>
+                      <p class="testimonial-card-horizontal__text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel__slide one-slide">
+                  <div class="testimonial-card-horizontal">
+                    <div class="testimonial-card-horizontal__image">
+                      <img
+                        src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg"
+                        alt="AUB Alumni"
+                        onerror="
+                          this.src =
+                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
+                        "
+                      />
+                    </div>
+                    <div class="testimonial-card-horizontal__content">
+                      <h3 class="testimonial-card-horizontal__title">
+                        AUB Alumni
+                      </h3>
+                      <p class="testimonial-card-horizontal__text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel__slide one-slide">
+                  <div class="testimonial-card-horizontal">
+                    <div class="testimonial-card-horizontal__image">
+                      <img
+                        src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg"
+                        alt="AUB Alumni"
+                        onerror="
+                          this.src =
+                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
+                        "
+                      />
+                    </div>
+                    <div class="testimonial-card-horizontal__content">
+                      <h3 class="testimonial-card-horizontal__title">
+                        AUB Alumni
+                      </h3>
+                      <p class="testimonial-card-horizontal__text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel__slide one-slide">
+                  <div class="testimonial-card-horizontal">
+                    <div class="testimonial-card-horizontal__image">
+                      <img
+                        src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg"
+                        alt="AUB Alumni"
+                        onerror="
+                          this.src =
+                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
+                        "
+                      />
+                    </div>
+                    <div class="testimonial-card-horizontal__content">
+                      <h3 class="testimonial-card-horizontal__title">
+                        AUB Alumni
+                      </h3>
+                      <p class="testimonial-card-horizontal__text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel__slide one-slide">
+                  <div class="testimonial-card-horizontal">
+                    <div class="testimonial-card-horizontal__image">
+                      <img
+                        src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg"
+                        alt="AUB Alumni"
+                        onerror="
+                          this.src =
+                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
+                        "
+                      />
+                    </div>
+                    <div class="testimonial-card-horizontal__content">
+                      <h3 class="testimonial-card-horizontal__title">
+                        AUB Alumni
+                      </h3>
+                      <p class="testimonial-card-horizontal__text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /track -->
+            </div>
+            <!-- /container -->
+
+            <!-- next button -->
+            <button
+              class="carousel__btn carousel__btn--next js-carousel-next"
+              aria-label="Next"
+            >
+              &#10095;
+            </button>
+          </div>
+
+          <!-- Additional testimonials carousel (vertical cards) -->
+          <div data-aos="fade-up" data-aos-delay="200" style="display: none">
+            <div class="carousel js-carousel carousel-3" data-carousel>
+              <button
+                class="carousel__btn carousel__btn--prev js-carousel-prev"
+                aria-label="Previous"
+                disabled
+              >
+                ❮
+              </button>
+              <div class="carousel__container js-carousel-container">
+                <div class="carousel__track js-carousel-track">
+                  <div class="carousel__slide">
+                    <div class="testimonial-card">
+                      <div class="testimonial-card__quote">
+                        “The mix of theory and real case studies made me
+                        immediately apply pricing frameworks. World-class
+                        faculty.”
+                      </div>
+                      <div class="testimonial-card__profile">
+                        <div
+                          class="testimonial-card__avatar"
+                          style="
+                            background-image: url(&quot;https://randomuser.me/api/portraits/women/44.jpg&quot;);
+                            background-size: cover;
+                          "
+                        ></div>
+                        <div>
+                          <div class="testimonial-card__name">Rana H.</div>
+                          <div class="testimonial-card__role">
+                            Pricing Director, Retail Corp
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel__slide">
+                    <div class="testimonial-card">
+                      <div class="testimonial-card__quote">
+                        “Design Thinking shifted our whole innovation culture.
+                        Highly interactive and transformative.”
+                      </div>
+                      <div class="testimonial-card__profile">
+                        <div
+                          class="testimonial-card__avatar"
+                          style="
+                            background-image: url(&quot;https://randomuser.me/api/portraits/men/32.jpg&quot;);
+                            background-size: cover;
+                          "
+                        ></div>
+                        <div>
+                          <div class="testimonial-card__name">Karim M.</div>
+                          <div class="testimonial-card__role">
+                            Head of Strategy, Fintech
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel__slide">
+                    <div class="testimonial-card">
+                      <div class="testimonial-card__quote">
+                        “AI in Supply Chain gave me the confidence to lead
+                        digital transformation. The networking was invaluable.”
+                      </div>
+                      <div class="testimonial-card__profile">
+                        <div
+                          class="testimonial-card__avatar"
+                          style="
+                            background-image: url(&quot;https://randomuser.me/api/portraits/men/75.jpg&quot;);
+                            background-size: cover;
+                          "
+                        ></div>
+                        <div>
+                          <div class="testimonial-card__name">Omar K.</div>
+                          <div class="testimonial-card__role">
+                            Logistics Director
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel__slide">
+                    <div class="testimonial-card">
+                      <div class="testimonial-card__quote">
+                        “A transformative learning experience that helped me
+                        structure our family business governance for future
+                        generations.”
+                      </div>
+                      <div class="testimonial-card__profile">
+                        <div
+                          class="testimonial-card__avatar"
+                          style="
+                            background-image: url(&quot;https://randomuser.me/api/portraits/women/68.jpg&quot;);
+                            background-size: cover;
+                          "
+                        ></div>
+                        <div>
+                          <div class="testimonial-card__name">Layla S.</div>
+                          <div class="testimonial-card__role">Board Member</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="carousel__btn carousel__btn--next js-carousel-next"
+                aria-label="Next"
+              >
+                ❯
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partners (logos) -->
+      <div class="section">
+        <div class="container">
+          <div class="text-center">
+            <h2 class="section-title" data-aos="fade-up">
+              Selected Clients We Partner With
+            </h2>
+          </div>
+          <div class="carousel js-carousel carousel-5" data-carousel>
+            <!-- previous button -->
+            <button
+              class="carousel__btn carousel__btn--prev js-carousel-prev"
+              aria-label="Previous"
+              disabled
+            >
+              &#10094;
+            </button>
+
+            <!-- scrollable container -->
+            <div class="carousel__container js-carousel-container">
+              <div class="carousel__track js-carousel-track">
+                <!-- original 3 cards (exact same content) -->
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img src="../logos/ADCB-Logo.png" alt="ADCB Logo" />
+                  </div>
+                </div>
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img
+                      src="../logos/Al-Tijari-Logo.jpeg"
+                      alt="Al Tijari Logo"
+                    />
+                  </div>
+                </div>
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img
+                      src="../logos/Arab-Bank-Logo.png"
+                      alt="Arab Bank Logo"
+                    />
+                  </div>
+                </div>
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img src="../logos/GlobeMed-Logo.png" alt="GlobeMed Logo" />
+                  </div>
+                </div>
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img
+                      src="../logos/National-bank-Logo.png"
+                      alt="National Bank Logo"
+                    />
+                  </div>
+                </div>
+
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img src="../logos/Orange-logo.png" alt="Orange Logo" />
+                  </div>
+                </div>
+
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img
+                      src="../logos/Qatar-leadership-Center-Logo.png"
+                      alt="Qatar Leadership Center Logo"
+                    />
+                  </div>
+                </div>
+
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img src="../logos/tadmur-Logo.png" alt="Tadmur Logo" />
+                  </div>
+                </div>
+
+                <div class="carousel__slide">
+                  <div class="logo-item">
+                    <img src="../logos/Transmed-Logo.png" alt="Transmed Logo" />
+                  </div>
+                </div>
+              </div>
+              <!-- /track -->
+            </div>
+            <!-- /container -->
+
+            <!-- next button -->
+            <button
+              class="carousel__btn carousel__btn--next js-carousel-next"
+              aria-label="Next"
+            >
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="container text-center">
+          <h2 class="section-title" data-aos="fade-up">
+            Frequently Asked Questions
+          </h2>
+          <div class="accordion-container">
+            <div class="accordion" id="accordionRoot">
+              <!-- Accordion Item 1 -->
+              <div class="accordion-item" data-accordion-item="1">
+                <button
+                  class="accordion-title"
+                  aria-expanded="false"
+                  aria-controls="accordion-content-1"
+                >
+                  <span class="title-text">1 - Needs Assessment</span>
+                  <span class="accordion-icon" aria-hidden="true">+</span>
                 </button>
+                <div
+                  class="accordion-content"
+                  id="accordion-content-1"
+                  role="region"
+                  aria-labelledby="accordion-title-1"
+                >
+                  <div class="accordion-content-inner">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion Item 2 -->
+              <div class="accordion-item" data-accordion-item="2">
+                <button
+                  class="accordion-title"
+                  aria-expanded="false"
+                  aria-controls="accordion-content-2"
+                >
+                  <span class="title-text">2 - Program Design</span>
+                  <span class="accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div
+                  class="accordion-content"
+                  id="accordion-content-2"
+                  role="region"
+                  aria-labelledby="accordion-title-2"
+                >
+                  <div class="accordion-content-inner">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion Item 3 -->
+              <div class="accordion-item" data-accordion-item="3">
+                <button
+                  class="accordion-title"
+                  aria-expanded="false"
+                  aria-controls="accordion-content-3"
+                >
+                  <span class="title-text">3 - Program Delivery</span>
+                  <span class="accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div
+                  class="accordion-content"
+                  id="accordion-content-3"
+                  role="region"
+                  aria-labelledby="accordion-title-3"
+                >
+                  <div class="accordion-content-inner">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion Item 4 -->
+              <div class="accordion-item" data-accordion-item="4">
+                <button
+                  class="accordion-title"
+                  aria-expanded="false"
+                  aria-controls="accordion-content-4"
+                >
+                  <span class="title-text">4 - Measuring Impact</span>
+                  <span class="accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div
+                  class="accordion-content"
+                  id="accordion-content-4"
+                  role="region"
+                  aria-labelledby="accordion-title-4"
+                >
+                  <div class="accordion-content-inner">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Faculty Experts -->
-        <div class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Our Faculty Experts</h2>
-                <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
-
-                    <!-- Card 1: Gary Saliba -->
-                    <div class="faculty-card">
-                        <div class="faculty-image">
-                            <img src="../images/black.png" alt="Gary Saliba - Faculty Expert">
-                        </div>
-                        <div class="faculty-info">
-                            <div class="faculty-name">Gary Saliba</div>
-                            <div class="faculty-title">Business Development Executive</div>
-                            <div class="faculty-department">
-                                Executive Education Programs
-                            </div>
-
-                            <!-- Contact details: tel & email with icons -->
-                            <div class="faculty-contact">
-                                <div class="contact-item">
-                                    <span class="contact-icon">
-                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
-                                            <path
-                                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                                        </svg>
-                                    </span>
-                                    <a href="tel:+1234567890" class="contact-text">+961 1 374 374 <strong>Ext:</strong>
-                                        3748</a>
-                                </div>
-                                <div class="contact-item">
-                                    <span class="contact-icon">
-                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
-                                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                                            <polyline points="22,7 12,13 2,7"></polyline>
-                                        </svg>
-                                    </span>
-                                    <a href="mailto:gary.saliba@example.com" class="contact-text">gs52@aub.edu.lb​​​</a>
-                                </div>
-                            </div>
-
-                            <a href="#" class="btn-outline-custom">View profile →</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Jane Smith -->
-                    <div class="faculty-card">
-                        <div class="faculty-image">
-                            <img src="../images/black.png" alt="Jane Smith - Faculty Expert">
-                        </div>
-                        <div class="faculty-info">
-                            <div class="faculty-name">Jane Smith</div>
-                            <div class="faculty-title">Executive Leadership Coach</div>
-                            <div class="faculty-department">
-                                Leadership Development • C-Suite Advisory
-                            </div>
-
-                            <div class="faculty-contact">
-                                <div class="contact-item">
-                                    <span class="contact-icon">
-                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
-                                            <path
-                                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                                        </svg>
-                                    </span>
-                                    <a href="tel:+1987654321" class="contact-text">+1 (555) 876-5432</a>
-                                </div>
-                                <div class="contact-item">
-                                    <span class="contact-icon">
-                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
-                                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                                            <polyline points="22,7 12,13 2,7"></polyline>
-                                        </svg>
-                                    </span>
-                                    <a href="mailto:jane.smith@example.com"
-                                        class="contact-text">jane.smith@example.com</a>
-                                </div>
-                            </div>
-
-                            <a href="#" class="btn-outline-custom">View profile →</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Michael Lee -->
-                    <div class="faculty-card">
-                        <div class="faculty-image">
-                            <img src="../images/black.png" alt="Michael Lee - Faculty Expert">
-                        </div>
-                        <div class="faculty-info">
-                            <div class="faculty-name">Michael Lee</div>
-                            <div class="faculty-title">Organizational Behavior</div>
-                            <div class="faculty-department">
-                                Change Management • Team Dynamics
-                            </div>
-
-                            <div class="faculty-contact">
-                                <div class="contact-item">
-                                    <span class="contact-icon">
-                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
-                                            <path
-                                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                                        </svg>
-                                    </span>
-                                    <a href="tel:+15551234567" class="contact-text">+1 (555) 123-4567</a>
-                                </div>
-                                <div class="contact-item">
-                                    <span class="contact-icon">
-                                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
-                                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                                            <polyline points="22,7 12,13 2,7"></polyline>
-                                        </svg>
-                                    </span>
-                                    <a href="mailto:michael.lee@example.com"
-                                        class="contact-text">michael.lee@example.com</a>
-                                </div>
-                            </div>
-
-                            <a href="#" class="btn-outline-custom">View profile →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- CTA SECTION -->
+      <section class="cta contact-us-section">
+        <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
+        <div class="container" data-aos="fade-right">
+          <div class="cta__content">
+            <h2 class="cta__title">Can't Find What You're Looking For?</h2>
+            <p class="cta__text">
+              We offer customized programs tailored to your organization's
+              specific needs.<br />Contact us to discuss how we can help you
+              achieve your goals.
+            </p>
+            <button class="btn btn--white">Contact Us</button>
+          </div>
         </div>
-
-        <!-- Team Learning & Benefits with testimonials -->
-        <div class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">
-                    Team Learning & Benefits
-                </h2>
-                <div class="exec-option-card__desc">
-                    <p>Active learning experiences that combine profession skills with a solid foundation of business
-                        concepts and tools.
-                    </p>
-                    <p>Hear it from our clients.</p>
-                </div>
-                <div class="section-divider"></div>
-
-                <!-- Horizontal Testimonials Carousel -->
-                <div class="carousel js-carousel carousel-5" data-carousel>
-                    <!-- previous button -->
-                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
-                        &#10094;
-                    </button>
-
-                    <!-- scrollable container -->
-                    <div class="carousel__container js-carousel-container">
-                        <div class="carousel__track js-carousel-track">
-                            <!-- original 3 cards (exact same content) -->
-                            <div class="carousel__slide one-slide">
-                                <div class="testimonial-card-horizontal">
-                                    <div class="testimonial-card-horizontal__image">
-                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
-                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
-                                    </div>
-                                    <div class="testimonial-card-horizontal__content">
-                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
-                                        <p class="testimonial-card-horizontal__text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel__slide one-slide">
-
-                                <div class="testimonial-card-horizontal">
-                                    <div class="testimonial-card-horizontal__image">
-                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
-                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
-                                    </div>
-                                    <div class="testimonial-card-horizontal__content">
-                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
-                                        <p class="testimonial-card-horizontal__text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="carousel__slide one-slide">
-                                <div class="testimonial-card-horizontal">
-                                    <div class="testimonial-card-horizontal__image">
-                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
-                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
-                                    </div>
-                                    <div class="testimonial-card-horizontal__content">
-                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
-                                        <p class="testimonial-card-horizontal__text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="carousel__slide one-slide">
-                                <div class="testimonial-card-horizontal">
-                                    <div class="testimonial-card-horizontal__image">
-                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
-                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
-                                    </div>
-                                    <div class="testimonial-card-horizontal__content">
-                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
-                                        <p class="testimonial-card-horizontal__text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="carousel__slide one-slide">
-                                <div class="testimonial-card-horizontal">
-                                    <div class="testimonial-card-horizontal__image">
-                                        <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni"
-                                            onerror="this.src = 'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
-                                    </div>
-                                    <div class="testimonial-card-horizontal__content">
-                                        <h3 class="testimonial-card-horizontal__title">AUB Alumni</h3>
-                                        <p class="testimonial-card-horizontal__text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /track -->
-                    </div>
-                    <!-- /container -->
-
-                    <!-- next button -->
-                    <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-                        &#10095;
-                    </button>
-                </div>
-
-                <!-- Additional testimonials carousel (vertical cards) -->
-                <div data-aos="fade-up" data-aos-delay="200" style="display:none;">
-                    <div class="carousel js-carousel carousel-3" data-carousel>
-                        <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous"
-                            disabled>
-                            ❮
-                        </button>
-                        <div class="carousel__container js-carousel-container">
-                            <div class="carousel__track js-carousel-track">
-                                <div class="carousel__slide">
-                                    <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">
-                                            “The mix of theory and real case studies made me
-                                            immediately apply pricing frameworks. World-class
-                                            faculty.”
-                                        </div>
-                                        <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar" style="
-                                    background-image: url(&quot;https://randomuser.me/api/portraits/women/44.jpg&quot;);
-                                    background-size: cover;
-                                  "></div>
-                                            <div>
-                                                <div class="testimonial-card__name">Rana H.</div>
-                                                <div class="testimonial-card__role">
-                                                    Pricing Director, Retail Corp
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel__slide">
-                                    <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">
-                                            “Design Thinking shifted our whole innovation culture.
-                                            Highly interactive and transformative.”
-                                        </div>
-                                        <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar" style="
-                                    background-image: url(&quot;https://randomuser.me/api/portraits/men/32.jpg&quot;);
-                                    background-size: cover;
-                                  "></div>
-                                            <div>
-                                                <div class="testimonial-card__name">Karim M.</div>
-                                                <div class="testimonial-card__role">
-                                                    Head of Strategy, Fintech
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel__slide">
-                                    <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">
-                                            “AI in Supply Chain gave me the confidence to lead
-                                            digital transformation. The networking was invaluable.”
-                                        </div>
-                                        <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar" style="
-                                    background-image: url(&quot;https://randomuser.me/api/portraits/men/75.jpg&quot;);
-                                    background-size: cover;
-                                  "></div>
-                                            <div>
-                                                <div class="testimonial-card__name">Omar K.</div>
-                                                <div class="testimonial-card__role">
-                                                    Logistics Director
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel__slide">
-                                    <div class="testimonial-card">
-                                        <div class="testimonial-card__quote">
-                                            “A transformative learning experience that helped me
-                                            structure our family business governance for future
-                                            generations.”
-                                        </div>
-                                        <div class="testimonial-card__profile">
-                                            <div class="testimonial-card__avatar" style="
-                                    background-image: url(&quot;https://randomuser.me/api/portraits/women/68.jpg&quot;);
-                                    background-size: cover;
-                                  "></div>
-                                            <div>
-                                                <div class="testimonial-card__name">Layla S.</div>
-                                                <div class="testimonial-card__role">Board Member</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-                            ❯
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Partners (logos) -->
-        <div class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">
-                    Selected Clients We Partner With
-                </h2>
-                <div class="carousel js-carousel carousel-5" data-carousel>
-                    <!-- previous button -->
-                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
-                        &#10094;
-                    </button>
-
-                    <!-- scrollable container -->
-                    <div class="carousel__container js-carousel-container">
-                        <div class="carousel__track js-carousel-track">
-                            <!-- original 3 cards (exact same content) -->
-                            <div class="carousel__slide">
-                                <div class="logo-item">
-                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
-                                </div>
-                            </div>
-                            <div class="carousel__slide">
-                                <div class="logo-item">
-                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
-                                </div>
-
-                            </div>
-                            <div class="carousel__slide">
-                                <div class="logo-item">
-                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
-                                </div>
-
-                            </div>
-                            <div class="carousel__slide">
-                                <div class="logo-item">
-                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
-                                </div>
-
-                            </div>
-                            <div class="carousel__slide">
-                                <div class="logo-item">
-                                    <img src="../images/AUB+OSB-Merged-Logo.png" alt="client logo" />
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /track -->
-                    </div>
-                    <!-- /container -->
-
-                    <!-- next button -->
-                    <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-                        &#10095;
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="container text-center">
-                <h2 class="section-title" data-aos="fade-up">
-                    Frequently Asked Questions
-                </h2>
-                <div class="accordion-container">
-                    <div class="accordion" id="accordionRoot">
-                        <!-- Accordion Item 1 -->
-                        <div class="accordion-item" data-accordion-item="1">
-                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-1">
-                                <span class="title-text">1 - Needs Assessment</span>
-                                <span class="accordion-icon" aria-hidden="true">+</span>
-                            </button>
-                            <div class="accordion-content" id="accordion-content-1" role="region"
-                                aria-labelledby="accordion-title-1">
-                                <div class="accordion-content-inner">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 2 -->
-                        <div class="accordion-item" data-accordion-item="2">
-                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-2">
-                                <span class="title-text">2 - Program Design</span>
-                                <span class="accordion-icon" aria-hidden="true">+</span>
-                            </button>
-                            <div class="accordion-content" id="accordion-content-2" role="region"
-                                aria-labelledby="accordion-title-2">
-                                <div class="accordion-content-inner">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 3 -->
-                        <div class="accordion-item" data-accordion-item="3">
-                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-3">
-                                <span class="title-text">3 - Program Delivery</span>
-                                <span class="accordion-icon" aria-hidden="true">+</span>
-                            </button>
-                            <div class="accordion-content" id="accordion-content-3" role="region"
-                                aria-labelledby="accordion-title-3">
-                                <div class="accordion-content-inner">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 4 -->
-                        <div class="accordion-item" data-accordion-item="4">
-                            <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-4">
-                                <span class="title-text">4 - Measuring Impact</span>
-                                <span class="accordion-icon" aria-hidden="true">+</span>
-                            </button>
-                            <div class="accordion-content" id="accordion-content-4" role="region"
-                                aria-labelledby="accordion-title-4">
-                                <div class="accordion-content-inner">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum. </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA SECTION -->
-        <section class="cta contact-us-section">
-            <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
-            <div class="container" data-aos="fade-right">
-                <div class="cta__content">
-                    <h2 class="cta__title">Can't Find What You're Looking For?</h2>
-                    <p class="cta__text">
-                        We offer customized programs tailored to your organization's
-                        specific needs.<br />Contact us to discuss how we can help you
-                        achieve your goals.
-                    </p>
-                    <button class="btn btn--white">Contact Us</button>
-                </div>
-            </div>
-        </section>
+      </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer__accred">
-                <img src="../images/AUB-OSB-accreditations.png" alt="Accreditations" />
-            </div>
-            <div class="footer-grid">
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Contact Us</h2>
-                    <p class="footer-item__text">
-                        For various questions, please try contacting us via social media
-                        first!
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Privacy Statement</h2>
-                    <p class="footer-item__text">
-                        We take data privacy seriously and adhere to all applicable data
-                        privacy laws and regulations.
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Copyright and Disclaimer</h2>
-                    <p class="footer-item__text">
-                        Written permission is needed to copy or disseminate all or part of
-                        the materials on the AUB website.
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">
-                        Title IX, Non-Discrimination, and Anti-Discriminatory Harassment
-                    </h2>
-                    <p class="footer-item__text">
-                        AUB is committed to providing a safe and respectful environment to
-                        all members of its community.
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer__accred">
+          <img
+            src="../images/AUB-OSB-accreditations.png"
+            alt="Accreditations"
+          />
         </div>
-
-        <div class="bg-burgundy">
-            <div class="container footer-links-grid">
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/Pages/AZ.aspx">A-Z</a></li>
-                        <li><a href="/admissions/Pages/default.aspx">Admissions</a></li>
-                        <li>
-                            <a href="/admissions/applications/Pages/applications.aspx">Admissions Applications</a>
-                        </li>
-                        <li>
-                            <a href="/admissions/Pages/EnglishRequirements.aspx">Admissions English Requirements</a>
-                        </li>
-                        <li><a href="/Pages/AUBSIS.aspx">AUBSSI</a></li>
-                        <li>
-                            <a href="https://careers.aub.edu.lb/Login" target="_blank">Career Portal</a>
-                        </li>
-                        <li><a href="/comptroller">Comptroller</a></li>
-                        <li>
-                            <a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/emergency">Emergency</a></li>
-                        <li><a href="/TestingCenter">AUB-EN</a></li>
-                        <li>
-                            <a href="/TestingCenter/Pages/aub-endresults.aspx">AUB-EN Results</a>
-                        </li>
-                        <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
-                        <li><a href="/comptroller/Pages/Student.aspx">Fees</a></li>
-                        <li><a href="/faid">Financial Aid</a></li>
-                        <li><a href="/Search/Pages/People.aspx">Find People</a></li>
-                        <li><a href="/Employment">Jobs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/libraries">Libraries</a></li>
-                        <li>
-                            <a href="/academics/Pages/majors_programs.aspx">Majors and Programs</a>
-                        </li>
-                        <li><a href="/comptroller/Pages/Payroll.aspx">Payroll</a></li>
-                        <li><a href="/registrar">Registrar</a></li>
-                        <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
-                        <li><a href="/search/Pages/default.aspx">Search</a></li>
-                        <li>
-                            <a href="https://www.aub.edu.lb/Pages/Webmail.aspx" target="_blank">Webmail</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="footer-grid">
+          <div class="footer-item">
+            <h2 class="footer-item__title">Contact Us</h2>
+            <p class="footer-item__text">
+              For various questions, please try contacting us via social media
+              first!
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
+          <div class="footer-item">
+            <h2 class="footer-item__title">Privacy Statement</h2>
+            <p class="footer-item__text">
+              We take data privacy seriously and adhere to all applicable data
+              privacy laws and regulations.
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
+          <div class="footer-item">
+            <h2 class="footer-item__title">Copyright and Disclaimer</h2>
+            <p class="footer-item__text">
+              Written permission is needed to copy or disseminate all or part of
+              the materials on the AUB website.
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
+          <div class="footer-item">
+            <h2 class="footer-item__title">
+              Title IX, Non-Discrimination, and Anti-Discriminatory Harassment
+            </h2>
+            <p class="footer-item__text">
+              AUB is committed to providing a safe and respectful environment to
+              all members of its community.
+            </p>
+            <a href="#" class="footer-item__link">read more</a>
+          </div>
         </div>
+      </div>
 
-        <div class="footer-bottom">
-            <ul class="social-links">
-                <li>
-                    <a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"
-                        aria-label="Facebook">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-tw-icon" href="http://twitter.com/AUB_Lebanon" target="_blank"
-                        aria-label="Twitter">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-in-icon" href="https://www.linkedin.com/company/american-university-of-beirut"
-                        target="_blank" aria-label="LinkedIn">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-ig-icon" href="http://instagram.com/aub_lebanon" target="_blank"
-                        aria-label="Instagram">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-yt-icon" href="https://www.youtube.com/aubatlebanon" target="_blank"
-                        aria-label="Youtube">&nbsp;</a>
-                </li>
+      <div class="bg-burgundy">
+        <div class="container footer-links-grid">
+          <div class="footer-links-column">
+            <ul>
+              <li><a href="/Pages/AZ.aspx">A-Z</a></li>
+              <li><a href="/admissions/Pages/default.aspx">Admissions</a></li>
+              <li>
+                <a href="/admissions/applications/Pages/applications.aspx"
+                  >Admissions Applications</a
+                >
+              </li>
+              <li>
+                <a href="/admissions/Pages/EnglishRequirements.aspx"
+                  >Admissions English Requirements</a
+                >
+              </li>
+              <li><a href="/Pages/AUBSIS.aspx">AUBSSI</a></li>
+              <li>
+                <a href="https://careers.aub.edu.lb/Login" target="_blank"
+                  >Career Portal</a
+                >
+              </li>
+              <li><a href="/comptroller">Comptroller</a></li>
+              <li>
+                <a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a>
+              </li>
             </ul>
+          </div>
+          <div class="footer-links-column">
+            <ul>
+              <li><a href="/emergency">Emergency</a></li>
+              <li><a href="/TestingCenter">AUB-EN</a></li>
+              <li>
+                <a href="/TestingCenter/Pages/aub-endresults.aspx"
+                  >AUB-EN Results</a
+                >
+              </li>
+              <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
+              <li><a href="/comptroller/Pages/Student.aspx">Fees</a></li>
+              <li><a href="/faid">Financial Aid</a></li>
+              <li><a href="/Search/Pages/People.aspx">Find People</a></li>
+              <li><a href="/Employment">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-column">
+            <ul>
+              <li><a href="/libraries">Libraries</a></li>
+              <li>
+                <a href="/academics/Pages/majors_programs.aspx"
+                  >Majors and Programs</a
+                >
+              </li>
+              <li><a href="/comptroller/Pages/Payroll.aspx">Payroll</a></li>
+              <li><a href="/registrar">Registrar</a></li>
+              <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
+              <li><a href="/search/Pages/default.aspx">Search</a></li>
+              <li>
+                <a
+                  href="https://www.aub.edu.lb/Pages/Webmail.aspx"
+                  target="_blank"
+                  >Webmail</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
+
+      <div class="footer-bottom">
+        <ul class="social-links">
+          <li>
+            <a
+              class="social-fb-icon"
+              href="http://www.facebook.com/aub.edu.lb"
+              target="_blank"
+              aria-label="Facebook"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-tw-icon"
+              href="http://twitter.com/AUB_Lebanon"
+              target="_blank"
+              aria-label="Twitter"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-in-icon"
+              href="https://www.linkedin.com/company/american-university-of-beirut"
+              target="_blank"
+              aria-label="LinkedIn"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-ig-icon"
+              href="http://instagram.com/aub_lebanon"
+              target="_blank"
+              aria-label="Instagram"
+              >&nbsp;</a
+            >
+          </li>
+          <li>
+            <a
+              class="social-yt-icon"
+              href="https://www.youtube.com/aubatlebanon"
+              target="_blank"
+              aria-label="Youtube"
+              >&nbsp;</a
+            >
+          </li>
+        </ul>
+      </div>
     </footer>
 
     <script>
-        lucide.createIcons();
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100,
-        });
+      lucide.createIcons();
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+      });
     </script>
-</body>
-
+  </body>
 </html>
