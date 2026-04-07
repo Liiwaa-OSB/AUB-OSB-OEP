@@ -35,138 +35,140 @@
     </style>
     <style>
       /* two-card grid: responsive */
-  .exec-option-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+      .exec-option-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
 
-  @media (min-width: 768px) {
-    .exec-option-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-  }
+      @media (min-width: 768px) {
+        .exec-option-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
 
-  /* ========= CARD BASE ========= */
-  /* no border-radius anywhere on cards or buttons */
-  .exec-option-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border: none;
-    overflow: hidden; /* keep image corners sharp as well */
-  }
+      /* ========= CARD BASE ========= */
+      /* no border-radius anywhere on cards or buttons */
+      .exec-option-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: none;
+        overflow: hidden; /* keep image corners sharp as well */
+      }
 
-  /* Card hover effect (lift) */
-  .exec-option-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 22px 36px rgba(0, 0, 0, 0.12);
-  }
+      /* Card hover effect (lift) */
+      .exec-option-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 36px rgba(0, 0, 0, 0.12);
+      }
 
-  /* BOTH CARDS: Light background, dark text (same as current second card) */
-  .exec-option-card {
-    background-color: var(--color-border-light);
-    color: #1e2a3a;
-  }
+      /* BOTH CARDS: Light background, dark text (same as current second card) */
+      .exec-option-card {
+        background-color: var(--color-border-light);
+        color: #1e2a3a;
+      }
 
-  /* IMAGE SECTION – flush top, no padding, no margin */
-  .exec-option-card__image {
-    width: 100%;
-    display: block;
-    line-height: 0;
-    background: transparent;
-  }
+      /* IMAGE SECTION – flush top, no padding, no margin */
+      .exec-option-card__image {
+        width: 100%;
+        display: block;
+        line-height: 0;
+        background: transparent;
+      }
 
-  .exec-option-card__image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    aspect-ratio: 16 / 9;
-    background: #ccc;
-  }
+      .exec-option-card__image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        aspect-ratio: 16 / 9;
+        background: #ccc;
+      }
 
-  /* CONTENT area: padding only inside, not affecting image */
-  .exec-option-card__content {
-    padding: 2rem 1.8rem 2.2rem 1.8rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
+      /* CONTENT area: padding only inside, not affecting image */
+      .exec-option-card__content {
+        padding: 2rem 1.8rem 2.2rem 1.8rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
 
-  /* Title styling */
-  .exec-option-card__title {
-    font-size: 1.9rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-    margin-bottom: 0.75rem;
-    color: var(--color-dark-gray);
-  }
+      /* Title styling */
+      .exec-option-card__title {
+        font-size: 1.9rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 0.75rem;
+        color: var(--color-dark-gray);
+      }
 
-  /* Category pill - sharp corners */
-  .exec-option-card__category {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background: rgba(15, 43, 61, 0.1);
-    padding: 0.35rem 0.9rem;
-    color: var(--color-dark-gray);
-    width: fit-content;
-    margin-bottom: 1.25rem;
-    border-radius: 8px;
-  }
+      /* Category pill - sharp corners */
+      .exec-option-card__category {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: rgba(15, 43, 61, 0.1);
+        padding: 0.35rem 0.9rem;
+        color: var(--color-dark-gray);
+        width: fit-content;
+        margin-bottom: 1.25rem;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
 
-  /* Description text */
-  .exec-option-card__desc {
-    font-size: 1rem;
-    line-height: 1.55;
-    margin-bottom: 2rem;
-    font-weight: 450;
-    color: #2d3a48;
-  }
+      /* Description text */
+      .exec-option-card__desc {
+        font-size: 1rem;
+        line-height: 1.55;
+        margin-bottom: 2rem;
+        font-weight: 450;
+        color: #2d3a48;
+        flex: 1 0 auto; /* Grow to fill space, don't shrink */
+        margin-bottom: 1.5rem;
+      }
 
-  /* BUTTONS container */
-  .exec-option-card__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1.25rem;
-    margin-top: 0.25rem;
-  }
+      /* BUTTONS container */
+      .exec-option-card__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.25rem;
+        flex-shrink: 0; /* Prevent shrinking */
+        margin-top: 0;
+      }
 
-  /* ===== BASE BUTTON STYLES ===== */
-  .btn--primary-grey {
-    background: var(--color-text-muted);
-  }
-  .btn--secondary-grey {
-    color:  var(--color-text-muted);
-    border-color:  var(--color-text-muted);
-  }
-  .btn--primary-grey:hover {
-    background: black;
-  }
-  .btn--secondary-grey:hover {
-      background: var(--color-text-muted);
+      /* ===== BASE BUTTON STYLES ===== */
+      .btn--primary-grey {
+        background: var(--color-text-muted);
+      }
+      .btn--secondary-grey {
+        color: var(--color-text-muted);
+        border-color: var(--color-text-muted);
+      }
+      .btn--primary-grey:hover {
+        background: black;
+      }
+      .btn--secondary-grey:hover {
+        background: var(--color-text-muted);
+      }
 
-  }
-
-
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
-    .exec-option-card__actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .btn {
-      justify-content: center;
-    }
-  }
+      /* Responsive adjustments */
+      @media (max-width: 480px) {
+        .exec-option-card__actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .btn {
+          justify-content: center;
+        }
+      }
       /* AOS simulation (optional, just keep for data-aos attribute support) */
       [data-aos] {
         transition-property: transform, opacity;
@@ -223,6 +225,7 @@
         font-weight: 800;
         margin: 0 1.2rem 0.8rem 1.2rem;
         color: #1a202c;
+        flex-shrink: 0;
       }
 
       .featured-card .btn--small {
@@ -262,7 +265,6 @@
         overflow: hidden;
         background: #f1f5f9;
         height: 200px;
-
       }
 
       /* .media-card--image .media-card__media {
@@ -1078,7 +1080,7 @@
               <!-- Executive Education (external link + dropdown) -->
               <li class="osb-nav-item has-dropdown">
                 <!-- lii replace href below -->
-                  <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
+                <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
                 <a
                   href="https://liiwaa-osb.github.io\AUB-OSB-OEP\executive-education-program.html"
                   target="_blank"
@@ -1251,80 +1253,89 @@
             </div>
           </div>
           <div class="programs-container">
-  <div
-    class="exec-option-grid"
-    data-aos="fade-up"
-    data-aos-delay="100"
-  >
-    <!-- CARD 1: Open Enrollment Programs (LIGHT BG, DARK TEXT - same as current second card) -->
-    <div class="exec-option-card">
-      <!-- Image at the top, flush, no padding -->
-      <div class="exec-option-card__image">
-        <img
-          src="images/AUB-OSB-CP-card.jpg"
-          alt="Open Enrollment Programs - professionals collaborating"
-          loading="lazy"
-        />
-      </div>
-      <div class="exec-option-card__content">
-        <div class="exec-option-card__title">
-          Open Enrollment Programs
-        </div>
-        <div class="exec-option-card__category">FOR INDIVIDUALS</div>
-        <div class="exec-option-card__desc">
-          Get in touch with us to help you find the right program for
-          you. Whatever your managerial experience, our open
-          enrollment programs will equip you with the right skillsets
-          to accelerate your career growth.
-        </div>
-        <div class="exec-option-card__actions">
-          <!-- btn--primary for Contact us -->
-          <a href="#contact-individuals" class="btn btn--primary">
-            Contact us
-          </a>
-          <!-- btn--secondary for Learn more -->
-          <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html" class="btn btn--secondary">
-            Learn more
-          </a>
-        </div>
-      </div>
-    </div>
+            <div
+              class="exec-option-grid"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <!-- CARD 1: Open Enrollment Programs (LIGHT BG, DARK TEXT - same as current second card) -->
+              <div class="exec-option-card">
+                <!-- Image at the top, flush, no padding -->
+                <div class="exec-option-card__image">
+                  <img
+                    src="images/AUB-OSB-CP-card.jpg"
+                    alt="Open Enrollment Programs - professionals collaborating"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="exec-option-card__content">
+                  <div class="exec-option-card__title">
+                    Open Enrollment Programs
+                  </div>
+                  <div class="exec-option-card__category">FOR INDIVIDUALS</div>
+                  <div class="exec-option-card__desc">
+                    Get in touch with us to help you find the right program for
+                    you. Whatever your managerial experience, our open
+                    enrollment programs will equip you with the right skillsets
+                    to accelerate your career growth.
+                  </div>
+                  <div class="exec-option-card__actions">
+                    <!-- btn--primary for Contact us -->
+                    <a href="#contact-individuals" class="btn btn--primary">
+                      Contact us
+                    </a>
+                    <!-- btn--secondary for Learn more -->
+                    <a
+                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html"
+                      class="btn btn--secondary"
+                    >
+                      Learn more
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-    <!-- CARD 2: Customized Programs (LIGHT BG, DARK TEXT - same as current second card) -->
-    <div class="exec-option-card">
-      <!-- Image at the top, flush, no padding -->
-      <div class="exec-option-card__image">
-        <img
-          src="images/AUB-OSB-OEP-crad.jpg"
-          alt="Customized Programs - team strategy meeting"
-          loading="lazy"
-        />
-      </div>
-      <div class="exec-option-card__content">
-        <div class="exec-option-card__title">Customized Programs</div>
-        <div class="exec-option-card__category">FOR COMPANIES</div>
-        <div class="exec-option-card__desc">
-          Connect with our team to discuss how we can meet your
-          company's learning objectives. Our experts will work with
-          you to develop a high impact learning experience that
-          provides your team with the tools and frameworks to grow
-          your business.
-        </div>
-        <div class="exec-option-card__actions">
-          <!-- btn--primary for Contact us -->
-          <a href="#contact-companies" class="btn btn--primary btn--primary-grey">
-            Contact us
-          </a>
-          <!-- btn--secondary with outline and --color-text-muted -->
-           <!-- lii replcae href -->
-          <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\custom-programs\index.html" class="btn btn--secondary btn--secondary-grey">
-            Learn more
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+              <!-- CARD 2: Customized Programs (LIGHT BG, DARK TEXT - same as current second card) -->
+              <div class="exec-option-card">
+                <!-- Image at the top, flush, no padding -->
+                <div class="exec-option-card__image">
+                  <img
+                    src="images/AUB-OSB-OEP-crad.jpg"
+                    alt="Customized Programs - team strategy meeting"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="exec-option-card__content">
+                  <div class="exec-option-card__title">Customized Programs</div>
+                  <div class="exec-option-card__category">FOR COMPANIES</div>
+                  <div class="exec-option-card__desc">
+                    Connect with our team to discuss how we can meet your
+                    company's learning objectives. Our experts will work with
+                    you to develop a high impact learning experience that
+                    provides your team with the tools and frameworks to grow
+                    your business.
+                  </div>
+                  <div class="exec-option-card__actions">
+                    <!-- btn--primary for Contact us -->
+                    <a
+                      href="#contact-companies"
+                      class="btn btn--primary btn--primary-grey"
+                    >
+                      Contact us
+                    </a>
+                    <!-- btn--secondary with outline and --color-text-muted -->
+                    <!-- lii replcae href -->
+                    <a
+                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\custom-programs\index.html"
+                      class="btn btn--secondary btn--secondary-grey"
+                    >
+                      Learn more
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

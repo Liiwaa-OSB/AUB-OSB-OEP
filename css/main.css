@@ -871,6 +871,7 @@ body.menu-open {
   font-size: 18px;
   font-weight: 700;
   color: #000;
+  line-height: 1.2rem;
 }
 
 /* ===== OVERVIEW GRID ===== */
@@ -1425,16 +1426,16 @@ img {
 }
 
 /* ===== INFO CARDS (Timing, Fees & Location) ===== */
-.grid-5, .grid-4 {
+.grid-5,
+.grid-4 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
-
-
 @media (min-width: 640px) {
-  .grid-5, .grid-4 {
+  .grid-5,
+  .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
