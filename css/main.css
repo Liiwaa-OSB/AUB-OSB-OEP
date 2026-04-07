@@ -93,10 +93,6 @@ body {
   }
 }
 
-.text-center {
-  text-align: center;
-}
-
 .section {
   padding: 2.5rem 1.5rem;
 }
@@ -748,7 +744,7 @@ body.menu-open {
 .hero--video {
   padding: 0 1.5rem;
   min-height: 600px;
-  height: calc(100vh - 160px);
+  height: calc(60vh);
 }
 
 .hero__video-element {
@@ -765,7 +761,7 @@ body.menu-open {
   position: absolute;
   inset: 0;
   background: #000;
-  opacity: 0.5;
+  opacity: 0.4;
   z-index: 1;
 }
 
@@ -795,6 +791,7 @@ body.menu-open {
   font-size: var(--hero-subtitle-size);
   font-weight: 400;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .hero__text {

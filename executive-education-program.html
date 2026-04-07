@@ -38,7 +38,9 @@
         text-decoration: underline;
         text-underline-offset: 6px;
       }
-      /* two-card option grid — original responsive structure */
+    </style>
+    <style>
+      /* two-card grid: responsive */
       .exec-option-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -48,196 +50,222 @@
       @media (min-width: 768px) {
         .exec-option-grid {
           grid-template-columns: repeat(2, 1fr);
-          gap: 2.5rem;
+          gap: 2rem;
         }
       }
 
-      /* CARD BASE: background image covers whole card, overlay on top, text in lower half */
+      /* ===== BASE BUTTON STYLES (shared by both button types) ===== */
+/* two-card grid: responsive */
+      .exec-option-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .exec-option-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+
+      /* ========= CARD BASE ========= */
+      /* no border-radius anywhere on cards or buttons */
       .exec-option-card {
-        position: relative;
-        background: #ffffff; /* fallback, but main visual uses image overlay */
-        overflow: hidden;
-        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.07);
-        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        border: 1px solid var(--card-border-soft);
-        /* content layout: flex column to push content to lower half */
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        min-height: 520px;
-      }
-
-      /* background image layer: covers full card */
-      .exec-option-card__bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
         height: 100%;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        z-index: 0;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: none;
+        overflow: hidden; /* keep image corners sharp as well */
       }
 
-      /* dark overlay on top of image, improves text readability */
-      .exec-option-card__overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
+      /* Card hover effect (lift) */
+      .exec-option-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 36px rgba(0, 0, 0, 0.12);
+      }
+
+      /* ----- CARD 1: DARK BACKGROUND, WHITE TEXT ----- */
+      .exec-option-card:first-child {
+        background-color: var(
+          --color-dark-gray
+        ); /* deep navy/dark solid background */
+        color: white;
+      }
+
+      /* ----- CARD 2: LIGHT BACKGROUND, DARK TEXT ----- */
+      .exec-option-card:last-child {
+        background-color: var(
+          --color-border-light
+        ); /* soft light gray/off-white solid background */
+        color: #1e2a3a;
+      }
+
+      /* IMAGE SECTION – flush top, no padding, no margin */
+      .exec-option-card__image {
         width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.55) 0%,
-          rgba(0, 0, 0, 0.7) 100%
-        );
-        z-index: 1;
-        backdrop-filter: brightness(0.92);
-        transition: opacity 0.3s ease;
-      }
-
-      /* optional hover overlay enhancement */
-      .exec-option-card:hover .exec-option-card__overlay {
-        background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.6),
-          rgba(0, 0, 0, 0.75)
-        );
-      }
-
-      /* content container: sits above overlay, occupies lower half */
-      .exec-option-card__content {
-        position: relative;
-        z-index: 2;
-        padding: 2rem 1.8rem 2.2rem 1.8rem;
+        display: block;
+        line-height: 0; /* remove extra spacing */
         background: transparent;
-        color: white;
-        /* ensure text starts at lower portion — flex spacing + margin-top auto approach */
-        margin-top: auto;
+      }
+
+      .exec-option-card__image img {
         width: 100%;
-        backdrop-filter: blur(0px); /* no extra blur, clean */
-        border-radius: 0;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        aspect-ratio: 16 / 9; /* consistent proportion, but image fills naturally */
+        background: #ccc; /* fallback while loading */
       }
 
-      /* category / subheading (FOR INDIVIDUALS / FOR COMPANIES) */
-      .exec-option-card__category {
-        font-size: 0.85rem;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 0.3rem 0.9rem;
-        border-radius: 40px;
-        backdrop-filter: blur(4px);
-        color: #ffffff;
+      /* CONTENT area: padding only inside, not affecting image */
+      .exec-option-card__content {
+        padding: 2rem 1.8rem 2.2rem 1.8rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
       }
 
-      /* title (optional but we keep to match description hierarchy) — but we use primary bold headline as per new brief? The brief shows "FOR INDIVIDUALS" & paragraph, but we can add subtle heading like "Open Enrollment Programs" if needed but we respect text: "FOR INDIVIDUALS" and then description; BUT original had titles, but now replace. We'll follow new copy exactly */
+      /* Title styling */
       .exec-option-card__title {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
         font-weight: 800;
-        letter-spacing: -0.3px;
-        margin-bottom: 0.85rem;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 0.75rem;
+      }
+
+      /* Card 1 title (dark card) -> white */
+      .exec-option-card:first-child .exec-option-card__title {
         color: white;
-        line-height: 1.2;
       }
 
-      /* description text */
+      /* Card 2 title (light card) -> dark */
+      .exec-option-card:last-child .exec-option-card__title {
+        color: var(--color-dark-gray);
+      }
+
+      /* Category pill - but keep sharp? category can have slight rounding? no border-radius on buttons only, but category tag can have optional rounding? but requirement only says cards and buttons no border-radius. For category it's fine but not essential. I'll make it sharp as well (no rounding). */
+      .exec-option-card__category {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: rgba(0, 0, 0, 0.12);
+        padding: 0.35rem 0.9rem;
+        color: inherit;
+        width: fit-content;
+        margin-bottom: 1.25rem;
+        border-radius: 8px;
+      }
+
+      /* For light card, category background slightly darker */
+      .exec-option-card:last-child .exec-option-card__category {
+        background: rgba(15, 43, 61, 0.1);
+        color: var(--color-dark-gray);
+      }
+
+      /* For dark card category: light overlay */
+      .exec-option-card:first-child .exec-option-card__category {
+        background: rgba(255, 255, 255, 0.15);
+        color: #f0f0f0;
+      }
+
+      /* Description text */
       .exec-option-card__desc {
-        color: rgba(255, 255, 255, 0.92);
-        line-height: 1.5;
-        margin-bottom: 1.8rem;
         font-size: 1rem;
-        font-weight: 400;
-        max-width: 95%;
+        line-height: 1.55;
+        margin-bottom: 2rem;
+        font-weight: 450;
       }
 
-      /* button row / link group: two CTAs (Contact us | View programs etc) */
+      .exec-option-card:first-child .exec-option-card__desc {
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .exec-option-card:last-child .exec-option-card__desc {
+        color: #2d3a48;
+      }
+
+      /* BUTTONS container */
       .exec-option-card__actions {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 1.5rem;
+        gap: 1.25rem;
         margin-top: 0.25rem;
       }
 
-      /* link style (no background, border-bottom style) */
-      .card-link {
+      /* ===== BUTTON COLOR LOGIC: buttons take color from the OTHER card's background ===== */
+      /* Card 1 (dark background) -> contact buttons use light card's background color (var(--color-border-light)) with dark text */
+      .exec-option-card:first-child .btn-contact,
+      .exec-option-card:first-child .btn-learn {
+        background-color: var(
+          --color-border-light
+        ); /* light background from card 2 */
+        color: var(--color-dark-gray); /* dark text to match contrast */
+      }
+
+      /* Card 1 buttons hover: slightly darker light shade */
+      .exec-option-card:first-child .btn-contact:hover,
+      .exec-option-card:first-child .btn-learn:hover {
+        background-color: var(--color-bg-light);
+        color: var(--color-dark-gray);
+        transform: translateX(4px);
+      }
+
+      /* Card 2 (light background) -> contact buttons use dark card's background color (var(--color-dark-gray)) with white text */
+      .exec-option-card:last-child .btn-contact,
+      .exec-option-card:last-child .btn-learn {
+        background-color: var(
+          --color-dark-gray
+        );
         color: white;
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 0.95rem;
-        letter-spacing: 0.2px;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: 0.2s ease;
-        border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
-        padding-bottom: 0.2rem;
       }
 
-      .card-link:hover {
-        gap: 0.75rem;
-        border-bottom-color: white;
-        color: #ffffff;
-        transform: translateX(3px);
-      }
-
-      /* Optional secondary link variant (same style) */
-      .card-link i {
-        font-size: 1rem;
-        transition: transform 0.2s;
-      }
-
-      .card-link:hover i {
-        transform: translateX(3px);
-      }
-
-      /* Hover effect for card (slight lift, border color shift) */
-      .exec-option-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.25);
-        border-color: var(--color-primary);
-      }
-
-      .exec-option-card .btn--option {
-        background: transparent;
-        border: 2px solid White;
-        color: White;
-        font-weight: 700;
-        padding: 0.7rem 1.6rem;
-        transition: 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .exec-option-card .btn--option:hover {
-        background: var(--color-primary);
+      /* Card 2 buttons hover: slightly lighter dark tone */
+      .exec-option-card:last-child .btn-contact:hover,
+      .exec-option-card:last-child .btn-learn:hover {
+        background-color: var(--color-gray-bg);
         color: white;
-        transform: translateX(6px);
+        transform: translateX(4px);
       }
 
-      /* Responsive adjustments */
-      @media (max-width: 640px) {
-        .exec-option-card {
-          min-height: 480px;
-        }
-        .exec-option-card__content {
-          padding: 1.5rem;
-        }
-        .exec-option-card__title {
-          font-size: 1.5rem;
-        }
-        .exec-option-card__desc {
-          font-size: 0.9rem;
-        }
+      /* ===== LEARN MORE BUTTONS – OVERRIDE: transparent + border ===== */
+      /* Card 1: border & text = var(--color-border-light) (contact bg), transparent bg */
+      .exec-option-card:first-child .btn-learn {
+        background-color: transparent;
+        border: 2px solid var(--color-border-light);
+        color: var(--color-border-light);
+      }
+      .exec-option-card:first-child .btn-learn:hover {
+        background-color: var(--color-border-light);
+        color: var(--color-dark-gray);
+        transform: translateX(4px);
+      }
+
+      /* Card 2: border & text = var(--color-dark-gray) (contact bg), transparent bg */
+      .exec-option-card:last-child .btn-learn {
+        background-color: transparent;
+        border: 2px solid var(--color-dark-gray);
+        color: var(--color-dark-gray);
+      }
+      .exec-option-card:last-child .btn-learn:hover {
+        background-color: var(--color-dark-gray);
+        color: white;
+        transform: translateX(4px);
+      }
+
+      @media (max-width: 480px) {
         .exec-option-card__actions {
-          gap: 1.2rem;
-          flex-wrap: wrap;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .btn {
+          justify-content: center;
         }
       }
 
@@ -335,16 +363,17 @@
       .media-card__media {
         overflow: hidden;
         background: #f1f5f9;
+        height: 200px;
+
       }
 
-      .media-card--image .media-card__media {
+      /* .media-card--image .media-card__media {
         height: 200px;
       }
 
       .media-card--video .media-card__media {
         height: 260px;
-        /* larger for video */
-      }
+      } */
 
       .media-card__media img,
       .media-card__media video {
@@ -440,7 +469,6 @@
       .testimonial-card__quote {
         font-size: 1rem;
         line-height: 1.5;
-        color: #2c3e50;
         margin-bottom: 1.2rem;
         font-style: italic;
         position: relative;
@@ -1289,8 +1317,8 @@
         <div class="hero__overlay"></div>
         <div class="container">
           <div class="hero__content hero__content--center">
-            <p class="hero__text">Executive Education</p>
-            <h1 class="hero__title">Lifelong learning for leaders</h1>
+            <p class="hero__text">Lifelong learning for leaders</p>
+            <h1 class="hero__title">Executive Education</h1>
             <p class="hero__subtitle">
               World-class programs designed for impact
             </p>
@@ -1301,108 +1329,94 @@
       <!-- SECTION 1: Our Program Formats (with descriptive text + two cards) -->
       <section class="section" id="program-options">
         <div class="container">
-          <h2 class="section-title" data-aos="fade-up">
-            Tailored to ensure professional growth for you and your company.
-          </h2>
-          <div
-            class="section-description"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            Our Executive Education programs develop the leadership and
-            management skills of senior and executive managers and high
-            potentials, enhancing organization-wide leadership capability and
-            effectiveness of management teams. Empower and create a real impact
-            on yourself, your team, and your organization with our
-            custom-designed programs for corporates and open enrollment and
-            partner programs for individuals.​​
+          <div class="text-center">
+            <h2 class="section-title" data-aos="fade-up">
+              Tailored to ensure professional growth
+            </h2>
+            <div
+              class="section-description"
+              data-aos="fade-up"
+              data-aos-delay="50"
+            >
+              Our Executive Education programs develop the leadership and
+              management skills of senior and executive managers and high
+              potentials, enhancing organization-wide leadership capability and
+              effectiveness of management teams. Empower and create a real
+              impact on yourself, your team, and your organization with our
+              custom-designed programs for corporates and open enrollment and
+              partner programs for individuals.​​
+            </div>
           </div>
-          <div class="exec-option-grid" data-aos="fade-up" data-aos-delay="100">
-            <!-- Card 1: Open Enrollment Programs section (FOR INDIVIDUALS) -->
-            <div class="exec-option-card">
-              <!-- Background image layer: full card background -->
-              <div
-                class="exec-option-card__bg"
-                style="
-                  background-image: url(&quot;images/AUB-OSB-OEP-crad.jpg&quot;);
-                "
-              ></div>
-              <!-- Overlay for better readability -->
-              <div class="exec-option-card__overlay"></div>
-
-              <!-- Content positioned in lower half (flex margin-top: auto ensures lower placement) -->
-              <div class="exec-option-card__content">
-                <div class="exec-option-card__title">
-                  Open Enrollment Programs
+          <div class="programs-container">
+            <div
+              class="exec-option-grid"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <!-- CARD 1: Open Enrollment Programs (DARK BG, WHITE TEXT) -->
+              <div class="exec-option-card">
+                <!-- Image at the top, flush, no padding -->
+                <div class="exec-option-card__image">
+                  <img
+                    src="images/AUB-OSB-CP-card.jpg"
+                    alt="Open Enrollment Programs - professionals collaborating"
+                    loading="lazy"
+                  />
                 </div>
-
-                <!-- Category tag: FOR INDIVIDUALS (as per brief) -->
-                <div class="exec-option-card__category">FOR INDIVIDUALS</div>
-                <!-- Optional subtle title but we preserve the descriptive text exactly -->
-                <!-- Using description block that matches the requested copy -->
-                <div class="exec-option-card__desc">
-                  Get in touch with us to help you find the right program for
-                  you. Whatever your managerial experience, our open enrollment
-                  programs will equip you with the right skillsets to accelerate
-                  your career growth.
-                </div>
-                <!-- Action links: Contact us | View programs (matching brief) -->
-                <div class="exec-option-card__actions">
-                  <a
-                    href="#experience-osb"
-                    class="btn--option"
-                    style="text-decoration: none"
-                    >View Programs →</a
-                  >
-                  <a
-                    href="#contact-individuals"
-                    class="card-link"
-                    style="text-decoration: none"
-                  >
-                    Contact us <span aria-hidden="true">→</span>
-                  </a>
+                <div class="exec-option-card__content">
+                  <div class="exec-option-card__title">
+                    Open Enrollment Programs
+                  </div>
+                  <div class="exec-option-card__category">FOR INDIVIDUALS</div>
+                  <div class="exec-option-card__desc">
+                    Get in touch with us to help you find the right program for
+                    you. Whatever your managerial experience, our open
+                    enrollment programs will equip you with the right skillsets
+                    to accelerate your career growth.
+                  </div>
+                  <div class="exec-option-card__actions">
+                    <!-- Contact us button (color from other card: light background) -->
+                    <a href="#contact-individuals" class="btn btn-contact">
+                      Contact us
+                    </a>
+                    <!-- Learn more button (also uses other card background) -->
+                    <a href="#learn-individuals" class="btn btn-learn">
+                      Learn more
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Card 2: Customized Programs section (FOR COMPANIES) -->
-            <div class="exec-option-card">
-              <!-- Background image: customized program image (same path but can be distinct - using same images/black.png as per requirement: "images/black.png" for both, but we treat as requested, both use black.png but we could also differentiate but spec says use photo attached - Customized Pro Image, path "images/black.png". So consistent -->
-              <div
-                class="exec-option-card__bg"
-                style="
-                  background-image: url(&quot;images/AUB-OSB-CP-card.jpg&quot;);
-                "
-              ></div>
-              <div class="exec-option-card__overlay"></div>
-
-              <div class="exec-option-card__content">
-                <div class="exec-option-card__title">Customized Programs</div>
-
-                <!-- Category: FOR COMPANIES -->
-                <div class="exec-option-card__category">FOR COMPANIES</div>
-                <!-- Description exactly as brief: Connect with our team to discuss how we can meet your company's learning objectives... -->
-                <div class="exec-option-card__desc">
-                  Connect with our team to discuss how we can meet your
-                  company's learning objectives. Our experts will work with you
-                  to develop a high impact learning experience that provides
-                  your team with the tools and frameworks to grow your business.
+              <!-- CARD 2: Customized Programs (LIGHT BG, DARK TEXT) -->
+              <div class="exec-option-card">
+                <!-- Image at the top, flush, no padding -->
+                <div class="exec-option-card__image">
+                  <img
+                    src="images/AUB-OSB-OEP-crad.jpg"
+                    alt="Customized Programs - team strategy meeting"
+                    loading="lazy"
+                  />
                 </div>
-                <!-- Two CTAs: Contact us | Learn more -->
-                <div class="exec-option-card__actions">
-                  <a
-                    href="#custom-contact"
-                    class="btn--option"
-                    style="text-decoration: none"
-                    >Learn More →</a
-                  >
-                  <a
-                    href="#contact-companies"
-                    class="card-link"
-                    style="text-decoration: none"
-                  >
-                    Contact us <span aria-hidden="true">→</span>
-                  </a>
+                <div class="exec-option-card__content">
+                  <div class="exec-option-card__title">Customized Programs</div>
+                  <div class="exec-option-card__category">FOR COMPANIES</div>
+                  <div class="exec-option-card__desc">
+                    Connect with our team to discuss how we can meet your
+                    company’s learning objectives. Our experts will work with
+                    you to develop a high impact learning experience that
+                    provides your team with the tools and frameworks to grow
+                    your business.
+                  </div>
+                  <div class="exec-option-card__actions">
+                    <!-- Contact us button (color from other card: dark background) -->
+                    <a href="#contact-companies" class="btn btn-contact">
+                      Contact us
+                    </a>
+                    <!-- Learn more button (also from other card: dark background) -->
+                    <a href="#learn-companies" class="btn btn-learn">
+                      Learn more
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1482,17 +1496,21 @@
       <!-- SECTION 3: Discover Our Stories (Success Stories + Testimonials, with lorem text above, no emojis) -->
       <section class="section" id="discover-stories">
         <div class="container">
-          <h2 class="section-title" data-aos="fade-up">Discover Our Stories</h2>
-          <div
-            class="section-description"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            At OSB Executive Education, we use transformative teaching methods
-            for individuals and organizations ensure a dynamic environment which
-            challenges thinking and maximizes learning outcomes. Our faculty
-            includes professors and lecturers the most prominent and
-            distinguished academics worldwide.
+          <div class="text-center">
+            <h2 class="section-title" data-aos="fade-up">
+              Discover Our Stories
+            </h2>
+            <div
+              class="section-description"
+              data-aos="fade-up"
+              data-aos-delay="50"
+            >
+              At OSB Executive Education, we use transformative teaching methods
+              for individuals and organizations ensure a dynamic environment
+              which challenges thinking and maximizes learning outcomes. Our
+              faculty includes professors and lecturers the most prominent and
+              distinguished academics worldwide.
+            </div>
           </div>
 
           <!-- Success Stories Carousel (no emoji) -->
@@ -1502,7 +1520,6 @@
                 font-size: 1.6rem;
                 font-weight: 700;
                 margin-bottom: 1rem;
-                color: #2c3e50;
                 text-align: center;
               "
             >
@@ -1521,7 +1538,7 @@
 
                 <!-- scrollable container -->
                 <div class="carousel__container js-carousel-container">
-                  <div class="carousel__track js-carousel-track">
+                  <div class="carousel__track js-carousel-track text-center">
                     <!-- Card 1: IMAGE card -->
                     <div class="carousel__slide">
                       <div class="media-card media-card--image">
@@ -1630,7 +1647,6 @@
                 font-size: 1.6rem;
                 font-weight: 700;
                 margin-bottom: 1rem;
-                color: #2c3e50;
                 text-align: center;
               "
             >
