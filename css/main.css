@@ -546,7 +546,10 @@ body.nav-scrolled .nav-osb .osb-dropdown {
 }
 
 body.nav-scrolled .nav-osb .osb-dropdown a {
-  color: #1a202c;
+  color: var(--color-text-muted);
+}
+body.nav-scrolled .nav-osb .osb-dropdown:hover a {
+  color: var(--color-primary-dark);
 }
 
 /* ---------- MOBILE BURGER & OVERLAY ---------- */
