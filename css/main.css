@@ -548,7 +548,7 @@ body.nav-scrolled .nav-osb .osb-dropdown {
 body.nav-scrolled .nav-osb .osb-dropdown a {
   color: var(--color-text-muted);
 }
-body.nav-scrolled .nav-osb .osb-dropdown:hover a {
+body.nav-scrolled .nav-osb .osb-dropdown a:hover {
   color: var(--color-primary-dark);
 }
 
