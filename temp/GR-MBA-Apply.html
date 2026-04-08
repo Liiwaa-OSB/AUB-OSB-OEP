@@ -1,453 +1,681 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>MBA</title>
-
-    <link rel="stylesheet" href="build/css/intlTelInput.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
-    <script src="build/js/intlTelInput.js"></script>
-    <script src="js/mailchimp-subscribe.js"></script>
-    <script src="js/validatorv2.js"></script>
-
-    <script>
-        var mcurl = 'https://aub.us19.list-manage.com/subscribe/post?u=XXXXXXXXXXXXXXXX';
-    </script>
-
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>AUB OSB | #1 MBA Program in MENA</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
-        :root {
-            --color-primary: #840132;
-            --color-primary-dark: #6a132c;
-            --bg-light: #f3f3f3;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+      /* CSS Variables */
+      :root {
+        --color-primary: #840132;
+        --color-primary-dark: #6a132c;
+        --color-primary-hover: #840132;
+        --border-radius-card: 15px;
+        --border-radius-input: 10px;
+      }
 
-        body {
-            background: var(--bg-light);
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+        background: #000;
+        color: #fff;
+        line-height: 1.2;
+      }
 
-        /* BANNER */
-        .banner {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background: url('images/AUB-OSB-MBA-Apply-banner.png') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
+      /* Background image with overlay (modified for responsive solid) */
+      .page-wrapper {
+        position: relative;
+        min-height: 100vh;
+        background: url("images/MBA-Landing Page-Image.jpg") no-repeat center
+          top/cover fixed;
+        isolation: isolate;
+      }
 
-        .banner::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
+      /* Default gradient overlay (0.4 bottom → 0 top) */
+      .page-wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.45),
+          rgba(0, 0, 0, 0) 70%
+        );
+        z-index: 1;
+        pointer-events: none;
+      }
 
-        .banner-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 0 20px;
-        }
+      /* main content sits above overlay */
+      .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem 2rem;
+      }
 
-        .banner h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+      /* ----- TOP LEFT LOGO ----- */
+      .logo {
+        margin-bottom: 2.5rem;
+      }
+      .logo a {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo-img img {
+        max-height: 85px;
+        width: auto;
+        display: block;
+      }
 
-        .banner p {
-            font-size: 18px;
-        }
+      /* TWO COLUMN LAYOUT (first row) */
+      .grid-2cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+      }
 
-        /* CARDS SECTION */
-        .cards-section {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+      /* LEFT COLUMN (hero text & buttons) - BOTTOM ALIGNMENT */
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+      }
+      @media (min-width: 900px) {
+        .hero-content {
+          padding-bottom: 135px;
         }
+      }
+      .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        line-height: 1;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+      }
+      .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .btn-primary {
+        background-color: var(--color-primary-dark);
+        color: white;
+        border: none;
+        padding: 0.85rem 1.8rem;
+        font-weight: 600;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .btn-primary:hover {
+        background-color: var(--color-primary-hover);
+        transform: translateY(-2px);
+      }
+      .btn-outline-light {
+        background: transparent;
+        border: 1.5px solid white;
+        color: white;
+        padding: 0.85rem 1.8rem;
+        font-weight: 600;
+        border-radius: 10px;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+        backdrop-filter: blur(3px);
+        transition: 0.2s;
+      }
+      .btn-outline-light:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: white;
+      }
 
-        .card {
-            flex: 1;
-            min-width: 280px;
-            background: #fff;
-            padding: 25px;
-            border: 1px solid #ddd;
+      /* RIGHT COLUMN: FORM CARD */
+      .form-card {
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(2px);
+        border-radius: var(--border-radius-card);
+        padding: 1.8rem 1.8rem 2rem;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .form-group {
+        margin-bottom: 0.4rem;
+      }
+      /* labels have been removed – all field titles are now placeholders */
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.7rem 0.9rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid white;
+        border-radius: var(--border-radius-input);
+        font-size: 0.9rem;
+        color: white;
+        transition: 0.2s;
+        outline: none;
+        font-family: inherit;
+      }
+      input:focus,
+      select:focus {
+        border-color: var(--color-primary-dark);
+        background: rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.5);
+      }
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 400;
+      }
+      select:invalid,
+      select option[value=""][disabled] {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      option {
+        background: #222222;
+        color: white;
+      }
+      /* submit button */
+      .btn-submit {
+        width: 100%;
+        background: white;
+        color: var(--color-primary-dark);
+        border: none;
+        padding: 0.85rem;
+        font-weight: 700;
+        font-size: 1rem;
+        border-radius: var(--border-radius-input);
+        margin-top: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 0.5px;
+      }
+      .btn-submit:hover {
+        background: #eef2f7;
+        transform: scale(0.98);
+      }
+
+      /* SECOND ROW: two info cards (identical style) */
+      .cards-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 3rem 0 3rem;
+      }
+      .info-card {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: var(--border-radius-card);
+        padding: 1.6rem 1.8rem;
+        backdrop-filter: blur(3px);
+        transition: 0.2s;
+      }
+      .info-card h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        letter-spacing: -0.3px;
+      }
+      .bullet-list {
+        list-style: none;
+        padding: 0;
+      }
+      .bullet-list li {
+        margin-bottom: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+      }
+      /* icons: regular (outline) and white */
+      .bullet-list li i {
+        width: 24px;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      /* FOOTER */
+      .footer {
+        background-color: var(--color-primary-dark);
+        width: 100%;
+        padding: 2rem 0 1.8rem;
+      }
+      .footer-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .footer-legal {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        text-align: left;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 1.2rem;
+        color: white;
+      }
+      .copyright {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: white;
+      }
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 0.5rem;
+      }
+      .social-icons a {
+        color: white;
+        font-size: 1.5rem;
+        transition: all 0.2s;
+      }
+      .social-icons a:hover {
+        opacity: 0.85;
+        transform: translateY(-3px);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .grid-2cols,
+        .cards-row {
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
-
-        .card h3 {
-            margin-bottom: 15px;
-            color: var(--color-primary);
-        }
-
-        .card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .card ul li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-            font-size: 14px;
-        }
-
-        /* BULLET ICON */
-        .card ul li::before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--color-primary);
-            font-weight: bold;
-        }
-
-        /* HEADER */
-        .header {
-            background: var(--color-primary);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header img {
-            height: 50px;
-            filter: brightness(0) invert(1);
-            /* makes logo white if needed */
-        }
-
-        .header h1 {
-            color: white;
-        }
-
-        .header a {
-            background: #fff;
-            color: var(--color-primary);
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .header a:hover {
-            background: #eee;
-        }
-
-        /* CONTAINER */
         .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
+          padding: 1.2rem 1.5rem;
         }
-
-        /* FORM CARD */
+        .hero-content h1 {
+          font-size: 2.3rem;
+        }
+        /* Hero content bottom alignment still works */
+        /* Buttons full width on small screens when stacked */
+        .button-group {
+          flex-direction: column;
+          width: 100%;
+        }
+        .button-group .btn-primary,
+        .button-group .btn-outline-light {
+          width: 100%;
+          text-align: center;
+        }
+        .logo-text {
+          font-size: 1rem;
+        }
+        /* Overlay: remove gradient, solid rgba(0,0,0,0.4) on small screens */
+        .page-wrapper::before {
+          background: rgba(0, 0, 0, 0.4);
+          /* background: linear-gradient? No, solid color only when columns stacked? Use solid background for all small screens (consistent with requirement: "image overlay with no gradient (all rgba(0,0,0,0.4))") */
+        }
+      }
+      /* Ensure solid overlay for all breakpoints where columns stack (max-width: 900px) and also for any device width < 900px we override gradient to solid black 0.4 */
+      @media (max-width: 900px) {
+        .page-wrapper::before {
+          background: rgba(0, 0, 0, 0.45);
+          /* remove gradient */
+        }
+      }
+      @media (max-width: 550px) {
+        .hero-content h1 {
+          font-size: 1.9rem;
+        }
+        .info-card h3 {
+          font-size: 1.4rem;
+        }
         .form-card {
-            background: #fff;
-            padding: 30px;
-            border: 1px solid #ddd;
+          padding: 1.2rem;
         }
-
-        .form-title {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        /* INPUTS */
-        .wrap-input100 {
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        .label-input100 {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-
-        .input100 {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            outline: none;
-            font-size: 14px;
-        }
-
-        .input100:focus {
-            border-color: var(--color-primary);
-        }
-
-        /* BUTTON */
-        .contact100-form-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--color-primary);
-            color: #fff;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .contact100-form-btn:hover {
-            background: var(--color-primary-dark);
-        }
-
-        /* FOOTER WRAPPER */
-        footer {
-            width: 100%;
-            margin-top: 50px;
-        }
-
-        /* TOP SECTION (PRIMARY COLOR) */
-        .footer-top {
-            background: var(--color-primary);
-            color: #fff;
-            width: 100%;
-        }
-
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px 30px;
-            text-align: center;
-        }
-
-        .footer-text {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .footer-copy {
-            font-size: 12px;
-        }
-
-        .footer-bottom {
-            background: #69132c;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-links li {
-            display: inline-block;
-        }
-
-        .social-links a {
-            display: block;
-            width: 28px;
-            height: 28px;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        /* ✅ USE SVG URLs (THIS IS THE REAL FIX) */
-        .social-links .social-fb-icon {
-            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/facebook.svg") center no-repeat;
-            background-size: contain;
-        }
-
-        .social-links .social-tw-icon {
-            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/twitter.svg") center no-repeat;
-            background-size: contain;
-        }
-
-        .social-links .social-in-icon {
-            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/linkedin.svg") center no-repeat;
-            background-size: contain;
-        }
-
-        .social-links .social-ig-icon {
-            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/instagram.svg") center no-repeat;
-            background-size: contain;
-        }
-
-        .social-links .social-yt-icon {
-            background: url("https://www.aub.edu.lb/Style%20Library/AUB/images/SocialMedia/youtube.svg") center no-repeat;
-            background-size: contain;
-        }
+      }
+      /* small fixes for selects & date */
+      select,
+      input[type="date"] {
+        color-scheme: light;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        opacity: 0.7;
+        cursor: pointer;
+      }
+      /* For date placeholder fallback hint (optional) */
+      input[type="date"]:before {
+        content: attr(placeholder);
+        color: rgba(255, 255, 255, 0.7);
+        position: absolute;
+      }
     </style>
-</head>
-
-<body>
-
-    <!-- HEADER -->
-    <div class="header">
-        <img src="images/AUB+OSB-Merged-Logo-white.png" alt="logo">
-        <h1>Master's in Business Administration
-        </h1>
-        <a href="https://www.aub.edu.lb" target="_blank">Visit Website</a>
-    </div>
-
-    <div class="banner">
-        <div class="banner-content">
-            <h1>Join the #1 MBA Program in MENA</h1>
-            <p>Complete Your Application in Just a Few Minutes</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="form-card">
-
-            <div class="form-title">
-                Fill the form to access the application
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="container">
+        <!-- TOP LEFT LOGO (preserved user edit: image logo) -->
+        <div class="logo">
+          <a href="#" style="text-decoration: none">
+            <div class="logo-img">
+              <img class="OSBLogo" src="images/AUB-OSB-Logo.png" alt="logo" />
             </div>
+          </a>
+        </div>
 
-            <form class="contact100-form validate-form" id="myform"
-                action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="post"
-                name="myform">
+        <!-- FIRST ROW: two columns (hero + form) -->
+        <div class="grid-2cols">
+          <!-- LEFT COLUMN: Title, subtitle & buttons (bottom aligned via flex) -->
+          <div class="hero-content">
+            <h1>
+              Join the
+              <br />
+              #1 MBA Program
+              <br />
+              in MENA
+            </h1>
+            <div class="hero-subtitle">
+              Complete your application
+              <br />
+              in just a few minutes
+            </div>
+            <div class="button-group">
+              <a href="#" class="btn-primary">Visit Website</a>
+              <a href="#" class="btn-outline-light">Download Brochure</a>
+            </div>
+          </div>
 
-                <!-- HIDDEN FIELDS (UNCHANGED) -->
-                <input type="hidden" name="oid" value="00D0Y000001Xrwc">
-                <input type="hidden" id="recordType" name="recordType" value="0120Y000000ymGb">
-                <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="7011n000000S0gqAAC">
-                <input type="hidden" id="member_status" name="member_status" value="Interested">
-                <input type="hidden" name="lead_source" id="lead_source" value="Website">
-                <input type="hidden" name="00N0Y00000QGkma" id="00N0Y00000QGkma" value="Brochure MBA">
-                <input type="hidden" name="country_code" id="country_code" value="LB">
-                <input type="hidden" name="campaign" id="campaign" value="">
-                <input type="hidden" name="rating" id="rating" value="Cold">
-                <input type="hidden" id="00N0Y00000RODiR" name="00N0Y00000RODiR" value="Work Email">
-                <input type="hidden" id="00N0Y00000RODr9" name="00N0Y00000RODr9" value="Work Phone">
-                <input type="hidden" name="retURL" value="https://www.aub.edu.lb/osb/MBA/Documents/MBAbrochure.pdf">
-
-                <!-- INPUTS -->
-                <div class="wrap-input100">
-                    <label class="label-input100">First Name</label>
-                    <input class="input100" id="first_name" name="first_name" required type="text">
-                </div>
-
-                <div class="wrap-input100">
-                    <label class="label-input100">Last Name</label>
-                    <input class="input100" id="last_name" name="last_name" required type="text">
-                </div>
-
-                <div class="wrap-input100">
-                    <label class="label-input100">Email</label>
-                    <input class="input100" id="email" name="00N0Y00000QGl8W" required type="text">
-                </div>
-
-                <div class="wrap-input100">
-                    <label class="label-input100">Phone</label>
-                    <input class="input100" id="phone" name="intphone" required type="tel">
-                </div>
-
-                <div class="wrap-input100">
-                    <label class="label-input100">Company</label>
-                    <input class="input100" id="employer" name="00N0Y00000QGku0" required type="text">
-                </div>
-
-                <button class="contact100-form-btn" type="submit" name="submitbtn" id="submitbtn">
-                    DOWNLOAD BROCHURE
-                </button>
-
+          <!-- RIGHT COLUMN: FORM (all inputs intact, labels removed, placeholders act as titles) -->
+          <div class="form-card">
+            <form id="mbaApplicationForm" action="#" method="post">
+              <!-- Full Name* -->
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="full_name"
+                  id="full_name"
+                  placeholder="Full Name *"
+                  autocomplete="name"
+                />
+              </div>
+              <!-- Email Address* -->
+              <div class="form-group">
+                <input
+                  type="email"
+                  name="email_address"
+                  id="email_address"
+                  placeholder="Email Address *"
+                  autocomplete="email"
+                />
+              </div>
+              <!-- Mobile Number* -->
+              <div class="form-group">
+                <input
+                  type="tel"
+                  name="mobile_number"
+                  id="mobile_number"
+                  placeholder="Mobile Number *"
+                />
+              </div>
+              <!-- Gender* -->
+              <div class="form-group">
+                <select name="gender" id="gender" required>
+                  <option value="" disabled selected>Gender *</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <!-- Date of Birth* -->
+              <div class="form-group">
+                <label style="margin-left: 7px"
+                  >Date of Birth <span class="required-star">*</span></label
+                >
+                <input type="date" name="date_of_birth" id="date_of_birth" />
+              </div>
+              <!-- Country of Residence* -->
+              <div class="form-group">
+                <select name="country_residence" id="country_residence">
+                  <option value="" disabled selected>
+                    Country of Residence *
+                  </option>
+                  <option>Lebanon</option>
+                  <option>UAE</option>
+                  <option>Saudi Arabia</option>
+                  <option>Qatar</option>
+                  <option>Egypt</option>
+                  <option>Jordan</option>
+                  <option>USA</option>
+                  <option>United Kingdom</option>
+                  <option>France</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <!-- Degree Type* -->
+              <div class="form-group">
+                <select name="degree_type" id="degree_type">
+                  <option value="" disabled selected>Degree Type *</option>
+                  <option>Bachelor's Degree</option>
+                  <option>Master's Degree</option>
+                  <option>PhD / Doctorate</option>
+                  <option>Professional Degree</option>
+                </select>
+              </div>
+              <!-- University Major* -->
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="university_major"
+                  id="university_major"
+                  placeholder="University Major *"
+                />
+              </div>
+              <!-- Year of Graduation* -->
+              <div class="form-group">
+                <select name="year_graduation" id="year_graduation">
+                  <option value="" disabled selected>
+                    Year of Graduation *
+                  </option>
+                  <option>2028</option>
+                  <option>2027</option>
+                  <option>2026</option>
+                  <option>2025</option>
+                  <option>2024</option>
+                  <option>2023</option>
+                  <option>2022</option>
+                  <option>2021</option>
+                  <option>2020</option>
+                  <option>2019</option>
+                  <option>2018</option>
+                  <option>2017</option>
+                  <option>2016</option>
+                  <option>2015</option>
+                </select>
+              </div>
+              <!-- University* -->
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="university"
+                  id="university"
+                  placeholder="University *"
+                />
+              </div>
+              <!-- Are you currently Employed? (optional, no star) -->
+              <div class="form-group">
+                <select name="currently_employed" id="currently_employed">
+                  <option value="" disabled selected>
+                    Are you currently Employed?
+                  </option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <!-- Years of Work Experience* -->
+              <div class="form-group">
+                <input
+                  type="number"
+                  name="years_work_experience"
+                  id="years_work_experience"
+                  placeholder="Years of Work Experience *"
+                  min="0"
+                  step="1"
+                />
+              </div>
+              <!-- Industry* -->
+              <div class="form-group">
+                <select name="industry" id="industry">
+                  <option value="" disabled selected>Industry *</option>
+                  <option>Consulting</option>
+                  <option>Finance & Banking</option>
+                  <option>Technology</option>
+                  <option>Healthcare</option>
+                  <option>Manufacturing</option>
+                  <option>Retail</option>
+                  <option>Energy</option>
+                  <option>Education</option>
+                  <option>Nonprofit</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <!-- How did you hear about us? (optional) -->
+              <div class="form-group">
+                <select name="hear_about_us" id="hear_about_us">
+                  <option value="" disabled selected>
+                    How did you hear about us?
+                  </option>
+                  <option>LinkedIn</option>
+                  <option>Instagram/Facebook</option>
+                  <option>University Event</option>
+                  <option>Colleague/Friend</option>
+                  <option>Email Newsletter</option>
+                  <option>Website</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <!-- SUBMIT BUTTON -->
+              <button type="submit" class="btn-submit">SUBMIT</button>
             </form>
+          </div>
         </div>
-    </div>
 
-    <div class="cards-section">
-
-        <div class="card">
+        <!-- SECOND ROW: two identical columns (Program Overview & Admission Requirements) bullet points + regular outline icons white -->
+        <div class="cards-row">
+          <!-- Card 1: Program Overview -->
+          <div class="info-card">
             <h3>Program Overview</h3>
-            <ul>
-                <li>Available in full-time or part-time</li>
-                <li>Taught by world-renowned professors</li>
-                <li>Cutting-edge curriculum</li>
-                <li>Admission to an international alumni network</li>
+            <ul class="bullet-list">
+              <li>
+                <i class="fa-regular fa-clock"></i> Available in full-time or
+                part-time
+              </li>
+              <li>
+                <i class="fas fa-chalkboard-user"></i> Taught by world-renowned
+                professors
+              </li>
+              <li>
+                <i class="fas fa-code-branch"></i> Cutting-edge curriculum
+              </li>
+              <li>
+                <i class="fas fa-globe"></i> Admission to an international
+                alumni network
+              </li>
             </ul>
-        </div>
-
-        <div class="card">
+          </div>
+          <!-- Card 2: Main Admission Requirements -->
+          <div class="info-card">
             <h3>Main Admission Requirements</h3>
-            <ul>
-                <li>Bachelor's Degree with a good GPA</li>
-                <li>At least two years of work experience</li>
-                <li>GMAT score</li>
-                <li>Fluent in written and spoken English</li>
+            <ul class="bullet-list">
+              <li>
+                <i class="fas fa-graduation-cap"></i> Bachelor's Degree with a
+                good GPA
+              </li>
+              <li>
+                <i class="fas fa-briefcase"></i> At least two years of work
+                experience
+              </li>
+              <li><i class="fas fa-chart-line"></i> GMAT score</li>
+              <li>
+                <i class="fas fa-language"></i> Fluent in written and spoken
+                English
+              </li>
             </ul>
+          </div>
         </div>
-
+      </div>
+      <!-- end container -->
     </div>
 
-    <footer>
-
-        <!-- TOP FOOTER -->
-        <div class="footer-top">
-            <div class="footer-content">
-                <div class="footer-text">
-                    <em>
-                        By submitting this form you are undertaking that the information provided is accurate.
-                        You are also consenting to processing of your information for the specified purpose
-                        in accordance with relevant data protection laws. The University will maintain
-                        confidentiality of the personal information. The information may be used by the
-                        University to communicate with you and inform you about our programs and higher
-                        education offerings.
-                    </em>
-                </div>
-
-                <div class="footer-copy">
-                    <span>©2020 American University of Beirut, OSB All Rights Reserved.</span>
-                </div>
-            </div>
+    <!-- FOOTER: full width primary-dark background, legal text + social icons (all white) -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-legal">
+          By submitting this form you are undertaking that the information
+          provided is accurate. You are also consenting to processing of your
+          information for the specified purpose in accordance with relevant data
+          protection laws. The University will maintain confidentiality of the
+          personal information. The information may be used by the University to
+          communicate with you and inform you about our programs and higher
+          education offerings.
         </div>
-
-        <!-- BOTTOM FOOTER -->
-        <div class="footer-bottom">
-            <ul class="social-links">
-                <li>
-                    <a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"></a>
-                </li>
-                <li>
-                    <a class="social-tw-icon" href="http://twitter.com/AUB_Lebanon" target="_blank"></a>
-                </li>
-                <li>
-                    <a class="social-in-icon" href="https://www.linkedin.com/company/american-university-of-beirut"
-                        target="_blank"></a>
-                </li>
-                <li>
-                    <a class="social-ig-icon" href="http://instagram.com/aub_lebanon" target="_blank"></a>
-                </li>
-                <li>
-                    <a class="social-yt-icon" href="https://www.youtube.com/aubatlebanon" target="_blank"></a>
-                </li>
-            </ul>
+        <div class="copyright">
+          ©2026 American University of Beirut, OSB All Rights Reserved
         </div>
-
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
     </footer>
+    <!-- end page-wrapper -->
 
-</body>
-
+    <!-- Script: unchanged, only prevents default submission to preserve demo -->
+    <script>
+      (function () {
+        const form = document.getElementById("mbaApplicationForm");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert(
+              "Thank you for your interest! Your application details have been received (demo). The MBA admissions team will contact you soon.",
+            );
+          });
+        }
+      })();
+    </script>
+  </body>
 </html>
