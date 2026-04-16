@@ -25,10 +25,11 @@
  .hero-banner {
    position: relative;
    background: linear-gradient(97deg, #0a0a0a 0%, #1c1c1c 100%);
-   padding: 3.5rem 2rem 7rem 2rem;
-   text-align: center;
+    padding: 3.5rem 2rem 7rem 2rem;
+       text-align: center;
    overflow: hidden;
    isolation: isolate;
+       height: 70vh;
  }
 
  /* subtle background pattern / texture */
@@ -67,12 +68,10 @@
  }
 
  /* Logo floating near banner (left aligned) */
- .banner-logo {
-   position: absolute;
-   top: 2rem;
-   left: 2rem;
-   z-index: 12;
- }
+.banner-logo{
+text-align: left;
+margin-bottom: 50px;
+}
 
  .banner-logo img {
    max-height: 70px;
@@ -91,15 +90,20 @@
 
  /* form card overlapping: negative margin top to overlay banner */
  .overlap-form-card {
-   background: rgba(0, 0, 0, 0.82);
+   background: rgba(0, 0, 0, 0.6);
    backdrop-filter: blur(14px);
    border-radius: var(--border-radius-card);
-   border: 1px solid rgba(255, 255, 255, 0.25);
+   border: 1px solid rgba(0, 0, 0, 0.7);
    box-shadow: var(--shadow-elevation);
    padding: 2.2rem 2.5rem;
-   max-width: 950px;
    margin: -70px auto 0 auto;
    transition: all 0.3s;
+ }
+
+ .validate-form-modern {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 30px;
  }
 
  /* two column layout inside form: left info / right fields? But to match existing fields style we keep form full width,
@@ -133,7 +137,7 @@
  textarea {
    width: 100%;
    padding: 0.85rem 1rem;
-   background: rgba(20, 20, 20, 0.7);
+   background: transparent;
    border: 1px solid rgba(255, 255, 255, 0.4);
    border-radius: var(--border-radius-input);
    font-size: 0.95rem;
@@ -145,9 +149,7 @@
 
  input:focus,
  select:focus {
-   border-color: var(--color-primary);
-   background: rgba(0, 0, 0, 0.85);
-   box-shadow: 0 0 0 3px rgba(132, 1, 50, 0.4);
+   background: rgba(0, 0, 0, 0.15);
  }
 
  input::placeholder,
@@ -162,7 +164,7 @@
 
  /* submit button */
  .btn-submit {
-   background: var(--color-primary-dark);
+   background: var(--color-primary);
    border: none;
    padding: 1rem 1.5rem;
    font-weight: 800;
@@ -173,13 +175,13 @@
    width: 100%;
    cursor: pointer;
    transition: var(--transition-default);
-   margin-top: 0.5rem;
+   margin-top: 2.2rem;
    text-transform: uppercase;
    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
  }
 
  .btn-submit:hover {
-   background: linear-gradient(95deg, var(--color-primary), #a0114a);
+   background: var(--color-primary-dark);
    transform: translateY(-2px);
    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.4);
  }
