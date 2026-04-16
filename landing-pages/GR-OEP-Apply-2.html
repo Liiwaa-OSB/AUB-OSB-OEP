@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AUB OSB | MBA Application - #1 in MENA</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Roboto for refined elegance -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- jQuery & Validation (preserve existing logic) -->
+    <link rel="stylesheet" href="css-2026/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <style>
+       
+    </style>
+</head>
+<body>
+
+<!-- HERO BANNER (top part with title/subtitle) -->
+<div class="hero-banner">
+    <div class="banner-logo">
+        <a href="#" style="text-decoration: none;">
+            <img src="images-2026/AUB-OSB-Logo.png" alt="AUB OSB Logo" onerror="this.src='https://placehold.co/200x70?text=AUB+OSB'">
+        </a>
+    </div>
+    <div class="banner-content">
+        <h1>Join the #1 MBA Program</h1>
+        <div class="hero-tagline">
+            Transform your leadership potential — Full-time or Part-time. <br>
+            Complete the form in just a few minutes.
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTAINER: overlapping form card -->
+<div class="main-container">
+    <div class="overlap-form-card">
+        <!-- FORM (Salesforce Web-to-Lead) with improved layout and same hidden fields -->
+        <form class="validate-form-modern" id="mba-lead-form" 
+              action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" 
+              method="post" name="myform" novalidate>
+            
+            <!-- Salesforce hidden fields (exactly same as original, keeping all IDs) -->
+            <input type="hidden" name="oid" value="00D0Y000001Xrwc" />
+            <input type="hidden" id="recordType" name="recordType" value="0120Y000000ymGb" />
+            <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="7011n000000S0gqAAC" />
+            <input type="hidden" id="member_status" name="member_status" value="Interested" />
+            <input type="hidden" name="lead_source" id="lead_source" value="Website" />
+            <input type="hidden" name="00N0Y00000QGkma" id="00N0Y00000QGkma" value="Apply MBA" />
+            <input type="hidden" name="00N0Y00000QGku0" id="employer" value="N/A" />
+            <input type="hidden" name="rating" id="rating" value="Cold" />
+            <input type="hidden" id="00N0Y00000RODiR" name="00N0Y00000RODiR" value="Work Email" />
+            <input type="hidden" id="00N0Y00000RODr9" name="00N0Y00000RODr9" value="Work Phone" />
+            <!-- retURL: thank you page (same as original) -->
+            <input type="hidden" name="retURL" value="https://www.aub.edu.lb/osb/Landing/GR-MBA-ThankYou-Apply.html" />
+
+            <div class="form-grid-modern">
+                <!-- First Name -->
+                <div class="form-group">
+                    <label>First Name <span class="required-star">*</span></label>
+                    <input type="text" id="first_name" name="first_name" placeholder="e.g., Ahmed" required maxlength="40">
+                </div>
+                <!-- Last Name -->
+                <div class="form-group">
+                    <label>Last Name <span class="required-star">*</span></label>
+                    <input type="text" id="last_name" name="last_name" placeholder="e.g., Mansour" required maxlength="80">
+                </div>
+                <!-- Email (Salesforce field: 00N0Y00000QGl8W) -->
+                <div class="form-group">
+                    <label>Email <span class="required-star">*</span></label>
+                    <input type="email" id="email" name="00N0Y00000QGl8W" placeholder="you@example.com" required maxlength="80">
+                </div>
+                <!-- Mobile Number -->
+                <div class="form-group">
+                    <label>Mobile Number <span class="required-star">*</span></label>
+                    <input type="tel" id="phone" name="intphone" placeholder="+961 3 123 456" required>
+                </div>
+                <!-- Country of Residence -->
+                <div class="form-group">
+                    <label>Country of Residence <span class="required-star">*</span></label>
+                    <input type="text" id="country_code" name="country_code" placeholder="Lebanon / UAE / Qatar ..." required maxlength="40">
+                </div>
+                <!-- University Major -->
+                <div class="form-group">
+                    <label>University Major <span class="required-star">*</span></label>
+                    <input type="text" id="major" name="major" placeholder="e.g., Business Administration" required maxlength="40">
+                </div>
+                <!-- University -->
+                <div class="form-group">
+                    <label>University <span class="required-star">*</span></label>
+                    <input type="text" id="university" name="university" placeholder="American University of Beirut" required maxlength="40">
+                </div>
+                <!-- Years of Experience -->
+                <div class="form-group">
+                    <label>Years of Experience <span class="required-star">*</span></label>
+                    <input type="number" id="years_of_experience" name="years_of_experience" placeholder="e.g., 4" required step="1" min="0">
+                </div>
+                <!-- How did you hear about us? -->
+                <div class="form-group full-width-field">
+                    <label>How did you hear about us? <span class="required-star">*</span></label>
+                    <input type="text" id="how_did_you_hear" name="how_did_you_hear" placeholder="LinkedIn, Friend, Advertisement, etc." required maxlength="80">
+                </div>
+            </div>
+
+            <div class="container-contact100-form-btn">
+                <button class="btn-submit" type="submit" name="submitbtn" id="submitbtn">
+                    SUBMIT APPLICATION
+                </button>
+            </div>
+            <div class="note-text">
+                <i class="fas fa-lock"></i> Your information is secure. An admissions advisor will contact you shortly.
+            </div>
+        </form>
+
+        <!-- Button group (Visit Website & Download Brochure) integrated under form -->
+        <div class="form-footer-buttons">
+            <a href="https://www.aub.edu.lb/osb" class="btn-primary-solid" target="_blank"> Visit Website</a>
+            <a href="#" class="btn-outline-banner"> Download Brochure</a>
+        </div>
+    </div>
+
+    <!-- TWO INFO CARDS (identical content, modern styling) -->
+    <div class="cards-section" display none>
+        <div class="info-card-modern">
+            <h3>Program Overview</h3>
+            <ul class="bullet-list-modern">
+                <li><i class="fa-regular fa-clock"></i> Available in full-time or part-time</li>
+                <li><i class="fas fa-chalkboard-user"></i> Taught by world-renowned professors</li>
+                <li><i class="fas fa-code-branch"></i> Cutting-edge curriculum</li>
+                <li><i class="fas fa-globe"></i> Admission to an international alumni network</li>
+            </ul>
+        </div>
+        <div class="info-card-modern">
+            <h3>Main Admission Requirements</h3>
+            <ul class="bullet-list-modern">
+                <li><i class="fas fa-graduation-cap"></i> Bachelor's Degree with a good GPA</li>
+                <li><i class="fas fa-briefcase"></i> At least two years of work experience</li>
+                <li><i class="fas fa-chart-line"></i> GMAT score</li>
+                <li><i class="fas fa-language"></i> Fluent in written and spoken English</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER (brand identity preserved) -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-legal">
+            <i class="fas fa-gavel"></i> American University of Beirut – Suliman S. Olayan School of Business<br>
+            The #1 MBA program in the Middle East and North Africa. Accredited by AACSB.
+        </div>
+        <div class="copyright">
+            &copy; 2026 AUB OSB. All rights reserved. | Beirut, Lebanon
+        </div>
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery Validation (enhanced client-side validation while preserving salesforce backend) -->
+<script>
+$(document).ready(function(){
+    // Override form validation messages and rules, maintain required fields
+    $("#mba-lead-form").validate({
+        rules: {
+            first_name: { required: true, minlength: 1 },
+            last_name: { required: true },
+            "00N0Y00000QGl8W": { required: true, email: true },
+            intphone: { required: true, minlength: 6 },
+            country_code: { required: true },
+            major: { required: true },
+            university: { required: true },
+            years_of_experience: { required: true, digits: true, min: 0 },
+            how_did_you_hear: { required: true }
+        },
+        messages: {
+            first_name: "First name is required",
+            last_name: "Last name is required",
+            "00N0Y00000QGl8W": "Please enter a valid email address",
+            intphone: "Phone number is required",
+            country_code: "Country of residence is required",
+            major: "University major is required",
+            university: "University name is required",
+            years_of_experience: "Please enter valid years of experience",
+            how_did_you_hear: "Please let us know how you heard about us"
+        },
+        errorElement: "div",
+        errorClass: "error-message",
+        highlight: function(element) {
+            $(element).addClass("error");
+        },
+        unhighlight: function(element) {
+            $(element).removeClass("error");
+        },
+        submitHandler: function(form) {
+            // optional: add subtle loading effect
+            const btn = $("#submitbtn");
+            btn.html('<i class="fas fa-spinner fa-pulse"></i> Submitting...').prop('disabled', true);
+            form.submit();
+        }
+    });
+
+    // improve phone placeholder if needed
+    $("#phone").attr("placeholder", "+961 70 123 456");
+});
+</script>
+</body>
+</html>

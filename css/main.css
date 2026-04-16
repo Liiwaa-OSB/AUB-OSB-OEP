@@ -1691,7 +1691,7 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 640px) {
