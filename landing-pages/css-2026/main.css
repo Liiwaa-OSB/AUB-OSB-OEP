@@ -1,0 +1,499 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+  --color-primary: #840132;
+  --color-primary-dark: #6a132c;
+  --color-primary-hover: #840132;
+  --border-radius-card: 15px;
+  --border-radius-input: 10px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #000;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* Background image with overlay (modified for responsive solid) */
+.page-wrapper {
+  position: relative;
+  background: url("../images-2026/MBA-Landing Page-Image.jpg") no-repeat center
+    top/cover fixed;
+  isolation: isolate;
+}
+@media (min-width: 900px) {
+  .page-wrapper {
+    min-height: calc(100vh - 200px);
+  }
+}
+
+/* Default gradient overlay (0.4 bottom → 0 top) */
+.page-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* main content sits above overlay */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 2rem;
+}
+
+/* ----- TOP LEFT LOGO ----- */
+.logo {
+  margin-bottom: 2.5rem;
+}
+.vertical-logo a,
+.logo a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-img img {
+  max-height: 85px;
+  width: auto;
+  display: block;
+}
+.vertical-logo .logo-img img {
+  max-height: 250px;
+  width: auto;
+  display: block;
+}
+
+/* TWO COLUMN LAYOUT (first row) */
+.grid-2cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* LEFT COLUMN (hero text & buttons) - BOTTOM ALIGNMENT */
+.hero-content {
+  display: block;
+  height: 100%;
+}
+@media (min-width: 900px) {
+  .hero-content {
+    padding-bottom: 135px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1rem;
+}
+.btn-primary {
+  background-color: var(--color-primary-dark);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.8rem;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+.btn-outline-light {
+  background: transparent;
+  border: 1.5px solid white;
+  color: white;
+  padding: 0.85rem 1.8rem;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  backdrop-filter: blur(3px);
+  transition: 0.2s;
+}
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: white;
+}
+
+/* RIGHT COLUMN: FORM CARD */
+.form-card {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  border-radius: var(--border-radius-card);
+  padding: 1.8rem 1.8rem 2rem;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+/* labels have been removed – all field titles are now placeholders */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  border-radius: var(--border-radius-input);
+  font-size: 0.9rem;
+  color: white;
+  transition: 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+input {
+  margin-top: 3px;
+}
+input:focus,
+select:focus {
+  border-color: var(--color-primary-dark);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.5);
+}
+input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+select:invalid,
+select option[value=""][disabled] {
+  color: rgba(255, 255, 255, 0.7);
+}
+option {
+  background: #222222;
+  color: white;
+}
+/* submit button */
+.btn-submit {
+  width: 100%;
+  background: white;
+  color: var(--color-primary-dark);
+  border: none;
+  padding: 0.85rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--border-radius-input);
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+.btn-submit:hover {
+  background: #eef2f7;
+  transform: scale(0.98);
+}
+
+/* SECOND ROW: two info cards (identical style) */
+.cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0 3rem;
+}
+.info-card {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--border-radius-card);
+  padding: 1.6rem 1.8rem;
+  backdrop-filter: blur(3px);
+  transition: 0.2s;
+}
+.info-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.3px;
+}
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
+.bullet-list li {
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+/* icons: regular (outline) and white */
+.bullet-list li i {
+  width: 24px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* FOOTER */
+.footer {
+  background-color: var(--color-primary-dark);
+  width: 100%;
+  padding: 2rem 0 1.8rem;
+}
+.footer-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.footer-legal {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 1.2rem;
+  color: white;
+}
+.copyright {
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: white;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.2s;
+}
+.social-icons a:hover {
+  opacity: 0.85;
+  transform: translateY(-3px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .grid-2cols,
+  .cards-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .container {
+    padding: 1.2rem 1.5rem;
+  }
+  .hero-content h1 {
+    font-size: 2.3rem;
+  }
+  /* Hero content bottom alignment still works */
+  /* Buttons full width on small screens when stacked */
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .button-group .btn-primary,
+  .button-group .btn-outline-light {
+    width: 100%;
+    text-align: center;
+  }
+  .logo-text {
+    font-size: 1rem;
+  }
+  .page-wrapper::before {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 550px) {
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+  .info-card h3 {
+    font-size: 1.4rem;
+  }
+  .form-card {
+    padding: 1.2rem;
+  }
+}
+/* small fixes for selects & date */
+select,
+input[type="date"] {
+  color-scheme: light;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+  cursor: pointer;
+}
+/* For date placeholder fallback hint (optional) */
+input[type="date"]:before {
+  content: attr(placeholder);
+  color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+}
+
+/* ===== THANK YOU PAGE EXTRA STYLES ===== */
+/* Add these styles to your existing main.css for the thank you confirmation page */
+
+.mba-thank-you-page .page-wrapper::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+/* Wrapper to push thank you section to bottom */
+.thankyou-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: calc(100vh - 458px);
+}
+@media (min-width: 900px) {
+  .thankyou-wrapper {
+    min-height: calc(100vh - 420px);
+  }
+}
+.thankyou-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+
+/* Alternative approach - more reliable */
+.thankyou-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1;
+  align-items: center;
+}
+
+.thankyou-card {
+  max-width: 700px;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 900px) {
+  .thankyou-card {
+    margin-bottom: 30px;
+  }
+}
+
+.thankyou-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* CTA Divider & Contact Links */
+.cta__divider {
+  width: 100%;
+}
+
+.cta__divider p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.cta__contact-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .cta__contact-links {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.cta__contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  backdrop-filter: blur(2px);
+}
+
+.cta__contact-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .thankyou-title {
+    font-size: 1.9rem;
+  }
+  .thankyou-card {
+    padding: 1.8rem 1.2rem;
+    margin-bottom: 50px;
+  }
+  .cta__contact-link {
+    font-size: 16px;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .thankyou-title {
+    font-size: 1.6rem;
+  }
+  .thankyou-card {
+    margin-bottom: 0;
+  }
+}
+
+.separator {
+  width: 150px;
+  height: 2px;
+  background: white;
+  margin: 4rem auto 2rem auto;
+}
