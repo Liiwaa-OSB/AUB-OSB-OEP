@@ -1,28 +1,28 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <title>Executive Education | AUB OSB</title>
+    <!-- not public - Lii -->
     <meta name="robots" content="noindex, nofollow" />
-
-    <!-- Google Fonts + Lucide + AOS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Enrollment Programs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <!-- Main Styles + additional custom styles for this page -->
-    <link rel="stylesheet" href="css/main.css" />
+    <script src="../js/main.js" defer></script>
+    <script src="../js/menu.js" defer></script>
+    <link rel="stylesheet" href="../css/main.css" />
     <style>
+      :root {
+        --color-accent: #840132;
+        --color-accent-dark: #6a132c;
+      }
+
+      /* Menu - Active Page - OEP*/
       .nav-osb-links .osb-nav-item > a#executive-education-link {
         color: var(--color-primary);
       }
@@ -32,417 +32,21 @@
         text-decoration: underline;
         text-underline-offset: 6px;
       }
+
+      .nav-osb-links .osb-dropdown li a#open-enrollment-programs {
+        color: var(--color-primary);
+      }
     </style>
     <style>
-      /* two-card grid: responsive */
-      .exec-option-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      @media (min-width: 768px) {
-        .exec-option-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-        }
-      }
-
-      /* ========= CARD BASE ========= */
-      /* no border-radius anywhere on cards or buttons */
-      .exec-option-card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        border: none;
-        overflow: hidden; /* keep image corners sharp as well */
-      }
-
-      /* Card hover effect (lift) */
-      .exec-option-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 22px 36px rgba(0, 0, 0, 0.12);
-      }
-
-      /* BOTH CARDS: Light background, dark text (same as current second card) */
-      .exec-option-card {
-        background-color: var(--color-border-light);
-        color: #1e2a3a;
-      }
-
-      /* IMAGE SECTION – flush top, no padding, no margin */
-      .exec-option-card__image {
-        width: 100%;
-        display: block;
-        line-height: 0;
-        background: transparent;
-      }
-
-      .exec-option-card__image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-        aspect-ratio: 16 / 9;
-        background: #ccc;
-      }
-
-      /* CONTENT area: padding only inside, not affecting image */
-      .exec-option-card__content {
-        padding: 2rem 1.8rem 2.2rem 1.8rem;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
-
-      /* Title styling */
-      .exec-option-card__title {
-        font-size: 1.9rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        line-height: 1.25;
-        margin-bottom: 0.75rem;
-        color: var(--color-dark-gray);
-      }
-
-      /* Category pill - sharp corners */
-      .exec-option-card__category {
-        display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        background: rgba(15, 43, 61, 0.1);
-        padding: 0.35rem 0.9rem;
-        color: var(--color-dark-gray);
-        width: fit-content;
-        margin-bottom: 1.25rem;
-        border-radius: 8px;
-        flex-shrink: 0;
-      }
-
-      /* Description text */
-      .exec-option-card__desc {
-        font-size: 1rem;
-        line-height: 1.55;
-        margin-bottom: 2rem;
-        font-weight: 450;
-        color: #2d3a48;
-        flex: 1 0 auto; /* Grow to fill space, don't shrink */
-        margin-bottom: 1.5rem;
-      }
-
-      /* BUTTONS container */
-      .exec-option-card__actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1.25rem;
-        flex-shrink: 0; /* Prevent shrinking */
-        margin-top: 0;
-      }
-
-      /* ===== BASE BUTTON STYLES ===== */
-      .btn--primary-grey {
-        background: var(--color-text-muted);
-      }
-      .btn--secondary-grey {
-        color: var(--color-text-muted);
-        border-color: var(--color-text-muted);
-      }
-      .btn--primary-grey:hover {
-        background: black;
-      }
-      .btn--secondary-grey:hover {
-        background: var(--color-text-muted);
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 480px) {
-        .exec-option-card__actions {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .btn {
-          justify-content: center;
-        }
-      }
-      /* AOS simulation (optional, just keep for data-aos attribute support) */
-      [data-aos] {
-        transition-property: transform, opacity;
-      }
-
-      /* featured program cards (enhanced) */
-      .featured-card {
-        background: #fff;
-        overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-        transition: all 0.25s;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid #edf2f7;
-      }
-
-      .featured-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
-        border-color: var(--color-primary-light, #b91c44);
-      }
-
-      .featured-card__img {
-        height: 200px;
-        overflow: hidden;
-      }
-
-      .featured-card__img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.4s;
-      }
-
-      .featured-card:hover .featured-card__img img {
-        transform: scale(1.03);
-      }
-
-      .featured-card__date {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--color-primary);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin: 1rem 1.2rem 0.25rem 1.2rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .featured-card__title {
-        font-size: 1.3rem;
-        font-weight: 800;
-        margin: 0 1.2rem 0.8rem 1.2rem;
-        color: #1a202c;
-        flex-shrink: 0;
-      }
-
-      .featured-card .btn--small {
-        margin: 0 1.2rem 1.5rem 1.2rem;
-        background: var(--color-primary);
-        color: white;
-        text-align: center;
-        padding: 0.6rem 1rem;
-        font-weight: 600;
-        transition: 0.2s;
-        border: none;
-      }
-
-      .featured-card .btn--small:hover {
-        background: var(--color-primary-dark);
-        transform: scale(0.98);
-      }
-
-      /* Mixed media cards (image/video) – same height, swipeable */
-      .media-card {
-        background: #fff;
-        border: 1px solid #e2e8f0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-      }
-
-      .media-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
-      }
-
-      .media-card__media {
-        overflow: hidden;
-        background: #f1f5f9;
-        height: 200px;
-      }
-
-      /* .media-card--image .media-card__media {
-        height: 200px;
-      }
-
-      .media-card--video .media-card__media {
-        height: 260px;
-      } */
-
-      .media-card__media img,
-      .media-card__media video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .media-card__content {
-        padding: 1.5rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .media-card__title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--color-primary-dark, #6a132c);
-      }
-
-      .media-card__text {
-        color: #2d3748;
-        line-height: 1.5;
-        font-size: 0.95rem;
-        align-items: center;
-      }
-
-      /* Carousel overrides for 5 cards – 3 per row on desktop */
-      .carousel-5 .carousel__slide {
-        width: calc((100% - 3rem) / 3);
-        /* 3 slides → 2 gaps (1.5rem each) = 3rem */
-      }
-
-      @media (max-width: 1024px) {
-        .carousel-5 .carousel__slide {
-          width: calc((100% - 1.5rem) / 2);
-        }
-      }
-
-      @media (max-width: 640px) {
-        .carousel-5 .carousel__slide {
-          width: 100%;
-        }
-      }
-
-      /* Ensure carousel buttons work */
-      .carousel__btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        background: white;
-        border: 1px solid #cbd5e0;
-        width: 44px;
-        height: 44px;
-        font-size: 1.5rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0.9;
-      }
-
-      .carousel__btn:hover {
-        background: #f7fafc;
-      }
-
-      .carousel__btn--prev {
-        left: 0.5rem;
-      }
-
-      .carousel__btn--next {
-        right: 0.5rem;
-      }
-
-      .testimonial-card {
-        background: #ffffff;
-        padding: 1.8rem;
-        box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.08);
-        border: 1px solid #f0eef2;
-        height: 100%;
-        transition: 0.2s;
-      }
-
-      .testimonial-card:hover {
-        border-color: var(--color-primary);
-      }
-
-      .testimonial-card__quote {
-        font-size: 1rem;
-        line-height: 1.5;
-        margin-bottom: 1.2rem;
-        font-style: italic;
-        position: relative;
-        padding-left: 1rem;
-        border-left: 3px solid var(--color-primary);
-      }
-
-      .testimonial-card__profile {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        margin-top: 0.8rem;
-      }
-
-      .testimonial-card__avatar {
-        width: 48px;
-        height: 48px;
-        background: #e2e8f0;
-        border-radius: 50%;
-        background-size: cover;
-        background-position: center;
-      }
-
-      .testimonial-card__name {
-        font-weight: 800;
-        color: #1e293b;
-      }
-
-      .testimonial-card__role {
-        font-size: 0.75rem;
-        color: #5b6e8c;
-      }
-
-      .carousel-spacer {
-        margin-bottom: 2rem;
-      }
-
-      .section-divider {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .btn--contact-custom {
-        background: white;
-        border: 2px solid var(--color-primary);
-        color: var(--color-primary);
-        padding: 0.8rem 2rem;
-        font-weight: 700;
-        transition: 0.2s;
-      }
-
-      .btn--contact-custom:hover {
-        background: var(--color-primary);
-        color: white;
-      }
-
-      .lorem-text {
-        color: #4b5563;
-        line-height: 1.6;
-      }
-
-      .date-flex {
-        display: flex;
-        align-items: center;
-        gap: 6px;
+      .cls-1 {
+        fill: #ffffff;
       }
     </style>
-    <script src="js/main.js" defer></script>
-    <script src="js/menu.js" defer></script>
-    <script src="js/carousel.js" defer></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
 
   <body>
-    <!-- ========== NAVIGATION (same as index) ========== -->
     <div class="nav">
       <!-- UTILITY BAR (desktop only) -->
       <div class="nav-utility">
@@ -500,7 +104,7 @@
           <div class="nav-logo">
             <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
               <img
-                src="images/AUB+OSB-Merged-Logo-white.png"
+                src="../images/AUB+OSB-Merged-Logo-white.png"
                 alt="AUB OSB Logo"
               />
             </a>
@@ -955,7 +559,7 @@
           <div class="nav-osb-logo">
             <a href="/"
               ><img
-                src="images/AUB+OSB-Merged-Logo-white.png"
+                src="../images/AUB+OSB-Merged-Logo-white.png"
                 alt="AUB OSB Logo"
             /></a>
           </div>
@@ -1082,7 +686,7 @@
                 <!-- lii replace href below -->
                 <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
                 <a
-                  href="https://liiwaa-osb.github.io\AUB-OSB-OEP\executive-education-program.html"
+                  href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html"
                   target="_blank"
                   id="executive-education-link"
                   >Executive Education</a
@@ -1092,7 +696,7 @@
                     <!-- lii replcae href -->
                     <!-- /osb/executive-education/OEP -->
                     <a
-                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html"
+                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\open-enrollment-programs\index.html"
                       target="_blank"
                       id="open-enrollment-programs"
                       >Open Enrollment Programs</a
@@ -1189,149 +793,272 @@
         </div>
       </div>
     </div>
-    <div class="nav-mobile-overlay" id="mobileOverlay">
-      <div class="mobile-overlay-header">
-        <div class="mobile-logo">
-          <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
-        </div>
-        <button class="mobile-close-btn" id="closeOverlayBtn">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-      </div>
-      <div class="mobile-menu-sections"></div>
-    </div>
-
     <main>
-      <!-- HERO VIDEO (same as index) -->
+      <!-- MOBILE OVERLAY (dynamic content will be populated by menu.js, but structure remains) -->
+      <div class="nav-mobile-overlay" id="mobileOverlay">
+        <div class="mobile-overlay-header">
+          <div class="mobile-logo">
+            <img src="../images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
+          </div>
+          <button class="mobile-close-btn" id="closeOverlayBtn">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-menu-sections">
+          <div class="mobile-section">
+            <div class="mobile-section-title">Quick Links</div>
+            <div class="mobile-utility-grid" id="mobileUtilityGrid"></div>
+          </div>
+          <div class="mobile-section">
+            <div class="mobile-section-title">Main Navigation</div>
+            <div id="mobileMainNav"></div>
+          </div>
+          <div class="mobile-section">
+            <div class="mobile-section-title">OSB School</div>
+            <div id="mobileOsbNav"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO SECTION with video -->
+      <!-- lii remove this code -->
+      <style>
+        .hero--video {
+          overflow: hidden;
+        }
+
+        .hero__video-element {
+          height: 150%;
+        }
+      </style>
       <section class="hero hero--video" data-aos="fade">
-        <video class="hero__video-element" style="object-position: 50% 90%;" autoplay muted loop playsinline>
+        <video class="hero__video-element" autoplay muted loop playsinline>
           <source
-            src="videos/AUB-OSB-Executive-Education-banner-video-istock.mp4"
+            src="../videos/AUB-OSB-OEP-Programs-banner-istock.mp4"
             type="video/mp4"
           />
+          Your browser does not support the video tag.
         </video>
         <div class="hero__overlay"></div>
         <div class="container">
           <div class="hero__content hero__content--center">
-            <p class="hero__text">Lifelong learning for leaders</p>
-            <h1 class="hero__title">Executive Education</h1>
-            <p class="hero__subtitle">
-              World-class programs designed for impact
-            </p>
+            <p class="hero__text">Executive Education</p>
+            <h1 class="hero__title">Open Enrollment Programs</h1>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 1: Our Program Formats (with descriptive text + two cards) -->
-      <section class="section" id="program-options">
+      <!-- PROGRAMS GRID -->
+      <section class="section">
         <div class="container">
-          <div class="text-center">
-            <h2 class="section-title" data-aos="fade-up">
-              Tailored to ensure professional growth
-            </h2>
+          <div class="program-grid">
+            <!-- PRICING ANALYTICS -->
             <div
-              class="section-description"
-              data-aos="fade-up"
-              data-aos-delay="50"
+              class="program-card"
+              data-aos="flip-right"
+              data-url="programs/pricing-analytics.html"
             >
-              Our Executive Education programs develop the leadership and
-              management skills of senior and executive managers and high
-              potentials, enhancing organization-wide leadership capability and
-              effectiveness of management teams. Empower and create a real
-              impact on yourself, your team, and your organization with our
-              custom-designed programs for corporates and open enrollment and
-              partner programs for individuals.​​
-            </div>
-          </div>
-          <div class="programs-container">
-            <div
-              class="exec-option-grid"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <!-- CARD 1: Open Enrollment Programs (LIGHT BG, DARK TEXT - same as current second card) -->
-              <div class="exec-option-card">
-                <!-- Image at the top, flush, no padding -->
-                <div class="exec-option-card__image">
-                  <img
-                    src="images/AUB-OSB-CP-card.jpg"
-                    alt="Open Enrollment Programs - professionals collaborating"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="exec-option-card__content">
-                  <div class="exec-option-card__title">
-                    Open Enrollment Programs
-                  </div>
-                  <div class="exec-option-card__category">FOR INDIVIDUALS</div>
-                  <div class="exec-option-card__desc">
-                    Get in touch with us to help you find the right program for
-                    you. Whatever your managerial experience, our open
-                    enrollment programs will equip you with the right skillsets
-                    to accelerate your career growth.
-                  </div>
-                  <div class="exec-option-card__actions">
-                    <!-- btn--primary for Contact us -->
-                    <a href="#contact-individuals" class="btn btn--primary">
-                      Contact us
-                    </a>
-                    <!-- btn--secondary for Learn more -->
-                    <a
-                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html"
-                      class="btn btn--secondary"
+              <div class="program-card__image">
+                <img
+                  src="../images/AUB-OSB-OEP-Pricing-Analytics.jpg"
+                  alt="Pricing Analytics"
+                />
+              </div>
+              <div class="program-card__accent pricing-analytics-bg"></div>
+              <div class="program-card__content">
+                <div class="program-card__title">PRICING ANALYTICS</div>
+                <p class="program-card__text">
+                  This program focuses on pricing as a competitive driver
+                  balancing the trade between faster resource/inventory turnover
+                  and higher margins through data analytics capabilities. While
+                  advances in analytics are rapidly transforming pricing
+                  practices, this program sheds light on the enduring principles
+                  that form the foundation of effective pricing strategy.
+                </p>
+                <div class="program-card__footer">
+                  <div class="program-card__meta">
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="user" width="16"></i>Face-to-Face</span
                     >
-                      Learn more
-                    </a>
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="calendar" width="16"></i>December 2-3,
+                      2026</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="clock" width="16"></i>2 Days</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="map-pin" width="16"></i>AUB Academic and
+                      Executive Hub in Dubai</span
+                    >
                   </div>
+                  <a
+                    href="programs/pricing-analytics.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
                 </div>
               </div>
+            </div>
 
-              <!-- CARD 2: Customized Programs (LIGHT BG, DARK TEXT - same as current second card) -->
-              <div class="exec-option-card">
-                <!-- Image at the top, flush, no padding -->
-                <div class="exec-option-card__image">
-                  <img
-                    src="images/AUB-OSB-OEP-crad.jpg"
-                    alt="Customized Programs - team strategy meeting"
-                    loading="lazy"
-                  />
+            <!-- DESIGN THINKING -->
+            <div
+              class="program-card"
+              data-aos="flip-right"
+              data-url="programs/design-thinking.html"
+            >
+              <div class="program-card__image">
+                <img
+                  src="../images/AUB-OSB-OEP-design-thinking.jpg"
+                  alt="DESIGN THINKING"
+                />
+              </div>
+              <div class="program-card__accent design-thinking-bg"></div>
+              <div class="program-card__content">
+                <div class="program-card__title">DESIGN THINKING</div>
+                <p class="program-card__text">
+                  This Design Thinking program explores the needed requirements
+                  for enabling customer focused innovation that is key for
+                  facing increasingly competitive environments. It aims to
+                  support aspiring entrepreneurs and professionals exploring
+                  intra-organizational innovation practices. The program aims to
+                  develop the ability to frame stakeholders’ needs and generate
+                  innovative and feasible solutions to address these needs.
+                </p>
+                <div class="program-card__footer">
+                  <div class="program-card__meta">
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="user" width="16"></i>Face-to-Face</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="calendar" width="16"></i>July 28-29-30,
+                      2026</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="clock" width="16"></i>3 Days</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="map-pin" width="16"></i>AUB - OSB in
+                      Lebanon</span
+                    >
+                  </div>
+                  <a
+                    href="programs/design-thinking.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
                 </div>
-                <div class="exec-option-card__content">
-                  <div class="exec-option-card__title">Customized Programs</div>
-                  <div class="exec-option-card__category">FOR COMPANIES</div>
-                  <div class="exec-option-card__desc">
-                    Connect with our team to discuss how we can meet your
-                    company's learning objectives. Our experts will work with
-                    you to develop a high impact learning experience that
-                    provides your team with the tools and frameworks to grow
-                    your business.
-                  </div>
-                  <div class="exec-option-card__actions">
-                    <!-- btn--primary for Contact us -->
-                    <a
-                      href="#contact-companies"
-                      class="btn btn--primary btn--primary-grey"
+              </div>
+            </div>
+
+            <!-- AI IN SUPPLY CHAIN -->
+            <div
+              class="program-card"
+              data-aos="flip-right"
+              data-url="programs/ai-in-supply-chain.html"
+            >
+              <div class="program-card__image">
+                <img
+                  src="../images/AUB-OSB-OEP-AI-Supply Chain.jpg"
+                  alt="AI in Supply Chain"
+                />
+              </div>
+              <div class="program-card__accent ai-in-supply-chain-bg"></div>
+              <div class="program-card__content">
+                <div class="program-card__title">AI IN SUPPLY CHAIN</div>
+                <p class="program-card__text">
+                  This program focuses on real-world AI applications in
+                  production, demand forecasting, inventory management,
+                  logistics optimization, and risk mitigation. Participants will
+                  learn how AI-driven systems shape modern supply chains and how
+                  to interpret their outputs to make informed strategic
+                  decisions.
+                </p>
+                <div class="program-card__footer">
+                  <div class="program-card__meta">
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="user" width="16"></i>Face-to-Face</span
                     >
-                      Contact us
-                    </a>
-                    <!-- btn--secondary with outline and --color-text-muted -->
-                    <!-- lii replcae href -->
-                    <a
-                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\custom-programs\index.html"
-                      class="btn btn--secondary btn--secondary-grey"
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="calendar" width="16"></i>September 1-2-3,
+                      2026</span
                     >
-                      Learn more
-                    </a>
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="clock" width="16"></i>3 Days</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="map-pin" width="16"></i>AUB - OSB in
+                      Lebanon</span
+                    >
                   </div>
+                  <a
+                    href="programs/ai-in-supply-chain.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- FAMILY BUSINESS GOVERNANCE -->
+            <div
+              class="program-card"
+              data-aos="flip-right"
+              data-url="programs/family-business-governance.html"
+            >
+              <div class="program-card__image">
+                <img
+                  src="../images/AUB-OSB-OEP-Family-Business-governance.jpg"
+                  alt="Family Business Governance"
+                />
+              </div>
+              <div
+                class="program-card__accent family-business-governance-bg"
+              ></div>
+              <div class="program-card__content">
+                <div class="program-card__title">
+                  FAMILY BUSINESS GOVERNANCE
+                </div>
+                <p class="program-card__text">
+                  This unique program equips family business leaders with tools
+                  and frameworks needed to design governance systems that manage
+                  complexity and ensure continuity without compromising family
+                  harmony. Topics include family governance structures, board
+                  composition, preserving family's wealth, planning succession,
+                  and managing conflicts.
+                </p>
+                <div class="program-card__footer">
+                  <div class="program-card__meta">
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="user" width="16"></i>Face-to-Face</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="calendar" width="16"></i>October
+                      13-14-15, 2026</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="clock" width="16"></i>3 Days</span
+                    >
+                    <span class="program-card__meta-item"
+                      ><i data-lucide="map-pin" width="16"></i>AUB - OSB in
+                      Lebanon</span
+                    >
+                  </div>
+                  <a
+                    href="programs/family-business-governance.html"
+                    class="btn btn--primary btn--full"
+                    >Learn More</a
+                  >
                 </div>
               </div>
             </div>
@@ -1339,350 +1066,173 @@
         </div>
       </section>
 
-      <!-- SECTION 2: Experience OSB (lorem text + 3 cards with lorem titles & placeholder images) -->
-      <section class="section" id="experience-osb" style="display: none">
+      <!-- INFO SECTION (icons) -->
+      <section class="section" data-aos="slide-up">
         <div class="container">
-          <h2 class="section-title" data-aos="fade-up">Experience OSB</h2>
-          <div
-            class="section-description"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </div>
-          <div class="experience-grid" data-aos="fade-up" data-aos-delay="100">
-            <!-- card 1: lorem title -->
-            <div class="featured-card">
-              <div class="featured-card__img">
-                <img src="images/black.png" alt="placeholder" />
-              </div>
-              <div class="featured-card__date">
-                <i data-lucide="calendar" width="14"></i> Jun 12, 2026
-              </div>
-              <div class="featured-card__title">Lorem Ipsum Dolor</div>
-              <a
-                href="#"
-                class="btn--small"
-                style="display: block; text-decoration: none"
-                >Learn More →</a
-              >
-            </div>
-            <!-- card 2: lorem title -->
-            <div class="featured-card">
-              <div class="featured-card__img">
-                <img src="images/black.png" alt="placeholder" />
-              </div>
-              <div class="featured-card__date">
-                <i data-lucide="calendar" width="14"></i> May 15, 2026
-              </div>
-              <div class="featured-card__title">Amet Consectetur</div>
-              <a
-                href="#"
-                class="btn--small"
-                style="display: block; text-decoration: none"
-                >Learn More →</a
-              >
-            </div>
-            <!-- card 3: lorem title -->
-            <div class="featured-card">
-              <div class="featured-card__img">
-                <img src="images/black.png" alt="placeholder" />
-              </div>
-              <div class="featured-card__date">
-                <i data-lucide="calendar" width="14"></i> Apr 28, 2026
-              </div>
-              <div class="featured-card__title">Adipiscing Elit</div>
-              <a
-                href="#"
-                class="btn--small"
-                style="display: block; text-decoration: none"
-                >Learn More →</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 3: Discover Our Stories (Success Stories + Testimonials, with lorem text above, no emojis) -->
-      <section class="section" id="discover-stories">
-        <div class="container">
-          <div class="text-center">
-            <h2 class="section-title" data-aos="fade-up">
-              Discover Our Stories
-            </h2>
-            <div
-              class="section-description"
-              data-aos="fade-up"
-              data-aos-delay="50"
-            >
-              At OSB Executive Education, we use transformative teaching methods
-              for individuals and organizations ensure a dynamic environment
-              which challenges thinking and maximizes learning outcomes. Our
-              faculty includes professors and lecturers the most prominent and
-              distinguished academics worldwide.
-            </div>
-          </div>
-
-          <!-- Success Stories Carousel (no emoji) -->
-          <div data-aos="fade-up" data-aos-delay="100">
-            <h3
-              style="
-                font-size: 1.6rem;
-                font-weight: 700;
-                margin-bottom: 1rem;
-                text-align: center;
-              "
-            >
-              Client success stories
-            </h3>
-            <div class="container">
-              <!-- carousel component (5 slides, 3 per view) -->
-              <div class="carousel js-carousel carousel-5" data-carousel>
-                <!-- prev button -->
-                <button
-                  class="carousel__btn carousel__btn--prev js-carousel-prev"
-                  disabled
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-item__icon">
+                <svg
+                  id="Layer_1"
+                  data-name="Layer 1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 192.39 184.45"
                 >
-                  ❮
-                </button>
-
-                <!-- scrollable container -->
-                <div class="carousel__container js-carousel-container">
-                  <div class="carousel__track js-carousel-track text-center">
-                    <!-- Card 1: IMAGE card -->
-                    <div class="carousel__slide">
-                      <div class="media-card media-card--image">
-                        <div class="media-card__media">
-                          <img src="images/black.png" alt="Client success" />
-                        </div>
-                        <div class="media-card__content">
-                          <h3 class="media-card__title">BLOM Bank</h3>
-                          <p class="media-card__text">
-                            After the Pricing Analytics program, our treasury
-                            team optimized loan pricing models, resulting in
-                            +18% profit margin uplift within 6 months.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 2: VIDEO card (larger height) -->
-                    <div class="carousel__slide">
-                      <div class="media-card media-card--video">
-                        <div class="media-card__media">
-                          <video controls playsinline>
-                            <source
-                              src="videos/AUB-OSB-OEP-Programs-banner.mp4"
-                              type="video/mp4"
-                            />
-                          </video>
-                        </div>
-                        <div class="media-card__content">
-                          <h3 class="media-card__title">Malia Group</h3>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 3: IMAGE card -->
-                    <div class="carousel__slide">
-                      <div class="media-card media-card--image">
-                        <div class="media-card__media">
-                          <img src="images/black.png" alt="Client success" />
-                        </div>
-                        <div class="media-card__content">
-                          <h3 class="media-card__title">Bank Audi</h3>
-                          <p class="media-card__text">
-                            Design Thinking workshops led to a new
-                            customer-centric product launch that increased
-                            engagement by 40% within the first quarter.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 4: VIDEO card -->
-                    <div class="carousel__slide">
-                      <div class="media-card media-card--video">
-                        <div class="media-card__media">
-                          <video controls playsinline>
-                            <source
-                              src="videos/AUB-OSB-OEP-Programs-banner.mp4"
-                              type="video/mp4"
-                            />
-                          </video>
-                        </div>
-                        <div class="media-card__content">
-                          <h3 class="media-card__title">Indevco Group</h3>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Card 5: IMAGE card -->
-                    <div class="carousel__slide">
-                      <div class="media-card media-card--image">
-                        <div class="media-card__media">
-                          <img src="images/black.png" alt="Client success" />
-                        </div>
-                        <div class="media-card__content">
-                          <h3 class="media-card__title">ABC Group</h3>
-                          <p class="media-card__text">
-                            Leadership transformation program resulted in 27%
-                            faster decision‑making and improved cross‑functional
-                            collaboration.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /track -->
-                </div>
-                <!-- /container -->
-
-                <!-- next button -->
-                <button
-                  class="carousel__btn carousel__btn--next js-carousel-next"
-                >
-                  ❯
-                </button>
+                  <path
+                    class="cls-1"
+                    d="M92.59,1.11c7.31-1.26,13.56,1.25,17.49,7.46l20.76,44.33,48.25,5.85c11.64,3.03,16.48,16.33,8.75,25.76l-35.72,33.66,9.23,49.68c-.93,10.44-9.93,17.79-20.39,15.24l-44.42-24.1c-3.22-.18-30.6,16.74-36.14,19.58-7.84,4.02-13.41,7.95-21.98,2.25-4.9-3.26-8.03-9.44-7.23-15.39l9.07-47.26L4.55,84.51c-7.73-9.43-2.89-22.73,8.75-25.76l48.25-5.85,20.79-44.3c2.24-3.61,5.91-6.75,10.25-7.5ZM146.84,169.9c.46-1.16.77-2.21.71-3.5-.6-13.18-7.85-30.63-8.99-44.29-.47-5.61.24-9.38,3.68-13.87,5.98-7.81,21.31-19.13,29.19-26.6,6.34-6,10.92-8.37-.55-10.46-12.97-2.36-28.42-1.85-41.1-4.54-9.3-1.97-11.05-7.16-14.87-14.72-6.03-11.91-10.71-24.65-16.6-36.65-.72-1.04-2.22-1.15-3.29-.78-2.04.71-15.85,34.17-18.39,39.11-4.16,8.1-5.28,11.08-14.89,13-12.78,2.56-27.41,2.22-40.24,4.56-12.02,2.19-6.09,5.25.29,11.3,7.84,7.45,22.19,17.92,28.35,25.75,3.46,4.39,4.14,8.36,3.68,13.87-1.15,13.74-8.28,30.94-8.99,44.29-.18,3.33.74,4.37,3.97,3.1,12.8-5.06,27.05-17.23,40.05-22.51,7.37-2.99,10.85-1.85,17.51,1.41,11.43,5.6,26.12,16.96,37.23,21.1,1.08.4,2.09.8,3.26.4Z"
+                  />
+                  <path
+                    class="cls-1"
+                    d="M46.75,184.45c-2.69,0-5.54-.83-8.77-2.97-5.35-3.56-8.39-10.05-7.58-16.15l8.99-46.87L4.01,85.09c-3.82-4.65-4.96-10.39-3.19-15.81,1.81-5.54,6.4-9.76,12.29-11.29l47.92-5.82,20.61-43.9c2.65-4.29,6.68-7.23,10.83-7.94,7.77-1.34,14.26,1.43,18.3,7.82l20.62,44.03,47.81,5.8c5.99,1.55,10.59,5.77,12.39,11.31,1.76,5.42.63,11.15-3.12,15.74l-35.47,33.44,9.17,49.36v.11c-.5,5.5-3.19,10.38-7.39,13.38-4,2.87-8.95,3.77-13.98,2.56l-.19-.07-44.24-24.01c-2.5.26-16.94,8.71-25.65,13.8-4.41,2.58-8.22,4.81-9.93,5.68-.7.36-1.39.72-2.06,1.07-4.08,2.14-7.82,4.1-11.96,4.1ZM96.14,1.58c-1.1,0-2.24.1-3.42.3h0c-3.71.64-7.34,3.31-9.71,7.14l-20.93,44.61-48.69,5.91c-5.26,1.38-9.44,5.21-11.08,10.23-1.59,4.9-.56,10.09,2.85,14.24l35.96,33.88-.08.43-9.07,47.25c-.72,5.38,2.11,11.4,6.89,14.58,7.41,4.93,12.32,2.36,19.11-1.21.68-.36,1.37-.72,2.07-1.08,1.68-.86,5.46-3.08,9.86-5.64,13.58-7.94,24.17-14.02,26.61-14.02h.07l.33.1,44.32,24.06c4.52,1.07,8.98.25,12.58-2.33,3.8-2.72,6.24-7.14,6.72-12.13l-9.29-50,36.03-33.95c3.33-4.08,4.37-9.27,2.78-14.17-1.64-5.02-5.82-8.86-11.18-10.25l-48.58-5.89-20.94-44.73c-3.02-4.78-7.65-7.32-13.22-7.32ZM145.85,170.85c-.89,0-1.71-.3-2.5-.6-6.48-2.41-14.12-7.22-21.5-11.86-5.4-3.4-10.99-6.91-15.84-9.29-6.66-3.27-9.84-4.24-16.86-1.39-6.38,2.59-13.2,6.95-19.8,11.17-6.75,4.31-13.73,8.77-20.25,11.35-1.84.73-3.05.78-3.93.15-1.14-.82-1.19-2.58-1.12-4.03.37-6.97,2.49-15.06,4.55-22.9,1.91-7.29,3.89-14.84,4.44-21.42.41-4.94-.03-8.89-3.51-13.31-3.86-4.91-10.93-10.83-17.77-16.56-3.92-3.28-7.62-6.38-10.5-9.11-.93-.89-1.86-1.71-2.71-2.47-3.04-2.7-5.24-4.66-4.69-6.63.45-1.62,2.7-2.69,7.51-3.56,6.21-1.13,12.93-1.65,19.43-2.15,6.98-.54,14.2-1.09,20.79-2.41,8.81-1.76,10.07-4.23,13.81-11.55l.53-1.04c.8-1.55,2.78-6.1,5.08-11.36,9.45-21.63,12.4-27.67,13.75-28.14,1.34-.46,3.23-.33,4.2,1.08,2.86,5.8,5.42,11.74,7.9,17.5,2.75,6.39,5.59,12.98,8.76,19.24l.99,1.99c3.16,6.38,5.25,10.6,13.34,12.32,6.63,1.4,14.17,1.94,21.47,2.46,6.6.47,13.43.95,19.61,2.08,5.03.92,7.16,1.89,7.61,3.46.52,1.82-1.43,3.59-4.39,6.27-.71.64-1.47,1.34-2.26,2.08-2.82,2.67-6.56,5.82-10.53,9.14-6.93,5.81-14.78,12.4-18.58,17.36-3.08,4.02-4,7.51-3.52,13.32.54,6.5,2.52,14.02,4.44,21.3,2.08,7.91,4.24,16.09,4.55,23.02.06,1.51-.33,2.73-.77,3.83l-.14.34-.35.12c-.44.15-.85.2-1.25.2ZM96.27,144.47c3.36,0,6.35,1.21,10.43,3.21,4.92,2.41,10.55,5.95,15.99,9.37,7.32,4.6,14.88,9.36,21.16,11.7.92.34,1.65.62,2.39.48.35-.93.56-1.79.52-2.8-.31-6.76-2.44-14.86-4.5-22.69-1.93-7.34-3.93-14.93-4.48-21.57-.45-5.37.03-9.45,3.84-14.41,3.91-5.1,11.49-11.46,18.82-17.61,3.94-3.31,7.67-6.44,10.46-9.08.8-.76,1.57-1.46,2.29-2.1,2.15-1.95,4.18-3.79,3.93-4.66-.16-.57-1.4-1.43-6.37-2.34-6.1-1.11-12.88-1.59-19.44-2.06-7.35-.52-14.95-1.06-21.69-2.49-8.84-1.87-11.18-6.6-14.42-13.16l-.99-1.98c-3.19-6.3-6.04-12.92-8.8-19.33-2.47-5.74-5.03-11.67-7.81-17.33-.41-.58-1.51-.66-2.32-.38-1.38,1.08-8.54,17.48-12.82,27.28-2.4,5.5-4.3,9.85-5.12,11.45l-.53,1.04c-3.78,7.41-5.35,10.47-14.91,12.38-6.68,1.34-13.95,1.9-20.98,2.44-6.46.5-13.14,1.01-19.27,2.13-4.86.89-6.1,1.81-6.27,2.43-.28,1.02,1.9,2.96,4.21,5.02.87.77,1.81,1.61,2.75,2.5,2.84,2.7,6.52,5.78,10.42,9.05,6.9,5.78,14.04,11.75,18,16.79,3.8,4.83,4.29,9.1,3.85,14.42-.56,6.72-2.56,14.33-4.49,21.69-2.03,7.75-4.14,15.77-4.5,22.58-.1,1.85.19,2.47.46,2.66.21.15.8.31,2.43-.34,6.38-2.52,13.29-6.94,19.98-11.21,6.66-4.26,13.55-8.66,20.06-11.3,3.04-1.23,5.46-1.78,7.72-1.78Z"
+                  />
+                </svg>
               </div>
-              <!-- /carousel -->
+              <h4 class="info-item__title">Expert Instructors</h4>
+              <p class="info-item__text">
+                Learn from industry leaders and experienced academics
+              </p>
             </div>
-          </div>
-
-          <!-- Testimonials Carousel (distinct card style, no emoji) -->
-          <div class="section-divider"></div>
-          <div data-aos="fade-up" data-aos-delay="200">
-            <h3
-              style="
-                font-size: 1.6rem;
-                font-weight: 700;
-                margin-bottom: 1rem;
-                text-align: center;
-              "
-            >
-              What participants say
-            </h3>
-            <div class="carousel js-carousel carousel-3" data-carousel>
-              <button
-                class="carousel__btn carousel__btn--prev js-carousel-prev"
-                aria-label="Previous"
-                disabled
-              >
-                ❮
-              </button>
-              <div class="carousel__container js-carousel-container">
-                <div class="carousel__track js-carousel-track">
-                  <div class="carousel__slide">
-                    <div class="testimonial-card">
-                      <div class="testimonial-card__quote">
-                        “The mix of theory and real case studies made me
-                        immediately apply pricing frameworks. World-class
-                        faculty.”
-                      </div>
-                      <div class="testimonial-card__profile">
-                        <div
-                          class="testimonial-card__avatar"
-                          style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/women/44.jpg&quot;);
-                            background-size: cover;
-                          "
-                        ></div>
-                        <div>
-                          <div class="testimonial-card__name">Rana H.</div>
-                          <div class="testimonial-card__role">
-                            Pricing Director, Retail Corp
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="carousel__slide">
-                    <div class="testimonial-card">
-                      <div class="testimonial-card__quote">
-                        “Design Thinking shifted our whole innovation culture.
-                        Highly interactive and transformative.”
-                      </div>
-                      <div class="testimonial-card__profile">
-                        <div
-                          class="testimonial-card__avatar"
-                          style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/men/32.jpg&quot;);
-                            background-size: cover;
-                          "
-                        ></div>
-                        <div>
-                          <div class="testimonial-card__name">Karim M.</div>
-                          <div class="testimonial-card__role">
-                            Head of Strategy, Fintech
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="carousel__slide">
-                    <div class="testimonial-card">
-                      <div class="testimonial-card__quote">
-                        “AI in Supply Chain gave me the confidence to lead
-                        digital transformation. The networking was invaluable.”
-                      </div>
-                      <div class="testimonial-card__profile">
-                        <div
-                          class="testimonial-card__avatar"
-                          style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/men/75.jpg&quot;);
-                            background-size: cover;
-                          "
-                        ></div>
-                        <div>
-                          <div class="testimonial-card__name">Omar K.</div>
-                          <div class="testimonial-card__role">
-                            Logistics Director
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="carousel__slide">
-                    <div class="testimonial-card">
-                      <div class="testimonial-card__quote">
-                        “A transformative learning experience that helped me
-                        structure our family business governance for future
-                        generations.”
-                      </div>
-                      <div class="testimonial-card__profile">
-                        <div
-                          class="testimonial-card__avatar"
-                          style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/women/68.jpg&quot;);
-                            background-size: cover;
-                          "
-                        ></div>
-                        <div>
-                          <div class="testimonial-card__name">Layla S.</div>
-                          <div class="testimonial-card__role">Board Member</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="info-item">
+              <div class="info-item__icon">
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  id="Layer_1"
+                  data-name="Layer 1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 160.29 184.45"
+                >
+                  <path
+                    class="cls-1"
+                    d="M0,24.62c2.5-7.58,9.82-5.3,15.96-5.75,15.23-1.11,30.59-4.48,44.72-10.2C64.61,7.08,77.25.07,80.08,0c3.27-.08,9.8,4.23,13.11,5.74,16,7.28,33.06,11.75,50.65,13.11,6.13.47,14.69-1.84,15.95,6.71-1.22,27.8,1.57,56.91,0,84.56-1.02,17.97-15.43,40.17-30.23,50.05-4.84,3.23-11.58,1.57-12.05-4.74-.37-4.95,5.38-7.77,8.47-10.75,10.29-9.91,18.74-21.68,19.6-36.49l-.02-75.13c-16.74-1.04-33.26-4.42-48.87-10.47-5.53-2.15-10.75-4.92-16.23-7.18-20.47,10.17-42.88,16.8-65.87,17.64v75.9c1.75,27.74,34.7,50.7,58.57,59.35,2.95,1.07,6.37,1.69,9.14,2.77,7.05,2.75,6.47,11.04-.49,13.36h-4.22c-31.31-9.72-64.32-30.28-75.38-62.71l-2.2-10.67V24.62Z"
+                  />
+                  <path
+                    class="cls-1"
+                    d="M125.89,52.38c6.58-.82,10.73,7.04,6.22,11.99-17.79,15.82-34.43,33.02-52.22,48.81-4.04,3.59-7.77,7.92-13.64,4.42-9.91-9.78-20.85-18.63-30.73-28.42-1.51-1.5-4.08-3.71-4.61-5.76-1.59-6.18,4.31-11.04,10.08-8.54l29.43,26.92,1.42-.9c15.7-14.19,30.61-29.41,46.46-43.43,2.1-1.85,4.79-4.74,7.6-5.08Z"
+                  />
+                </svg>
               </div>
-              <button
-                class="carousel__btn carousel__btn--next js-carousel-next"
-                aria-label="Next"
-              >
-                ❯
-              </button>
+              <h4 class="info-item__title">Certified Programs</h4>
+              <p class="info-item__text">
+                Receive recognized certificates upon completion
+              </p>
+            </div>
+            <div class="info-item">
+              <div class="info-item__icon">
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  id="Layer_1"
+                  data-name="Layer 1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 129.58 189.87"
+                >
+                  <g>
+                    <path
+                      class="cls-1"
+                      d="M58.65,1.63c45.44-3.71,79.78,38.17,66.72,82.06-5.4,18.16-21.21,30.84-23.88,50.92-.49,3.65.12,12.12-1.97,14.33-2.28,2.41-7.32,1.26-8.06-2.03-.46-2.06-.26-8.09-.1-10.44,2.33-33.47,35.19-47.39,25.17-85.59-13.78-52.5-89.75-52.43-103.56,0-8.26,31.37,10.71,43.18,20.94,68.24,2.58,6.31,5.58,21.32,4.13,27.8-.91,4.05-7.62,4.42-9.13.7-.87-2.15-.57-8.76-.9-11.56-2.69-22.81-21.8-37.46-25.69-60.14C-3.87,39.91,21.9,4.63,58.65,1.63Z"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M96.27,151.63c-.63,0-1.27-.09-1.91-.26-2.23-.61-3.82-2.17-4.26-4.14-.55-2.47-.23-9.29-.13-10.85,1.01-14.52,7.63-25.44,14.03-35.99,8.64-14.25,16.8-27.71,11.18-49.15-6.11-23.26-25.88-38.3-50.37-38.31h-.03c-24.53,0-44.33,15.03-50.47,38.31-5.63,21.37,1.69,33.37,10.17,47.27,3.74,6.12,7.6,12.46,10.71,20.09,2.7,6.61,5.72,21.88,4.2,28.63-.54,2.41-2.71,4.12-5.51,4.35-2.82.25-5.35-1.15-6.27-3.43-.65-1.61-.73-4.82-.81-7.92-.04-1.56-.07-3.02-.19-4-1.35-11.46-6.87-20.67-12.73-30.43-5.42-9.04-11.03-18.39-12.96-29.64-3.1-18.06,1.64-36.82,13-51.46C25.04,10.36,40.88,1.68,58.53.24h0c22.2-1.83,42.84,6.86,56.59,23.81,13.69,16.87,17.91,38.76,11.58,60.04-2.42,8.13-6.91,15.24-11.26,22.12-5.46,8.65-11.12,17.59-12.58,28.58-.14,1.06-.19,2.54-.23,4.15-.16,5.28-.41,9.17-2.11,10.96-1.06,1.12-2.6,1.73-4.26,1.73ZM64.77,10.13h.03c25.8.01,46.63,15.87,53.07,40.39,5.93,22.58-2.93,37.18-11.49,51.31-6.23,10.27-12.67,20.89-13.63,34.74-.19,2.67-.32,8.31.07,10.04.21.96,1.07,1.73,2.28,2.06,1.31.37,2.66.1,3.4-.69,1.1-1.16,1.25-5.95,1.35-9.12.05-1.72.1-3.3.25-4.43,1.54-11.59,7.36-20.8,12.99-29.7,4.44-7.03,8.63-13.66,10.94-21.43,6.07-20.38,2.03-41.34-11.07-57.48C99.8,9.59,80.07,1.31,58.76,3.02h0c-16.87,1.38-32,9.68-42.63,23.37C5.26,40.42.72,58.38,3.68,75.67c1.84,10.73,7.31,19.86,12.6,28.67,5.74,9.58,11.68,19.48,13.1,31.54.12,1.04.17,2.6.21,4.26.06,2.45.15,5.8.61,6.94.53,1.33,2.14,1.84,3.46,1.69,1.24-.1,2.68-.73,3.01-2.17,1.36-6.06-1.48-20.65-4.06-26.96-3.03-7.43-6.83-13.66-10.51-19.69-8.44-13.84-16.42-26.92-10.49-49.43,6.46-24.54,27.33-40.39,53.17-40.39Z"
+                    />
+                  </g>
+                  <path
+                    class="cls-1"
+                    d="M44.23,177.57l40.6-.07c6.97,1.37,6.76,10.92-.48,11.9-12.26-.93-26.75,1.41-38.74-.01-7.55-.89-8.17-9.43-1.38-11.82Z"
+                  />
+                  <path
+                    class="cls-1"
+                    d="M88.31,158.45c4.03,4.22.15,10.55-5.36,10.38-11.65-.96-25.47,1.33-36.86-.05-7.71-.93-8.99-9.13-1.94-11.91l40.74-.04c1.06.07,2.73.89,3.42,1.61Z"
+                  />
+                </svg>
+              </div>
+              <h4 class="info-item__title">Flexible Learning</h4>
+              <p class="info-item__text">
+                Choose between online and face-to-face formats
+              </p>
+            </div>
+            <div class="info-item">
+              <div class="info-item__icon">
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  id="Layer_1"
+                  data-name="Layer 1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 200.37 126.77"
+                >
+                  <defs></defs>
+                  <g>
+                    <path
+                      class="cls-1"
+                      d="M132.33,31.65c0,17.13-13.88,31.01-31.01,31.01s-31.01-13.88-31.01-31.01S84.2.64,101.32.64s31.01,13.88,31.01,31.01ZM122.26,31.64c0-11.57-9.38-20.94-20.94-20.94s-20.94,9.38-20.94,20.94,9.38,20.94,20.94,20.94,20.94-9.38,20.94-20.94Z"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M101.33,63.29c-17.45,0-31.65-14.2-31.65-31.64S83.87,0,101.33,0s31.64,14.2,31.64,31.65-14.2,31.64-31.64,31.64ZM101.33,1.28c-16.75,0-30.37,13.62-30.37,30.37s13.62,30.37,30.37,30.37,30.37-13.62,30.37-30.37S118.07,1.28,101.33,1.28ZM101.32,53.22c-11.9,0-21.58-9.68-21.58-21.58s9.68-21.58,21.58-21.58,21.58,9.68,21.58,21.58-9.68,21.58-21.58,21.58ZM101.32,11.33c-11.2,0-20.3,9.11-20.3,20.3s9.11,20.3,20.3,20.3,20.3-9.11,20.3-20.3-9.11-20.3-20.3-20.3Z"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      class="cls-1"
+                      d="M154.22,126.12h-11c-.67-19.89-14.03-37.28-33.75-41.29-26.62-5.42-50.15,14.55-51.15,41.25l-9.39.05c-1.21-26.44,20.71-50.15,46.86-52.55,31.66-2.91,57.73,21.07,58.44,52.54Z"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M48.32,126.77l-.03-.61c-1.21-26.38,20.52-50.74,47.44-53.21,15.26-1.4,29.85,3.31,41.02,13.28,11.33,10.11,17.76,24.27,18.11,39.88v.65s-12.26,0-12.26,0l-.02-.62c-.67-20.11-14.34-36.84-33.24-40.69-12.25-2.5-24.32.32-33.99,7.91-9.94,7.81-15.91,19.74-16.4,32.73l-.02.61-10.62.05ZM100.99,73.98c-1.7,0-3.42.08-5.14.24-26.05,2.39-47.11,25.79-46.3,51.27l8.17-.04c.66-13.13,6.79-25.16,16.86-33.08,9.96-7.83,22.4-10.73,35.03-8.16,19.28,3.93,33.28,20.85,34.23,41.28h9.73c-.5-15-6.76-28.58-17.67-38.31-9.64-8.6-21.88-13.2-34.91-13.2Z"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      class="cls-1"
+                      d="M188.45,46.93c0,14.32-11.61,25.94-25.94,25.94s-25.94-11.61-25.94-25.94,11.61-25.94,25.94-25.94,25.94,11.61,25.94,25.94ZM178.46,46.93c0-8.82-7.15-15.97-15.97-15.97s-15.97,7.15-15.97,15.97,7.15,15.97,15.97,15.97,15.97-7.15,15.97-15.97Z"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M162.51,73.5c-14.66,0-26.58-11.92-26.58-26.57s11.92-26.58,26.58-26.58,26.57,11.92,26.57,26.58-11.92,26.57-26.57,26.57ZM162.51,21.63c-13.95,0-25.3,11.35-25.3,25.3s11.35,25.3,25.3,25.3,25.3-11.35,25.3-25.3-11.35-25.3-25.3-25.3ZM162.49,63.55c-9.16,0-16.61-7.45-16.61-16.61s7.45-16.61,16.61-16.61,16.61,7.45,16.61,16.61-7.45,16.61-16.61,16.61ZM162.49,31.6c-8.46,0-15.34,6.88-15.34,15.34s6.88,15.34,15.34,15.34,15.34-6.88,15.34-15.34-6.88-15.34-15.34-15.34Z"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      class="cls-1"
+                      d="M64.04,46.92c0,14.32-11.6,25.92-25.92,25.92s-25.92-11.6-25.92-25.92,11.6-25.92,25.92-25.92,25.92,11.6,25.92,25.92ZM54.07,46.96c0-8.83-7.16-15.99-15.99-15.99s-15.99,7.16-15.99,15.99,7.16,15.99,15.99,15.99,15.99-7.16,15.99-15.99Z"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M38.12,73.48c-14.65,0-26.56-11.91-26.56-26.56s11.91-26.56,26.56-26.56,26.56,11.91,26.56,26.56-11.91,26.56-26.56,26.56ZM38.12,21.63c-13.94,0-25.28,11.34-25.28,25.28s11.34,25.28,25.28,25.28,25.28-11.34,25.28-25.28-11.34-25.28-25.28-25.28ZM38.08,63.59c-9.17,0-16.63-7.46-16.63-16.63s7.46-16.63,16.63-16.63,16.63,7.46,16.63,16.63-7.46,16.63-16.63,16.63ZM38.08,31.6c-8.47,0-15.35,6.89-15.35,15.36s6.89,15.36,15.35,15.36,15.36-6.89,15.36-15.36-6.89-15.36-15.36-15.36Z"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      class="cls-1"
+                      d="M50.79,92.61c-4.83-.5-8.47-2.4-13.63-2.25-14.66.42-25.34,12.55-26.41,26.65l-10.11.11c-.41-28.22,31.58-46.45,55.78-31.83l-5.63,7.32Z"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M.01,117.77v-.64c-.21-13.45,6.85-25.59,18.88-32.49,12.1-6.94,26.25-6.9,37.85.11l.61.37-6.28,8.16-.36-.03c-2.03-.21-3.86-.67-5.63-1.1-2.55-.63-4.95-1.21-7.92-1.14-13.61.39-24.69,11.6-25.79,26.06l-.04.58-11.33.12ZM37.9,80.74c-6.25,0-12.56,1.67-18.37,5.01-11.43,6.56-18.21,18.01-18.25,30.73l8.89-.09c1.39-14.84,12.9-26.26,26.98-26.66,3.1-.08,5.73.56,8.26,1.18,1.62.4,3.29.82,5.1,1.03l4.97-6.46c-5.47-3.16-11.49-4.74-17.57-4.74Z"
+                    />
+                  </g>
+                  <g>
+                    <path
+                      class="cls-1"
+                      d="M199.73,117.12h-10.21c-.37-19.97-20.53-31.95-38.74-24.48l-6.06-7.33c23.74-14.97,55.38,4.37,55.01,31.81Z"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M200.36,117.76h-11.47s-.01-.64-.01-.64c-.16-8.92-4.45-16.79-11.76-21.59-7.63-5.02-17.39-5.88-26.1-2.3l-.43.18-6.82-8.25.61-.39c10.98-6.92,24.6-7.09,36.44-.45,12.24,6.86,19.72,19.43,19.54,32.81v.63ZM190.14,116.48h8.95c-.06-12.67-7.26-24.52-18.89-31.04-11.21-6.28-24.06-6.25-34.52.04l5.29,6.41c8.99-3.53,19-2.57,26.85,2.59,7.49,4.92,11.95,12.92,12.31,22.01Z"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <h4 class="info-item__title">Networking Opportunities</h4>
+              <p class="info-item__text">
+                With successful executives from the region
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CTA SECTION (contact / general) -->
+      <!-- CTA SECTION -->
       <section class="cta contact-us-section">
         <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
         <div class="container" data-aos="fade-right">
@@ -1703,7 +1253,7 @@
     <footer class="footer">
       <div class="container">
         <div class="footer__accred">
-          <img src="images/AUB-OSB-accreditations.png" alt="Accreditations" />
+          <img src="../images/AUB-OSB-accreditations.png" alt="Accreditations" />
         </div>
         <div class="footer-grid">
           <div class="footer-item">
@@ -1864,34 +1414,10 @@
 
     <script>
       lucide.createIcons();
-      AOS.init({
-        duration: 800,
-        once: true,
-      });
-      // smooth anchor scroll
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          const targetId = this.getAttribute("href");
-          if (targetId === "#" || targetId === "") return;
-          const target = document.querySelector(targetId);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
     </script>
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (typeof lucide !== "undefined") {
-          lucide.createIcons();
-        }
-        // optional AOS-like manual trigger if needed, but we only keep data attributes for styling
-      });
+      AOS.init();
     </script>
   </body>
 </html>

@@ -6,26 +6,43 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI in Supply Chain · program page</title>
+    <title>Pricing Analytics · program page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="../js/main.js" defer></script>
-    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../../js/main.js" defer></script>
+    <script src="../../js/menu.js" defer></script>
+    <script src="../../js/carousel.js" defer></script>
+    <link rel="stylesheet" href="../../css/main.css" />
     <style>
       :root {
-        /* AI in supply chain accent */
-        --color-accent: #3aa0e2;
-        --color-accent-dark: #005e99;
+        /* Pricing Analytics accent */
+        --color-accent: #3c955c;
+        --color-accent-dark: #26613a;
       }
 
       /* Program-specific hero background */
-      .hero--ai-supply-chain {
-        background-image: url("../images/AUB-OSB-OEP-AI-Supply Chain.jpg");
+      .hero--pricing-analytics {
+        background-image: url("../../images/AUB-OSB-OEP-Pricing-Analytics.jpg");
+      }
+
+      /* Menu - Active Page - OEP*/
+      .nav-osb-links .osb-nav-item > a#executive-education-link {
+        color: var(--color-primary);
+      }
+
+      body.nav-scrolled .nav-osb .osb-nav-item > a#executive-education-link {
+        color: white;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+
+      .nav-osb-links .osb-dropdown li a#open-enrollment-programs {
+        color: var(--color-primary);
       }
     </style>
   </head>
@@ -89,7 +106,7 @@
           <div class="nav-logo">
             <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
               <img
-                src="../images/AUB+OSB-Merged-Logo-white.png"
+                src="../../images/AUB+OSB-Merged-Logo-white.png"
                 alt="AUB OSB Logo"
               />
             </a>
@@ -544,7 +561,7 @@
           <div class="nav-osb-logo">
             <a href="/"
               ><img
-                src="../images/AUB+OSB-Merged-Logo-white.png"
+                src="../../images/AUB+OSB-Merged-Logo-white.png"
                 alt="AUB OSB Logo"
             /></a>
           </div>
@@ -671,7 +688,7 @@
                 <!-- lii replace href below -->
                 <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
                 <a
-                  href="https://liiwaa-osb.github.io\AUB-OSB-OEP\executive-education-program.html"
+                  href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html"
                   target="_blank"
                   id="executive-education-link"
                   >Executive Education</a
@@ -681,7 +698,7 @@
                     <!-- lii replcae href -->
                     <!-- /osb/executive-education/OEP -->
                     <a
-                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html"
+                      href="https://liiwaa-osb.github.io\AUB-OSB-OEP\open-enrollment-programs\index.html"
                       target="_blank"
                       id="open-enrollment-programs"
                       >Open Enrollment Programs</a
@@ -781,7 +798,7 @@
     <div class="nav-mobile-overlay" id="mobileOverlay">
       <div class="mobile-overlay-header">
         <div class="mobile-logo">
-          <img src="../images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
+          <img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
         </div>
         <button class="mobile-close-btn" id="closeOverlayBtn">
           <svg
@@ -800,15 +817,15 @@
     </div>
     <main>
       <!-- HERO SECTION -->
-      <section class="hero hero--ai-supply-chain">
-        <div class="hero__overlay" style="opacity: 0.5"></div>
+      <section class="hero hero--pricing-analytics">
+        <div class="hero__overlay"></div>
         <div class="container">
           <div class="hero__content hero__content--left">
-            <h1 class="hero__title">AI in Supply Chain</h1>
-            <h2 class="hero__subtitle">
-              Intelligent supply chains for a resilient future
-            </h2>
-            <p class="hero__text">Face-to-Face in Beirut, Lebanon</p>
+            <h1 class="hero__title">Pricing Analytics</h1>
+            <h2 class="hero__subtitle">Lorem Ipsum</h2>
+            <p class="hero__text">
+              Face-to-Face in Dubai, UAE
+            </p>
             <div class="hero__buttons">
               <button class="btn btn--accent">Register Now</button>
               <button class="btn btn--outline-light">
@@ -832,7 +849,7 @@
               ></i>
               <div>
                 <div class="detail-item__label">Dates</div>
-                <div class="detail-item__value">September 1-2-3, 2026</div>
+                <div class="detail-item__value">TBA</div>
               </div>
             </div>
             <div class="detail-item">
@@ -844,7 +861,7 @@
               ></i>
               <div>
                 <div class="detail-item__label">Duration</div>
-                <div class="detail-item__value">3 Days</div>
+                <div class="detail-item__value">2 Days</div>
               </div>
             </div>
             <div class="detail-item">
@@ -868,8 +885,8 @@
               ></i>
               <div>
                 <div class="detail-item__label">Fees</div>
-                <div class="detail-item__value">$XXXX</div>
-                <div class="detail-item__sub">$XXXX for AUB Alumni</div>
+                <div class="detail-item__value">$1000</div>
+                <div class="detail-item__sub">$800 for AUB Alumni</div>
               </div>
             </div>
 
@@ -882,7 +899,9 @@
               ></i>
               <div>
                 <div class="detail-item__label">Location</div>
-                <div class="detail-item__value">AUB - OSB in Lebanon</div>
+                <div class="detail-item__value">
+                  AUB Academic and Executive Hub in Dubai
+                </div>
               </div>
             </div>
           </div>
@@ -895,40 +914,39 @@
           <div class="overview-grid">
             <div class="overview-grid__image">
               <img
-                src="../images/AUB-OSB-OEP-AI-Supply-Chain-Program.jpg"
-                alt="AI supply chain concept"
+                src="../../images/AUB-OSB-OEP-Pricing-Analytics-Program.jpg"
+                alt="Innovation workshop"
               />
             </div>
             <div class="overview-grid__text">
               <h2 class="section-title">The Program</h2>
               <p>
-                Artificial intelligence (AI) is reshaping supply chain
-                management by boosting efficiency, enhancing forecasting
-                accuracy, enabling smarter decision-making, and strengthening
-                operational resilience.
+                Pricing is one of the most powerful levers a company can use to
+                drive competitive advantage, yet it remains a complex challenge
+                that businesses face if reduced only to cost plus- or
+                competition-based approaches.
               </p>
               <p>
-                The AI in Supply Chain Program, developed by the American
+                The Pricing Analytics program, developed by the American
                 University of Beirut, Suliman S. Olayan School of Business
-                (OSB), focuses on real-world AI applications in production,
-                demand forecasting, inventory management, logistics
-                optimization, and risk mitigation. Through a combination of
-                executive-level lectures and guided, non-technical hands‑on
-                activities, participants will develop practical literacy in how
-                AI-driven systems shape modern supply chains and how to
-                interpret their outputs to make informed strategic decisions.
+                (OSB), focuses on pricing as a competitive driver balancing the
+                tradeoff between faster resource/inventory turnover and higher
+                margins through data analytics capabilities. While advances in
+                analytics and information technology are rapidly transforming
+                pricing practices, this program sheds light on the enduring
+                principles that form the foundation of effective pricing
+                strategy.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- WHY THIS PROGRAM (flip cards) -->
+      <!-- WHY THIS PROGRAM -->
       <section class="section">
         <div class="container">
           <h2 class="section-title">Why This Program</h2>
           <div class="grid-4">
-            <!-- Innovative -->
             <div class="flip-card">
               <div class="flip-card__inner">
                 <div class="flip-card__front">
@@ -939,63 +957,57 @@
                     class="flip-card__icon"
                   ></i>
                   <h3>Innovative</h3>
-                  <p>
-                    Updated perspective on supply chain relevant to various
-                    industries.
-                  </p>
+                  <p>Fresh, validated analytics-based pricing</p>
                 </div>
                 <div class="flip-card__back">
                   <p>
-                    Delivers an updated perspective on supply chain that is
-                    relevant to various types of industries, integrating
-                    AI-driven insights.
+                    It delivers a fresh perspective on (analytics-based) pricing
+                    that is powerful, relevant and most importantly validated in
+                    practice in various types of industries.
                   </p>
                 </div>
               </div>
             </div>
-            <!-- Practical -->
             <div class="flip-card">
               <div class="flip-card__inner">
                 <div class="flip-card__front">
                   <i
-                    data-lucide="wrench"
+                    data-lucide="hand"
                     width="40"
                     height="40"
                     class="flip-card__icon"
                   ></i>
                   <h3>Practical</h3>
-                  <p>Hands-on experience of tools and techniques.</p>
+                  <p>Real tools, real challenges</p>
                 </div>
                 <div class="flip-card__back">
                   <p>
-                    Provides you with hands-on experience of the application of
-                    AI tools and techniques in supply chain contexts.
+                    It provides you with hands-on experience of the application
+                    of tools and techniques to real world pricing challenges.
                   </p>
                 </div>
               </div>
             </div>
-            <!-- Short & Effective -->
             <div class="flip-card">
               <div class="flip-card__inner">
                 <div class="flip-card__front">
                   <i
-                    data-lucide="clock"
+                    data-lucide="hourglass"
                     width="40"
                     height="40"
                     class="flip-card__icon"
                   ></i>
                   <h3>Short & Effective</h3>
-                  <p>3-day format for busy schedules.</p>
+                  <p>Designed for busy schedules</p>
                 </div>
                 <div class="flip-card__back">
                   <p>
-                    Designed to suit your busy schedule and aims to provide you
-                    with the know-how in just 3 days.
+                    It is designed to suit your busy schedule and aims to
+                    provide you with the know-how in 2 days.
                   </p>
                 </div>
               </div>
             </div>
-            <!-- Highly engaging -->
             <div class="flip-card">
               <div class="flip-card__inner">
                 <div class="flip-card__front">
@@ -1006,13 +1018,12 @@
                     class="flip-card__icon"
                   ></i>
                   <h3>Highly Engaging</h3>
-                  <p>Case studies, interactive discussions, exercises.</p>
+                  <p>Learn by doing, not just listening</p>
                 </div>
                 <div class="flip-card__back">
                   <p>
-                    Includes case studies, interactive discussions, hands-on
-                    exercises, and individual contributions to make learning
-                    dynamic.
+                    It includes case studies, interactive discussions, hands-on
+                    exercises, and individual contributions.
                   </p>
                 </div>
               </div>
@@ -1027,39 +1038,41 @@
           <h2 class="section-title">Program Instructor</h2>
           <div class="instructor-grid">
             <div class="instructor-grid__image">
-              <img src="../images/Dr.Mirna-Profile.jpg" alt="Dr. Mirna" />
+              <img
+                src="../../images/AUB-OSB-Dr.Victor-Profile.jpg"
+                alt="Dr. Victor"
+              />
             </div>
             <div>
-              <h3 class="instructor-grid__name">Mirna Abou Mjahed, PhD</h3>
+              <h3 class="instructor-grid__name">VICTOR ARAMAN, PhD</h3>
               <div class="instructor-grid__title">
                 <p>
-                  PhD in Management (Information Systems, Supply Chain, Decision
-                  Support) – NEOMA Business School<br />
-                  MBA, University of Houston<br />
-                  Bachelor in Computer and Communication Engineering, AUB
+                  Professor of Decision Science<br />
+                  Olayan School of Business – American University of Beirut
                 </p>
               </div>
               <p class="instructor-grid__bio">
-                Dr. Abou Mjahed’s academic and professional work focuses on
-                technology-enabled supply chain decision making, supply chain
-                collaboration, inventory management and managing uncertainty and
-                resilience in complex supply chains. She has taught at
-                institutions including AUB Lebanon, AUB Mediterraneo, and NEOMA
-                Business School, covering topics such as Supply Chain
-                Optimization, Operations Management, Managerial Decision Making,
-                Strategic Management, and Risk Management. With over a decade of
-                professional experience in business consulting, software
-                development, and information systems across Beirut, Houston, and
-                Riyadh, she brings a practical, supply-chain-driven perspective
-                to the use of new technologies in planning, coordination, and
-                decision support.
+                Victor Araman is a Professor of Decision Science at the Olayan
+                School of Business, American University of Beirut, where he
+                serves as Associate Dean for Programs. He is also an Adjunct
+                Professor at NYU Stern and a Visiting Faculty member at INSEAD.
+                He holds an engineering degree from École Centrale (France) and
+                MS and PhD degrees in Operations Research from Stanford
+                University. His research focuses on operations and pricing
+                analytics. He teaches across MBA, Executive MBA, and
+                undergraduate programs and received the AUB Teaching Excellence
+                Award in 2014. He has extensive professional experience, having
+                worked with McKinsey & Company in Paris and Altera Corporation
+                in Silicon Valley, and co-founded a fintech start-up built on an
+                advanced pricing scheme with gamification. He currently advises
+                companies on various business analytics issues.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- WHO SHOULD ENROLL + REQUIREMENTS -->
+      <!-- ===== WHO SHOULD ENROLL (carousel version with 5 cards) ===== -->
       <section class="section" style="background: #f5f5f5">
         <div class="container">
           <h2 class="section-title">Who Should Enroll</h2>
@@ -1079,12 +1092,13 @@
             <div class="carousel__container js-carousel-container">
               <div class="carousel__track js-carousel-track">
                 <!-- original 3 cards (exact same content) -->
+
                 <div class="carousel__slide">
                   <div class="participant-card">
                     <div class="participant-card__image">
                       <img
-                        src="../images/AUB-OSB-OEP-AI-Supply-Chain-Executives.jpg"
-                        alt="Supply Chain Executives"
+                        src="../../images/AUB-OSB-OEP-Pricing-Analytics-Managers.jpg"
+                        alt="Pricing Managers"
                         onerror="
                           this.src =
                             'https://placehold.co/400x300/2d5a27/white?text=Executives'
@@ -1093,38 +1107,44 @@
                     </div>
                     <div class="participant-card__content">
                       <h3 class="participant-card__title">
-                        Supply Chain Executives, Purchasing and Procurement
-                        Managers
+                        Senior Directors & Pricing Managers
                       </h3>
-                      <p class="participant-card__text">Lorem Ipsum</p>
+                      <p class="participant-card__text">
+                        Seeking to gain insights on pricing analytics.
+                      </p>
                     </div>
                   </div>
                 </div>
+
                 <div class="carousel__slide">
                   <div class="participant-card">
                     <div class="participant-card__image">
                       <img
-                        src="../images/AUB-OSB-OEP-AI-Supply-Chain-Decision-Maker.jpg"
-                        alt="Supply Chain Executives"
+                        src="../../images/AUB-OSB-OEP-Pricing-Analytics-Entrepreneurs.jpg"
+                        alt="Entrepreneurs & Business Owners"
                         onerror="
                           this.src =
-                            'https://placehold.co/400x300/2d5a27/white?text=Executives'
+                            'https://placehold.co/400x300/8b5a2b/white?text=Entrepreneurs'
                         "
                       />
                     </div>
                     <div class="participant-card__content">
                       <h3 class="participant-card__title">
-                        Managers & Decision-makers
+                        Entrepreneurs & Business Owners
                       </h3>
-                      <p class="participant-card__text">Lorem Ipsum</p>
+                      <p class="participant-card__text">
+                        Aiming to harness pricing analytics for a competitive
+                        advantage.
+                      </p>
                     </div>
                   </div>
                 </div>
+
                 <div class="carousel__slide">
                   <div class="participant-card">
                     <div class="participant-card__image">
                       <img
-                        src="../images/AUB-OSB-OEP-AI-Supply-Chain-Alumni.jpg"
+                        src="../../images/AUB-OSB-OEP-Pricing-Analytics-Alumni.jpg"
                         alt="AUB Alumni"
                         onerror="
                           this.src =
@@ -1133,7 +1153,7 @@
                       />
                     </div>
                     <div class="participant-card__content">
-                      <h3 class="participant-card__title">AUB Alumni</h3>
+                      <h3 class="participant-card__title">AUB EMBA Alumni</h3>
                       <p class="participant-card__text">
                         Looking to reconnect with the AUB network and renew
                         their learning journey.
@@ -1156,12 +1176,16 @@
           </div>
           <!-- /carousel -->
 
-          <!-- Program Requirements (same layout) -->
+          <!-- Program Requirements (unchanged) -->
           <div class="requirements-grid">
             <div class="requirements-grid__image">
               <img
-                src="../images/AUB-OSB-OEP-AI-Supply-Chain-Program-Requirement.jpg"
-                alt="AI learning"
+                src="../../images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg"
+                alt="Professional Learning"
+                onerror="
+                  this.src =
+                    'https://placehold.co/600x300/4a6b8a/white?text=Requirements'
+                "
               />
             </div>
             <div class="requirements-grid__content">
@@ -1169,23 +1193,20 @@
               <ul class="requirements-grid__list">
                 <li>
                   <span
-                    >Participants come from different sectors and
-                    industries</span
-                  >
-                </li>
-                <li>
-                  <span>No prior technical or coding experience required</span>
+                    >Participants generally come from different sectors and
+                    industries
+                  </span>
                 </li>
                 <li>
                   <span
-                    >Proficiency in spoken and written English is
-                    necessary</span
-                  >
+                    >Proficiency in spoken and written English is necessary
+                  </span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+        <!-- /container -->
       </section>
 
       <!-- TIMING, FEES & LOCATION -->
@@ -1201,7 +1222,7 @@
                 class="info-card__icon"
               ></i>
               <h3 class="info-card__title">Dates</h3>
-              <div class="info-card__value">September 1-2-3, 2026</div>
+              <div class="info-card__value">TBA</div>
             </div>
             <div class="info-card">
               <i
@@ -1211,7 +1232,7 @@
                 class="info-card__icon"
               ></i>
               <h3 class="info-card__title">Duration</h3>
-              <div class="info-card__value">3 Days</div>
+              <div class="info-card__value">2 Days</div>
             </div>
             <div class="info-card">
               <i
@@ -1231,8 +1252,8 @@
                 class="info-card__icon"
               ></i>
               <h3 class="info-card__title">Fees</h3>
-              <div class="info-card__value">$XXXX</div>
-              <div class="info-card__sub">$XXXX for AUB Alumni</div>
+              <div class="info-card__value">$1000</div>
+              <div class="info-card__sub">$800 for AUB Alumni</div>
             </div>
             <div class="info-card">
               <i
@@ -1242,28 +1263,28 @@
                 class="info-card__icon"
               ></i>
               <h3 class="info-card__title">Location</h3>
-              <div class="info-card__value">Beirut, Lebanon</div>
+              <div class="info-card__value f-size-17">
+                AUB Academic and Executive Hub in Dubai
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- FINAL CTA (register) -->
+      <!-- FINAL CTA -->
       <section
         class="cta register-section"
         style="
-          background-image: url(&quot;../images/ai-in-supply-chain-bg.jpg&quot;);
+          background-image: url(&quot;../../images/Pricing-Analytics-bg.jpg&quot;);
         "
       >
-        <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.3)"></div>
+        <div class="cta__overlay"></div>
         <div class="container">
           <div class="cta__content">
-            <h2 class="cta__title">
-              Ready to Transform Your Supply Chain with AI?
-            </h2>
+            <h2 class="cta__title">Ready to Lorem Ipsum?</h2>
             <p class="cta__text">
-              Join us for this transformative 3-day program and unlock the
-              potential of AI in your supply chain.
+              Join us for this transformative 3-day program and unlock your
+              Lorem Ipsum.
             </p>
             <button class="btn btn--white">Register Now</button>
             <div class="cta__divider">
@@ -1291,11 +1312,12 @@
             <!-- PRICING ANALYTICS -->
             <div
               class="program-card"
+              style="display: none"
               data-url="../programs/pricing-analytics.html"
             >
               <div class="program-card__image">
                 <img
-                  src="../images/AUB-OSB-OEP-Pricing-Analytics.jpg"
+                  src="../../images/AUB-OSB-OEP-Pricing-Analytics.jpg"
                   alt="Pricing Analytics"
                 />
               </div>
@@ -1320,8 +1342,8 @@
                       2026</span
                     >
                     <span class="program-card__meta-item"
-                      ><i data-lucide="clock" width="16"></i>2 Days</span
-                    >
+                      ><i data-lucide="clock" width="16"></i>2 Days
+                    </span>
                     <span class="program-card__meta-item"
                       ><i data-lucide="map-pin" width="16"></i>AUB Academic and
                       Executive Hub in Dubai</span
@@ -1343,7 +1365,7 @@
             >
               <div class="program-card__image">
                 <img
-                  src="../images/AUB-OSB-OEP-design-thinking.jpg"
+                  src="../../images/AUB-OSB-OEP-design-thinking.jpg"
                   alt="DESIGN THINKING"
                 />
               </div>
@@ -1388,12 +1410,11 @@
             <!-- AI IN SUPPLY CHAIN -->
             <div
               class="program-card"
-              style="display: none"
               data-url="../programs/ai-in-supply-chain.html"
             >
               <div class="program-card__image">
                 <img
-                  src="../images/AUB-OSB-OEP-AI-Supply Chain.jpg"
+                  src="../../images/AUB-OSB-OEP-AI-Supply Chain.jpg"
                   alt="AI in Supply Chain"
                 />
               </div>
@@ -1441,7 +1462,7 @@
             >
               <div class="program-card__image">
                 <img
-                  src="../images/AUB-OSB-OEP-Family-Business-governance.jpg"
+                  src="../../images/AUB-OSB-OEP-Family-Business-governance.jpg"
                   alt="Family Business Governance"
                 />
               </div>
@@ -1489,7 +1510,7 @@
         </div>
       </section>
 
-      <!-- CTA CONTACT SECTION -->
+      <!-- CTA SECTION (contact) -->
       <section class="cta contact-us-section">
         <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
         <div class="container">
@@ -1506,12 +1527,12 @@
       </section>
     </main>
 
-    <!-- FOOTER (exactly as in design-thinking) -->
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
         <div class="footer__accred">
           <img
-            src="../images/AUB-OSB-accreditations.png"
+            src="../../images/AUB-OSB-accreditations.png"
             alt="Accreditations"
           />
         </div>
@@ -1674,7 +1695,7 @@
       <!-- Sticky action buttons -->
       <div class="sticky-cta">
         <a
-          href="../downloadables/AUB-OSB-Fact_Sheet-OEP-AI_SUPPLY_CHAIN.pdf"
+          href="../downloadables/AUB-OSB-Fact_Sheet-OEP-PRICING_ANALYTICS.pdf"
           class="sticky-cta__btn"
           download="AUB-OSB-Fact_Sheet-OEP-AI_SUPPLY_CHAIN.pdf"
           aria-label="Download Brochure"
