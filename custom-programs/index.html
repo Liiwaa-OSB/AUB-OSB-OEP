@@ -15,6 +15,7 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="../js/main.js" defer></script>
   <script src="../js/menu.js" defer></script>
+  <script src="../js/contact-form-popup.js"></script>
   <script src="../js/carousel.js" defer></script>
   <script src="../js/accordion.js" defer></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -344,6 +345,7 @@
 
     .faculty-name {
       color: var(--color-primary);
+      text-transform: none;
     }
 
     /* Contact details styling */
@@ -1104,11 +1106,11 @@
             <p>
               Enhance the management and leadership capabilities of your
               organization to sustain and grow your business performance. OSB
-              Executive Education partners with you to design courses that
+              Executive Education partners with you to design programs that
               specifically meet your organization's development goals. Our
               team of experts develop unique learning experiences specifically
               tailored for the skill sets of your leaders and executives. Our
-              programs can be delivered worldwide or on campus according to
+              programs can be delivered at your preferred location or on campus according to
               your convenience.
             </p>
           </div>
@@ -1116,46 +1118,6 @@
       </div>
     </section>
 
-    <!-- Featured Solutions (cards with lorem ipsum) -->
-    <div class="section">
-      <div class="container">
-        <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
-          <div class="custom-card">
-            <img src="../images/black.png" alt="placeholder" />
-            <div class="custom-card-content">
-              <div class="custom-card-title">Lorem ipsum dolor</div>
-              <div class="custom-card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </div>
-              <a href="#" class="btn-outline-custom">Learn more →</a>
-            </div>
-          </div>
-          <div class="custom-card">
-            <img src="../images/black.png" alt="placeholder" />
-            <div class="custom-card-content">
-              <div class="custom-card-title">Consectetur adipiscing</div>
-              <div class="custom-card-text">
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
-              </div>
-              <a href="#" class="btn-outline-custom">Learn more →</a>
-            </div>
-          </div>
-          <div class="custom-card">
-            <img src="../images/black.png" alt="placeholder" />
-            <div class="custom-card-content">
-              <div class="custom-card-title">Elit sed do eiusmod</div>
-              <div class="custom-card-text">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.
-              </div>
-              <a href="#" class="btn-outline-custom">Learn more →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Customization Process: Our Approach -->
     <div class="section">
@@ -1164,21 +1126,11 @@
           Customization Process: Our Approach
         </h2>
         <p class="section-description" data-aos="fade-up" data-aos-delay="50">
-          We collaborate with you to design programs that specifically meet
-          your organization's development goals. Our team of experts develop
-          unique learning experiences tailored for the skill sets of your
-          leaders and executives. Our programs can be delivered worldwide or
-          on campus according to your convenience. Throughout our programs we
-          integrate best practices, case studies, toolkits, and frameworks to
-          enable your executives to transfer the knowledge back to the
-          workplace and apply their learning effectively.
-        </p>
-        <p class="section-description" data-aos="fade-up" data-aos-delay="50">
-          Your program's development process begins with the completion of a
+          Our programs development process begins with the completion of a
           Preliminary Needs Assessment that helps us learn more about your
-          organization. We will then analyze your need to design, develop, and
-          implement an academically fit program. Learn more about our work
-          process and how we can partner with you.
+          organization, your objectives, the audience, and the context of your needs. We will then analyze your needs to
+          design, develop, and
+          implement an academically fit and highly tailored program addressing the target objectives.
         </p>
 
         <!-- Wide portrait image -->
@@ -1186,49 +1138,6 @@
           <img src="../images/AUB-OSB-CP-Approach-Infograph.png" alt="customization process" />
         </div>
 
-        <!-- Steps 1-4 cards -->
-        <div class="steps-grid" data-aos="fade-up" data-aos-delay="100">
-          <div class="step-card">
-            <div class="step-number">STEP 01</div>
-            <div class="step-title">NEEDS ASSESSMENT</div>
-            <div class="step-desc">
-              Discuss objectives, desired outcomes, and expectations while
-              assessing the organization’s background, culture, and
-              challenges. Define program goals and scope to ensure relevance,
-              alignment, and high impact.
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-number">STEP 02</div>
-            <div class="step-title">DESIGN</div>
-            <div class="step-desc">
-              Collaboratively develop tailored curriculum, instructional
-              methods, and feedback tools based on identified needs. Ensure
-              the program structure aligns with objectives and maximizes
-              learning effectiveness.
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-number">STEP 03</div>
-            <div class="step-title">DELIVERY</div>
-            <div class="step-desc">
-              Deliver the program through flexible formats, combining engaging
-              content with a high-quality teaching experience. Align learning
-              delivery with organizational culture, schedules, and participant
-              needs.
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-number">STEP 04</div>
-            <div class="step-title">IMPACT</div>
-            <div class="step-desc">
-              Measure program effectiveness through evaluations, surveys, and
-              performance insights. Summarize outcomes and provide
-              recommendations as part of a follow-up and continuous
-              improvement process.
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -1249,59 +1158,64 @@
           <!-- scrollable container -->
           <div class="carousel__container js-carousel-container">
             <div class="carousel__track js-carousel-track">
-              <!-- original 3 cards (exact same content) -->
+              <!-- SLIDE 1 : Corporate Unit Head ; Arab Bank (Leadership Development Program) -->
               <div class="carousel__slide two-slides">
                 <div class="testimonial-item">
                   <div class="testimonial-quote">
-                    “I would recommend it to managers with high potential. AMP
-                    gave me the opportunity to review, refresh and update my
-                    knowledge about management in banking industry. It
-                    highlighted the banking trend in the future through social
-                    media, customer segmentation, etc. More importantly, it
-                    stimulated in me the need to be aware when taking
-                    decisions in both inside and outside the working
-                    environment in order to check the impact of my decisions
-                    on others. I would say that AMP made me more
-                    self-conscious, more motivated and more loyal to Bank
-                    Audi. It gave me the opportunity to explore more my
-                    colleagues and benefit from their strengths and
-                    competencies."
+                    “The impact was totally positive in view of acquiring new competencies in major areas such strategic
+                    planning, people and talent management as well as being alert toward current and upcoming challenges
+                    facing the banking industry. such competencies will enhance my abilities to mange my team to achieve
+                    our targets aligning with AB's strategy."
                   </div>
-                  <div class="testimonial-author">Carol Abou Jaoude,</div>
+                  <div class="testimonial-author">Corporate Unit Head; Arab Bank,</div>
                   <div class="testimonial-role">
-                    Bank Audi  | Regional Manager
+                    Leadership Development Program
                   </div>
                 </div>
               </div>
+
+              <!-- SLIDE 2 : Head of Country Elite Banking; Arab Bank (Leadership Development Program) -->
               <div class="carousel__slide two-slides">
                 <div class="testimonial-item">
                   <div class="testimonial-quote">
-                    “Great program with highly relevant material for our
-                    evolutionary stage as an organization. Every week we have
-                    many things that we can directly implement at our
-                    organization. We meet excellent high caliber participants
-                    with whom we share knowledge and expertise.
-                    Professionally, this program has enabled me to take a
-                    different view of our organization and rethink the way we
-                    work every day with a helicopter view."
+                    “On a personal level, the impact of the program was enabling me to pinpoint my strengths and work on
+                    enhancing them while figuring out my challenges and also trying to overcome them. This program also
+                    reverified the importance of not letting your mind be over consumed by daily tasks, and to always
+                    focus on being up to date with global changes with an open mindset, while [also] transferring this
+                    mindset to my colleagues.”
                   </div>
-                  <div class="testimonial-author">Jalil Allabadi,</div>
+                  <div class="testimonial-author">Head of Country Elite Banking; Arab Bank</div>
                   <div class="testimonial-role">
-                    Al Tibbi  | Managing Partner
+                    Leadership Development Program
                   </div>
                 </div>
               </div>
+
+              <!-- SLIDE 3 : Head of Supply Chain; Transmed (Modern Business Landscape Program) -->
               <div class="carousel__slide two-slides">
                 <div class="testimonial-item">
                   <div class="testimonial-quote">
-                    "It was a great training, subjects were chosen carefully,
-                    examples and workshops were perfectly tailored to Hikma's
-                    business. The pre-reading materials were excellent and
-                    assignments made the final outcome of great value."
+                    “[This course taught me about] extending and coordinating more sustainability practices with
+                    suppliers and customers, focusing on the digital mindset principle and on its application in our
+                    Logistics operations, and how to fully explore the AI machine learning capabilities in our newly
+                    implemented TMS”
                   </div>
-                  <div class="testimonial-author">Ahmad Nazzal,</div>
+                  <div class="testimonial-author">Head of Supply Chain; Transmed</div>
                   <div class="testimonial-role">
-                    Hikma  |  Marketing Manager​
+                    Modern Business Landscape Program
+                  </div>
+                </div>
+              </div>
+
+              <!-- SLIDE 4 : Public Sector Sales Department Manager; National Bank of Iraq (Arabic quote + Cultivating Managerial Excellence Program) -->
+              <div class="carousel__slide two-slides">
+                <div class="testimonial-item">
+                  <div class="testimonial-quote" style="font-size:1.05rem;">
+                    “الأساتذة كانوا من نخبة ممتازة. كان هذا البرنامج جيدًا ومثمرًا”
+                  </div>
+                  <div class="testimonial-author">Public Sector Sales Department Manager; National Bank of Iraq</div>
+                  <div class="testimonial-role">
+                    Cultivating Managerial Excellence Program
                   </div>
                 </div>
               </div>
@@ -1326,7 +1240,7 @@
             Discuss your program customization
           </h2>
           <p style="margin: 0 auto 2rem">
-            Are you ready to start a conversation? We welcome the opportunity
+            We welcome the opportunity
             to discuss your interest in a custom program.
             <br />
             Contact us and we'll help you find the best choice for you and
@@ -1338,365 +1252,13 @@
             <img src="../images/AUB-OSB-Dr.Gary-Profile.JPG" alt="Gary Saliba - Faculty Expert" />
           </div>
           <div class="faculty-info">
-            <h2 class="faculty-name">Gary Saliba</h2>
+            <h2 class="faculty-name" st>Gary Saliba</h2>
             <h4 class="faculty-title">Business Development Executive</h4>
             <h4 class="faculty-department">Executive Education Programs</h4>
 
             <div class="faculty-actions">
-              <a href="#" class="btn btn--secondary">Start a Conversation</a>
+              <a href="mailto:gs52@aub.edu.lb" class="btn btn--secondary">Start a Conversation</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Faculty Experts -->
-    <div class="section" style="display: none">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Our Faculty Experts</h2>
-        <div class="card-grid" data-aos="fade-up" data-aos-delay="100">
-          <!-- Card 1: Gary Saliba -->
-          <div class="faculty-card">
-            <div class="faculty-image">
-              <img src="../images/black.png" alt="Gary Saliba - Faculty Expert" />
-            </div>
-            <div class="faculty-info">
-              <div class="faculty-name">Gary Saliba</div>
-              <div class="faculty-title">Business Development Executive</div>
-              <div class="faculty-department">
-                Executive Education Programs
-              </div>
-
-              <!-- Contact details: tel & email with icons -->
-              <div class="faculty-contact">
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  </span>
-                  <a href="tel:+1234567890" class="contact-text">+961 1 374 374 <strong>Ext:</strong> 3748</a>
-                </div>
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
-                      <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                      <polyline points="22,7 12,13 2,7"></polyline>
-                    </svg>
-                  </span>
-                  <a href="mailto:gary.saliba@example.com" class="contact-text">gs52@aub.edu.lb​​​</a>
-                </div>
-              </div>
-
-              <a href="#" class="btn-outline-custom">View profile →</a>
-            </div>
-          </div>
-
-          <!-- Card 2: Jane Smith -->
-          <div class="faculty-card">
-            <div class="faculty-image">
-              <img src="../images/black.png" alt="Jane Smith - Faculty Expert" />
-            </div>
-            <div class="faculty-info">
-              <div class="faculty-name">Jane Smith</div>
-              <div class="faculty-title">Executive Leadership Coach</div>
-              <div class="faculty-department">
-                Leadership Development • C-Suite Advisory
-              </div>
-
-              <div class="faculty-contact">
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  </span>
-                  <a href="tel:+1987654321" class="contact-text">+1 (555) 876-5432</a>
-                </div>
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
-                      <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                      <polyline points="22,7 12,13 2,7"></polyline>
-                    </svg>
-                  </span>
-                  <a href="mailto:jane.smith@example.com" class="contact-text">jane.smith@example.com</a>
-                </div>
-              </div>
-
-              <a href="#" class="btn-outline-custom">View profile →</a>
-            </div>
-          </div>
-
-          <!-- Card 3: Michael Lee -->
-          <div class="faculty-card">
-            <div class="faculty-image">
-              <img src="../images/black.png" alt="Michael Lee - Faculty Expert" />
-            </div>
-            <div class="faculty-info">
-              <div class="faculty-name">Michael Lee</div>
-              <div class="faculty-title">Organizational Behavior</div>
-              <div class="faculty-department">
-                Change Management • Team Dynamics
-              </div>
-
-              <div class="faculty-contact">
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none">
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  </span>
-                  <a href="tel:+15551234567" class="contact-text">+1 (555) 123-4567</a>
-                </div>
-                <div class="contact-item">
-                  <span class="contact-icon">
-                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" fill="none">
-                      <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                      <polyline points="22,7 12,13 2,7"></polyline>
-                    </svg>
-                  </span>
-                  <a href="mailto:michael.lee@example.com" class="contact-text">michael.lee@example.com</a>
-                </div>
-              </div>
-
-              <a href="#" class="btn-outline-custom">View profile →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Team Learning & Benefits with testimonials -->
-    <div class="section">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-title" data-aos="fade-up">
-            Team Learning & Benefits
-          </h2>
-          <div class="exec-option-card__desc">
-            <p>
-              Active learning experiences that combine profession skills with
-              a solid foundation of business concepts and tools.
-            </p>
-            <p>Hear it from our clients.</p>
-          </div>
-        </div>
-        <div class="section-divider"></div>
-
-        <!-- Horizontal Testimonials Carousel -->
-        <div class="carousel js-carousel carousel-5" data-carousel>
-          <!-- previous button -->
-          <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
-            &#10094;
-          </button>
-
-          <!-- scrollable container -->
-          <div class="carousel__container js-carousel-container">
-            <div class="carousel__track js-carousel-track">
-              <!-- original 3 cards (exact same content) -->
-              <div class="carousel__slide one-slide">
-                <div class="testimonial-card-horizontal">
-                  <div class="testimonial-card-horizontal__image">
-                    <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni" onerror="
-                          this.src =
-                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
-                        " />
-                  </div>
-                  <div class="testimonial-card-horizontal__content">
-                    <h3 class="testimonial-card-horizontal__title">
-                      AUB Alumni
-                    </h3>
-                    <p class="testimonial-card-horizontal__text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__slide one-slide">
-                <div class="testimonial-card-horizontal">
-                  <div class="testimonial-card-horizontal__image">
-                    <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni" onerror="
-                          this.src =
-                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
-                        " />
-                  </div>
-                  <div class="testimonial-card-horizontal__content">
-                    <h3 class="testimonial-card-horizontal__title">
-                      AUB Alumni
-                    </h3>
-                    <p class="testimonial-card-horizontal__text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__slide one-slide">
-                <div class="testimonial-card-horizontal">
-                  <div class="testimonial-card-horizontal__image">
-                    <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni" onerror="
-                          this.src =
-                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
-                        " />
-                  </div>
-                  <div class="testimonial-card-horizontal__content">
-                    <h3 class="testimonial-card-horizontal__title">
-                      AUB Alumni
-                    </h3>
-                    <p class="testimonial-card-horizontal__text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__slide one-slide">
-                <div class="testimonial-card-horizontal">
-                  <div class="testimonial-card-horizontal__image">
-                    <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni" onerror="
-                          this.src =
-                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
-                        " />
-                  </div>
-                  <div class="testimonial-card-horizontal__content">
-                    <h3 class="testimonial-card-horizontal__title">
-                      AUB Alumni
-                    </h3>
-                    <p class="testimonial-card-horizontal__text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__slide one-slide">
-                <div class="testimonial-card-horizontal">
-                  <div class="testimonial-card-horizontal__image">
-                    <img src="../images/AUB-OSB-OEP-Family-Business-alumni.jpg" alt="AUB Alumni" onerror="
-                          this.src =
-                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
-                        " />
-                  </div>
-                  <div class="testimonial-card-horizontal__content">
-                    <h3 class="testimonial-card-horizontal__title">
-                      AUB Alumni
-                    </h3>
-                    <p class="testimonial-card-horizontal__text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /track -->
-          </div>
-          <!-- /container -->
-
-          <!-- next button -->
-          <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-            &#10095;
-          </button>
-        </div>
-
-        <!-- Additional testimonials carousel (vertical cards) -->
-        <div data-aos="fade-up" data-aos-delay="200" style="display: none">
-          <div class="carousel js-carousel carousel-3" data-carousel>
-            <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
-              ❮
-            </button>
-            <div class="carousel__container js-carousel-container">
-              <div class="carousel__track js-carousel-track">
-                <div class="carousel__slide">
-                  <div class="testimonial-card">
-                    <div class="testimonial-card__quote">
-                      “The mix of theory and real case studies made me
-                      immediately apply pricing frameworks. World-class
-                      faculty.”
-                    </div>
-                    <div class="testimonial-card__profile">
-                      <div class="testimonial-card__avatar" style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/women/44.jpg&quot;);
-                            background-size: cover;
-                          "></div>
-                      <div>
-                        <div class="testimonial-card__name">Rana H.</div>
-                        <div class="testimonial-card__role">
-                          Pricing Director, Retail Corp
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel__slide">
-                  <div class="testimonial-card">
-                    <div class="testimonial-card__quote">
-                      “Design Thinking shifted our whole innovation culture.
-                      Highly interactive and transformative.”
-                    </div>
-                    <div class="testimonial-card__profile">
-                      <div class="testimonial-card__avatar" style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/men/32.jpg&quot;);
-                            background-size: cover;
-                          "></div>
-                      <div>
-                        <div class="testimonial-card__name">Karim M.</div>
-                        <div class="testimonial-card__role">
-                          Head of Strategy, Fintech
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel__slide">
-                  <div class="testimonial-card">
-                    <div class="testimonial-card__quote">
-                      “AI in Supply Chain gave me the confidence to lead
-                      digital transformation. The networking was invaluable.”
-                    </div>
-                    <div class="testimonial-card__profile">
-                      <div class="testimonial-card__avatar" style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/men/75.jpg&quot;);
-                            background-size: cover;
-                          "></div>
-                      <div>
-                        <div class="testimonial-card__name">Omar K.</div>
-                        <div class="testimonial-card__role">
-                          Logistics Director
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel__slide">
-                  <div class="testimonial-card">
-                    <div class="testimonial-card__quote">
-                      “A transformative learning experience that helped me
-                      structure our family business governance for future
-                      generations.”
-                    </div>
-                    <div class="testimonial-card__profile">
-                      <div class="testimonial-card__avatar" style="
-                            background-image: url(&quot;https://randomuser.me/api/portraits/women/68.jpg&quot;);
-                            background-size: cover;
-                          "></div>
-                      <div>
-                        <div class="testimonial-card__name">Layla S.</div>
-                        <div class="testimonial-card__role">Board Member</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-              ❯
-            </button>
           </div>
         </div>
       </div>
@@ -1707,7 +1269,7 @@
       <div class="container">
         <div class="text-center">
           <h2 class="section-title" data-aos="fade-up">
-            Selected Clients We Partner With
+            Clients from a Diverse Range of Industries
           </h2>
         </div>
         <div class="carousel js-carousel carousel-5" data-carousel>
@@ -1782,97 +1344,6 @@
       </div>
     </div>
 
-    <div class="section">
-      <div class="container text-center">
-        <h2 class="section-title" data-aos="fade-up">
-          Frequently Asked Questions
-        </h2>
-        <div class="accordion-container">
-          <div class="accordion" id="accordionRoot">
-            <!-- Accordion Item 1 -->
-            <div class="accordion-item" data-accordion-item="1">
-              <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-1">
-                <span class="title-text">1 - Needs Assessment</span>
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-content" id="accordion-content-1" role="region" aria-labelledby="accordion-title-1">
-                <div class="accordion-content-inner">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
-                </div>
-              </div>
-            </div>
-
-            <!-- Accordion Item 2 -->
-            <div class="accordion-item" data-accordion-item="2">
-              <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-2">
-                <span class="title-text">2 - Program Design</span>
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-content" id="accordion-content-2" role="region" aria-labelledby="accordion-title-2">
-                <div class="accordion-content-inner">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
-                </div>
-              </div>
-            </div>
-
-            <!-- Accordion Item 3 -->
-            <div class="accordion-item" data-accordion-item="3">
-              <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-3">
-                <span class="title-text">3 - Program Delivery</span>
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-content" id="accordion-content-3" role="region" aria-labelledby="accordion-title-3">
-                <div class="accordion-content-inner">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
-                </div>
-              </div>
-            </div>
-
-            <!-- Accordion Item 4 -->
-            <div class="accordion-item" data-accordion-item="4">
-              <button class="accordion-title" aria-expanded="false" aria-controls="accordion-content-4">
-                <span class="title-text">4 - Measuring Impact</span>
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-content" id="accordion-content-4" role="region" aria-labelledby="accordion-title-4">
-                <div class="accordion-content-inner">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- CTA SECTION -->
     <section class="cta contact-us-section">
       <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
@@ -1890,7 +1361,7 @@
                   height="20"></i><span>+961-1-374 374 ext. 3748</span></a>
               <a href="mailto:gs52@aub.edu.lb" class="cta__contact-link"><i data-lucide="mail" width="20"
                   height="20"></i><span>gs52@aub.edu.lb</span></a>
-              <button class="btn btn--white">Contact Form</button>
+              <button class="btn btn--white js-open-popup">Contact Form</button>
             </div>
           </div>
         </div>
@@ -2030,6 +1501,8 @@
       offset: 100,
     });
   </script>
+
+  
 </body>
 
 </html>
