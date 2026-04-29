@@ -22,6 +22,7 @@
 
   <!-- Main styles (reset + brand colors) -->
   <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/menu.css" />
   <link rel="stylesheet" href="../css/accordion.css" />
   <style>
     /* Use brand identity colors (burgundy) */
@@ -1078,11 +1079,38 @@
       </div>
     </div>
   </div>
+  <div class="nav-mobile-overlay" id="mobileOverlay">
+    <div class="mobile-overlay-header">
+      <div class="mobile-logo">
+        <img src="../images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
+      </div>
+      <button class="mobile-close-btn" id="closeOverlayBtn">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu-sections">
+      <div class="mobile-section">
+        <div class="mobile-section-title">Quick Links</div>
+        <div class="mobile-utility-grid" id="mobileUtilityGrid"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">Main Navigation</div>
+        <div id="mobileMainNav"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">OSB School</div>
+        <div id="mobileOsbNav"></div>
+      </div>
+    </div>
+  </div>
   <main>
     <!-- Video banner -->
     <section class="hero hero--video" data-aos="fade">
       <video class="hero__video-element" autoplay muted loop playsinline>
-        <source src="../videos/AUB-OSB-CP-banner-video-istock.mp4" type="video/mp4" />
+        <source src="../videos/AUB-OSB-CP-banner-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="hero__overlay"></div>

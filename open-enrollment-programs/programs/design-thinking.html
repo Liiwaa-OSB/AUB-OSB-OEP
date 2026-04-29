@@ -17,6 +17,7 @@
   <script src="../../js/contact-form-popup.js"></script>
   <script src="../../js/carousel.js" defer></script>
   <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="../../css/menu.css" />
   <style>
     :root {
       /* Design Thinking accent */
@@ -47,7 +48,6 @@
 </head>
 
 <body>
-  <!-- ========== NAVIGATION (same as index) ========== -->
   <div class="nav">
     <!-- UTILITY BAR (desktop only) -->
     <div class="nav-utility">
@@ -555,13 +555,26 @@
         <img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
       </div>
       <button class="mobile-close-btn" id="closeOverlayBtn">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
     </div>
-    <div class="mobile-menu-sections"></div>
+    <div class="mobile-menu-sections">
+      <div class="mobile-section">
+        <div class="mobile-section-title">Quick Links</div>
+        <div class="mobile-utility-grid" id="mobileUtilityGrid"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">Main Navigation</div>
+        <div id="mobileMainNav"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">OSB School</div>
+        <div id="mobileOsbNav"></div>
+      </div>
+    </div>
   </div>
   <main>
     <!-- HERO SECTION -->
