@@ -1090,6 +1090,43 @@ img {
   margin-top: auto;
 }
 
+/* client logos */
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .logos-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .logo-item {
+      text-align: center;
+      transition: filter 0.2s;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      /* Set a fixed height for consistent vertical alignment */
+    }
+
+    .logo-item img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      padding: 0.5rem;
+    }
+
+
 /* ===== BADGES ===== */
 .badge {
   font-size: 12px;
