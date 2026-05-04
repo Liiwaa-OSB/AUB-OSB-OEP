@@ -156,20 +156,18 @@
         font-size: 28px;
         font-weight: 300;
         cursor: pointer;
-        color: #aaa;
+        color: #ccc;
         transition: color 0.2s;
         z-index: 20;
         line-height: 1;
     }
     .popup-close:hover {
-        color: var(--color-primary, #840132);
+        color: #FFFFFF;
     }
     .popup-header {
         background: var(--color-primary, #840132);
         color: white;
         padding: 1.5rem 2rem;
-        border-top-left-radius: var(--border-radius, 20px);
-        border-top-right-radius: var(--border-radius, 20px);
     }
     .popup-header h2 {
         margin: 0 0 0.25rem;

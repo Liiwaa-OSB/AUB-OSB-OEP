@@ -238,7 +238,7 @@
       color: #777;
     }
 
-    
+
     /* faculty cards */
     /* faculty card - modern design */
     .faculty-card {
@@ -473,10 +473,6 @@
     @media (max-width: 768px) {
       .section {
         padding: 2rem 0;
-      }
-
-      .hero-custom h1 {
-        font-size: 2rem;
       }
     }
 
@@ -1260,16 +1256,10 @@
             Clients from a Diverse Range of Industries
           </h2>
         </div>
-        <div class="carousel js-carousel carousel-5" data-carousel>
-          <!-- previous button -->
-          <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
-            &#10094;
-          </button>
-
+        <div class="carousel carousel-5" id="logoCarousel">
           <!-- scrollable container -->
           <div class="carousel__container js-carousel-container">
-            <div class="carousel__track js-carousel-track">
-              <!-- original 3 cards (exact same content) -->
+            <div class="carousel__track" id="logoTrack">
               <div class="carousel__slide">
                 <div class="logo-item">
                   <img src="../logos/ABC.png" alt="ABC Logo" />
@@ -1451,14 +1441,7 @@
                 </div>
               </div>
             </div>
-            <!-- /track -->
           </div>
-          <!-- /container -->
-
-          <!-- next button -->
-          <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-            &#10095;
-          </button>
         </div>
       </div>
     </div>

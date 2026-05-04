@@ -201,3 +201,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Initialize only the continuous logos carousel
+(function initContinuousCarousel() {
+  const carousel = document.getElementById('logoCarousel');
+  if (!carousel) return;
+
+  const track = document.getElementById('logoTrack');
+  if (!track) return;
+
+  // Get original slides
+  const originalSlides = Array.from(track.children);
+  if (originalSlides.length === 0) return;
+
+  // Duplicate slides to create seamless infinite effect
+  // We need enough copies to fill at least double the container width
+  // For smoothness, duplicate the whole set twice more
+  const slidesToAdd = [...originalSlides];
+  // Append clones enough times (e.g., 2 extra copies)
+  for (let i = 0; i < 2; i++) {
+    slidesToAdd.forEach(slide => {
+      track.appendChild(slide.cloneNode(true));
+    });
+  }
+
+  // Function to calculate total width of one original set
+  function getOriginalSetWidth() {
+    let width = 0;
+    for (let i = 0; i < originalSlides.length; i++) {
+      const slide = track.children[i];
+      const style = window.getComputedStyle(slide);
+      const marginLeft = parseFloat(style.marginLeft) || 0;
+      const marginRight = parseFloat(style.marginRight) || 0;
+      width += slide.offsetWidth + marginLeft + marginRight;
+    }
+    return width;
+  }
+
+  // Set animation duration based on width (adjust divisor for speed)
+  function updateSpeed() {
+    const setWidth = getOriginalSetWidth();
+    // Duration in seconds: higher divisor = slower
+    const duration = setWidth / 1500; // adjust 100 to taste (lower = faster)
+    track.style.animationDuration = `${Math.max(5, duration)}s`;
+  }
+
+  // Recalculate on window resize
+  window.addEventListener('resize', () => {
+    updateSpeed();
+    // Force restart animation (optional smooth reset)
+    track.style.animation = 'none';
+    track.offsetHeight; // reflow
+    track.style.animation = null;
+  });
+
+  updateSpeed();
+})();

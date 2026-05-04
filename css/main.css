@@ -39,7 +39,7 @@ body {
   --border-radius: 4px;
 
   /* Font sizes - mobile first */
-  --hero-title-size: 22px;
+  --hero-title-size: 32px;
   --hero-subtitle-size: 18px;
   --section-title-size: 24px;
   --body-font-size: 16px;
@@ -821,6 +821,56 @@ h3 {
     display: flex;
   }
 }
+
+/*======= logos only ========*/
+/* Continuous carousel (logos only) */
+/* Continuous carousel – smooth infinite scroll */
+#logoCarousel {
+  overflow: hidden;
+  position: relative;
+}
+
+#logoCarousel .carousel__container {
+  overflow: hidden;
+  width: 100%;
+}
+
+#logoTrack {
+  display: flex;
+  flex-wrap: nowrap;
+  width: auto;
+  animation: scrollLogos linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover */
+#logoCarousel:hover #logoTrack {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* small tweak for images (keep original paths / placeholders) */
 img {
