@@ -1,5 +1,6 @@
 // carousel.js
-// Implements an auto-sliding, infinite loop carousel with arrow controls
+// Implements an auto-sliding, infinite loop carousel with arrow controls.
+// When all slides fit, the carousel becomes static (no buttons, no auto‑slide).
 
 class Carousel {
   constructor(element) {
@@ -11,72 +12,107 @@ class Carousel {
 
     if (!this.track || !this.container) return;
 
-    // Original slides (before cloning)
-    this.originalSlides = Array.from(this.track.children);
-    this.slideCount = this.originalSlides.length;
+    // Store original slides (clean copies for later rebuilds)
+    this.originalSlideNodes = Array.from(this.track.children);
+    this.slideCount = this.originalSlideNodes.length;
     if (this.slideCount === 0) return;
 
+    // Deep copies to restore when rebuilding
+    this.originalSlidesCopy = this.originalSlideNodes.map(slide => slide.cloneNode(true));
+
     // Configuration
-    this.autoSlideInterval = 3000; // 3 seconds
-    this.transitionDuration = 300; // ms (must match CSS transition)
+    this.autoSlideInterval = 3000;   // 3 seconds
+    this.transitionDuration = 300;   // ms (must match CSS transition)
     this.currentIndex = 0;
     this.slideWidth = 0;
     this.isTransitioning = false;
     this.autoTimer = null;
-    this.resizeObserver = null;
+    this.isInfiniteEnabled = false;
+    this.visibleCount = 0;
 
-    // DOM modifications for infinite loop
-    this.cloneSlidesForInfiniteLoop();
-    this.recalculateSlideWidth();
-
-    // Set initial transform to show first original slide
-    this.currentIndex = this.slideCount; // start with first original slide after clones
-    this.updateTransform(false); // no transition on init
-
-    // Bind event listeners
-    this.handlePrevClick = this.prevSlide.bind(this);
-    this.handleNextClick = this.nextSlide.bind(this);
+    // Bind methods
+    this.handlePrevClick = () => this.prevSlide();
+    this.handleNextClick = () => this.nextSlide();
     this.handleTransitionEnd = this.onTransitionEnd.bind(this);
     this.handleResize = this.onWindowResize.bind(this);
 
+    // Initial build (may clone or not depending on visible count)
+    this.buildCarousel();
+
+    // Event listeners (always attached, but guarded by isInfiniteEnabled)
     this.prevBtn.addEventListener('click', this.handlePrevClick);
     this.nextBtn.addEventListener('click', this.handleNextClick);
     this.track.addEventListener('transitionend', this.handleTransitionEnd);
     window.addEventListener('resize', this.handleResize);
 
-    // Enable arrow buttons (infinite loop means no disabled state)
-    this.prevBtn.removeAttribute('disabled');
-    this.nextBtn.removeAttribute('disabled');
-
-    // Start auto sliding
-    this.startAutoSlide();
-
-    // Optional: pause auto-slide on hover
+    // Pause auto-slide on hover (only if infinite mode is active)
     this.carousel.addEventListener('mouseenter', () => this.stopAutoSlide());
     this.carousel.addEventListener('mouseleave', () => this.startAutoSlide());
   }
 
-  // Clone slides for infinite loop (prepend clone group, append clone group)
-  cloneSlidesForInfiniteLoop() {
-    // Clear track but keep original slides array references
+  // ----------------------------------------------------------------------
+  //  Core: decide mode & build DOM
+  // ----------------------------------------------------------------------
+  buildCarousel() {
+    // Reset track to original (clean) slides
     this.track.innerHTML = '';
+    this.originalSlidesCopy.forEach(slide => this.track.appendChild(slide.cloneNode(true)));
 
-    // Clone all original slides
-    const clonesBefore = this.originalSlides.map(slide => slide.cloneNode(true));
-    const clonesAfter = this.originalSlides.map(slide => slide.cloneNode(true));
-
-    // Append clonesBefore (prepend group), original, clonesAfter (append group)
-    clonesBefore.forEach(clone => this.track.appendChild(clone));
-    this.originalSlides.forEach(original => this.track.appendChild(original));
-    clonesAfter.forEach(clone => this.track.appendChild(clone));
-
-    // Update slides collection
+    // Re‑query slides (they are fresh)
     this.allSlides = Array.from(this.track.children);
-    this.totalSlidesWithClones = this.allSlides.length;
-    // Original slides start at index = this.slideCount (clonesBefore length)
+    this.slideCount = this.allSlides.length;  // same as original count
+
+    // Measure slide width and visible count using current DOM
+    this.recalculateSlideWidth();
+    this.visibleCount = this.getVisibleCount();
+
+    const allFit = this.slideCount <= this.visibleCount;
+
+    if (allFit) {
+      // ----- STATIC MODE: no scrolling, no clones -----
+      this.isInfiniteEnabled = false;
+      this.currentIndex = 0;
+      this.updateTransform(false);
+      this.disableCarouselMode();
+    } else {
+      // ----- INFINITE LOOP MODE: clone for seamless sliding -----
+      this.isInfiniteEnabled = true;
+      this.cloneSlidesForInfiniteLoop();
+      this.recalculateSlideWidth();     // width may change after cloning
+      // Start from the first original slide (after leading clones)
+      this.currentIndex = this.slideCount;
+      this.updateTransform(false);
+      this.enableCarouselMode();
+      this.startAutoSlide();
+    }
   }
 
-  // Calculate accurate slide width including margins (for precise sliding)
+  // Rebuild when mode changes (e.g. resize across breakpoints)
+  rebuildCarousel() {
+    this.stopAutoSlide();
+    this.isTransitioning = false;
+    // Re‑build from scratch using the stored original slides
+    this.buildCarousel();
+  }
+
+  // ----------------------------------------------------------------------
+  //  DOM helpers for infinite loop
+  // ----------------------------------------------------------------------
+  cloneSlidesForInfiniteLoop() {
+    // Clear track
+    this.track.innerHTML = '';
+    // Clone all original slides (before + after)
+    const clonesBefore = this.originalSlidesCopy.map(slide => slide.cloneNode(true));
+    const clonesAfter = this.originalSlidesCopy.map(slide => slide.cloneNode(true));
+
+    clonesBefore.forEach(clone => this.track.appendChild(clone));
+    this.originalSlidesCopy.forEach(original => this.track.appendChild(original.cloneNode(true)));
+    clonesAfter.forEach(clone => this.track.appendChild(clone));
+
+    this.allSlides = Array.from(this.track.children);
+    this.totalSlidesWithClones = this.allSlides.length;
+  }
+
   recalculateSlideWidth() {
     if (this.allSlides.length === 0) return;
     const slide = this.allSlides[0];
@@ -87,7 +123,36 @@ class Carousel {
     this.slideWidth = width + marginLeft + marginRight;
   }
 
-  // Apply transform to track based on currentIndex
+  getVisibleCount() {
+    if (!this.container || this.slideWidth === 0) return 0;
+    const containerWidth = this.container.clientWidth;
+    return Math.floor(containerWidth / this.slideWidth);
+  }
+
+  // ----------------------------------------------------------------------
+  //  UI & mode switching
+  // ----------------------------------------------------------------------
+  disableCarouselMode() {
+    // Hide buttons, disable auto‑slide, prevent any sliding action
+    this.prevBtn.style.display = 'none';
+    this.nextBtn.style.display = 'none';
+    this.stopAutoSlide();
+    // Ensure track is at start
+    this.currentIndex = 0;
+    this.updateTransform(false);
+  }
+
+  enableCarouselMode() {
+    this.prevBtn.style.display = '';
+    this.nextBtn.style.display = '';
+    // Buttons are always interactive; infinite loop guard prevents invalid moves
+    this.prevBtn.removeAttribute('disabled');
+    this.nextBtn.removeAttribute('disabled');
+  }
+
+  // ----------------------------------------------------------------------
+  //  Transform & sliding (guarded by isInfiniteEnabled)
+  // ----------------------------------------------------------------------
   updateTransform(useTransition = true) {
     if (!this.track) return;
     const translateX = -this.currentIndex * this.slideWidth;
@@ -99,46 +164,44 @@ class Carousel {
     this.track.style.transform = `translateX(${translateX}px)`;
   }
 
-  // Go to specific slide index (without infinite loop correction)
   goToSlide(index, useTransition = true) {
+    if (!this.isInfiniteEnabled) return;          // No sliding in static mode
     if (this.isTransitioning || index === this.currentIndex) return;
     this.isTransitioning = true;
     this.currentIndex = index;
     this.updateTransform(useTransition);
   }
 
-  // Next slide (auto or arrow)
   nextSlide() {
-    if (this.isTransitioning) return;
+    if (!this.isInfiniteEnabled || this.isTransitioning) return;
     this.goToSlide(this.currentIndex + 1, true);
     this.resetAutoTimer();
   }
 
-  // Previous slide
   prevSlide() {
-    if (this.isTransitioning) return;
+    if (!this.isInfiniteEnabled || this.isTransitioning) return;
     this.goToSlide(this.currentIndex - 1, true);
     this.resetAutoTimer();
   }
 
-  // Called after transition ends: correct index if out of original bounds (infinite loop magic)
+  // Infinite loop correction after transition ends
   onTransitionEnd() {
+    if (!this.isInfiniteEnabled) {
+      this.isTransitioning = false;
+      return;
+    }
     this.isTransitioning = false;
 
-    // Define original block boundaries: first original slide index = slideCount, last original slide index = slideCount + slideCount - 1
     const firstOriginalIdx = this.slideCount;
     const lastOriginalIdx = this.slideCount + this.slideCount - 1;
 
-    // If we moved past the last original slide (to clonesAfter region)
     if (this.currentIndex > lastOriginalIdx) {
-      // Jump back to first original slide (no transition)
+      // Moved into trailing clones → jump back to the beginning
       const newIndex = firstOriginalIdx + (this.currentIndex - lastOriginalIdx - 1);
       this.currentIndex = newIndex;
       this.updateTransform(false);
-    }
-    // If we moved before the first original slide (into clonesBefore region)
-    else if (this.currentIndex < firstOriginalIdx) {
-      // Jump to last original slide region
+    } else if (this.currentIndex < firstOriginalIdx) {
+      // Moved into leading clones → jump to the end
       const offset = firstOriginalIdx - this.currentIndex;
       const newIndex = lastOriginalIdx - (offset - 1);
       this.currentIndex = newIndex;
@@ -146,11 +209,13 @@ class Carousel {
     }
   }
 
-  // Auto slide control
+  // ----------------------------------------------------------------------
+  //  Auto‑slide control
+  // ----------------------------------------------------------------------
   startAutoSlide() {
+    if (!this.isInfiniteEnabled) return;
     if (this.autoTimer) clearInterval(this.autoTimer);
     this.autoTimer = setInterval(() => {
-      // Only auto-slide if not transitioning and carousel is visible (basic perf)
       if (!this.isTransitioning && document.contains(this.carousel)) {
         this.nextSlide();
       }
@@ -165,19 +230,33 @@ class Carousel {
   }
 
   resetAutoTimer() {
-    // Reset auto-slide timer on manual interaction (optional but standard UX)
     this.stopAutoSlide();
     this.startAutoSlide();
   }
 
-  // Recalculate on window resize
+  // ----------------------------------------------------------------------
+  //  Resize handling – rebuild if mode changes
+  // ----------------------------------------------------------------------
   onWindowResize() {
+    if (!this.container) return;
+    // Re‑measure slide width and visible count
     this.recalculateSlideWidth();
-    // Reposition to current slide without transition jump
-    this.updateTransform(false);
+    const newVisibleCount = this.getVisibleCount();
+    const nowAllFit = this.slideCount <= newVisibleCount;
+
+    if (nowAllFit !== !this.isInfiniteEnabled) {
+      // Mode changed → complete rebuild
+      this.rebuildCarousel();
+    } else {
+      // Same mode, just reposition
+      this.updateTransform(false);
+      this.visibleCount = newVisibleCount;
+    }
   }
 
-  // Cleanup to prevent memory leaks
+  // ----------------------------------------------------------------------
+  //  Cleanup
+  // ----------------------------------------------------------------------
   destroy() {
     this.stopAutoSlide();
     window.removeEventListener('resize', this.handleResize);
@@ -191,18 +270,21 @@ class Carousel {
   }
 }
 
-// Initialize all carousels on page load
+// ----------------------------------------------------------------------
+//  Initialize all carousels on page load
+// ----------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   const carousels = document.querySelectorAll('.js-carousel');
   carousels.forEach(carouselEl => {
-    // Avoid duplicate initialization
     if (!carouselEl.carouselInstance) {
       carouselEl.carouselInstance = new Carousel(carouselEl);
     }
   });
 });
 
-// Initialize only the continuous logos carousel
+// ----------------------------------------------------------------------
+//  Continuous logos carousel (unchanged)
+// ----------------------------------------------------------------------
 (function initContinuousCarousel() {
   const carousel = document.getElementById('logoCarousel');
   if (!carousel) return;
@@ -210,22 +292,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('logoTrack');
   if (!track) return;
 
-  // Get original slides
   const originalSlides = Array.from(track.children);
   if (originalSlides.length === 0) return;
 
   // Duplicate slides to create seamless infinite effect
-  // We need enough copies to fill at least double the container width
-  // For smoothness, duplicate the whole set twice more
   const slidesToAdd = [...originalSlides];
-  // Append clones enough times (e.g., 2 extra copies)
   for (let i = 0; i < 2; i++) {
     slidesToAdd.forEach(slide => {
       track.appendChild(slide.cloneNode(true));
     });
   }
 
-  // Function to calculate total width of one original set
   function getOriginalSetWidth() {
     let width = 0;
     for (let i = 0; i < originalSlides.length; i++) {
@@ -238,20 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return width;
   }
 
-  // Set animation duration based on width (adjust divisor for speed)
   function updateSpeed() {
     const setWidth = getOriginalSetWidth();
-    // Duration in seconds: higher divisor = slower
-    const duration = setWidth / 1500; // adjust 100 to taste (lower = faster)
+    const duration = setWidth / 1500;   // adjust speed as desired
     track.style.animationDuration = `${Math.max(5, duration)}s`;
   }
 
-  // Recalculate on window resize
   window.addEventListener('resize', () => {
     updateSpeed();
-    // Force restart animation (optional smooth reset)
     track.style.animation = 'none';
-    track.offsetHeight; // reflow
+    track.offsetHeight; // force reflow
     track.style.animation = null;
   });
 
