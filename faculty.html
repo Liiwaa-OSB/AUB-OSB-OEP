@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Our Impact | Custom Executive Programs – AUB OSB</title>
+    <title>Faculty | AUB OSB Executive Education</title>
     <meta name="robots" content="noindex, nofollow" />
 
     <!-- Google Fonts + Lucide + AOS -->
@@ -15,18 +15,13 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <!-- Main Styles -->
+    <!-- Main Styles (shared with index) -->
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/menu.css" />
 
-
     <style>
-        ul {
-            padding-left: 17px;
-        }
-
-        /* CSP page specific styles – uses CSS variables from main.css */
-        .csp-hero {
+        /* Faculty page custom styles – uses CSS variables from main.css */
+        .faculty-hero {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
             color: white;
             text-align: center;
@@ -34,121 +29,114 @@
             margin-bottom: 2rem;
         }
 
-        .csp-hero h1 {
+        .faculty-hero h1 {
             font-size: 2.8rem;
             margin-bottom: 0.5rem;
         }
 
-        .csp-hero p {
+        .faculty-hero p {
             font-size: 1.2rem;
             opacity: 0.9;
         }
 
-        .csp-grid {
+        .faculty-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        @media (min-width: 768px) {
-            .csp-grid {
+        @media (min-width: 640px) {
+            .faculty-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (min-width: 1024px) {
-            .csp-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .faculty-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
-        .csp-card {
-            background: var(--color-border-light);
-        }
-
-
-        .csp-card__content {
-            padding: 1.5rem;
-            flex: 1;
+        .faculty-card {
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-align: center;
+            padding: 1.8rem 1.5rem;
             display: flex;
             flex-direction: column;
-            position: relative;
+            align-items: center;
+            height: 100%;
         }
 
-        .csp-card__scroll-area {
-            max-height: 400px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--color-primary) #e2e8f0;
-            position: relative;
+        .faculty-card:hover {
+            transform: translateY(-6px);
         }
 
-        /* Custom scrollbar for WebKit */
-        .csp-card__scroll-area::-webkit-scrollbar {
-            width: 6px;
+        .faculty-card__image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            border: 3px solid var(--color-primary);
         }
 
-        .csp-card__scroll-area::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 10px;
+        .faculty-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
         }
 
-        .csp-card__scroll-area::-webkit-scrollbar-thumb {
-            background: var(--color-primary);
-            border-radius: 10px;
+        .faculty-card:hover .faculty-card__image img {
+            transform: scale(1.1);
         }
 
-        .csp-card__scroll-area::-webkit-scrollbar-thumb:hover {
-            background: var(--color-primary-dark);
-        }
-
-        /* Gradient overlay to indicate more content */
-        .csp-card__gradient {
-            position: relative;
-        }
-
-        .csp-card__gradient::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(to bottom, transparent, var(--color-border-light));
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            border-radius: 0 0 12px 12px;
-        }
-
-        .csp-card__gradient.show-gradient::after {
-            opacity: 1;
-        }
-
-        .csp-card__title {
-            font-size: 1.4rem;
+        .faculty-card__name {
+            font-size: 1.3rem;
             font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .faculty-card__name a {
+            color: #1e293b;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .faculty-card__name a:hover {
             color: var(--color-primary);
-            margin-bottom: 1rem;
+            text-decoration: underline;
         }
 
-        .csp-card__text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #2d3e50;
+        .faculty-card__title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
         }
 
-        .csp-card__text p {
+        .faculty-card__department {
+            font-size: 0.9rem;
+            color: #475569;
             margin-bottom: 0.75rem;
         }
 
-        .csp-card__text ul {
-            margin: 0.5rem 0 1rem 1.5rem;
+        .faculty-card__email {
+            font-size: 0.85rem;
+            word-break: break-all;
         }
 
-        .csp-card__text li {
-            margin-bottom: 0.25rem;
+        .faculty-card__email a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .faculty-card__email a:hover {
+            text-decoration: underline;
         }
 
         .container {
@@ -158,22 +146,30 @@
         }
 
         @media (max-width: 768px) {
-            .csp-hero h1 {
+            .faculty-hero h1 {
                 font-size: 2rem;
             }
 
             .container {
                 padding: 0 1rem;
             }
+
+            .faculty-card__image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .faculty-card__name {
+                font-size: 1.1rem;
+            }
         }
     </style>
-
     <script src="js/main.js" defer></script>
     <script src="js/menu.js" defer></script>
-
 </head>
 
 <body>
+
     <div class="nav">
         <!-- UTILITY BAR (desktop only) -->
         <div class="nav-utility">
@@ -726,221 +722,256 @@
             </div>
         </div>
     </div>
-
-    <div class="csp-hero">
+    <div class="faculty-hero">
         <div class="container">
-            <h1>Our Impact</h1>
-            <p>Custom Executive Programs – Success Stories</p>
+            <h1>Our Faculty</h1>
+            <p>World‑class educators and researchers driving executive education</p>
         </div>
     </div>
 
     <main>
         <div class="container">
-            <div class="csp-grid" id="csp-grid">
-                <!-- Cards will be injected via JavaScript for cleaner code and gradient handling -->
-            </div>
+            <div class="faculty-grid" id="facultyGrid"></div>
         </div>
     </main>
 
     <script>
-        // Program data – exact text preserved
-        const programs = [
-            {
-                title: "Leadership Excellence Program",
-                image: "images/black.png",
-                alt: "Leadership Excellence Program – group of executives in a workshop",
-                content: `<p>The Leadership Excellence Program (LEP) is a highly customized, high-impact Executive Education program aimed at augmenting the leadership skills for 40 directors in Jordan to become leaders of organizational change while embodying their organization’s purpose, mission, vision, and core values. The program complements our partner’s vision to be the responsible digital leader in Jordan with a focus on developing the skills and competencies needed for agile leadership in support of sought growth and change. In line with the organization’s long-term strategy, the program aims to fulfill the following objectives:</p>
-                <ul><li>Leverage an agile mindset to dynamically address multi-level strategic and organizational challenges.</li><li>Build leadership development capabilities and competencies for all employee levels.</li><li>Develop leadership insights and skills to respond to organizational change.</li><li>Foster a culture of inclusivity across the organization sharing common values and common business language.</li><li>Enable participants to connect the dots while keeping the organization’s strategic vision in mind.</li></ul>
-                <p>The program topics include leadership, strategy, change, and customer-focused innovation. To complement the program’s skill building modules, the program design includes 1-1 coaching sessions for the participants upon request.</p>`
-            },
-            {
-                title: "Kuwait’s Leadership Development Program",
-                image: "images/black.png",
-                alt: "Kuwait Leadership Development Program – senior executives in a classroom",
-                content: `<p>The Leadership Development Program for one of our partners in Kuwait was a customized 6-day program designed to develop the leadership and managerial skills of up to 24 senior executives in support of the bank's objectives of preparing senior managers for future roles as part of succession planning. The program aimed to fulfill the following objectives:</p>
-                <ul><li>Enhance leadership and emotional intelligence skills required at senior executive positions</li><li>Improve competencies needed to lead the necessary organizational change and digital transformation</li><li>Increase awareness of the latest banking sector disruptive trends and opportunities</li></ul>
-                <p>The highly engaging and interactive program covered topics on leadership, emotional intelligence, agility, talent management, leading millennials, leading change, data science, analytics and AI, and digital transformation.</p>`
-            },
-            {
-                title: "Leadership Development Program (LDP)",
-                image: "images/black.png",
-                alt: "Leadership Development Program – executives presenting a project",
-                content: `<p>The Leadership Development Program (LDP) is a customized 12-day program designed to develop leadership skills for 90 executives enabling them to lead the bank’s transformation into the future. In line with the organizations long-term strategy the program aims to fulfill the following objectives:</p>
-                <ul><li>Nurturing an open-minded and growth leadership mindset</li><li>Translating the company strategy by contributing to its success</li><li>Leverage digital transformation to create value</li><li>Developing new age leadership competencies</li></ul>
-                <p>The program topics include leadership, culture, communication, talent development for leaders, customer centricity, innovation, strategy, and leading change. To complement the program’s skill-building modules, the program offers 1-1 coaching sessions. In addition, to maximize impact the program concludes with a value-added project pitch guided by team mentoring to ensure implementation, relevance, and ability to execute immediately, since the organization is planning to institutionalize these projects.</p>
-                <p>At the end of the program:</p>
-                <ul><li>100% of the participants completed the program requirements and were awarded their program certificate of completion.</li><li>18 innovative project ideas were presented to an AUB Panel with the intention to be presented to our leadership in line with the program identified strategic pillars.</li><li>Over 360 hours of one-on-one consultation were delivered with executive coaches focused on personal leadership journey development of each participant utilizing SMART goals.</li></ul>`
-            },
-            {
-                title: "Next Generation of Family Members Program (NextGen)",
-                image: "images/black.png",
-                alt: "NextGen program – family members in a workshop",
-                content: `<p>This family business program positioned our partner’s third generation family members to further understand their own interests and abilities to contribute to our partner’s businesses and to identify individual development plans.</p>
-                <p>The program aligned the new generation of family members as effective and active value creators in their various positions and capacities and fast tracked their development to best fulfill current positions within the organization and/or prepare them for other positions they aspire to lead. Multiple assessment tools were used for this program including: Benchmarking for Managers, Personality Profiling 15FQ, Workplace Big 5, 6 Seconds EI Assessment alongside other tools.</p>
-                <p>By the end of the program, AUB Olayan School of Business Executive Education was able to:</p>
-                <ul><li>Support the family members to learn more about themselves, their strengths, and needed areas of development;</li><li>Identify family members’ positioning in the group as family business successors, future co-owners, and professional contributors; and</li><li>Help each family member accelerate their path to achieve their identified goals</li></ul>`
-            },
-            {
-                title: "Capital Development Program",
-                image: "images/black.png",
-                alt: "Capital Development Program – managers in a strategy session",
-                content: `<p>AUB OSB designed and delivered an Executive Education Program targeting its managers to reinforce its initiatives to:</p>
-                <ul><li>Nurture a culture of adaptability and flexibility, proactivity and initiative</li><li>Promote a strategic thinking framework for managers</li></ul>
-                <p>Based on the needs assessment and leadership’s input, the 5-day program was designed with 2 main components: consisting of a Strategic Thinking and Implementation component and a Change Management component. The program was delivered in Arabic at our partner’s location in KSA.</p>
-                <p>Some of the topics that were delivered in the program include regulating self during a period of change, communicating during change, influencing others, and change management.</p>`
-            },
-            {
-                title: "LEAD Program",
-                image: "images/black.png",
-                alt: "LEAD Program – online global participants",
-                content: `<p>A customized executive education program focused on extending the management and leadership capabilities of 43 senior management in an agile and fast-changing environment with the clear identified objectives to:</p>
-                <ul><li>Strengthen cross-functional and cross-unit collaboration towards common strategic goals</li><li>Build an innovation and intrapreneurial mindset for exploring and developing new growth opportunities for Aramex</li></ul>
-                <p>The LEAD program was delivered completely online over 7.5 delivery days for two cohorts. The participants represented a diverse group who attended the program from 23 countries from all departments. The participants engaged in subjects such as putting the customer first, innovation and creative thinking, and business models innovation. Other foundational subjects included understanding the language of finance, leadership, building teams, and change management were designed to augment the participants’ abilities to succeed in changing times.</p>`
-            },
-            {
-                title: "Executive Program (EP)",
-                image: "images/black.png",
-                alt: "Executive Program – senior management team",
-                content: `<p>Suliman S. Olayan School of Business Executive Education unit concluded a customized program for our partner in Lebanon. The Executive Program aimed to strengthen the organization's senior management team skill set in core general management competencies. More importantly, it focused on providing business frameworks in different subjects that are needed to identify and develop new growth opportunities, leveraging innovation, technology, and intrapreneurship.</p>
-                <p>The sixteen-and-a-half-day program spanned over a four-month period where OSB Executive Education designed and delivered an immersive learning experience. The program was attended by executive participants heading several units for different functions.</p>`
-            },
-            {
-                title: "Advanced Management Program",
-                image: "images/black.png",
-                alt: "Advanced Management Program – middle management cohort",
-                content: `<p>This thirty-day program, delivered in three cohorts, targets middle management fulfilling the organizational core value of people’s development, customer centricity, heritage and transparency. Located in Lebanon, our partner, has grown to different geographic locations in the region and is keen on keeping its market positioning locally while assuming its growth mission. The program was working on strengthening the core values while equipping its future senior management team with a key insight into international best business practices. The program included reflection and action plans following each module delivered and an integrative capstone project relevant to the organization and in line with its strategic direction. One of the key program features is the development of an integrative project.</p>`
-            },
-            {
-                title: "Executive Development Program",
-                image: "images/black.png",
-                alt: "Executive Development Program – Kuwait executives",
-                content: `<p>Developed for one of our partners in Kuwait, the Executive Development Program is a full-fledged program designed to address the challenges faced by their leaders and meant to prepare the executives for change in the market and for effective and strategic leadership. The program aims to build and strengthen general management competencies, boost strategic thinking and implementation skills, and assure the key skills required to develop their talents and systems to optimize and grow the business. The program also makes its delegates look at their business with an external lens to be aware of the related business threats driven by globalization and the changes of the business models in different industries in response to digital transformation and globalization. The program uses tools and frameworks across all modules and brings case studies to classrooms discussion.</p>`
-            },
-            {
-                title: "Strategies for Creating Value",
-                image: "images/black.png",
-                alt: "Strategies for Creating Value – young CEOs in discussion",
-                content: `<p>AUB OSB designed and delivered two sessions of the “Strategies for Creating Value”. These focused programs target successful young CEOs from Lebanon and the region. The program is delivered under the overarching theme of value creation and includes topics such as the Oil and Gas Industry and its Impact on the Business and Building Breakthrough Business Models. The program format includes closed forum discussions, study groups, invited speakers, and networking events.</p>`
-            },
-            {
-                title: "Management Development Program (MDP)",
-                image: "images/black.png",
-                alt: "Management Development Program – middle managers in training",
-                content: `<p>The Management Development Program is a twelve-day program targeting middle managers. Our partnering organization has been undergoing fast growth through acquisitions and geographic expansion. The program aims to support the organization’s core competencies during its fast growth. Most recently, AUB OSB has delivered five cohorts of the MDP graduating 100 managers. Program topics include leadership development, strategic thinking, change, and innovation management as well as experiential learning.</p>`
-            },
-            {
-                title: "Board Directors and Executive Program",
-                image: "images/black.png",
-                alt: "Board Directors and Executive Program – boardroom discussion",
-                content: `<p>OSB delivered a two-day program to board members and senior managers. The program tackled the topic of strategic HR in line with their strategic outlook. Breakout discussions were held around the strategic importance of this subject for organizational growth.</p>`
-            },
-            {
-                title: "Women Entrepreneurship Program",
-                image: "images/black.png",
-                alt: "Women Entrepreneurship Program – female entrepreneurs pitching ideas",
-                content: `<p>The Women Entrepreneurship Program is a ten-day educational and networking event spanning over five weeks targeting women-owned and managed SMEs operating in Lebanon. The program's objective was to support these entrepreneurs in their ambitions to grow their businesses. The participants complemented the program with exposure to the key institutional development areas needed for organizational growth along with an exposure to strategic thinking, planning, and implementation. Throughout the program, the entrepreneurs were exposed to the different entities in the Lebanese entrepreneurship ecosystem. The participants got the opportunity to hear and discuss first-hand from successful entrepreneurs who shared their personal stories on business success and failure. On the last day of the program, the entrepreneurs presented their growth plans in front of a panel of academicians, entrepreneurs, and advisors. Program topics included: growth and exit strategies, franchise focus, strategic thinking, hiring and retaining the core management team, go-to-market strategies in addition to case-based in-depth discussion of regional entrepreneurs' scale-up challenges and opportunities.</p>`
-            },
-            {
-                title: "Family Business Initiative | From Success to Succession",
-                image: "images/black.png",
-                alt: "Family Business Initiative – family business stakeholders",
-                content: `<p>The overall capitalization of family business in the Arab World is in the range of USD 600 Billion. This program assures family businesses of the region to sustain their success and grow it across generations. The Family Business Initiative aims primarily at improving the business performance and survival of family businesses in Lebanon and the region. The initiative is planned to provide family business owners with key consideration to assure continuous firm growth, succession planning, governance, and financing, to name a few. AUB OSB conducted two targeted seminars to family business stakeholders from first, second, and third family businesses. This two-day program was run over two cohorts.</p>`
-            },
-            {
-                title: "Global Management Development Program",
-                image: "images/black.png",
-                alt: "Global Management Development Program – diverse managers collaborating",
-                content: `<p>A twenty-day program customized program for one of our Lebanese partners’ middle, new, and aspiring managers that aims to build and strengthen general management competencies and promote cross-functional collaboration. The organization has diversified its activities and provides banking services in five principal areas: commercial banking, retail banking, investment banking, private banking, and correspondent banking. This program includes an intrapreneurship bootcamp and a final project.</p>`
-            },
-            {
-                title: "Capital Leadership Program",
-                image: "images/black.png",
-                alt: "Capital Leadership Program – leaders in reflective session",
-                content: `<p>This program involved skill building of leadership core competencies including team building, self-discovery, reflection and awareness for experienced managers and leaders with a dynamic curiosity for system understanding. It combines awareness with systemic thinking to allow a deepening understanding of place and impact on others. Moving between a wide-angle lens view on real organizational issues or complex challenges to meditation of personal thoughts, the course may translate into tangible differences in day-to-day working life. The program was delivered at our partner’s location in Kuwait. The program integrates face-to-face courses and modules with online resources and engaging activities.</p>`
-            }
-        ];
+        // Generate 30 faculty members with lorem ipsum data
+        const facultyData = [];
+        const firstNames = ["John", "Jane", "Michael", "Sarah", "David", "Emily", "Robert", "Maria", "James", "Linda", "William", "Patricia", "Richard", "Jennifer", "Charles", "Elizabeth", "Thomas", "Susan", "Christopher", "Jessica", "Daniel", "Karen", "Matthew", "Lisa", "Anthony", "Nancy", "Donald", "Betty", "Mark", "Sandra"];
+        const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson"];
+        const titles = ["Professor", "Associate Professor", "Assistant Professor", "Lecturer", "Senior Lecturer", "Visiting Professor", "Professor of Practice", "Distinguished Professor", "Emeritus Professor", "Research Professor"];
+        const departments = ["Accounting", "Finance", "Marketing", "Management", "Business Information Systems", "Operations Management", "Economics", "Entrepreneurship", "Strategy", "Organizational Behavior", "Human Resources", "International Business", "Business Analytics", "Supply Chain Management"];
+        const domains = ["aub.edu.lb", "aub.edu.lb"];
 
-        function createCard(program) {
+        for (let i = 0; i < 30; i++) {
+            const firstName = firstNames[i % firstNames.length];
+            const lastName = lastNames[i % lastNames.length];
+            const name = `${firstName} ${lastName}`;
+            const title = titles[i % titles.length];
+            const department = departments[i % departments.length];
+            const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${domains[i % domains.length]}`;
+            const profileUrl = `/faculty/${firstName.toLowerCase()}-${lastName.toLowerCase()}`;
+            // Placeholder image – using a free placeholder service with random ID for variety
+            const imageUrl = `https://randomuser.me/api/portraits/${i % 2 === 0 ? 'men' : 'women'}/${(i % 70) + 1}.jpg`;
+            // Note: randomuser.me images are reliable and free. Alternatively use a local placeholder.
+            facultyData.push({ name, title, department, email, profileUrl, imageUrl });
+        }
+
+        function createFacultyCard(faculty) {
             const card = document.createElement('div');
-            card.className = 'csp-card';
+            card.className = 'faculty-card';
             card.setAttribute('data-aos', 'fade-up');
 
-            // Image section
             const imgDiv = document.createElement('div');
-            imgDiv.className = 'csp-card__image';
+            imgDiv.className = 'faculty-card__image';
             const img = document.createElement('img');
-            img.src = program.image;
-            img.alt = program.alt;
+            img.src = faculty.imageUrl;
+            img.alt = faculty.name;
             img.loading = 'lazy';
+            // Fallback in case image fails
+            img.onerror = () => { img.src = 'https://via.placeholder.com/140?text=Photo'; };
             imgDiv.appendChild(img);
 
-            // Content section with gradient wrapper
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'csp-card__content';
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'faculty-card__name';
+            const nameLink = document.createElement('a');
+            nameLink.href = faculty.profileUrl;
+            nameLink.textContent = faculty.name;
+            nameDiv.appendChild(nameLink);
 
             const titleDiv = document.createElement('div');
-            titleDiv.className = 'csp-card__title';
-            titleDiv.textContent = program.title;
+            titleDiv.className = 'faculty-card__title';
+            titleDiv.textContent = faculty.title;
 
-            // Scroll area
-            const scrollArea = document.createElement('div');
-            scrollArea.className = 'csp-card__scroll-area';
-            const textDiv = document.createElement('div');
-            textDiv.className = 'csp-card__text';
-            textDiv.innerHTML = program.content;
-            scrollArea.appendChild(textDiv);
+            const deptDiv = document.createElement('div');
+            deptDiv.className = 'faculty-card__department';
+            deptDiv.textContent = faculty.department;
 
-            // Gradient container
-            const gradientWrapper = document.createElement('div');
-            gradientWrapper.className = 'csp-card__gradient';
-            gradientWrapper.appendChild(scrollArea);
-
-            contentDiv.appendChild(titleDiv);
-            contentDiv.appendChild(gradientWrapper);
+            const emailDiv = document.createElement('div');
+            emailDiv.className = 'faculty-card__email';
+            const emailLink = document.createElement('a');
+            emailLink.href = `mailto:${faculty.email}`;
+            emailLink.textContent = faculty.email;
+            emailDiv.appendChild(emailLink);
 
             card.appendChild(imgDiv);
-            card.appendChild(contentDiv);
-
-            // Function to check overflow and scroll position
-            function updateGradient() {
-                const scrollEl = scrollArea;
-                const gradientEl = gradientWrapper;
-                if (scrollEl.scrollHeight > scrollEl.clientHeight) {
-                    // Content overflows
-                    const isAtBottom = scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight - 5;
-                    if (isAtBottom) {
-                        gradientEl.classList.remove('show-gradient');
-                    } else {
-                        gradientEl.classList.add('show-gradient');
-                    }
-                } else {
-                    gradientEl.classList.remove('show-gradient');
-                }
-            }
-
-            // Initial check and add event listeners
-            setTimeout(updateGradient, 100); // wait for images to load maybe
-            scrollArea.addEventListener('scroll', updateGradient);
-            window.addEventListener('resize', updateGradient);
-            // Also observe image loading? Simple: call after a delay and when image loads
-            if (img.complete) updateGradient();
-            else img.addEventListener('load', updateGradient);
+            card.appendChild(nameDiv);
+            card.appendChild(titleDiv);
+            card.appendChild(deptDiv);
+            card.appendChild(emailDiv);
 
             return card;
         }
 
-        function renderGrid() {
-            const grid = document.getElementById('csp-grid');
-            programs.forEach(program => {
-                grid.appendChild(createCard(program));
+        function renderFaculty() {
+            const grid = document.getElementById('facultyGrid');
+            facultyData.forEach(faculty => {
+                grid.appendChild(createFacultyCard(faculty));
             });
             AOS.refresh();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderGrid();
+            renderFaculty();
             AOS.init({ duration: 800, once: true });
             lucide.createIcons();
+        });
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__accred">
+                <img src="images/AUB-OSB-accreditations.png" alt="Accreditations" />
+            </div>
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <h2 class="footer-item__title">Contact Us</h2>
+                    <p class="footer-item__text">
+                        For various questions, please try contacting us via social media
+                        first!
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+                <div class="footer-item">
+                    <h2 class="footer-item__title">Privacy Statement</h2>
+                    <p class="footer-item__text">
+                        We take data privacy seriously and adhere to all applicable data
+                        privacy laws and regulations.
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+                <div class="footer-item">
+                    <h2 class="footer-item__title">Copyright and Disclaimer</h2>
+                    <p class="footer-item__text">
+                        Written permission is needed to copy or disseminate all or part of
+                        the materials on the AUB website.
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+                <div class="footer-item">
+                    <h2 class="footer-item__title">
+                        Title IX, Non-Discrimination, and Anti-Discriminatory Harassment
+                    </h2>
+                    <p class="footer-item__text">
+                        AUB is committed to providing a safe and respectful environment to
+                        all members of its community.
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-burgundy">
+            <div class="container footer-links-grid">
+                <div class="footer-links-column">
+                    <ul>
+                        <li><a href="/Pages/AZ.aspx">A-Z</a></li>
+                        <li><a href="/admissions/Pages/default.aspx">Admissions</a></li>
+                        <li>
+                            <a href="/admissions/applications/Pages/applications.aspx">Admissions Applications</a>
+                        </li>
+                        <li>
+                            <a href="/admissions/Pages/EnglishRequirements.aspx">Admissions English Requirements</a>
+                        </li>
+                        <li><a href="/Pages/AUBSIS.aspx">AUBSSI</a></li>
+                        <li>
+                            <a href="https://careers.aub.edu.lb/Login" target="_blank">Career Portal</a>
+                        </li>
+                        <li><a href="/comptroller">Comptroller</a></li>
+                        <li>
+                            <a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <ul>
+                        <li><a href="/emergency">Emergency</a></li>
+                        <li><a href="/TestingCenter">AUB-EN</a></li>
+                        <li>
+                            <a href="/TestingCenter/Pages/aub-endresults.aspx">AUB-EN Results</a>
+                        </li>
+                        <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
+                        <li><a href="/comptroller/Pages/Student.aspx">Fees</a></li>
+                        <li><a href="/faid">Financial Aid</a></li>
+                        <li><a href="/Search/Pages/People.aspx">Find People</a></li>
+                        <li><a href="/Employment">Jobs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <ul>
+                        <li><a href="/libraries">Libraries</a></li>
+                        <li>
+                            <a href="/academics/Pages/majors_programs.aspx">Majors and Programs</a>
+                        </li>
+                        <li><a href="/comptroller/Pages/Payroll.aspx">Payroll</a></li>
+                        <li><a href="/registrar">Registrar</a></li>
+                        <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
+                        <li><a href="/search/Pages/default.aspx">Search</a></li>
+                        <li>
+                            <a href="https://www.aub.edu.lb/Pages/Webmail.aspx" target="_blank">Webmail</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <ul class="social-links">
+                <li>
+                    <a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"
+                        aria-label="Facebook">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-tw-icon" href="http://twitter.com/AUB_Lebanon" target="_blank"
+                        aria-label="Twitter">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-in-icon" href="https://www.linkedin.com/company/american-university-of-beirut"
+                        target="_blank" aria-label="LinkedIn">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-ig-icon" href="http://instagram.com/aub_lebanon" target="_blank"
+                        aria-label="Instagram">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-yt-icon" href="https://www.youtube.com/aubatlebanon" target="_blank"
+                        aria-label="Youtube">&nbsp;</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+        // smooth anchor scroll
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                const targetId = this.getAttribute("href");
+                if (targetId === "#" || targetId === "") return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof lucide !== "undefined") {
+                lucide.createIcons();
+            }
+            // optional AOS-like manual trigger if needed, but we only keep data attributes for styling
         });
     </script>
 </body>
