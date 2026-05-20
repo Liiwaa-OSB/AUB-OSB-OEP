@@ -195,6 +195,10 @@
       text-decoration: underline;
       text-underline-offset: 6px;
     }
+
+    .nav-osb-links .osb-dropdown li a#about-executive-education {
+      color: var(--color-primary);
+    }
   </style>
   <style>
     /* two-card grid: responsive */
@@ -1044,9 +1048,28 @@
             <li class="osb-nav-item has-dropdown">
               <!-- lii replace href below -->
               <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-              <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html" target="_blank"
-                id="executive-education-link">Executive Education</a>
+              <a href="#" target="_blank" id="executive-education-link">Executive Education</a>
               <ul class="osb-dropdown">
+                <li>
+                  <!-- lii replcae href -->
+                  <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html" target="_blank"
+                    id="about-executive-education">About Executive Education</a>
+                </li>
+                <li>
+                  <!-- lii replcae href -->
+                  <a href="https://liiwaa-osb.github.io/AUB-OSB-OEP/meet-the-team.html" target="_blank"
+                    id="meet-the-team">Meet The Team</a>
+                </li>
+                <li>
+                  <!-- lii replcae href -->
+                  <a href="https://liiwaa-osb.github.io/AUB-OSB-OEP/our-impact.html" target="_blank" id="our-impact">Our
+                    Impact</a>
+                </li>
+                <li>
+                  <!-- lii replcae href -->
+                  <a href="https://liiwaa-osb.github.io/AUB-OSB-OEP/faculty.html" target="_blank"
+                    id="faculty">Faculty</a>
+                </li>
                 <li>
                   <!-- lii replcae href -->
                   <!-- /osb/executive-education/OEP -->
@@ -1057,6 +1080,10 @@
                   <!-- lii - replace href -->
                   <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\custom-programs\index.html" target="_blank"
                     id="customized-programs">Customized Programs</a>
+                </li>
+                <li>
+                  <!-- lii replcae href -->
+                  <a href="mailto:gs52@aub.edu.lb" id="contact-us">Contact Us</a>
                 </li>
               </ul>
             </li>
@@ -1260,8 +1287,7 @@
             </div>
           </div>
           <div class="eeu-intro-image" data-aos="fade-left">
-            <img src="images/black.png"
-              alt="Executives collaborating – strategic planning session" loading="lazy">
+            <img src="images/black.png" alt="Executives collaborating – strategic planning session" loading="lazy">
           </div>
         </div>
       </div>
@@ -1349,8 +1375,8 @@
                 among others.
               </div>
             </div>
-            <img src="images/black.png" alt="Executive attending virtual class"
-              style="width:100%; margin-top:1rem;" loading="lazy">
+            <img src="images/black.png" alt="Executive attending virtual class" style="width:100%; margin-top:1rem;"
+              loading="lazy">
           </div>
         </div>
       </div>
@@ -1415,66 +1441,76 @@
       </div>
     </section>
 
-<!-- Resilience & long‑term impact section -->
-<section class="resilience-fullwidth">
-  <div class="resilience-overlay"></div>
-  <div class="container">
-    <div class="resilience-content" data-aos="zoom-in">
-      <h2 class="section-title" style="color: white; border-bottom-color: rgba(255,255,255,0.3);">Resilience & long‑term impact</h2>
-      <div class="resilience-text">
-        Despite ongoing economic instability and uncertainty in Lebanon and the broader Middle East, OSB Executive Education has continued to achieve important milestones and strengthen its market positioning. The Executive Education team has continuously assessed environmental challenges and collectively adapted to changing conditions. Despite these challenges, the unit remains committed to streamlining its operations, supporting sustainable growth, and enhancing both customer and learning experiences. EEU continues to explore opportunities to build long-term program impact through initiatives such as enhancing participant engagement, establishing executive education alumni networks, expanding the use of digital engagement tools, and integrating practical experiences into learning.
+    <!-- Resilience & long‑term impact section -->
+    <section class="resilience-fullwidth">
+      <div class="resilience-overlay"></div>
+      <div class="container">
+        <div class="resilience-content" data-aos="zoom-in">
+          <h2 class="section-title" style="color: white; border-bottom-color: rgba(255,255,255,0.3);">Resilience &
+            long‑term impact</h2>
+          <div class="resilience-text">
+            Despite ongoing economic instability and uncertainty in Lebanon and the broader Middle East, OSB Executive
+            Education has continued to achieve important milestones and strengthen its market positioning. The Executive
+            Education team has continuously assessed environmental challenges and collectively adapted to changing
+            conditions. Despite these challenges, the unit remains committed to streamlining its operations, supporting
+            sustainable growth, and enhancing both customer and learning experiences. EEU continues to explore
+            opportunities to build long-term program impact through initiatives such as enhancing participant
+            engagement, establishing executive education alumni networks, expanding the use of digital engagement tools,
+            and integrating practical experiences into learning.
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<style>
-  /* Resilience section – full width background (like CTA) */
-  .resilience-fullwidth {
-    position: relative;
-    background: url('images/AUB-OSB-OEP-Pricing-Analytics-Program.jpg') center/cover no-repeat;
-    /* replace with your own image or remove the background image to keep only color */
-    padding: 5rem 1.5rem;
-    color: white;
-    text-align: center;
-  }
+    <style>
+      /* Resilience section – full width background (like CTA) */
+      .resilience-fullwidth {
+        position: relative;
+        background: url('images/AUB-OSB-OEP-Pricing-Analytics-Program.jpg') center/cover no-repeat;
+        /* replace with your own image or remove the background image to keep only color */
+        padding: 5rem 1.5rem;
+        color: white;
+        text-align: center;
+      }
 
-  /* Dark overlay for better text contrast (optional, similar to CTA) */
-  .resilience-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.65); /* dark overlay – adjust opacity as needed */
-    z-index: 1;
-  }
+      /* Dark overlay for better text contrast (optional, similar to CTA) */
+      .resilience-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.65);
+        /* dark overlay – adjust opacity as needed */
+        z-index: 1;
+      }
 
-  .resilience-fullwidth .container {
-    position: relative;
-    z-index: 2;
-  }
+      .resilience-fullwidth .container {
+        position: relative;
+        z-index: 2;
+      }
 
-  .resilience-content {
-    margin: 0 auto;
-  }
+      .resilience-content {
+        margin: 0 auto;
+      }
 
-  .resilience-text {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #ffffff;
-  }
+      .resilience-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #ffffff;
+      }
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .resilience-fullwidth {
-      padding: 3rem 1rem;
-    }
-    .resilience-text {
-      font-size: 1rem;
-    }
-  }
-</style>
+      /* Responsive */
+      @media (max-width: 768px) {
+        .resilience-fullwidth {
+          padding: 3rem 1rem;
+        }
+
+        .resilience-text {
+          font-size: 1rem;
+        }
+      }
+    </style>
 
     <!-- SECTION 3: Discover Our Stories (Success Stories + Testimonials, with lorem text above, no emojis) -->
     <section class="section" id="discover-stories">
