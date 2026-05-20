@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Meet the Team | AUB OSB Executive Education</title>
+    <title>Our Impact | Custom Executive Programs – AUB OSB</title>
     <meta name="robots" content="noindex, nofollow" />
 
     <!-- Google Fonts + Lucide + AOS -->
@@ -15,120 +15,135 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <!-- Main Styles (shared with index) -->
+    <!-- Main Styles -->
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/menu.css" />
 
+
     <style>
-        /* Additional styles for team page – uses CSS variables from main.css */
-        .team-hero {
-            background: var(--color-primary);
+        ul {
+            padding-left: 17px;
+        }
+
+        /* CSP page specific styles – uses CSS variables from main.css */
+        .csp-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
             color: white;
             text-align: center;
             padding: 4rem 1.5rem;
             margin-bottom: 2rem;
         }
 
-        .team-hero h1 {
-            font-size: 3rem;
+        .csp-hero h1 {
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
         }
 
-        .team-hero p {
+        .csp-hero p {
             font-size: 1.2rem;
             opacity: 0.9;
         }
 
-        .team-category {
-            margin-bottom: 3rem;
+        .csp-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
-        /* Card layout: image circular, left of text */
-        .team-card {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        @media (min-width: 768px) {
+            .csp-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .csp-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .csp-card__content {
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
-        }
-
-        .team-card__image {
-            flex-shrink: 0;
-            width: 120px;
-            height: 120px;
-        }
-
-        .team-card__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        .team-card:hover .team-card__image img {
-            transform: scale(1.02);
-        }
-
-        .team-card__content {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
-        .team-card__name {
+        .csp-card__scroll-area {
+            max-height: 400px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-primary) #e2e8f0;
+            position: relative;
+        }
+
+        /* Custom scrollbar for WebKit */
+        .csp-card__scroll-area::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .csp-card__scroll-area::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .csp-card__scroll-area::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 10px;
+        }
+
+        .csp-card__scroll-area::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* Gradient overlay to indicate more content */
+        .csp-card__gradient {
+            position: relative;
+        }
+
+        .csp-card__gradient::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, white);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .csp-card__gradient.show-gradient::after {
+            opacity: 1;
+        }
+
+        .csp-card__title {
             font-size: 1.4rem;
             font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 0.25rem;
-        }
-
-        .team-card__name a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .team-card__name a:hover {
             color: var(--color-primary);
-            text-decoration: underline;
-        }
-
-        .team-card__title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
-        }
-
-        .team-card__bio {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #475569;
             margin-bottom: 1rem;
         }
 
-        .team-card__email {
-            font-size: 0.85rem;
+        .csp-card__text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #2d3e50;
         }
 
-        .team-card__email a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 500;
+        .csp-card__text p {
+            margin-bottom: 0.75rem;
         }
 
-        .team-card__email a:hover {
-            text-decoration: underline;
+        .csp-card__text ul {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+
+        .csp-card__text li {
+            margin-bottom: 0.25rem;
         }
 
         .container {
@@ -138,37 +153,19 @@
         }
 
         @media (max-width: 768px) {
+            .csp-hero h1 {
+                font-size: 2rem;
+            }
+
             .container {
                 padding: 0 1rem;
             }
-
-            .team-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .team-card__image {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 0.5rem;
-            }
-
-            .team-hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-
-        /* Simple grid for multiple cards in a category */
-        .team-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
         }
     </style>
 
     <script src="js/main.js" defer></script>
     <script src="js/menu.js" defer></script>
+
 </head>
 
 <body>
@@ -620,7 +617,7 @@
                         <li class="osb-nav-item has-dropdown">
                             <!-- lii replace href below -->
                             <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-                            <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html" target="_blank"
+                            <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\ExEd.html" target="_blank"
                                 id="executive-education-link">Executive Education</a>
                             <ul class="osb-dropdown">
                                 <li>
@@ -724,287 +721,219 @@
             </div>
         </div>
     </div>
-    <div class="team-hero">
+
+    <div class="csp-hero">
         <div class="container">
-            <h1>Meet the Team</h1>
-            <p>Dedicated experts driving executive education excellence</p>
+            <h1>Our Impact</h1>
+            <p>Custom Executive Programs – Success Stories</p>
         </div>
     </div>
 
     <main>
-        <div class="container" id="team-container">
-            <!-- Categories will be injected here by JavaScript -->
+        <div class="container">
+            <div class="csp-grid" id="csp-grid">
+                <!-- Cards will be injected via JavaScript for cleaner code and gradient handling -->
+            </div>
         </div>
     </main>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__accred">
-                <img src="images/AUB-OSB-accreditations.png" alt="Accreditations" />
-            </div>
-            <div class="footer-grid">
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Contact Us</h2>
-                    <p class="footer-item__text">
-                        For various questions, please try contacting us via social media
-                        first!
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Privacy Statement</h2>
-                    <p class="footer-item__text">
-                        We take data privacy seriously and adhere to all applicable data
-                        privacy laws and regulations.
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">Copyright and Disclaimer</h2>
-                    <p class="footer-item__text">
-                        Written permission is needed to copy or disseminate all or part of
-                        the materials on the AUB website.
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-                <div class="footer-item">
-                    <h2 class="footer-item__title">
-                        Title IX, Non-Discrimination, and Anti-Discriminatory Harassment
-                    </h2>
-                    <p class="footer-item__text">
-                        AUB is committed to providing a safe and respectful environment to
-                        all members of its community.
-                    </p>
-                    <a href="#" class="footer-item__link">read more</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-burgundy">
-            <div class="container footer-links-grid">
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/Pages/AZ.aspx">A-Z</a></li>
-                        <li><a href="/admissions/Pages/default.aspx">Admissions</a></li>
-                        <li>
-                            <a href="/admissions/applications/Pages/applications.aspx">Admissions Applications</a>
-                        </li>
-                        <li>
-                            <a href="/admissions/Pages/EnglishRequirements.aspx">Admissions English Requirements</a>
-                        </li>
-                        <li><a href="/Pages/AUBSIS.aspx">AUBSSI</a></li>
-                        <li>
-                            <a href="https://careers.aub.edu.lb/Login" target="_blank">Career Portal</a>
-                        </li>
-                        <li><a href="/comptroller">Comptroller</a></li>
-                        <li>
-                            <a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/emergency">Emergency</a></li>
-                        <li><a href="/TestingCenter">AUB-EN</a></li>
-                        <li>
-                            <a href="/TestingCenter/Pages/aub-endresults.aspx">AUB-EN Results</a>
-                        </li>
-                        <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
-                        <li><a href="/comptroller/Pages/Student.aspx">Fees</a></li>
-                        <li><a href="/faid">Financial Aid</a></li>
-                        <li><a href="/Search/Pages/People.aspx">Find People</a></li>
-                        <li><a href="/Employment">Jobs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links-column">
-                    <ul>
-                        <li><a href="/libraries">Libraries</a></li>
-                        <li>
-                            <a href="/academics/Pages/majors_programs.aspx">Majors and Programs</a>
-                        </li>
-                        <li><a href="/comptroller/Pages/Payroll.aspx">Payroll</a></li>
-                        <li><a href="/registrar">Registrar</a></li>
-                        <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
-                        <li><a href="/search/Pages/default.aspx">Search</a></li>
-                        <li>
-                            <a href="https://www.aub.edu.lb/Pages/Webmail.aspx" target="_blank">Webmail</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <ul class="social-links">
-                <li>
-                    <a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"
-                        aria-label="Facebook">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-tw-icon" href="http://twitter.com/AUB_Lebanon" target="_blank"
-                        aria-label="Twitter">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-in-icon" href="https://www.linkedin.com/company/american-university-of-beirut"
-                        target="_blank" aria-label="LinkedIn">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-ig-icon" href="http://instagram.com/aub_lebanon" target="_blank"
-                        aria-label="Instagram">&nbsp;</a>
-                </li>
-                <li>
-                    <a class="social-yt-icon" href="https://www.youtube.com/aubatlebanon" target="_blank"
-                        aria-label="Youtube">&nbsp;</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
 
     <script>
-        // Team data stored as JSON (scalable)
-        const teamData = {
-            "Leadership": [
-                {
-                    name: "Said El Fakhani, PhD",
-                    title: "Acting Director of Executive Education",
-                    bio: "Dr. Said Elfakhani is a Professor of Finance. During 2018-2022, Dr. Elfakhani served as the Associate Dean for Programs. In 2017-2018, Said had served as the Associate Dean of Executive and Continuing Education as well as the Convener for the Finance, Accounting and Managerial Economics (FAME). Prior to re-joining OSB at AUB, Dr. Elfakhani was a Professor and Ex-Dean at LAU (2011-2014), had occupied the Harvey R. Wickes Chair in International Business at Saginaw Valley State University, Michigan, USA (2007-2011). From 2000 to 2007, Said had been the Associate Dean (2000-2007) and the Finance Track Convenor (2000-2005) at AUB, Lebanon. He had taught at the U. of Saskatchewan (Canada), held visiting appointments at ISU-Indiana (1994), KFUPM-Saudi Arabia (1997) and UTD-Texas (2007). Said earned his BBA from LU (1979), MBA from UT-Arlington (1984), MSc (1987) and PhD in finance from UT-Dallas (1989). He has published numerous papers in major international refereed journals, presented academic papers in many countries, written for business magazines, and made several media appearances. Said’s current research interests include emerging markets performance, market anomalies and disturbances, portfolio performance, mutual funds performance, dividend policy, listing of derivatives and Islamic finance.",
-                    email: "said.elfakhani@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                }
-            ],
-            "Program and Event Delivery Team": [
-                {
-                    name: "Hanaa Mounzer",
-                    title: "Program and Event Delivery Manager",
-                    bio: "Ms. Hanaa Mounzer currently holds the position of Program and Event Delivery Manager at the Suliman S. Olayan School of Business at AUB. She has 10 years of experience managing face-to-face events, online webinars, and projects in higher education and executive programs. Hanaa oversees and ensures the proper initiation and completion of the programs with an optimal learning experience that meets the expectations and needs of the client and of the other involved stakeholders. Hanaa also controls and monitors the program operational budget and reports on the program performance. Hanaa holds a bachelor’s in science degree in Environmental Health with a minor in Public Health and master’s in business administration from the American University of Beirut with Beta Gemma Sigma certificate as part of the International Business Honor Society. She has EQ-I 2.0 and EQ 360 Certification from MHS. She is currently a member at Toastmasters International and served in several leadership roles: Area Director for Lebanon, club’s president, and club extension team for multiple countries: UAE, Lebanon, Jordan, and Oman.",
-                    email: "hanaa.mounzer@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                },
-                {
-                    name: "Lara Azar",
-                    title: "Program and Event Delivery Coordinator",
-                    bio: "Lara is an Event and Project Management Specialist with 15 years of experience in event management and operations across the pharmaceutical industry and, more recently, the academic sector. Her expertise encompasses the management of face-to-face meetings, executive programs, and regional symposia, in addition to coordinating the participation of healthcare professionals from the Middle East in international congresses. She is highly experienced in collaborating with cross-functional teams to execute organizational projects, optimize operations, and deliver high-quality customer experiences. Lara also played a key role in digital transformation initiatives, including the implementation of strategic meeting management tools during the COVID-19 pandemic to enhance customer satisfaction. Currently serving as a Program & Event Delivery Coordinator at the Suliman S. Olayan School of Business at the American University of Beirut, Lara leverages her expertise in event delivery, operations, and digital solutions to support Executive Education programs and ensure a seamless learning experience for executives in today’s fast-paced environment. Lara holds a bachelor’s degree in English Language and a Master of Business Administration (MBA). She is fluent in Arabic, English, and French.",
-                    email: "lara.azar@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                },
-                {
-                    name: "Reina Mneimneh",
-                    title: "Program and Event Delivery Coordinator",
-                    bio: "Reina Mneimneh is a Program and Events Delivery Coordinator at the American University of Beirut (AUB), working within the Executive Education and EMBA departments at the Olayan School of Business. In her role, Reina manages the end-to-end planning and delivery of executive programs, ensuring a seamless experience for participants, faculty, and stakeholders. Her work involves coordinating logistics, overseeing program operations, and supporting both local and international initiatives, including programs delivered in Lebanon and abroad. Reina enjoys working in dynamic environments where she can contribute to creating impactful and memorable learning journeys. Event planning and organization are among her interests, and she finds fulfillment in bringing structure and clarity to complex programs while ensuring high-quality delivery. Reina is known for strong organizational skills, adaptability, and a collaborative approach. She strives to ensure that every program is delivered to the highest standard, while continuously seeking opportunities to improve efficiency and participant experience. Through her role, Reina contributes to AUB’s mission of excellence in education by supporting professionals in gaining valuable knowledge and skills that drive growth and success.",
-                    email: "reina.mneimneh@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                }
-            ],
-            "Program Design Team": [
-                {
-                    name: "Rajab Ghazzaoui",
-                    title: "Program Design Manager",
-                    bio: "Mr. Rajab Ghazzaoui is an Executive Education Program Design Manager at OSB AUB. His responsibilities vary throughout the Company Specific Programs (CSP) and Open Enrollment Programs (OEP). Experienced Program Design Manager with a Master of Public Policy degree from The University of Chicago and Bachelor of Engineering from the American University of Beirut. Skilled in designing and delivering data-driven and research-backed programs for diverse clientele. Well-versed in budgeting, strategic planning, and team collaboration. Passionate about developing impactful and resourceful executive education programs, enhancing adult learning experience, and understanding the impact of the programs. Adept at identifying potential client needs. Strong interpersonal skills developed through diverse experiences in traveling, studying abroad, and volunteering.",
-                    email: "rajab.ghazzaoui@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                },
-                {
-                    name: "Mohammad Shoukeir",
-                    title: "Program Design Manager",
-                    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-                    email: "mohammad.shoukeir@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                }
-            ],
-            "Program Management": [
-                {
-                    name: "Hiba Hamade",
-                    title: "Program Manager",
-                    bio: "Hiba Hamade holds a PhD in Management with a specialization in Leadership and Organizational Change and brings more than 18 years of experience in higher education. She is also an executive coach certified in EQ-I 2.0 and EQ-I 360 as well as an ICF member, ACC level practitioner. Throughout her career, she has had the chance to work closely in navigating team dynamics, developing well-rounded characters to thrive complex organizational settings, and managing program portfolios including MBA and MBA Online programs. She has led and contributed to key strategies and initiatives. Hiba is also a managing editor for a business review initiative at the Suliman S. Olayan School of Business and is a part-time lecturer with teaching experience in management and microeconomics. She has built collaborations with corporate clients in Lebanon and the Middle East, including the GCC. Hiba’s research focus and publications extend to leadership, management, and organizational culture with contributions to conferences and research field. She has served as a peer reviewer for the Academy of Management for two years and has a published book chapter about Women’s Leadership in Arab MENA Countries. Bridging between her academic and practical experiences, she brings to executive learning the ability to develop program offerings aligned with organizational strategies and business needs.",
-                    email: "hiba.hamade@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                }
-            ],
-            "Business Development": [
-                {
-                    name: "Gary Saliba",
-                    title: "Business Development Executive",
-                    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-                    email: "gary.saliba@aub.edu.lb",
-                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
-                    profileUrl: "#"
-                }
-            ]
-        };
-
-        // Function to render the entire team section
-        function renderTeam() {
-            const container = document.getElementById('team-container');
-            container.innerHTML = '';
-            for (const [category, members] of Object.entries(teamData)) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'team-category';
-                categoryDiv.setAttribute('data-aos', 'fade-up');
-                const heading = document.createElement('h2');
-                heading.textContent = category;
-                heading.className = 'section-title';
-                categoryDiv.appendChild(heading);
-                const gridDiv = document.createElement('div');
-                gridDiv.className = 'team-grid';
-                members.forEach(member => {
-                    const card = document.createElement('div');
-                    card.className = 'team-card';
-                    // Image section
-                    const imgDiv = document.createElement('div');
-                    imgDiv.className = 'team-card__image';
-                    const img = document.createElement('img');
-                    img.src = member.image;
-                    img.alt = member.name;
-                    img.loading = 'lazy';
-                    // Fallback if image missing
-                    img.onerror = function () { this.src = 'https://via.placeholder.com/120?text=Photo'; };
-                    imgDiv.appendChild(img);
-                    // Content section
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'team-card__content';
-                    const nameDiv = document.createElement('div');
-                    nameDiv.className = 'team-card__name';
-                    const nameLink = document.createElement('a');
-                    nameLink.href = member.profileUrl;
-                    nameLink.textContent = member.name;
-                    nameDiv.appendChild(nameLink);
-                    const titleDiv = document.createElement('div');
-                    titleDiv.className = 'team-card__title';
-                    titleDiv.textContent = member.title;
-                    const bioDiv = document.createElement('div');
-                    bioDiv.className = 'team-card__bio';
-                    bioDiv.textContent = member.bio;
-                    const emailDiv = document.createElement('div');
-                    emailDiv.className = 'team-card__email';
-                    const emailLink = document.createElement('a');
-                    emailLink.href = `mailto:${member.email}`;
-                    emailLink.textContent = member.email;
-                    emailDiv.appendChild(emailLink);
-                    contentDiv.appendChild(nameDiv);
-                    contentDiv.appendChild(titleDiv);
-                    contentDiv.appendChild(bioDiv);
-                    contentDiv.appendChild(emailDiv);
-                    card.appendChild(imgDiv);
-                    card.appendChild(contentDiv);
-                    gridDiv.appendChild(card);
-                });
-                categoryDiv.appendChild(gridDiv);
-                container.appendChild(categoryDiv);
+        // Program data – exact text preserved
+        const programs = [
+            {
+                title: "Leadership Excellence Program",
+                image: "images/black.png",
+                alt: "Leadership Excellence Program – group of executives in a workshop",
+                content: `<p>The Leadership Excellence Program (LEP) is a highly customized, high-impact Executive Education program aimed at augmenting the leadership skills for 40 directors in Jordan to become leaders of organizational change while embodying their organization’s purpose, mission, vision, and core values. The program complements our partner’s vision to be the responsible digital leader in Jordan with a focus on developing the skills and competencies needed for agile leadership in support of sought growth and change. In line with the organization’s long-term strategy, the program aims to fulfill the following objectives:</p>
+                <ul><li>Leverage an agile mindset to dynamically address multi-level strategic and organizational challenges.</li><li>Build leadership development capabilities and competencies for all employee levels.</li><li>Develop leadership insights and skills to respond to organizational change.</li><li>Foster a culture of inclusivity across the organization sharing common values and common business language.</li><li>Enable participants to connect the dots while keeping the organization’s strategic vision in mind.</li></ul>
+                <p>The program topics include leadership, strategy, change, and customer-focused innovation. To complement the program’s skill building modules, the program design includes 1-1 coaching sessions for the participants upon request.</p>`
+            },
+            {
+                title: "Kuwait’s Leadership Development Program",
+                image: "images/black.png",
+                alt: "Kuwait Leadership Development Program – senior executives in a classroom",
+                content: `<p>The Leadership Development Program for one of our partners in Kuwait was a customized 6-day program designed to develop the leadership and managerial skills of up to 24 senior executives in support of the bank's objectives of preparing senior managers for future roles as part of succession planning. The program aimed to fulfill the following objectives:</p>
+                <ul><li>Enhance leadership and emotional intelligence skills required at senior executive positions</li><li>Improve competencies needed to lead the necessary organizational change and digital transformation</li><li>Increase awareness of the latest banking sector disruptive trends and opportunities</li></ul>
+                <p>The highly engaging and interactive program covered topics on leadership, emotional intelligence, agility, talent management, leading millennials, leading change, data science, analytics and AI, and digital transformation.</p>`
+            },
+            {
+                title: "Leadership Development Program (LDP)",
+                image: "images/black.png",
+                alt: "Leadership Development Program – executives presenting a project",
+                content: `<p>The Leadership Development Program (LDP) is a customized 12-day program designed to develop leadership skills for 90 executives enabling them to lead the bank’s transformation into the future. In line with the organizations long-term strategy the program aims to fulfill the following objectives:</p>
+                <ul><li>Nurturing an open-minded and growth leadership mindset</li><li>Translating the company strategy by contributing to its success</li><li>Leverage digital transformation to create value</li><li>Developing new age leadership competencies</li></ul>
+                <p>The program topics include leadership, culture, communication, talent development for leaders, customer centricity, innovation, strategy, and leading change. To complement the program’s skill-building modules, the program offers 1-1 coaching sessions. In addition, to maximize impact the program concludes with a value-added project pitch guided by team mentoring to ensure implementation, relevance, and ability to execute immediately, since the organization is planning to institutionalize these projects.</p>
+                <p>At the end of the program:</p>
+                <ul><li>100% of the participants completed the program requirements and were awarded their program certificate of completion.</li><li>18 innovative project ideas were presented to an AUB Panel with the intention to be presented to our leadership in line with the program identified strategic pillars.</li><li>Over 360 hours of one-on-one consultation were delivered with executive coaches focused on personal leadership journey development of each participant utilizing SMART goals.</li></ul>`
+            },
+            {
+                title: "Next Generation of Family Members Program (NextGen)",
+                image: "images/black.png",
+                alt: "NextGen program – family members in a workshop",
+                content: `<p>This family business program positioned our partner’s third generation family members to further understand their own interests and abilities to contribute to our partner’s businesses and to identify individual development plans.</p>
+                <p>The program aligned the new generation of family members as effective and active value creators in their various positions and capacities and fast tracked their development to best fulfill current positions within the organization and/or prepare them for other positions they aspire to lead. Multiple assessment tools were used for this program including: Benchmarking for Managers, Personality Profiling 15FQ, Workplace Big 5, 6 Seconds EI Assessment alongside other tools.</p>
+                <p>By the end of the program, AUB Olayan School of Business Executive Education was able to:</p>
+                <ul><li>Support the family members to learn more about themselves, their strengths, and needed areas of development;</li><li>Identify family members’ positioning in the group as family business successors, future co-owners, and professional contributors; and</li><li>Help each family member accelerate their path to achieve their identified goals</li></ul>`
+            },
+            {
+                title: "Capital Development Program",
+                image: "images/black.png",
+                alt: "Capital Development Program – managers in a strategy session",
+                content: `<p>AUB OSB designed and delivered an Executive Education Program targeting its managers to reinforce its initiatives to:</p>
+                <ul><li>Nurture a culture of adaptability and flexibility, proactivity and initiative</li><li>Promote a strategic thinking framework for managers</li></ul>
+                <p>Based on the needs assessment and leadership’s input, the 5-day program was designed with 2 main components: consisting of a Strategic Thinking and Implementation component and a Change Management component. The program was delivered in Arabic at our partner’s location in KSA.</p>
+                <p>Some of the topics that were delivered in the program include regulating self during a period of change, communicating during change, influencing others, and change management.</p>`
+            },
+            {
+                title: "LEAD Program",
+                image: "images/black.png",
+                alt: "LEAD Program – online global participants",
+                content: `<p>A customized executive education program focused on extending the management and leadership capabilities of 43 senior management in an agile and fast-changing environment with the clear identified objectives to:</p>
+                <ul><li>Strengthen cross-functional and cross-unit collaboration towards common strategic goals</li><li>Build an innovation and intrapreneurial mindset for exploring and developing new growth opportunities for Aramex</li></ul>
+                <p>The LEAD program was delivered completely online over 7.5 delivery days for two cohorts. The participants represented a diverse group who attended the program from 23 countries from all departments. The participants engaged in subjects such as putting the customer first, innovation and creative thinking, and business models innovation. Other foundational subjects included understanding the language of finance, leadership, building teams, and change management were designed to augment the participants’ abilities to succeed in changing times.</p>`
+            },
+            {
+                title: "Executive Program (EP)",
+                image: "images/black.png",
+                alt: "Executive Program – senior management team",
+                content: `<p>Suliman S. Olayan School of Business Executive Education unit concluded a customized program for our partner in Lebanon. The Executive Program aimed to strengthen the organization's senior management team skill set in core general management competencies. More importantly, it focused on providing business frameworks in different subjects that are needed to identify and develop new growth opportunities, leveraging innovation, technology, and intrapreneurship.</p>
+                <p>The sixteen-and-a-half-day program spanned over a four-month period where OSB Executive Education designed and delivered an immersive learning experience. The program was attended by executive participants heading several units for different functions.</p>`
+            },
+            {
+                title: "Advanced Management Program",
+                image: "images/black.png",
+                alt: "Advanced Management Program – middle management cohort",
+                content: `<p>This thirty-day program, delivered in three cohorts, targets middle management fulfilling the organizational core value of people’s development, customer centricity, heritage and transparency. Located in Lebanon, our partner, has grown to different geographic locations in the region and is keen on keeping its market positioning locally while assuming its growth mission. The program was working on strengthening the core values while equipping its future senior management team with a key insight into international best business practices. The program included reflection and action plans following each module delivered and an integrative capstone project relevant to the organization and in line with its strategic direction. One of the key program features is the development of an integrative project.</p>`
+            },
+            {
+                title: "Executive Development Program",
+                image: "images/black.png",
+                alt: "Executive Development Program – Kuwait executives",
+                content: `<p>Developed for one of our partners in Kuwait, the Executive Development Program is a full-fledged program designed to address the challenges faced by their leaders and meant to prepare the executives for change in the market and for effective and strategic leadership. The program aims to build and strengthen general management competencies, boost strategic thinking and implementation skills, and assure the key skills required to develop their talents and systems to optimize and grow the business. The program also makes its delegates look at their business with an external lens to be aware of the related business threats driven by globalization and the changes of the business models in different industries in response to digital transformation and globalization. The program uses tools and frameworks across all modules and brings case studies to classrooms discussion.</p>`
+            },
+            {
+                title: "Strategies for Creating Value",
+                image: "images/black.png",
+                alt: "Strategies for Creating Value – young CEOs in discussion",
+                content: `<p>AUB OSB designed and delivered two sessions of the “Strategies for Creating Value”. These focused programs target successful young CEOs from Lebanon and the region. The program is delivered under the overarching theme of value creation and includes topics such as the Oil and Gas Industry and its Impact on the Business and Building Breakthrough Business Models. The program format includes closed forum discussions, study groups, invited speakers, and networking events.</p>`
+            },
+            {
+                title: "Management Development Program (MDP)",
+                image: "images/black.png",
+                alt: "Management Development Program – middle managers in training",
+                content: `<p>The Management Development Program is a twelve-day program targeting middle managers. Our partnering organization has been undergoing fast growth through acquisitions and geographic expansion. The program aims to support the organization’s core competencies during its fast growth. Most recently, AUB OSB has delivered five cohorts of the MDP graduating 100 managers. Program topics include leadership development, strategic thinking, change, and innovation management as well as experiential learning.</p>`
+            },
+            {
+                title: "Board Directors and Executive Program",
+                image: "images/black.png",
+                alt: "Board Directors and Executive Program – boardroom discussion",
+                content: `<p>OSB delivered a two-day program to board members and senior managers. The program tackled the topic of strategic HR in line with their strategic outlook. Breakout discussions were held around the strategic importance of this subject for organizational growth.</p>`
+            },
+            {
+                title: "Women Entrepreneurship Program",
+                image: "images/black.png",
+                alt: "Women Entrepreneurship Program – female entrepreneurs pitching ideas",
+                content: `<p>The Women Entrepreneurship Program is a ten-day educational and networking event spanning over five weeks targeting women-owned and managed SMEs operating in Lebanon. The program's objective was to support these entrepreneurs in their ambitions to grow their businesses. The participants complemented the program with exposure to the key institutional development areas needed for organizational growth along with an exposure to strategic thinking, planning, and implementation. Throughout the program, the entrepreneurs were exposed to the different entities in the Lebanese entrepreneurship ecosystem. The participants got the opportunity to hear and discuss first-hand from successful entrepreneurs who shared their personal stories on business success and failure. On the last day of the program, the entrepreneurs presented their growth plans in front of a panel of academicians, entrepreneurs, and advisors. Program topics included: growth and exit strategies, franchise focus, strategic thinking, hiring and retaining the core management team, go-to-market strategies in addition to case-based in-depth discussion of regional entrepreneurs' scale-up challenges and opportunities.</p>`
+            },
+            {
+                title: "Family Business Initiative | From Success to Succession",
+                image: "images/black.png",
+                alt: "Family Business Initiative – family business stakeholders",
+                content: `<p>The overall capitalization of family business in the Arab World is in the range of USD 600 Billion. This program assures family businesses of the region to sustain their success and grow it across generations. The Family Business Initiative aims primarily at improving the business performance and survival of family businesses in Lebanon and the region. The initiative is planned to provide family business owners with key consideration to assure continuous firm growth, succession planning, governance, and financing, to name a few. AUB OSB conducted two targeted seminars to family business stakeholders from first, second, and third family businesses. This two-day program was run over two cohorts.</p>`
+            },
+            {
+                title: "Global Management Development Program",
+                image: "images/black.png",
+                alt: "Global Management Development Program – diverse managers collaborating",
+                content: `<p>A twenty-day program customized program for one of our Lebanese partners’ middle, new, and aspiring managers that aims to build and strengthen general management competencies and promote cross-functional collaboration. The organization has diversified its activities and provides banking services in five principal areas: commercial banking, retail banking, investment banking, private banking, and correspondent banking. This program includes an intrapreneurship bootcamp and a final project.</p>`
+            },
+            {
+                title: "Capital Leadership Program",
+                image: "images/black.png",
+                alt: "Capital Leadership Program – leaders in reflective session",
+                content: `<p>This program involved skill building of leadership core competencies including team building, self-discovery, reflection and awareness for experienced managers and leaders with a dynamic curiosity for system understanding. It combines awareness with systemic thinking to allow a deepening understanding of place and impact on others. Moving between a wide-angle lens view on real organizational issues or complex challenges to meditation of personal thoughts, the course may translate into tangible differences in day-to-day working life. The program was delivered at our partner’s location in Kuwait. The program integrates face-to-face courses and modules with online resources and engaging activities.</p>`
             }
-            // Reinitialize AOS for new content
+        ];
+
+        function createCard(program) {
+            const card = document.createElement('div');
+            card.className = 'csp-card';
+            card.setAttribute('data-aos', 'fade-up');
+
+            // Image section
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'csp-card__image';
+            const img = document.createElement('img');
+            img.src = program.image;
+            img.alt = program.alt;
+            img.loading = 'lazy';
+            imgDiv.appendChild(img);
+
+            // Content section with gradient wrapper
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'csp-card__content';
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'csp-card__title';
+            titleDiv.textContent = program.title;
+
+            // Scroll area
+            const scrollArea = document.createElement('div');
+            scrollArea.className = 'csp-card__scroll-area';
+            const textDiv = document.createElement('div');
+            textDiv.className = 'csp-card__text';
+            textDiv.innerHTML = program.content;
+            scrollArea.appendChild(textDiv);
+
+            // Gradient container
+            const gradientWrapper = document.createElement('div');
+            gradientWrapper.className = 'csp-card__gradient';
+            gradientWrapper.appendChild(scrollArea);
+
+            contentDiv.appendChild(titleDiv);
+            contentDiv.appendChild(gradientWrapper);
+
+            card.appendChild(imgDiv);
+            card.appendChild(contentDiv);
+
+            // Function to check overflow and scroll position
+            function updateGradient() {
+                const scrollEl = scrollArea;
+                const gradientEl = gradientWrapper;
+                if (scrollEl.scrollHeight > scrollEl.clientHeight) {
+                    // Content overflows
+                    const isAtBottom = scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight - 5;
+                    if (isAtBottom) {
+                        gradientEl.classList.remove('show-gradient');
+                    } else {
+                        gradientEl.classList.add('show-gradient');
+                    }
+                } else {
+                    gradientEl.classList.remove('show-gradient');
+                }
+            }
+
+            // Initial check and add event listeners
+            setTimeout(updateGradient, 100); // wait for images to load maybe
+            scrollArea.addEventListener('scroll', updateGradient);
+            window.addEventListener('resize', updateGradient);
+            // Also observe image loading? Simple: call after a delay and when image loads
+            if (img.complete) updateGradient();
+            else img.addEventListener('load', updateGradient);
+
+            return card;
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('csp-grid');
+            programs.forEach(program => {
+                grid.appendChild(createCard(program));
+            });
             AOS.refresh();
         }
 
-        // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
-            renderTeam();
+            renderGrid();
             AOS.init({ duration: 800, once: true });
             lucide.createIcons();
         });
