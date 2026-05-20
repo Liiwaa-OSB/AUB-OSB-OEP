@@ -19,6 +19,181 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/menu.css" />
   <style>
+    /* Section 1 – Intro with large quote */
+    .eeu-intro {
+      background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
+      border-bottom: 1px solid #eaeef2;
+    }
+
+    .eeu-intro-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eeu-intro-text {
+      flex: 2;
+    }
+
+    .eeu-intro-image {
+      flex: 1;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+    }
+
+    .eeu-intro-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .eeu-highlight {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      letter-spacing: -0.2px;
+    }
+
+    /* Section 2 – Partnerships grid (2 columns) */
+    .eeu-partners-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .eeu-partners-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .partner-card {
+      background: #fff;
+      border-left: 4px solid var(--color-primary);
+      padding: 1.8rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s;
+    }
+
+    .partner-card:hover {
+      transform: translateX(6px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    }
+
+    .partner-card i {
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    /* Section 3 – Stats & map style */
+    .eeu-stats {
+      background: #f4f6fa;
+    }
+
+    .stats-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      background: white;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    /* Section 4 – Online learning card row */
+    .online-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .online-grid>div {
+      flex: 1;
+    }
+
+    .online-feature {
+      background: #fff;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 1rem;
+      transition: 0.2s;
+    }
+
+    .online-feature:hover {
+      border-color: var(--color-primary);
+    }
+
+    /* Section 5 – Operational excellence with icon list */
+    .ops-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .ops-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .ops-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .ops-list li i {
+      color: var(--color-primary);
+    }
+
+    /* Section 6 – Seven-step process (numbered circles) */
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border-top: 3px solid var(--color-primary);
+    }
+
+    .step-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+  </style>
+  <style>
     .nav-osb-links .osb-nav-item>a#executive-education-link {
       color: var(--color-primary);
     }
@@ -877,7 +1052,7 @@
             <li class="osb-nav-item has-dropdown">
               <!-- lii replace href below -->
               <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-              <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\ExEd.html" target="_blank"
+              <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html" target="_blank"
                 id="executive-education-link">Executive Education</a>
               <ul class="osb-dropdown">
                 <li>
@@ -1074,6 +1249,241 @@
       </div>
     </section>
 
+    <!-- ===== NEW SECTION 1: EEU Introduction & Tailored Approach ===== -->
+    <section class="section eeu-intro">
+      <div class="container">
+        <div class="eeu-intro-grid">
+          <div class="eeu-intro-text">
+            <span class="eeu-highlight" data-aos="fade-up">Executive Education Unit (EEU)</span>
+            <h2 class="section-title" data-aos="fade-up" style="margin-top:0;">Tailored learning for lasting impact</h2>
+            <div class="eeu-text" data-aos="fade-up" data-aos-delay="50">
+              The Executive Education Unit (EEU) at the Suliman S. Olayan School of Business is responsible for
+              delivering high-quality, non-degree educational programs to professionals and organizations across the
+              community. The EEU works closely with organizations on a one-to-one basis to create high-impact learning
+              experiences tailored to each firm’s strategic and operational needs. Whether organizations are facing
+              shifting market dynamics, emerging competitors, increasingly demanding customers, or other strategic
+              challenges, requiring leadership development, coping with banking trends, strategic thinking, effective
+              communication and negotiation, and, more recently, Artificial Intelligence and related digital
+              transformation topics, the OSB Executive Education team is equipped to customize programs that strengthen
+              leadership capacity at both the individual and organizational levels.
+            </div>
+          </div>
+          <div class="eeu-intro-image" data-aos="fade-left">
+            <img src="images/black.png"
+              alt="Executives collaborating – strategic planning session" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEW SECTION 2: Multidisciplinary Partnerships ===== -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">University‑wide collaborations</h2>
+        <div class="eeu-partners-grid" data-aos="fade-up" data-aos-delay="50">
+          <div class="partner-card">
+            <i data-lucide="building-2" width="32" height="32"></i>
+            <div class="eeu-text">
+              OSB Executive Education draws on AUB’s multidisciplinary expertise and collaborates with various centers
+              and faculties across the university including partnerships with AUBMC Continuing Medical Education, the
+              Center for Inclusive Business and Leadership, the Faculty of Arts and Sciences, the Faculty of
+              Agricultural and Food Sciences, and AUB Mediterraneo on events, certifications, and joint program
+              delivery.
+            </div>
+          </div>
+          <div class="partner-card">
+            <i data-lucide="users" width="32" height="32"></i>
+            <div class="eeu-text">
+              The unit has also strengthened strategic collaborations with internal entities such as The Case Hub,
+              Career Management Services, the Center for Women in Business and Leadership, the Darwazah Center for
+              Innovation Management and Entrepreneurship, and the Rami F. Makhzoumi Corporate Governance Initiative.
+              These partnerships enable Executive Education to offer broader and deeper expertise while ensuring a
+              well-rounded educational experience and greater brand visibility for participating centers.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEW SECTION 3: Goal & Regional Impact (with stats) ===== -->
+    <section class="section eeu-stats">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Building organizational capabilities globally</h2>
+        <div class="stats-flex" data-aos="fade-up">
+          <div class="stat-item">
+            <div class="stat-number">1,500+</div>
+            <div>days of face‑to‑face sessions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">12+</div>
+            <div>countries across MENA & Europe</div>
+          </div>
+        </div>
+        <div class="eeu-text" data-aos="fade-up">
+          The primary goal of every OSB custom program is to build organizational capabilities that support sustainable
+          growth and long-term success. Accordingly, EEU strives to develop industry leaders who can make a meaningful
+          impact within their organizations. As part of its mission, EEU was able to impact a wide range of
+          organizations and institutions. Regionally, the unit has delivered customized programs totaling more than
+          1,500 days of face-to-face sessions across Lebanon and internationally, including Bahrain, Cyprus, Kuwait,
+          Iraq, Jordan, Oman, Qatar, Saudi Arabia, the UAE (Abu Dhabi, Dubai, and Sharjah), Spain, and Switzerland.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEW SECTION 4: Online Transformation & Global Reach ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="online-grid">
+          <div data-aos="fade-right">
+            <h2 class="section-title" style="margin-bottom:1rem;">Tailored online learning for executives</h2>
+            <div class="online-feature">
+              <i data-lucide="globe" width="28" height="28"></i>
+              <div class="eeu-text" style="margin-top:0.5rem;">
+                In addition, the unit has worked closely with clients and business partners to transform its offerings
+                into tailored online learning experiences designed specifically for executives and active managers. This
+                transformation leveraged continuous technological upgrades to ensure highly personalized and
+                experiential learning environments. Program curricula were revisited and updated to ensure relevance and
+                timeliness considering the accelerating adoption of digital transformation across industries. The shift
+                to online delivery enhanced business agility and enabled managers to access programs more efficiently
+                without compromising the quality of the customized learning experience.
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-left">
+            <div class="online-feature">
+              <i data-lucide="map-pin" width="28" height="28"></i>
+              <div class="eeu-text" style="margin-top:0.5rem;">
+                As a result, we now have participants from more than 25 countries worldwide, extending beyond the GCC
+                region to include countries such as China, Hong Kong, Australia, Indonesia, New Zealand, and Ghana,
+                among others.
+              </div>
+            </div>
+            <img src="images/black.png" alt="Executive attending virtual class"
+              style="width:100%; margin-top:1rem;" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEW SECTION 5: Operational Excellence & Marketing ===== -->
+    <section class="section" style="background:#fefefe;">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Operational refinement & market presence</h2>
+        <div class="eeu-text" data-aos="fade-up">
+          At the operational level, the unit continues to refine the design and delivery of both company-specific and
+          open-enrollment programs. These efforts were complemented by ongoing initiatives in marketing, including
+          content marketing and events management.
+        </div>
+        <ul class="ops-list" data-aos="fade-up" data-aos-delay="50">
+          <li><i data-lucide="check-circle" width="20"></i> Content marketing strategy</li>
+          <li><i data-lucide="calendar" width="20"></i> Events management & webinars</li>
+          <li><i data-lucide="target" width="20"></i> Market expansion across the region</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== NEW SECTION 6: Seven‑Step Consultative Process (MENA focus) ===== -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Our structured client‑specific process (CSP)</h2>
+        <div class="process-steps" data-aos="fade-up">
+          <div class="step">
+            <div class="step-number">1</div>Needs assessment
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>Schematic design
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>Contracting
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>Program design
+          </div>
+          <div class="step">
+            <div class="step-number">5</div>Curriculum development
+          </div>
+          <div class="step">
+            <div class="step-number">6</div>Delivery
+          </div>
+          <div class="step">
+            <div class="step-number">7</div>Impact assessment
+          </div>
+        </div>
+        <div class="eeu-text" data-aos="fade-up">
+          The unit has also expanded its market presence to maintain existing clientele and penetrate new markets across
+          the region. OSB Executive Education continues to apply a highly structured model for its Client-Specific
+          Programs (CSPs), following a seven-step consultative process that begins once a potential opportunity is
+          identified through business development efforts. The process includes: (i) preliminary needs assessment, (ii)
+          preliminary schematic design, (iii) contracting, (iv) program design, (v) detailed curriculum development,
+          (vi) delivery, and (vii) impact assessment and closing. AUB OSB’s custom executive education programs aim to
+          create and develop business leaders capable of supporting the sustainable growth of organizations through
+          sound business practices and strategic thinking. Every program challenges executives to transform ideas into
+          actionable plans and to lead effectively in a fast-changing business environment, with particular attention to
+          the unique dynamics of the MENA region.
+        </div>
+      </div>
+    </section>
+
+<!-- Resilience & long‑term impact section -->
+<section class="resilience-fullwidth">
+  <div class="resilience-overlay"></div>
+  <div class="container">
+    <div class="resilience-content" data-aos="zoom-in">
+      <h2 class="section-title" style="color: white; border-bottom-color: rgba(255,255,255,0.3);">Resilience & long‑term impact</h2>
+      <div class="resilience-text">
+        Despite ongoing economic instability and uncertainty in Lebanon and the broader Middle East, OSB Executive Education has continued to achieve important milestones and strengthen its market positioning. The Executive Education team has continuously assessed environmental challenges and collectively adapted to changing conditions. Despite these challenges, the unit remains committed to streamlining its operations, supporting sustainable growth, and enhancing both customer and learning experiences. EEU continues to explore opportunities to build long-term program impact through initiatives such as enhancing participant engagement, establishing executive education alumni networks, expanding the use of digital engagement tools, and integrating practical experiences into learning.
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Resilience section – full width background (like CTA) */
+  .resilience-fullwidth {
+    position: relative;
+    background: url('images/AUB-OSB-OEP-Pricing-Analytics-Program.jpg') center/cover no-repeat;
+    /* replace with your own image or remove the background image to keep only color */
+    padding: 5rem 1.5rem;
+    color: white;
+    text-align: center;
+  }
+
+  /* Dark overlay for better text contrast (optional, similar to CTA) */
+  .resilience-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65); /* dark overlay – adjust opacity as needed */
+    z-index: 1;
+  }
+
+  .resilience-fullwidth .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .resilience-content {
+    margin: 0 auto;
+  }
+
+  .resilience-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #ffffff;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .resilience-fullwidth {
+      padding: 3rem 1rem;
+    }
+    .resilience-text {
+      font-size: 1rem;
+    }
+  }
+</style>
 
     <!-- SECTION 3: Discover Our Stories (Success Stories + Testimonials, with lorem text above, no emojis) -->
     <section class="section" id="discover-stories">
