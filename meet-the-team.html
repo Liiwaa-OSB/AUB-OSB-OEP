@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Meet the Team | AUB OSB Executive Education</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Google Fonts + Lucide + AOS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Main Styles (shared with index) -->
+    <link rel="stylesheet" href="css/main.css" />
+
+    <style>
+        /* Additional styles for team page – uses CSS variables from main.css */
+        .team-hero {
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .team-category {
+            margin-bottom: 3rem;
+        }
+
+        /* Card layout: image circular, left of text */
+        .team-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-card__image {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+        }
+
+        .team-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover .team-card__image img {
+            transform: scale(1.02);
+        }
+
+        .team-card__content {
+            flex: 1;
+        }
+
+        .team-card__name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-card__name a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .team-card__name a:hover {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .team-card__title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-card__bio {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+
+        .team-card__email {
+            font-size: 0.85rem;
+        }
+
+        .team-card__email a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .team-card__email a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .team-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .team-card__image {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 0.5rem;
+            }
+
+            .team-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Simple grid for multiple cards in a category */
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="team-hero">
+        <div class="container">
+            <h1>Meet the Team</h1>
+            <p>Dedicated experts driving executive education excellence</p>
+        </div>
+    </div>
+
+    <main>
+        <div class="container" id="team-container">
+            <!-- Categories will be injected here by JavaScript -->
+        </div>
+    </main>
+
+    <script>
+        // Team data stored as JSON (scalable)
+        const teamData = {
+            "Leadership": [
+                {
+                    name: "Said El Fakhani, PhD",
+                    title: "Acting Director of Executive Education",
+                    bio: "Dr. Said Elfakhani is a Professor of Finance. During 2018-2022, Dr. Elfakhani served as the Associate Dean for Programs. In 2017-2018, Said had served as the Associate Dean of Executive and Continuing Education as well as the Convener for the Finance, Accounting and Managerial Economics (FAME). Prior to re-joining OSB at AUB, Dr. Elfakhani was a Professor and Ex-Dean at LAU (2011-2014), had occupied the Harvey R. Wickes Chair in International Business at Saginaw Valley State University, Michigan, USA (2007-2011). From 2000 to 2007, Said had been the Associate Dean (2000-2007) and the Finance Track Convenor (2000-2005) at AUB, Lebanon. He had taught at the U. of Saskatchewan (Canada), held visiting appointments at ISU-Indiana (1994), KFUPM-Saudi Arabia (1997) and UTD-Texas (2007). Said earned his BBA from LU (1979), MBA from UT-Arlington (1984), MSc (1987) and PhD in finance from UT-Dallas (1989). He has published numerous papers in major international refereed journals, presented academic papers in many countries, written for business magazines, and made several media appearances. Said’s current research interests include emerging markets performance, market anomalies and disturbances, portfolio performance, mutual funds performance, dividend policy, listing of derivatives and Islamic finance.",
+                    email: "said.elfakhani@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                }
+            ],
+            "Program and Event Delivery Team": [
+                {
+                    name: "Hanaa Mounzer",
+                    title: "Program and Event Delivery Manager",
+                    bio: "Ms. Hanaa Mounzer currently holds the position of Program and Event Delivery Manager at the Suliman S. Olayan School of Business at AUB. She has 10 years of experience managing face-to-face events, online webinars, and projects in higher education and executive programs. Hanaa oversees and ensures the proper initiation and completion of the programs with an optimal learning experience that meets the expectations and needs of the client and of the other involved stakeholders. Hanaa also controls and monitors the program operational budget and reports on the program performance. Hanaa holds a bachelor’s in science degree in Environmental Health with a minor in Public Health and master’s in business administration from the American University of Beirut with Beta Gemma Sigma certificate as part of the International Business Honor Society. She has EQ-I 2.0 and EQ 360 Certification from MHS. She is currently a member at Toastmasters International and served in several leadership roles: Area Director for Lebanon, club’s president, and club extension team for multiple countries: UAE, Lebanon, Jordan, and Oman.",
+                    email: "hanaa.mounzer@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                },
+                {
+                    name: "Lara Azar",
+                    title: "Program and Event Delivery Coordinator",
+                    bio: "Lara is an Event and Project Management Specialist with 15 years of experience in event management and operations across the pharmaceutical industry and, more recently, the academic sector. Her expertise encompasses the management of face-to-face meetings, executive programs, and regional symposia, in addition to coordinating the participation of healthcare professionals from the Middle East in international congresses. She is highly experienced in collaborating with cross-functional teams to execute organizational projects, optimize operations, and deliver high-quality customer experiences. Lara also played a key role in digital transformation initiatives, including the implementation of strategic meeting management tools during the COVID-19 pandemic to enhance customer satisfaction. Currently serving as a Program & Event Delivery Coordinator at the Suliman S. Olayan School of Business at the American University of Beirut, Lara leverages her expertise in event delivery, operations, and digital solutions to support Executive Education programs and ensure a seamless learning experience for executives in today’s fast-paced environment. Lara holds a bachelor’s degree in English Language and a Master of Business Administration (MBA). She is fluent in Arabic, English, and French.",
+                    email: "lara.azar@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                },
+                {
+                    name: "Reina Mneimneh",
+                    title: "Program and Event Delivery Coordinator",
+                    bio: "Reina Mneimneh is a Program and Events Delivery Coordinator at the American University of Beirut (AUB), working within the Executive Education and EMBA departments at the Olayan School of Business. In her role, Reina manages the end-to-end planning and delivery of executive programs, ensuring a seamless experience for participants, faculty, and stakeholders. Her work involves coordinating logistics, overseeing program operations, and supporting both local and international initiatives, including programs delivered in Lebanon and abroad. Reina enjoys working in dynamic environments where she can contribute to creating impactful and memorable learning journeys. Event planning and organization are among her interests, and she finds fulfillment in bringing structure and clarity to complex programs while ensuring high-quality delivery. Reina is known for strong organizational skills, adaptability, and a collaborative approach. She strives to ensure that every program is delivered to the highest standard, while continuously seeking opportunities to improve efficiency and participant experience. Through her role, Reina contributes to AUB’s mission of excellence in education by supporting professionals in gaining valuable knowledge and skills that drive growth and success.",
+                    email: "reina.mneimneh@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                }
+            ],
+            "Program Design Team": [
+                {
+                    name: "Rajab Ghazzaoui",
+                    title: "Program Design Manager",
+                    bio: "Mr. Rajab Ghazzaoui is an Executive Education Program Design Manager at OSB AUB. His responsibilities vary throughout the Company Specific Programs (CSP) and Open Enrollment Programs (OEP). Experienced Program Design Manager with a Master of Public Policy degree from The University of Chicago and Bachelor of Engineering from the American University of Beirut. Skilled in designing and delivering data-driven and research-backed programs for diverse clientele. Well-versed in budgeting, strategic planning, and team collaboration. Passionate about developing impactful and resourceful executive education programs, enhancing adult learning experience, and understanding the impact of the programs. Adept at identifying potential client needs. Strong interpersonal skills developed through diverse experiences in traveling, studying abroad, and volunteering.",
+                    email: "rajab.ghazzaoui@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                },
+                {
+                    name: "Mohammad Shoukeir",
+                    title: "Program Design Manager",
+                    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+                    email: "mohammad.shoukeir@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                }
+            ],
+            "Program Management": [
+                {
+                    name: "Hiba Hamade",
+                    title: "Program Manager",
+                    bio: "Hiba Hamade holds a PhD in Management with a specialization in Leadership and Organizational Change and brings more than 18 years of experience in higher education. She is also an executive coach certified in EQ-I 2.0 and EQ-I 360 as well as an ICF member, ACC level practitioner. Throughout her career, she has had the chance to work closely in navigating team dynamics, developing well-rounded characters to thrive complex organizational settings, and managing program portfolios including MBA and MBA Online programs. She has led and contributed to key strategies and initiatives. Hiba is also a managing editor for a business review initiative at the Suliman S. Olayan School of Business and is a part-time lecturer with teaching experience in management and microeconomics. She has built collaborations with corporate clients in Lebanon and the Middle East, including the GCC. Hiba’s research focus and publications extend to leadership, management, and organizational culture with contributions to conferences and research field. She has served as a peer reviewer for the Academy of Management for two years and has a published book chapter about Women’s Leadership in Arab MENA Countries. Bridging between her academic and practical experiences, she brings to executive learning the ability to develop program offerings aligned with organizational strategies and business needs.",
+                    email: "hiba.hamade@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                }
+            ],
+            "Business Development": [
+                {
+                    name: "Gary Saliba",
+                    title: "Business Development Executive",
+                    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+                    email: "gary.saliba@aub.edu.lb",
+                    image: "images/AUB-OSB-OEP-Pricing-Analytics-Program-Requirements.jpg",
+                    profileUrl: "#"
+                }
+            ]
+        };
+
+        // Function to render the entire team section
+        function renderTeam() {
+            const container = document.getElementById('team-container');
+            container.innerHTML = '';
+            for (const [category, members] of Object.entries(teamData)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'team-category';
+                categoryDiv.setAttribute('data-aos', 'fade-up');
+                const heading = document.createElement('h2');
+                heading.textContent = category;
+                heading.className = 'section-title';
+                categoryDiv.appendChild(heading);
+                const gridDiv = document.createElement('div');
+                gridDiv.className = 'team-grid';
+                members.forEach(member => {
+                    const card = document.createElement('div');
+                    card.className = 'team-card';
+                    // Image section
+                    const imgDiv = document.createElement('div');
+                    imgDiv.className = 'team-card__image';
+                    const img = document.createElement('img');
+                    img.src = member.image;
+                    img.alt = member.name;
+                    img.loading = 'lazy';
+                    // Fallback if image missing
+                    img.onerror = function () { this.src = 'https://via.placeholder.com/120?text=Photo'; };
+                    imgDiv.appendChild(img);
+                    // Content section
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'team-card__content';
+                    const nameDiv = document.createElement('div');
+                    nameDiv.className = 'team-card__name';
+                    const nameLink = document.createElement('a');
+                    nameLink.href = member.profileUrl;
+                    nameLink.textContent = member.name;
+                    nameDiv.appendChild(nameLink);
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'team-card__title';
+                    titleDiv.textContent = member.title;
+                    const bioDiv = document.createElement('div');
+                    bioDiv.className = 'team-card__bio';
+                    bioDiv.textContent = member.bio;
+                    const emailDiv = document.createElement('div');
+                    emailDiv.className = 'team-card__email';
+                    const emailLink = document.createElement('a');
+                    emailLink.href = `mailto:${member.email}`;
+                    emailLink.textContent = member.email;
+                    emailDiv.appendChild(emailLink);
+                    contentDiv.appendChild(nameDiv);
+                    contentDiv.appendChild(titleDiv);
+                    contentDiv.appendChild(bioDiv);
+                    contentDiv.appendChild(emailDiv);
+                    card.appendChild(imgDiv);
+                    card.appendChild(contentDiv);
+                    gridDiv.appendChild(card);
+                });
+                categoryDiv.appendChild(gridDiv);
+                container.appendChild(categoryDiv);
+            }
+            // Reinitialize AOS for new content
+            AOS.refresh();
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTeam();
+            AOS.init({ duration: 800, once: true });
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
