@@ -861,16 +861,11 @@ h3 {
 #logoTrack {
   display: flex;
   flex-wrap: nowrap;
-  width: auto;
-  animation: scrollLogos linear infinite;
   will-change: transform;
+  /* No animation property needed – it’s now JS driven */
 }
 
-/* Pause on hover */
-#logoCarousel:hover #logoTrack {
-  animation-play-state: paused;
-}
-
+/* Pause on hover is now handled by the JavaScript mouseenter/leave */
 @keyframes scrollLogos {
   0% {
     transform: translateX(0);

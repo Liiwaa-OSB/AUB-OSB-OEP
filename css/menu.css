@@ -151,12 +151,13 @@ body {
 }
 
 .nav-mega {
+  transform: translateX(-50%);
+  width: 960px;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
   background-color: #fff;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  min-width: 680px;
   padding: 1.8rem;
   z-index: 50;
   opacity: 0;
@@ -164,6 +165,12 @@ body {
   transition:
     opacity 0.2s ease,
     visibility 0.2s;
+}
+
+@media screen and (min-width: 1400px) {
+  .nav-mega {
+    width: 1050px;
+  }
 }
 
 .nav-item:hover .nav-mega {

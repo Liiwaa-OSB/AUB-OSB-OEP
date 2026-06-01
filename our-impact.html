@@ -27,7 +27,7 @@
 
         /* CSP page specific styles – uses CSS variables from main.css */
         .csp-hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/AUB-OSB-ExEd-Impact-Banner-Pattern.png') center / cover no-repeat;
             color: white;
             text-align: center;
             padding: 4rem 1.5rem;
@@ -64,7 +64,7 @@
         }
 
         .csp-card {
-            background: var(--color-border-light);
+            background: var(--color-bg-light);
         }
 
 
@@ -79,15 +79,50 @@
         .csp-card__scroll-area {
             max-height: 400px;
             overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--color-primary) #e2e8f0;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+            scrollbar-color: var(--color-text-muted);
             position: relative;
         }
 
         /* Custom scrollbar for WebKit */
         .csp-card__scroll-area::-webkit-scrollbar {
             width: 6px;
+            display: none;
         }
+
+        /* Show scrollbar on card hover */
+        .csp-card:hover .csp-card__scroll-area {
+            scrollbar-width: thin;
+            -ms-overflow-style: auto;
+        }
+
+        .csp-card:hover .csp-card__scroll-area::-webkit-scrollbar {
+            display: block;
+            width: 6px;
+        }
+
+        .csp-card:hover .csp-card__scroll-area::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .csp-card:hover .csp-card__scroll-area::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 10px;
+        }
+
+        .csp-card:hover .csp-card__scroll-area::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* Hide the gradient indicator on hover (optional but cleaner) */
+        .csp-card:hover .csp-card__gradient::after {
+            opacity: 0;
+        }
+
 
         .csp-card__scroll-area::-webkit-scrollbar-track {
             background: #e2e8f0;
@@ -115,11 +150,16 @@
             left: 0;
             right: 0;
             height: 60px;
-            background: linear-gradient(to bottom, transparent, var(--color-border-light));
+            background: linear-gradient(to bottom, transparent, var(--color-bg-light));
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s;
             border-radius: 0 0 12px 12px;
+        }
+
+        .csp-card__gradient.show-gradient {
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
         }
 
         .csp-card__gradient.show-gradient::after {
@@ -131,6 +171,7 @@
             font-weight: 800;
             color: var(--color-primary);
             margin-bottom: 1rem;
+            height: 50px;
         }
 
         .csp-card__text {
@@ -740,6 +781,28 @@
                 <!-- Cards will be injected via JavaScript for cleaner code and gradient handling -->
             </div>
         </div>
+
+        <!-- CTA SECTION (contact) -->
+        <section class="cta contact-us-section">
+            <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Can't Find What You're Looking For?</h2>
+                    <p class="cta__text">
+                        Contact us to discuss how we can help you achieve your goals.
+                    </p>
+                    <div class="cta__divider">
+                        <div class="cta__contact-links">
+                            <a href="tel:+9611374374,3748" class="cta__contact-link"><i data-lucide="phone" width="20"
+                                    height="20"></i><span>+961-1-374 374 ext. 3748</span></a>
+                            <a href="mailto:gs52@aub.edu.lb" class="cta__contact-link"><i data-lucide="mail" width="20"
+                                    height="20"></i><span>gs52@aub.edu.lb</span></a>
+                            <button class="btn btn--white js-open-popup">Contact Form</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script>

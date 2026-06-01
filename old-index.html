@@ -2,35 +2,23 @@
 <html lang="en">
 
 <head>
-  <!-- not public - Lii -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Executive Education | AUB OSB</title>
   <meta name="robots" content="noindex, nofollow" />
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design Thinking · program page</title>
+  <!-- Google Fonts + Lucide + AOS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="../../js/main.js" defer></script>
-  <script src="../../js/menu.js" defer></script>
-  <script src="../../js/contact-form-popup.js"></script>
-  <script src="../../js/carousel.js" defer></script>
-  <link rel="stylesheet" href="../../css/main.css" />
-  <link rel="stylesheet" href="../../css/menu.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Main Styles + additional custom styles for this page -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/menu.css" />
   <style>
-    :root {
-      /* Design Thinking accent */
-      --color-accent: #854295;
-      --color-accent-dark: #4b1757;
-    }
-
-    /* Program-specific hero background */
-    .hero--design-thinking {
-      background-image: url("../../images/AUB-OSB-OEP-design-thinking.jpg");
-    }
-
-    /* Menu - Active Page - OEP*/
     .nav-osb-links .osb-nav-item>a#executive-education-link {
       color: var(--color-primary);
     }
@@ -40,11 +28,422 @@
       text-decoration: underline;
       text-underline-offset: 6px;
     }
+  </style>
+  <style>
+    /* two-card grid: responsive */
+    .exec-option-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
 
-    .nav-osb-links .osb-dropdown li a#open-enrollment-programs {
+    @media (min-width: 768px) {
+      .exec-option-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    /* ========= CARD BASE ========= */
+    /* no border-radius anywhere on cards or buttons */
+    .exec-option-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: none;
+      overflow: hidden;
+      /* keep image corners sharp as well */
+    }
+
+    /* Card hover effect (lift) */
+    .exec-option-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    /* BOTH CARDS: Light background, dark text (same as current second card) */
+    .exec-option-card {
+      background-color: var(--color-border-light);
+      color: #1e2a3a;
+    }
+
+    /* IMAGE SECTION – flush top, no padding, no margin */
+    .exec-option-card__image {
+      width: 100%;
+      display: block;
+      line-height: 0;
+      background: transparent;
+    }
+
+    .exec-option-card__image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      background: #ccc;
+    }
+
+    /* CONTENT area: padding only inside, not affecting image */
+    .exec-option-card__content {
+      padding: 2rem 1.8rem 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* Title styling */
+    .exec-option-card__title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+      color: var(--color-dark-gray);
+    }
+
+    /* Category pill - sharp corners */
+    .exec-option-card__category {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: rgba(15, 43, 61, 0.1);
+      padding: 0.35rem 0.9rem;
+      color: var(--color-dark-gray);
+      width: fit-content;
+      margin-bottom: 1.25rem;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Description text */
+    .exec-option-card__desc {
+      font-size: 1rem;
+      line-height: 1.55;
+      margin-bottom: 2rem;
+      font-weight: 450;
+      color: #2d3a48;
+      flex: 1 0 auto;
+      /* Grow to fill space, don't shrink */
+      margin-bottom: 1.5rem;
+    }
+
+    /* BUTTONS container */
+    .exec-option-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      flex-shrink: 0;
+      /* Prevent shrinking */
+      margin-top: 0;
+    }
+
+    /* ===== BASE BUTTON STYLES ===== */
+    .btn--primary-grey {
+      background: var(--color-text-muted);
+    }
+
+    .btn--secondary-grey {
+      color: var(--color-text-muted);
+      border-color: var(--color-text-muted);
+    }
+
+    .btn--primary-grey:hover {
+      background: black;
+    }
+
+    .btn--secondary-grey:hover {
+      background: var(--color-text-muted);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .exec-option-card__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+
+    /* AOS simulation (optional, just keep for data-aos attribute support) */
+    [data-aos] {
+      transition-property: transform, opacity;
+    }
+
+    /* featured program cards (enhanced) */
+    .featured-card {
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.25s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #edf2f7;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+      border-color: var(--color-primary-light, #b91c44);
+    }
+
+    .featured-card__img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .featured-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .featured-card:hover .featured-card__img img {
+      transform: scale(1.03);
+    }
+
+    .featured-card__date {
+      font-size: 0.8rem;
+      font-weight: 600;
       color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 1rem 1.2rem 0.25rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .featured-card__title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin: 0 1.2rem 0.8rem 1.2rem;
+      color: #1a202c;
+      flex-shrink: 0;
+    }
+
+    .featured-card .btn--small {
+      margin: 0 1.2rem 1.5rem 1.2rem;
+      background: var(--color-primary);
+      color: white;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+      transition: 0.2s;
+      border: none;
+    }
+
+    .featured-card .btn--small:hover {
+      background: var(--color-primary-dark);
+      transform: scale(0.98);
+    }
+
+    /* Mixed media cards (image/video) – same height, swipeable */
+    .media-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .media-card__media {
+      overflow: hidden;
+      background: #f1f5f9;
+      height: 200px;
+    }
+
+    /* .media-card--image .media-card__media {
+        height: 200px;
+      }
+
+      .media-card--video .media-card__media {
+        height: 260px;
+      } */
+
+    .media-card__media img,
+    .media-card__media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-card__content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .media-card__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary-dark, #6a132c);
+    }
+
+    .media-card__text {
+      color: #2d3748;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      align-items: center;
+    }
+
+    /* Carousel overrides for 5 cards – 3 per row on desktop */
+    .carousel-5 .carousel__slide {
+      width: calc((100% - 3rem) / 3);
+      /* 3 slides → 2 gaps (1.5rem each) = 3rem */
+    }
+
+    @media (max-width: 1024px) {
+      .carousel-5 .carousel__slide {
+        width: calc((100% - 1.5rem) / 2);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .carousel-5 .carousel__slide {
+        width: 100%;
+      }
+    }
+
+    /* Ensure carousel buttons work */
+    .carousel__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: white;
+      border: 1px solid #cbd5e0;
+      width: 44px;
+      height: 44px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+    }
+
+    .carousel__btn:hover {
+      background: #f7fafc;
+    }
+
+    .carousel__btn--prev {
+      left: 0.5rem;
+    }
+
+    .carousel__btn--next {
+      right: 0.5rem;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      padding: 1.8rem;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f0eef2;
+      height: 100%;
+      transition: 0.2s;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--color-primary);
+    }
+
+    .testimonial-card__quote {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      font-style: italic;
+      position: relative;
+      padding-left: 1rem;
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .testimonial-card__profile {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+
+    .testimonial-card__avatar {
+      width: 48px;
+      height: 48px;
+      background: #e2e8f0;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .testimonial-card__name {
+      font-weight: 800;
+      color: #1e293b;
+    }
+
+    .testimonial-card__role {
+      font-size: 0.75rem;
+      color: #5b6e8c;
+    }
+
+    .carousel-spacer {
+      margin-bottom: 2rem;
+    }
+
+    .section-divider {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn--contact-custom {
+      background: white;
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      padding: 0.8rem 2rem;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn--contact-custom:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .lorem-text {
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .date-flex {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
   </style>
+  <script src="js/main.js" defer></script>
+  <script src="js/menu.js" defer></script>
+  <script src="js/carousel.js" defer></script>
+  <script src="js/contact-form-popup.js"></script>
 </head>
 
 <body>
@@ -76,7 +475,7 @@
       <div class="nav-main-container">
         <div class="nav-logo">
           <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
-            <img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
+            <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
           </a>
         </div>
         <!-- Desktop mega menu (updated with full JSON structure) -->
@@ -408,7 +807,7 @@
     <div class="nav-osb" id="osbRow">
       <div class="nav-osb-container">
         <div class="nav-osb-logo">
-          <a href="/"><img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a>
+          <a href="/"><img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a>
         </div>
         <div class="nav-osb-links">
           <ul class="osb-nav">
@@ -478,7 +877,7 @@
             <li class="osb-nav-item has-dropdown">
               <!-- lii replace href below -->
               <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-              <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html" target="_blank"
+              <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\ExEd.html" target="_blank"
                 id="executive-education-link">Executive Education</a>
               <ul class="osb-dropdown">
                 <li>
@@ -552,7 +951,7 @@
   <div class="nav-mobile-overlay" id="mobileOverlay">
     <div class="mobile-overlay-header">
       <div class="mobile-logo">
-        <img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
+        <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
       </div>
       <button class="mobile-close-btn" id="closeOverlayBtn">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -576,166 +975,98 @@
       </div>
     </div>
   </div>
+
   <main>
-    <!-- HERO SECTION -->
-    <section class="hero hero--design-thinking">
+    <!-- HERO VIDEO (same as index) -->
+    <section class="hero hero--video" data-aos="fade">
+      <video class="hero__video-element" style="object-position: 50% 90%" autoplay muted loop playsinline>
+        <source src="videos/AUB-OSB-Executive-Education-banner-video.mp4" type="video/mp4" />
+      </video>
       <div class="hero__overlay"></div>
       <div class="container">
-        <div class="hero__content hero__content--left">
-          <h1 class="hero__title">Business Centric Design Thinking</h1>
-          <h2 class="hero__subtitle">Innovate to Elevate</h2>
-          <p class="hero__text">Face-to-Face in Beirut, Lebanon</p>
-          <div class="hero__buttons">
-            <button class="btn btn--accent">Register Now</button>
-            <button class="btn btn--outline-light">
-              Contact Executive Education
-            </button>
-          </div>
+        <div class="hero__content hero__content--center">
+          <h1 class="hero__title">Executive Education</h1>
+          <p class="hero__subtitle">
+            World-class programs designed for impact
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- PROGRAM DETAILS -->
-    <section class="section">
+    <!-- SECTION 1: Our Program Formats (with descriptive text + two cards) -->
+    <section class="section" id="program-options">
       <div class="container">
-        <div class="detail-grid">
-          <div class="detail-item">
-            <i data-lucide="calendar" class="detail-item__icon" width="28" height="28"></i>
-            <div>
-              <div class="detail-item__label">Dates</div>
-              <div class="detail-item__value">July 22, 23, 2026</div>
-            </div>
-          </div>
-          <div class="detail-item">
-            <i data-lucide="clock" class="detail-item__icon" width="28" height="28"></i>
-            <div>
-              <div class="detail-item__label">Duration</div>
-              <div class="detail-item__value">2 Days</div>
-            </div>
-          </div>
-          <div class="detail-item">
-            <i data-lucide="user" class="detail-item__icon" width="28" height="28"></i>
-            <div>
-              <div class="detail-item__label">Format</div>
-              <div class="detail-item__value">Face-to-Face</div>
-            </div>
-          </div>
-          <div class="detail-item">
-            <i data-lucide="dollar-sign" class="detail-item__icon" width="28" height="28"></i>
-            <div>
-              <div class="detail-item__label">Fees</div>
-              <div class="detail-item__value">$1500</div>
-              <div class="detail-item__sub">$1200 for AUB Alumni</div>
-            </div>
-          </div>
-
-          <div class="detail-item">
-            <i data-lucide="map-pin" class="detail-item__icon" width="28" height="28"></i>
-            <div>
-              <div class="detail-item__label">Location</div>
-              <div class="detail-item__value">AUB - OSB in Lebanon</div>
-            </div>
+        <div class="text-center">
+          <h2 class="section-title" data-aos="fade-up">
+            Tailored to ensure professional growth
+          </h2>
+          <div class="section-description" data-aos="fade-up" data-aos-delay="50">
+            Our Executive Education programs develop the leadership and management skills of senior and executive
+            managers and high potentials, enhancing organization-wide leadership capability and effectiveness of teams.
+            Empower and create a real impact on yourself, your team, and your organization with our custom-designed
+            programs and open enrollment programs for corporates and individuals. ​​
           </div>
         </div>
-      </div>
-    </section>
+        <div class="programs-container">
+          <div class="exec-option-grid" data-aos="fade-up" data-aos-delay="100">
+            <!-- CARD 1: Open Enrollment Programs (LIGHT BG, DARK TEXT - same as current second card) -->
+            <div class="exec-option-card">
+              <!-- Image at the top, flush, no padding -->
+              <div class="exec-option-card__image">
+                <img src="images/AUB-OSB-CP-card.jpg" alt="Open Enrollment Programs - professionals collaborating"
+                  loading="lazy" />
+              </div>
+              <div class="exec-option-card__content">
+                <div class="exec-option-card__title">
+                  Open Enrollment Programs
+                </div>
+                <div class="exec-option-card__category">FOR INDIVIDUALS</div>
+                <div class="exec-option-card__desc">
+                  Get in touch with us to help you find the right program for
+                  you. Whatever your professional experience, our open
+                  enrollment programs will equip you with the right skillsets
+                  to accelerate your career growth.
+                </div>
+                <div class="exec-option-card__actions">
+                  <!-- btn--primary for Contact us -->
+                  <a href="#contact-individuals" class="btn btn--primary">
+                    Contact us
+                  </a>
+                  <!-- btn--secondary for Learn more -->
+                  <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\open-enrollment-programs\index.html"
+                    class="btn btn--secondary">
+                    Learn more
+                  </a>
+                </div>
+              </div>
+            </div>
 
-    <!-- PROGRAM OVERVIEW -->
-    <section class="section">
-      <div class="container">
-        <div class="overview-grid">
-          <div class="overview-grid__image">
-            <img src="../../images/AUB-OSB-OEP-Design-Thinking-Program.jpg" alt="Innovation workshop" />
-          </div>
-          <div class="overview-grid__text">
-            <h2 class="section-title">The Program</h2>
-            <p>
-              With today's rapidly evolving customer needs, organizations are
-              under increasing pressure to innovate and constantly adapt to
-              their customers' changing requirements. The shift from a
-              centralized innovation team to a team-based, cross-functional
-              effort requires fundamental changes to the traditional
-              innovation mindset and the methodologies teams adopt.
-            </p>
-            <p>
-              The Innovate to Elevate Program, developed by the American
-              University of Beirut's Suliman S. Olayan School of Business
-              (OSB), explores the requirements for enabling customer-focused
-              innovation—a key strategy for facing increasingly competitive
-              environments. It focuses on empowering teams to turn innovative
-              ideas into execution through design thinking.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY THIS PROGRAM -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Why This Program</h2>
-        <div class="grid-4">
-          <div class="flip-card">
-            <div class="flip-card__inner">
-              <div class="flip-card__front">
-                <i data-lucide="lightbulb" width="40" height="40" class="flip-card__icon"></i>
-                <h3>Innovative</h3>
-                <p>Updated innovation mindset through design thinking.</p>
+            <!-- CARD 2: Customized Programs (LIGHT BG, DARK TEXT - same as current second card) -->
+            <div class="exec-option-card">
+              <!-- Image at the top, flush, no padding -->
+              <div class="exec-option-card__image">
+                <img src="images/AUB-OSB-OEP-crad.jpg" alt="Customized Programs - team strategy meeting"
+                  loading="lazy" />
               </div>
-              <div class="flip-card__back">
-                <p>
-                  Learn cutting-edge design thinking methodologies that drive
-                  real business innovation and competitive advantage in
-                  today's markets.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card">
-            <div class="flip-card__inner">
-              <div class="flip-card__front">
-                <i data-lucide="wrench" width="40" height="40" class="flip-card__icon"></i>
-                <h3>Practical</h3>
-                <p>Hands-on tools and techniques.</p>
-              </div>
-              <div class="flip-card__back">
-                <p>
-                  Apply practical frameworks and tools immediately to your
-                  business challenges with actionable takeaways you can
-                  implement right away.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card">
-            <div class="flip-card__inner">
-              <div class="flip-card__front">
-                <i data-lucide="clock" width="40" height="40" class="flip-card__icon"></i>
-                <h3>Short & Effective</h3>
-                <p>3-day high-impact format.</p>
-              </div>
-              <div class="flip-card__back">
-                <p>
-                  Intensive learning experience designed for busy executives.
-                  Maximum value in minimum time with focused, results-driven
-                  content.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card">
-            <div class="flip-card__inner">
-              <div class="flip-card__front">
-                <i data-lucide="users" width="40" height="40" class="flip-card__icon"></i>
-                <h3>Highly Engaging</h3>
-                <p>Case studies, exercises, interactive discussions.</p>
-              </div>
-              <div class="flip-card__back">
-                <p>
-                  Collaborate with peers, work on real-world cases, and
-                  benefit from interactive workshops that make learning
-                  dynamic and memorable.
-                </p>
+              <div class="exec-option-card__content">
+                <div class="exec-option-card__title">Customized Programs</div>
+                <div class="exec-option-card__category">FOR COMPANIES</div>
+                <div class="exec-option-card__desc">
+                  We collaborate with organizations and companies to design and deliver learning experiences highly
+                  customized to their unique needs, and audience.
+                </div>
+                <div class="exec-option-card__actions">
+                  <!-- btn--primary for Contact us -->
+                  <a href="#contact-companies" class="btn btn--primary btn--primary-grey">
+                    Contact us
+                  </a>
+                  <!-- btn--secondary with outline and --color-text-muted -->
+                  <!-- lii replcae href -->
+                  <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\custom-programs\index.html"
+                    class="btn btn--secondary btn--secondary-grey">
+                    Learn more
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -743,353 +1074,252 @@
       </div>
     </section>
 
-    <!-- INSTRUCTOR -->
-    <section class="section" style="background: #f5f5f5">
+
+    <!-- SECTION 3: Discover Our Stories (Success Stories + Testimonials, with lorem text above, no emojis) -->
+    <section class="section" id="discover-stories">
       <div class="container">
-        <h2 class="section-title">Program Instructor</h2>
-        <div class="instructor-grid">
-          <div class="instructor-grid__image">
-            <img src="../../images/AUB-OSB-Dr.Fouad-Profile.jpg" alt="Dr. Fouad Zablith" />
-          </div>
-          <div>
-            <h3 class="instructor-grid__name">Fouad Zablith, PhD</h3>
-            <div class="instructor-grid__title">
-              <p>
-                Associate Professor of Business Information and Decision
-                Systems<br />
-                Associate Dean of Online Learning and Program Development<br />
-                Olayan School of Business – American University of Beirut
-              </p>
-            </div>
-            <p class="instructor-grid__bio">
-              In his research, Dr. Zablith explores the potential of emerging
-              information and knowledge technologies to help people and
-              organizations achieve their objectives. His work has been
-              published in several peer-reviewed conference proceedings, book
-              chapters, and journals, including Artificial Intelligence, the
-              Journal of Business Research, Long Range Planning, and others.
-            </p>
+        <div class="text-center">
+          <h2 class="section-title" data-aos="fade-up">
+            The AUB OSB Executive Education Learning Experience
+          </h2>
+          <div class="section-description" data-aos="fade-up" data-aos-delay="50">
+            As an educational institution, AUB brings in more than 160 years of experience in education and more than
+            125 years of experience in business education based on global best practices adapted to the contextual local
+            needs of the MENA region.  At OSB Executive Education, we use transformative and experiential learning for
+            individuals and organizations to ensure a dynamic environment which challenges thinking and maximizes
+            learning outcomes. We adapt the learning experience to your needs integrating the online, hybrid, and face
+            to face delivery methods.  Our faculty are thought leaders and industry experts dedicated to bringing their
+            expertise and real-world cases to the learning experience in addition to their flexibility to deliver
+            programs in English or Arabic languages. 
           </div>
         </div>
+
+        <!-- lii - copy section with new logos from custom-programs -->
       </div>
     </section>
 
-    <!-- ===== WHO SHOULD ENROLL (carousel version with 5 cards) ===== -->
-    <section class="section" style="background: #f5f5f5">
+
+    <!-- Partners (logos) -->
+    <div class="section">
       <div class="container">
-        <h2 class="section-title">Who Should Enroll</h2>
-
-        <!-- carousel component - reusable, dynamic -->
-        <div class="carousel js-carousel carousel-3" data-carousel>
-          <!-- previous button -->
-          <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
-            &#10094;
-          </button>
-
+        <div class="text-center">
+          <h2 class="section-title" data-aos="fade-up">
+            Clients from a Diverse Range of Industries
+          </h2>
+        </div>
+        <div class="carousel carousel-5" id="logoCarousel">
           <!-- scrollable container -->
           <div class="carousel__container js-carousel-container">
-            <div class="carousel__track js-carousel-track">
-              <!-- original 3 cards (exact same content) -->
+            <div class="carousel__track" id="logoTrack">
               <div class="carousel__slide">
-                <div class="participant-card">
-                  <div class="participant-card__image">
-                    <img src="../../images/AUB-OSB-OEP-Design-Thinking-Executuves-Managers.jpg"
-                      alt="Executives & Managers" onerror="
-                          this.src =
-                            'https://placehold.co/400x300/2d5a27/white?text=Executives'
-                        " />
-                  </div>
-                  <div class="participant-card__content">
-                    <h3 class="participant-card__title">
-                      Executives & Managers
-                    </h3>
-                    <p class="participant-card__text">
-                      Decision-makers seeking insights into customer-centric
-                      solutions through team-based innovation.
-                    </p>
-                  </div>
+                <div class="logo-item">
+                  <img src="./logos/ABC.png" alt="ABC Logo" />
                 </div>
               </div>
-
               <div class="carousel__slide">
-                <div class="participant-card">
-                  <div class="participant-card__image">
-                    <img src="../../images/AUB-OSB-OEP-Design-Thinking-Owenrs.jpg" alt="Entrepreneurs & Business Owners"
-                      onerror="
-                          this.src =
-                            'https://placehold.co/400x300/8b5a2b/white?text=Entrepreneurs'
-                        " />
-                  </div>
-                  <div class="participant-card__content">
-                    <h3 class="participant-card__title">
-                      Entrepreneurs & Business Owners
-                    </h3>
-                    <p class="participant-card__text">
-                      Professionals aiming to enhance products and services
-                      for evolving customer needs.
-                    </p>
-                  </div>
+                <div class="logo-item">
+                  <img src="./logos/ADCB.png" alt="ADCB Logo" />
                 </div>
               </div>
-
               <div class="carousel__slide">
-                <div class="participant-card">
-                  <div class="participant-card__image">
-                    <img src="../../images/AUB-OSB-OEP-Design-Thinking-Alumni.jpg" alt="AUB Alumni" onerror="
-                          this.src =
-                            'https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'
-                        " />
-                  </div>
-                  <div class="participant-card__content">
-                    <h3 class="participant-card__title">AUB Alumni</h3>
-                    <p class="participant-card__text">
-                      Looking to reconnect with the AUB network and renew
-                      their learning journey.
-                    </p>
-                  </div>
+                <div class="logo-item">
+                  <img src="./logos/ALFARDAN.png" alt="ALFARDAN Logo" />
                 </div>
               </div>
-            </div>
-            <!-- /track -->
-          </div>
-          <!-- /container -->
-
-          <!-- next button -->
-          <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
-            &#10095;
-          </button>
-        </div>
-        <!-- /carousel -->
-
-        <!-- Program Requirements (unchanged) -->
-        <div class="requirements-grid">
-          <div class="requirements-grid__image">
-            <img src="../../images/AUB-OSB-OEP-Design-Thinking-Program-Requirements.jpg" alt="Professional Learning"
-              onerror="
-                  this.src =
-                    'https://placehold.co/600x300/4a6b8a/white?text=Requirements'
-                " />
-          </div>
-          <div class="requirements-grid__content">
-            <h3 class="requirements-grid__title">Program Requirements</h3>
-            <ul class="requirements-grid__list">
-              <li>
-                <span>Participants come from different sectors and
-                  industries</span>
-              </li>
-              <li>
-                <span>Proficiency in spoken and written English is
-                  necessary</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- /container -->
-    </section>
-
-    <!-- TIMING, FEES & LOCATION -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Timing, Fees & Location</h2>
-        <div class="grid-5">
-          <div class="info-card">
-            <i data-lucide="calendar" width="40" height="40" class="info-card__icon"></i>
-            <h3 class="info-card__title">Dates</h3>
-            <div class="info-card__value">July 28-29–30, 2026</div>
-          </div>
-          <div class="info-card">
-            <i data-lucide="clock" width="40" height="40" class="info-card__icon"></i>
-            <h3 class="info-card__title">Duration</h3>
-            <div class="info-card__value">2 Days</div>
-          </div>
-          <div class="info-card">
-            <i data-lucide="user" width="40" height="40" class="info-card__icon"></i>
-            <h3 class="info-card__title">Format</h3>
-            <div class="info-card__value">Face-to-Face</div>
-          </div>
-          <div class="info-card">
-            <i data-lucide="dollar-sign" width="40" height="40" class="info-card__icon"></i>
-            <h3 class="info-card__title">Fees</h3>
-            <div class="info-card__value">$1500</div>
-            <div class="info-card__sub">$1200 for AUB Alumni</div>
-          </div>
-          <div class="info-card">
-            <i data-lucide="map-pin" width="40" height="40" class="info-card__icon"></i>
-            <h3 class="info-card__title">Location</h3>
-            <div class="info-card__value">AUB - OSB in Lebanon</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="cta register-section" style="
-          background-image: url(&quot;../../images/Design-Thinking-bg.jpg&quot;);
-        ">
-      <div class="cta__overlay"></div>
-      <div class="container">
-        <div class="cta__content">
-          <h2 class="cta__title">Ready to Innovate and Elevate?</h2>
-          <p class="cta__text">
-            Join us for this transformative 3-day program and unlock your
-            innovation potential.
-          </p>
-          <button class="btn btn--white">Register Now</button>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <!-- RELATED PROGRAMS -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">You Might Also Be Interested In</h2>
-        <div class="program-grid program-grid--related">
-          <!-- PRICING ANALYTICS -->
-          <div class="program-card" data-url="../programs/pricing-analytics-du.html">
-            <div class="program-card__image">
-              <img src="../../images/AUB-OSB-OEP-Pricing-Analytics.jpg" alt="Pricing Analytics" />
-            </div>
-            <div class="program-card__accent pricing-analytics-bg"></div>
-            <div class="program-card__content">
-              <div class="program-card__title">PRICING ANALYTICS</div>
-              <p class="program-card__text">
-                This program focuses on pricing as a competitive driver
-                balancing the trade between faster resource/inventory turnover
-                and higher margins through data analytics capabilities. While
-                advances in analytics are rapidly transforming pricing
-                practices, this program sheds light on the enduring principles
-                that form the foundation of effective pricing strategy.
-              </p>
-              <div class="program-card__footer">
-                <div class="program-card__meta">
-                  <span class="program-card__meta-item"><i data-lucide="user" width="16"></i>Face-to-Face</span>
-                  <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>TBA</span>
-                  <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>2 Days</span>
-                  <span class="program-card__meta-item"><i data-lucide="map-pin" width="16"></i>AUB Academic and
-                    Executive Hub in Dubai</span>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/Algorythm.png" alt="Algorythm Logo" />
                 </div>
-                <a href="../programs/pricing-analytics-du.html" class="btn btn--primary btn--full">Learn More</a>
               </div>
-            </div>
-          </div>
-
-          <!-- DESIGN THINKING -->
-          <div class="program-card" style="display: none" data-url="../programs/design-thinking.html">
-            <div class="program-card__image">
-              <img src="../../images/AUB-OSB-OEP-design-thinking.jpg" alt="DESIGN THINKING" />
-            </div>
-            <div class="program-card__accent design-thinking-bg"></div>
-            <div class="program-card__content">
-              <div class="program-card__title">DESIGN THINKING</div>
-              <p class="program-card__text">
-                This Design Thinking program explores the needed requirements
-                for enabling customer focused innovation that is key for
-                facing increasingly competitive environments. It aims to
-                support aspiring entrepreneurs and professionals exploring
-                intra-organizational innovation practices. The program aims to
-                develop the ability to frame stakeholders’ needs and generate
-                innovative and feasible solutions to address these needs.
-              </p>
-              <div class="program-card__footer">
-                <div class="program-card__meta">
-                  <span class="program-card__meta-item"><i data-lucide="user" width="16"></i>Face-to-Face</span>
-                  <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>July 22, 23,
-                    2026</span>
-                  <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>2 Days</span>
-                  <span class="program-card__meta-item"><i data-lucide="map-pin" width="16"></i>AUB - OSB in
-                    Lebanon</span>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/ALSAYER.png" alt="ALSAYER Logo" />
                 </div>
-                <a href="../programs/design-thinking.html" class="btn btn--primary btn--full">Learn More</a>
               </div>
-            </div>
-          </div>
-
-          <!-- AI IN SUPPLY CHAIN -->
-          <div class="program-card" data-url="../programs/ai-in-supply-chain.html">
-            <div class="program-card__image">
-              <img src="../../images/AUB-OSB-OEP-AI-Supply Chain.jpg" alt="AI in Supply Chain" />
-            </div>
-            <div class="program-card__accent ai-in-supply-chain-bg"></div>
-            <div class="program-card__content">
-              <div class="program-card__title">AI IN SUPPLY CHAIN</div>
-              <p class="program-card__text">
-                This program focuses on real-world AI applications in
-                production, demand forecasting, inventory management,
-                logistics optimization, and risk mitigation. Participants will
-                learn how AI-driven systems shape modern supply chains and how
-                to interpret their outputs to make informed strategic
-                decisions.
-              </p>
-              <div class="program-card__footer">
-                <div class="program-card__meta">
-                  <span class="program-card__meta-item"><i data-lucide="user" width="16"></i>Face-to-Face</span>
-                  <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>TBA,
-                    2026</span>
-                  <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>3 Days</span>
-                  <span class="program-card__meta-item"><i data-lucide="map-pin" width="16"></i>AUB - OSB in
-                    Lebanon</span>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/ALTIJARI.png" alt="ALTIJARI Logo" />
                 </div>
-                <a href="../programs/ai-in-supply-chain.html" class="btn btn--primary btn--full">Learn More</a>
               </div>
-            </div>
-          </div>
-
-          <!-- FAMILY BUSINESS GOVERNANCE -->
-          <div class="program-card" data-url="../programs/family-business-governance.html">
-            <div class="program-card__image">
-              <img src="../../images/AUB-OSB-OEP-Family-Business-governance.jpg" alt="Family Business Governance" />
-            </div>
-            <div class="program-card__accent family-business-governance-bg"></div>
-            <div class="program-card__content">
-              <div class="program-card__title">
-                FAMILY BUSINESS GOVERNANCE
-              </div>
-              <p class="program-card__text">
-                This unique program equips family business leaders with tools
-                and frameworks needed to design governance systems that manage
-                complexity and ensure continuity without compromising family
-                harmony. Topics include family governance structures, board
-                composition, preserving family's wealth, planning succession,
-                and managing conflicts.
-              </p>
-              <div class="program-card__footer">
-                <div class="program-card__meta">
-                  <span class="program-card__meta-item"><i data-lucide="user" width="16"></i>Face-to-Face</span>
-                  <span class="program-card__meta-item"><i data-lucide="calendar" width="16"></i>
-                    TBA, 2026</span>
-                  <span class="program-card__meta-item"><i data-lucide="clock" width="16"></i>3 Days</span>
-                  <span class="program-card__meta-item"><i data-lucide="map-pin" width="16"></i>AUB - OSB in
-                    Lebanon</span>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/Arab BANK.png" alt="Arab BANK Logo" />
                 </div>
-                <a href="../programs/family-business-governance.html" class="btn btn--primary btn--full">Learn More</a>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/ARAMEX.png" alt="ARAMEX Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/AUBMC.png" alt="AUBMC Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/Bank Audi.png" alt="Bank Audi Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/BCI.png" alt="BCI Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/BIOLOGIX.png" alt="BIOLOGIX Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/BLF.png" alt="BLF Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/CITI.png" alt="CITI Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/EXPEDITORS.png" alt="EXPEDITORS Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/FATTAL.png" alt="FATTAL Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/GLOBMED.png" alt="GLOBMED Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/GULF BANK.png" alt="GULF BANK Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/HIKMA.png" alt="HIKMA Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/IBQ.png" alt="IBQ Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/JANSSEN.png" alt="JANSSEN Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/LILLY.png" alt="LILLY Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/MOF.png" alt="MOF Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/NBI.png" alt="NBI Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/NBK.CAP.png" alt="NBK.CAP Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/NBK.png" alt="NBK Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/ORANGE.png" alt="ORANGE Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/PACE.png" alt="PACE Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/QLC.png" alt="QLC Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/SANOFI.png" alt="SANOFI Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/SMC.png" alt="SMC Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/SUKLEEN.png" alt="SUKLEEN Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/TABUK.png" alt="TABUK Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/TADMUR.png" alt="TADMUR Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/TRANSMED.png" alt="TRANSMED Logo" />
+                </div>
+              </div>
+              <div class="carousel__slide">
+                <div class="logo-item">
+                  <img src="./logos/YPO.png" alt="YPO Logo" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- CTA SECTION (contact) -->
+    <!-- CTA SECTION (contact / general) -->
     <section class="cta contact-us-section">
       <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
-      <div class="container">
+      <div class="container" data-aos="fade-right">
         <div class="cta__content">
           <h2 class="cta__title">Can't Find What You're Looking For?</h2>
           <p class="cta__text">
-            Contact us to discuss how we can help you achieve your goals.
+            We offer customized programs tailored to your organization's
+            specific needs.<br />Contact us to discuss how we can help you
+            achieve your goals.
           </p>
           <div class="cta__divider">
             <div class="cta__contact-links">
-              <a href="tel:+9611374374,3748" class="cta__contact-link"><i data-lucide="phone" width="20"
+              <a href="tel:+9611374374,3748,3748" class="cta__contact-link"><i data-lucide="phone" width="20"
                   height="20"></i><span>+961-1-374 374 ext. 3748</span></a>
               <a href="mailto:gs52@aub.edu.lb" class="cta__contact-link"><i data-lucide="mail" width="20"
                   height="20"></i><span>gs52@aub.edu.lb</span></a>
               <button class="btn btn--white js-open-popup">Contact Form</button>
             </div>
           </div>
+
         </div>
+      </div>
     </section>
   </main>
 
@@ -1097,7 +1327,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__accred">
-        <img src="../../images/AUB-OSB-accreditations.jpg" alt="Accreditations" />
+        <img src="images/AUB-OSB-accreditations.jpg" alt="Accreditations" />
       </div>
       <div class="footer-grid">
         <div class="footer-item">
@@ -1215,39 +1445,38 @@
         </li>
       </ul>
     </div>
-
-    <!-- Sticky action buttons -->
-    <div class="sticky-cta">
-      <a href="../downloadables/AUB-OSB-Fact_Sheet-OEP-DESIGN_THINKING.pdf" class="sticky-cta__btn"
-        download="AUB-OSB-Fact_Sheet-OEP-DESIGN_THINKING.pdf" aria-label="Download Brochure">
-        <svg class="sticky-cta__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path
-            d="M7 5.222V0h2v5.193l1.107-1.107L11.52 5.5 7.986 9.036 4.45 5.5l1.414-1.414L7 5.222zM16 11v5H0v-5h2v3h12v-3h2z" />
-        </svg>
-        <span class="sticky-cta__label">Download Brochure</span>
-      </a>
-      <a href="#" class="sticky-cta__btn" aria-label="Apply Now">
-        <svg class="sticky-cta__icon" viewBox="0 -0.5 21 21" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path
-            d="M384,209.210475 L384,219 L363,219 L363,199.42095 L373.5,199.42095 L373.5,201.378855 L365.1,201.378855 L365.1,217.042095 L381.9,217.042095 L381.9,209.210475 L384,209.210475 Z M370.35,209.51395 L378.7731,201.64513 L380.4048,203.643172 L371.88195,212.147332 L370.35,212.147332 L370.35,209.51395 Z M368.25,214.105237 L372.7818,214.105237 L383.18415,203.64513 L378.8298,199 L368.25,208.687714 L368.25,214.105237 Z"
-            transform="translate(-363 -199)" />
-        </svg>
-        <span class="sticky-cta__label">Apply Now</span>
-      </a>
-      <a href="#" class="sticky-cta__btn" aria-label="Contact Us">
-        <svg class="sticky-cta__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="miter" stroke-linecap="butt">
-            <rect x="1" y="4" width="22" height="16" />
-            <polyline points="1 4 12 13 23 4" />
-          </g>
-        </svg>
-        <span class="sticky-cta__label">Contact Us</span>
-      </a>
-    </div>
   </footer>
 
   <script>
     lucide.createIcons();
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+    // smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (targetId === "#" || targetId === "") return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+      }
+      // optional AOS-like manual trigger if needed, but we only keep data attributes for styling
+    });
   </script>
 </body>
 

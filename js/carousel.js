@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ----------------------------------------------------------------------
-//  Continuous logos carousel (unchanged)
+//  Continuous logos carousel – seamless infinite scroll (JS driven)
 // ----------------------------------------------------------------------
 (function initContinuousCarousel() {
   const carousel = document.getElementById('logoCarousel');
@@ -295,18 +295,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const originalSlides = Array.from(track.children);
   if (originalSlides.length === 0) return;
 
-  // Duplicate slides to create seamless infinite effect
-  const slidesToAdd = [...originalSlides];
-  for (let i = 0; i < 2; i++) {
-    slidesToAdd.forEach(slide => {
-      track.appendChild(slide.cloneNode(true));
-    });
+  // ─────────────────────────────────────────────────────────────────
+  // 1. Clone the original set enough times to create a long scrollable strip
+  //    (minimum 2 full copies, but 3 are safer for high speeds)
+  // ─────────────────────────────────────────────────────────────────
+  function buildLongTrack() {
+    // Clear any existing content
+    track.innerHTML = '';
+    // Add three copies of the original slides
+    for (let i = 0; i < 3; i++) {
+      originalSlides.forEach(slide => {
+        track.appendChild(slide.cloneNode(true));
+      });
+    }
   }
+  buildLongTrack();
 
+  // Refresh the list of slides
+  let allSlides = Array.from(track.children);
+  const originalSetCount = originalSlides.length;
+  const totalSlides = allSlides.length;
+
+  // ─────────────────────────────────────────────────────────────────
+  // 2. Measure the width of one original set (important for resetting)
+  // ─────────────────────────────────────────────────────────────────
   function getOriginalSetWidth() {
     let width = 0;
-    for (let i = 0; i < originalSlides.length; i++) {
-      const slide = track.children[i];
+    // Use the first 'originalSetCount' slides in the current track
+    for (let i = 0; i < originalSetCount; i++) {
+      const slide = allSlides[i];
       const style = window.getComputedStyle(slide);
       const marginLeft = parseFloat(style.marginLeft) || 0;
       const marginRight = parseFloat(style.marginRight) || 0;
@@ -315,18 +332,81 @@ document.addEventListener('DOMContentLoaded', () => {
     return width;
   }
 
-  function updateSpeed() {
-    const setWidth = getOriginalSetWidth();
-    const duration = setWidth / 1500;   // adjust speed as desired
-    track.style.animationDuration = `${Math.max(5, duration)}s`;
+  let originalSetWidth = getOriginalSetWidth();
+  let translateX = 0;
+  let animationId = null;
+  let speed = 1.5; // pixels per frame (adjust for desired speed)
+
+  // ─────────────────────────────────────────────────────────────────
+  // 3. The animation loop – moves the track and resets seamlessly
+  // ─────────────────────────────────────────────────────────────────
+  function scrollStep() {
+    if (!carousel || !track) return;
+
+    // Move left by 'speed' pixels
+    translateX -= speed;
+    // Apply transform
+    track.style.transform = `translateX(${translateX}px)`;
+
+    // If we have scrolled more than the width of one original set,
+    // jump forward by exactly that width (no visual jump because the
+    // content is duplicated)
+    if (Math.abs(translateX) >= originalSetWidth) {
+      translateX += originalSetWidth;
+      // No transition, just instantly reposition
+      track.style.transform = `translateX(${translateX}px)`;
+    }
+
+    animationId = requestAnimationFrame(scrollStep);
   }
 
-  window.addEventListener('resize', () => {
-    updateSpeed();
-    track.style.animation = 'none';
-    track.offsetHeight; // force reflow
-    track.style.animation = null;
-  });
+  // Start / stop on hover (same user expectation)
+  function startScroll() {
+    if (animationId) cancelAnimationFrame(animationId);
+    animationId = requestAnimationFrame(scrollStep);
+  }
 
-  updateSpeed();
+  function stopScroll() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // 4. Recalculate width and reset position on window resize
+  // ─────────────────────────────────────────────────────────────────
+  function onResize() {
+    // Rebuild track to avoid gaps (clones might have outdated sizes)
+    buildLongTrack();
+    allSlides = Array.from(track.children);
+    originalSetWidth = getOriginalSetWidth();
+
+    // Reset position to zero
+    translateX = 0;
+    track.style.transform = `translateX(0px)`;
+
+    // Restart animation if it was running
+    if (animationId) {
+      stopScroll();
+      startScroll();
+    }
+  }
+
+  window.addEventListener('resize', onResize);
+
+  // Attach hover events
+  carousel.addEventListener('mouseenter', stopScroll);
+  carousel.addEventListener('mouseleave', startScroll);
+
+  // Start the infinite scroll
+  startScroll();
+
+  // Optional: expose cleanup (e.g., if you need to destroy later)
+  window.cleanupContinuousCarousel = function() {
+    stopScroll();
+    window.removeEventListener('resize', onResize);
+    carousel.removeEventListener('mouseenter', stopScroll);
+    carousel.removeEventListener('mouseleave', startScroll);
+  };
 })();
