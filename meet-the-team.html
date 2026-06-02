@@ -97,7 +97,6 @@
             color: var(--color-primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
         }
 
         .team-card__bio {
@@ -109,6 +108,7 @@
 
         .team-card__email {
             font-size: 0.85rem;
+            margin-bottom: 0.75rem;
         }
 
         .team-card__email a {
@@ -159,10 +159,11 @@
 
     <script src="js/main.js" defer></script>
     <script src="js/menu.js" defer></script>
+    <script src="js/contact-form-popup.js"></script>
 </head>
 
 <body>
-        <div class="nav">
+    <div class="nav">
         <!-- UTILITY BAR (desktop only) -->
         <div class="nav-utility">
             <div class="nav-utility-container">
@@ -748,7 +749,7 @@
             </div>
         </section>
     </main>
-<!-- FOOTER -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer__accred">
@@ -969,14 +970,14 @@
                     img.alt = member.name;
                     img.loading = 'lazy';
                     // Fallback if image fails to load (ensures robust visuals)
-                    img.onerror = function () { 
-                        this.src = 'https://via.placeholder.com/120?text=Photo'; 
+                    img.onerror = function () {
+                        this.src = 'https://via.placeholder.com/120?text=Photo';
                     };
                     imgDiv.appendChild(img);
                     // Content section - no hyperlink on name
                     const contentDiv = document.createElement('div');
                     contentDiv.className = 'team-card__content';
-                    
+
                     const nameDiv = document.createElement('div');
                     nameDiv.className = 'team-card__name';
                     // Plain text name without any anchor/link (profile link removed entirely)
@@ -984,19 +985,19 @@
                     const titleDiv = document.createElement('div');
                     titleDiv.className = 'team-card__title';
                     titleDiv.textContent = member.title;
-                    const bioDiv = document.createElement('div');
-                    bioDiv.className = 'team-card__bio';
-                    bioDiv.textContent = member.bio;
                     const emailDiv = document.createElement('div');
                     emailDiv.className = 'team-card__email';
                     const emailLink = document.createElement('a');
                     emailLink.href = `mailto:${member.email}`;
                     emailLink.textContent = member.email;
                     emailDiv.appendChild(emailLink);
+                    const bioDiv = document.createElement('div');
+                    bioDiv.className = 'team-card__bio';
+                    bioDiv.textContent = member.bio;
                     contentDiv.appendChild(nameDiv);
                     contentDiv.appendChild(titleDiv);
-                    contentDiv.appendChild(bioDiv);
                     contentDiv.appendChild(emailDiv);
+                    contentDiv.appendChild(bioDiv);
                     card.appendChild(imgDiv);
                     card.appendChild(contentDiv);
                     gridDiv.appendChild(card);
