@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Contact Us | AUB OSB – Suliman S. Olayan School of Business</title>
+
+    <!-- Google Fonts + Lucide + AOS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+    <!-- Main Styles (referenced but not essential for standalone demo) -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/menu.css">
+
+    <style>
+        /* ===== GLOBAL RESET & VARIABLES ===== */
+        :root {
+            --color-primary: #840132;
+            --color-primary-dark: #5e0024;
+            --color-primary-light: #a81b4b;
+            --color-text-muted: #5a6874;
+            --color-border-light: #e2e8f0;
+            --color-bg-light: #f8fafc;
+            --font-family-base: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            color: #1e293b;
+            background: #ffffff;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .contact-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIgZD0iTTAgMGg0MHY0MEgweiIvPjwvc3ZnPg==') repeat;
+            background-color: #2c1a24;
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== MAIN FORM SECTION (ELEGANT CARD) ===== */
+        .contact-form-card {
+            max-width: 900px;
+            margin: 0 auto 3rem auto;
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .form-header {
+            background: var(--color-primary);
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            color: #fff;
+        }
+
+        .form-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .form-header p {
+            font-size: 16px;
+            opacity: 0.85;
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            padding: 2rem;
+            border: 2px solid var(--color-border-light);
+            border-top: none;
+        }
+
+        .form-row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--color-border-light);
+            font-size: 15px;
+            transition: all 0.2s ease;
+            background: #fff;
+            border-radius: 0;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(132, 1, 50, 0.1);
+        }
+
+        .form-group input:hover,
+        .form-group textarea:hover {
+            border-color: var(--color-primary-dark);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+
+        .form-actions .btn {
+            margin: auto;
+        }
+
+        .form-disclaimer {
+            font-size: 12px;
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        /* Loading spinner */
+        .btn-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.6s linear infinite;
+            margin-right: 6px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-hero p {
+                font-size: 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-row-2col {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-header h2 {
+                font-size: 24px;
+            }
+
+            .form-actions {
+                justify-content: center;
+            }
+
+            .cta__title {
+                font-size: 1.6rem;
+            }
+
+            .cta__contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-form-card {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* Success/error toast style */
+        .form-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-feedback.success {
+            background: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid #10b981;
+            display: block;
+        }
+
+        .form-feedback.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid #dc2626;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- entire preserved navigation (header, utility, osb row) exactly as needed -->
+    <div class="nav">
+        <!-- UTILITY BAR (desktop only) -->
+        <div class="nav-utility">
+            <div class="nav-utility-container">
+                <a href="/Pages/AZ.aspx" class="nav-utility-link">A - Z</a><span class="nav-utility-separator">|</span>
+                <a href="/Search/Pages/People.aspx" class="nav-utility-link">Find People</a><span
+                    class="nav-utility-separator">|</span>
+                <a href="https://aubmc.org.lb/" class="nav-utility-link" target="_blank">AUBMC</a><span
+                    class="nav-utility-separator">|</span>
+                <a href="/libraries" class="nav-utility-link">Libraries</a><span class="nav-utility-separator">|</span>
+                <a href="/Employment" class="nav-utility-link">Jobs</a><span class="nav-utility-separator">|</span>
+                <a href="http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61" class="nav-utility-link"
+                    target="_blank">Alumni</a><span class="nav-utility-separator">|</span>
+                <a href="https://online.aub.edu.lb" class="nav-utility-link" target="_blank">AUB Online</a><span
+                    class="nav-utility-separator">|</span>
+                <a href="https://www.aubmed.ac.cy/" class="nav-utility-link" target="_blank">AUB – Mediterraneo</a><span
+                    class="nav-utility-separator">|</span>
+                <a href="https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login" class="nav-utility-link"
+                    target="_blank">Telehealth</a><span class="nav-utility-separator">|</span>
+                <a href="/advancement/Development/Pages/HowToMakeAGift.aspx" class="nav-utility-link">Give</a>
+            </div>
+        </div>
+
+        <!-- MAIN HEADER (logo + desktop mega + burger) -->
+        <div class="nav-main-header" id="mainHeader">
+            <div class="nav-main-container">
+                <div class="nav-logo">
+                    <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
+                        <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
+                    </a>
+                </div>
+                <!-- Desktop mega menu (updated with full JSON structure) -->
+                <div class="nav-desktop">
+                    <!-- About AUB -->
+                    <div class="nav-item">
+                        <button>
+                            About AUB<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </button>
+                        <div class="nav-mega">
+                            <h4>About AUB</h4>
+                            <div class="nav-mega-grid">
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/AboutUs/Pages/default.aspx">Overview</a>
+                                        </li>
+                                        <li>
+                                            <a href="/aboutus/Pages/history.aspx">History</a>
+                                        </li>
+                                        <li>
+                                            <a href="/aboutus/Pages/mission.aspx">Mission and Vision</a>
+                                        </li>
+                                        <li>
+                                            <a href="/aboutus/Pages/facts.aspx">Facts and Figures</a>
+                                        </li>
+                                        <li><a href="/President/oeo-titleix">Title IX</a></li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/AboutUs/Pages/leadership.aspx">AUB Leadership</a>
+                                        </li>
+                                        <li>
+                                            <a href="/president">Office of the President</a>
+                                        </li>
+                                        <li><a href="/nyo">New York Office</a></li>
+                                        <li><a href="/maingate">The MainGate Magazine</a></li>
+                                        <li>
+                                            <a href="/advancement">Office of Advancement</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li><a href="/aboutus/Pages/campus.aspx">Campus</a></li>
+                                        <li>
+                                            <a href="/aboutus/Pages/beirut-lb.aspx">About Beirut and Lebanon</a>
+                                        </li>
+                                        <li><a href="/accreditation">Accreditation</a></li>
+                                        <li>
+                                            <a href="https://150.aub.edu.lb/" target="_blank">AUB 150</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Academics -->
+                    <div class="nav-item">
+                        <button>
+                            Academics<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </button>
+                        <div class="nav-mega">
+                            <h4>ACADEMICS</h4>
+                            <div class="nav-mega-grid">
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/academics/Pages/faculties.aspx">Faculties</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Pages/AZ.aspx">Departments and Centers</a>
+                                        </li>
+                                        <li>
+                                            <a href="/academics/pages/majors_programs.aspx">Majors and Programs</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg"
+                                                target="_blank">Search
+                                                for a Course</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/theinstitute">Institute for Academic Innovation and
+                                                Development</a>
+                                        </li>
+                                        <li><a href="/graduatecouncil">Graduate Council</a></li>
+                                        <li>
+                                            <a href="/generaleducation">General Education Program</a>
+                                        </li>
+                                        <li>
+                                            <a href="/oip">Office of International Programs</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li><a href="/provost">Office of the Provost</a></li>
+                                        <li>
+                                            <a href="/registrar">Office of the Registrar</a>
+                                        </li>
+                                        <li><a href="/libraries">Libraries</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Admissions -->
+                    <div class="nav-item">
+                        <button>
+                            Admissions<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </button>
+                        <div class="nav-mega">
+                            <h4>ADMISSIONS</h4>
+                            <div class="nav-mega-grid">
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li><a href="/admissions">Admissions</a></li>
+                                        <li><a href="/faid">Financial Aid</a></li>
+                                        <li>
+                                            <a href="http://www.aub.edu.lb/admissions/Pages/TC/index.html"
+                                                target="_blank">Tuition and Fees
+                                                Calculator</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx"
+                                                target="_blank">Visiting Student</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/faid/Pages/Scholarships.aspx">Scholarships</a>
+                                        </li>
+                                        <li>
+                                            <a href="/lead">LEAD scholarship opportunities</a>
+                                        </li>
+                                        <li><a href="/sao">Office of Student Affairs</a></li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/academics/pages/majors_programs.aspx">Majors and Programs</a>
+                                        </li>
+                                        <li><a href="/graduatecouncil">Graduate Council</a></li>
+                                        <li>
+                                            <a href="/oip">Office of International Programs</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Research -->
+                    <div class="nav-item">
+                        <button>
+                            Research<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </button>
+                        <div class="nav-mega">
+                            <h4>Research</h4>
+                            <div class="nav-mega-grid">
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li><a href="/research">Office of Research</a></li>
+                                        <li>
+                                            <a href="/Pages/ResearchbyFaculty.aspx">Research by Faculty/School</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Pages/ResearchCenters.aspx">Interfaculty Research Centers</a>
+                                        </li>
+                                        <li><a href="/urb">University Research Board</a></li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/Pages/ResearchSupport.aspx">Research Funding</a>
+                                        </li>
+                                        <li>
+                                            <a href="/urb/Pages/Researchintegrity.aspx">Research Integrity</a>
+                                        </li>
+                                        <li>
+                                            <a href="/irb">Human Research Protection Program / Institutional
+                                                Review Board</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="/MRVP">Medical Research Volunteer Program</a>
+                                        </li>
+                                        <li>
+                                            <a href="/provost/urvp">Undergraduate Research Volunteer Program</a>
+                                        </li>
+                                        <li>
+                                            <a href="/articles/Pages/research.aspx">Research News</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Outreach -->
+                    <div class="nav-item">
+                        <button>
+                            Outreach<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </button>
+                        <div class="nav-mega">
+                            <h4>Outreach</h4>
+                            <div class="nav-mega-grid">
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li><a href="/CCE">Community Engagement</a></li>
+                                        <li>
+                                            <a href="/Neighborhood">Neighborhood Initiative</a>
+                                        </li>
+                                        <li>
+                                            <a href="/natureconservation">Nature Conservation</a>
+                                        </li>
+                                        <li><a href="/seniors">University for Seniors</a></li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li><a href="/ifi">Issam Fares Institute</a></li>
+                                        <li>
+                                            <a href="https://sites.aub.edu.lb/ipark/" target="_blank">iPark</a>
+                                        </li>
+                                        <li><a href="/k2p">Knowledge to Policy Center</a></li>
+                                        <li>
+                                            <a href="/masri_institute">The Munib and Angela Masri Institute of Energy
+                                                and
+                                                Natural Resources</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="https://www.aub.edu.lb/hub/Pages/default.aspx" target="_blank">AI
+                                                Hub</a>
+                                        </li>
+                                        <li>
+                                            <a href="/fafs/esdu">Environment and Sustainable Development</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://ghi.aub.edu.lb/" target="_blank">Global Health
+                                                Institute</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Boldly Campaign -->
+                    <div class="nav-item">
+                        <button>
+                            Boldly Campaign<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </button>
+                        <div class="nav-mega">
+                            <h4>Boldly Campaign</h4>
+                            <div class="nav-mega-grid">
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="http://boldly.aub.edu.lb/" target="_blank">Campaign Overview</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://boldly.aub.edu.lb/impact-stories/" target="_blank">Impact
+                                                Stories</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="http://boldly.aub.edu.lb/campaign-objectives/"
+                                                target="_blank">Campaign Objectives</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://boldly.aub.edu.lb/ways-to-support/" target="_blank">Ways to
+                                                Support</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-mega-column">
+                                    <ul class="nav-mega-links">
+                                        <li>
+                                            <a href="http://boldly.aub.edu.lb/#funding-v2" target="_blank">Campaign
+                                                Progress</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462"
+                                                target="_blank">Join the Campaign</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-mobile-btn" id="burgerBtn" aria-label="Menu">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- OSB ROW (third level, becomes sticky) updated with provided nav-osb structure -->
+        <div class="nav-osb" id="osbRow">
+            <div class="nav-osb-container">
+                <div class="nav-osb-logo">
+                    <a href="/"><img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a>
+                </div>
+                <div class="nav-osb-links">
+                    <ul class="osb-nav">
+                        <!-- About OSB with dropdown -->
+                        <li class="osb-nav-item has-dropdown">
+                            <a href="#" id="about-osb-link">About OSB</a>
+                            <ul class="osb-dropdown">
+                                <li>
+                                    <a href="/osb/about/Pages/Meet-the-Dean.aspx" id="meet-the-dean">Meet the Dean</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/about/Pages/default.aspx" id="mission-and-vision">Mission And
+                                        Vision</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/about/Pages/Olayan-.aspx" id="about-suliman-saleh-olayan">About
+                                        Suliman Saleh Olayan</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.aub.edu.lb/osb/Pages/advisoryboard.aspx" target="_blank"
+                                        id="international-advisory-board">International Advisory Board</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/about/Pages/Global-Recognition-.aspx"
+                                        id="global-recognitions-labels">Global
+                                        Recognitions & Labels</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/about/Pages/Governance.aspx" id="governance">Governance</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/about/Pages/recources.aspx" id="faculty-staff-resources">Faculty and
+                                        Staff Resources</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/125/Pages/default.aspx" target="_blank" id="osb-125">OSB 125</a>
+                                </li>
+                                <li>
+                                    <a href="https://sites.aub.edu.lb/osb2029/" target="_blank"
+                                        id="osb-strategic-plan-2029">OSB Strategic
+                                        Plan 2029</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.aub.edu.lb/osb/about/Pages/Employment.aspx" target="_blank"
+                                        id="job-opportunities">Job Opportunities</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Academic Programs with dropdown -->
+                        <li class="osb-nav-item has-dropdown">
+                            <a href="#" id="academic-programs-link">Academic Programs</a>
+                            <ul class="osb-dropdown">
+                                <li>
+                                    <a href="/osb/UndergradProgram" target="_blank"
+                                        id="undergraduate-program">Undergraduate Program</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/Pages/SpecializedMasters.aspx" target="_blank"
+                                        id="specialized-masters">Specialized
+                                        Masters</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/MBA" target="_blank" id="mba">MBA</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/OMBA/Pages/default.aspx" target="_blank" id="mba-online">MBA
+                                        Online</a>
+                                </li>
+                                <li>
+                                    <a href="/osb/EMBA" target="_blank" id="executive-mba">Executive MBA</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Executive Education (external link + dropdown) -->
+                        <li class="osb-nav-item has-dropdown">
+                            <!-- lii replace href below -->
+                            <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
+                            <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\ExEd.html" target="_blank"
+                                id="executive-education-link">Executive Education</a>
+                            <ul class="osb-dropdown">
+                                <li>
+                                    <!-- lii replcae href -->
+                                    <!-- /osb/executive-education/OEP -->
+                                    <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\open-enrollment-programs\index.html"
+                                        target="_blank" id="open-enrollment-programs">Open Enrollment Programs</a>
+                                </li>
+                                <li>
+                                    <!-- lii - replace href -->
+                                    <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\custom-programs\index.html"
+                                        target="_blank" id="customized-programs">Customized Programs</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- OSB Online with dropdown -->
+                        <li class="osb-nav-item has-dropdown">
+                            <a href="#" id="osb-online-link">OSB Online</a>
+                            <ul class="osb-dropdown">
+                                <li>
+                                    <a href="https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx"
+                                        target="_blank" id="entrepreneurship-innovation-online-diploma">Entrepreneurship
+                                        & Innovation Online
+                                        Graduate
+                                        Professional Diploma</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx"
+                                        target="_blank" id="combating-trade-based-financial-crime-certificate">Combating
+                                        Trade-Based
+                                        Financial Crime Online
+                                        Certificate</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx"
+                                        target="_blank" id="strategic-branding-digital-era-diploma">Strategic Branding
+                                        in the Digital Era Online Diploma</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx"
+                                        target="_blank"
+                                        id="investment-analysis-modern-portfolio-management-diploma">Investment Analysis
+                                        and
+                                        Modern Portfolio Management
+                                        Online Graduate Professional Diploma</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Faculty -->
+                        <li class="osb-nav-item">
+                            <a href="/osb/Pages/Faculty.aspx" id="faculty">Faculty</a>
+                        </li>
+                        <!-- Research -->
+                        <li class="osb-nav-item">
+                            <a href="https://www.aub.edu.lb/osb/facultyresearch/Pages/default.aspx" target="_blank"
+                                id="research">Research</a>
+                        </li>
+                        <!-- News -->
+                        <li class="osb-nav-item">
+                            <a href="https://www.aub.edu.lb/osb/news/Pages/default.aspx" id="news">News</a>
+                        </li>
+                        <!-- OSB Impacts -->
+                        <li class="osb-nav-item">
+                            <a href="https://www.aub.edu.lb/osb/impact/Pages/default.aspx" target="_blank"
+                                id="osb-impacts">OSB
+                                Impacts</a>
+                        </li>
+                        <!-- "Recent" hidden item (present but not shown visually) -->
+                        <li class="osb-nav-item" style="display: none">
+                            <a href="/osb" id="recent">Recent</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-mobile-overlay" id="mobileOverlay">
+        <div class="mobile-overlay-header">
+            <div class="mobile-logo">
+                <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
+            </div>
+            <button class="mobile-close-btn" id="closeOverlayBtn">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-menu-sections">
+            <div class="mobile-section">
+                <div class="mobile-section-title">Quick Links</div>
+                <div class="mobile-utility-grid" id="mobileUtilityGrid"></div>
+            </div>
+            <div class="mobile-section">
+                <div class="mobile-section-title">Main Navigation</div>
+                <div id="mobileMainNav"></div>
+            </div>
+            <div class="mobile-section">
+                <div class="mobile-section-title">OSB School</div>
+                <div id="mobileOsbNav"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Connect with the Suliman S. Olayan School of Business – we're here to answer your questions and help you
+                take the next step.</p>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="contact-form-card" data-aos="fade-up" data-aos-duration="600">
+                <div class="form-header">
+                    <h2>Request Information</h2>
+                    <p>Fill out the form below and our team will get back to you shortly.</p>
+                </div>
+                <form id="contact-lead-form" method="POST" class="contact-form">
+                    <!-- Hidden fields for Salesforce / backend compatibility -->
+                    <input type="hidden" id="oid" name="oid" value="">
+                    <input type="hidden" id="recordType" name="recordType" value="0120Y000000ymGb">
+                    <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="701P500000o9UrjIAE">
+                    <input type="hidden" id="member_status" name="member_status" value="Interested">
+                    <input type="hidden" name="lead_source" id="lead_source" value="Website">
+                    <input type="hidden" name="00N0Y00000QGkma" id="00N0Y00000QGkma" value="Apply MBA">
+                    <input type="hidden" name="00N0Y00000QGku0" id="employer" value="N/A">
+                    <input type="hidden" name="rating" id="rating" value="Cold">
+                    <input type="hidden" id="00N0Y00000RODiR" name="00N0Y00000RODiR" value="Work Email">
+                    <input type="hidden" id="00N0Y00000RODr9" name="00N0Y00000RODr9" value="Work Phone">
+                    <input type="hidden" name="retURL" id="retURL" value="">
+                    <input type="hidden" name="country_code" id="country_code" value="">
+
+                    <div class="form-row-2col">
+                        <div class="form-group">
+                            <label for="first_name">First Name *</label>
+                            <input type="text" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name *</label>
+                            <input type="text" id="last_name" name="last_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="00N0Y00000QGl8W" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="intphone">Phone Number</label>
+                            <input type="tel" id="intphone" name="intphone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">What would you like to know?</label>
+                        <textarea id="description" name="description" rows="4"
+                            placeholder="Please share any questions or details about your interests..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary btn-submit" id="submitBtn">
+                            <i data-lucide="send" width="18" height="18"></i> Submit Inquiry
+                        </button>
+                    </div>
+                    <div id="form-feedback" class="form-feedback"></div>
+                    <p class="form-disclaimer">* Required fields. Your information will be kept confidential.</p>
+                </form>
+            </div>
+        </div>
+
+        <section class="cta contact-us-section" data-aos="fade-up" data-aos-duration="700">
+            <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)">
+            </div>
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Can't Find What You're Looking For?</h2>
+                    <p class="cta__text">
+                        We offer customized programs tailored to your organization's specific needs.<br>
+                        Contact us directly to discuss how we can help you achieve your goals.
+                    </p>
+                    <div class="cta__divider">
+                        <div class="cta__contact-links">
+                            <a href="tel:+9611374374,3748" class="cta__contact-link">
+                                <i data-lucide="phone" width="20" height="20"></i>
+                                <span>+961-1-374 374 ext. 3748</span>
+                            </a>
+                            <a href="mailto:gs52@aub.edu.lb" class="cta__contact-link">
+                                <i data-lucide="mail" width="20" height="20"></i>
+                                <span>gs52@aub.edu.lb</span>
+                            </a>
+                            <button class="btn btn--white js-scroll-to-form">
+                                <i data-lucide="arrow-down" width="18" height="18"></i> Go to Contact Form
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__accred">
+                <img src="images/AUB-OSB-accreditations.jpg" alt="Accreditations" />
+            </div>
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <h2 class="footer-item__title">Contact Us</h2>
+                    <p class="footer-item__text">
+                        For various questions, please try contacting us via social media
+                        first!
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+                <div class="footer-item">
+                    <h2 class="footer-item__title">Privacy Statement</h2>
+                    <p class="footer-item__text">
+                        We take data privacy seriously and adhere to all applicable data
+                        privacy laws and regulations.
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+                <div class="footer-item">
+                    <h2 class="footer-item__title">Copyright and Disclaimer</h2>
+                    <p class="footer-item__text">
+                        Written permission is needed to copy or disseminate all or part of
+                        the materials on the AUB website.
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+                <div class="footer-item">
+                    <h2 class="footer-item__title">
+                        Title IX, Non-Discrimination, and Anti-Discriminatory Harassment
+                    </h2>
+                    <p class="footer-item__text">
+                        AUB is committed to providing a safe and respectful environment to
+                        all members of its community.
+                    </p>
+                    <a href="#" class="footer-item__link">read more</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-burgundy">
+            <div class="container footer-links-grid">
+                <div class="footer-links-column">
+                    <ul>
+                        <li><a href="/Pages/AZ.aspx">A-Z</a></li>
+                        <li><a href="/admissions/Pages/default.aspx">Admissions</a></li>
+                        <li>
+                            <a href="/admissions/applications/Pages/applications.aspx">Admissions Applications</a>
+                        </li>
+                        <li>
+                            <a href="/admissions/Pages/EnglishRequirements.aspx">Admissions English Requirements</a>
+                        </li>
+                        <li><a href="/Pages/AUBSIS.aspx">AUBSSI</a></li>
+                        <li>
+                            <a href="https://careers.aub.edu.lb/Login" target="_blank">Career Portal</a>
+                        </li>
+                        <li><a href="/comptroller">Comptroller</a></li>
+                        <li>
+                            <a href="https://lms.aub.edu.lb/" target="_blank">E-Learning</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <ul>
+                        <li><a href="/emergency">Emergency</a></li>
+                        <li><a href="/TestingCenter">AUB-EN</a></li>
+                        <li>
+                            <a href="/TestingCenter/Pages/aub-endresults.aspx">AUB-EN Results</a>
+                        </li>
+                        <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
+                        <li><a href="/comptroller/Pages/Student.aspx">Fees</a></li>
+                        <li><a href="/faid">Financial Aid</a></li>
+                        <li><a href="/Search/Pages/People.aspx">Find People</a></li>
+                        <li><a href="/Employment">Jobs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <ul>
+                        <li><a href="/libraries">Libraries</a></li>
+                        <li>
+                            <a href="/academics/Pages/majors_programs.aspx">Majors and Programs</a>
+                        </li>
+                        <li><a href="/comptroller/Pages/Payroll.aspx">Payroll</a></li>
+                        <li><a href="/registrar">Registrar</a></li>
+                        <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
+                        <li><a href="/search/Pages/default.aspx">Search</a></li>
+                        <li>
+                            <a href="https://www.aub.edu.lb/Pages/Webmail.aspx" target="_blank">Webmail</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <ul class="social-links">
+                <li>
+                    <a class="social-fb-icon" href="http://www.facebook.com/aub.edu.lb" target="_blank"
+                        aria-label="Facebook">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-tw-icon" href="http://twitter.com/AUB_Lebanon" target="_blank"
+                        aria-label="Twitter">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-in-icon" href="https://www.linkedin.com/company/american-university-of-beirut"
+                        target="_blank" aria-label="LinkedIn">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-ig-icon" href="http://instagram.com/aub_lebanon" target="_blank"
+                        aria-label="Instagram">&nbsp;</a>
+                </li>
+                <li>
+                    <a class="social-yt-icon" href="https://www.youtube.com/aubatlebanon" target="_blank"
+                        aria-label="Youtube">&nbsp;</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS and Lucide
+        AOS.init({ duration: 800, once: true });
+        lucide.createIcons();
+
+        // DOM Elements
+        const form = document.getElementById('contact-lead-form');
+        const submitBtn = document.getElementById('submitBtn');
+        const feedbackDiv = document.getElementById('form-feedback');
+
+        // Helper: Show feedback message
+        function showFeedback(message, isError = false) {
+            feedbackDiv.textContent = message;
+            feedbackDiv.className = `form-feedback ${isError ? 'error' : 'success'}`;
+            setTimeout(() => {
+                if (feedbackDiv) {
+                    feedbackDiv.style.display = 'none';
+                    feedbackDiv.className = 'form-feedback';
+                }
+            }, 5000);
+        }
+
+        // Helper: Validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+            return emailRegex.test(email);
+        }
+
+        // Helper: Set button loading state
+        function setButtonLoading(isLoading) {
+            if (!submitBtn) return;
+            if (isLoading) {
+                submitBtn.disabled = true;
+                // Preserve original content but add spinner
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.setAttribute('data-original-text', originalHTML);
+                submitBtn.innerHTML = '<span class="btn-spinner"></span> Submitting...';
+            } else {
+                submitBtn.disabled = false;
+                const original = submitBtn.getAttribute('data-original-text');
+                if (original) {
+                    submitBtn.innerHTML = original;
+                } else {
+                    submitBtn.innerHTML = '<i data-lucide="send" width="18" height="18"></i> Submit Inquiry';
+                    lucide.createIcons(); // reinitialize icons inside button
+                }
+            }
+        }
+
+        // Core submit handler (clean version)
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Clear previous feedback
+            feedbackDiv.style.display = 'none';
+            feedbackDiv.className = 'form-feedback';
+
+            // ---- VALIDATION ----
+            const firstName = document.getElementById('first_name')?.value.trim();
+            const lastName = document.getElementById('last_name')?.value.trim();
+            const email = document.getElementById('email')?.value.trim(); // using 'email' id (maps to 00N0Y00000QGl8W)
+
+            // First name validation
+            if (!firstName) {
+                showFeedback('Please enter your first name.', true);
+                document.getElementById('first_name')?.focus();
+                return;
+            }
+
+            // Last name validation
+            if (!lastName) {
+                showFeedback('Please enter your last name.', true);
+                document.getElementById('last_name')?.focus();
+                return;
+            }
+
+            // Email validation
+            if (!email) {
+                showFeedback('Please enter your email address.', true);
+                document.getElementById('email')?.focus();
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showFeedback('Please enter a valid email address (e.g., name@domain.com).', true);
+                document.getElementById('email')?.focus();
+                return;
+            }
+
+            // Additional optional: phone (just basic format hint but not blocking)
+            // Proceed to submission
+            setButtonLoading(true);
+
+            try {
+                // --- Determine submission mode: For demo, we use a fetch to httpbin (simulate API)
+                // In production, you could either submit the form natively (form.submit()) or use fetch to a real endpoint.
+                // For this demo that matches the old function's pattern, we simulate submission with fetch
+                // and show a success message without actual Salesforce redirect.
+
+                // Since the old function references DEMO_ACTION, we'll implement a clean fetch-based demo.
+                // This preserves the form data and avoids page reload, showing a success message.
+
+                const formData = new FormData(form);
+
+                // DEMO: Using https://httpbin.org/post to simulate API endpoint (echo)
+                // This does NOT store data, only demonstrates submission flow.
+                const DEMO_ENDPOINT = 'https://httpbin.org/post';
+
+                const response = await fetch(DEMO_ENDPOINT, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    // Success scenario
+                    showFeedback('✅ Thank you for your inquiry! Our team at AUB OSB will contact you soon.', false);
+                    form.reset(); // reset all fields
+                    // Reinitialize lucide icons if any dynamic content (not strictly needed)
+                    lucide.createIcons();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                showFeedback('❌ Unable to submit your request. Please try again later or contact us directly.', true);
+            } finally {
+                setButtonLoading(false);
+                // Re-attach lucide for any icons that might have been re-rendered
+                lucide.createIcons();
+            }
+        }
+
+        // Attach event listener
+        if (form) {
+            form.addEventListener('submit', handleFormSubmit);
+        }
+
+        // Smooth scroll to contact form
+        const scrollBtn = document.querySelector('.js-scroll-to-form');
+        if (scrollBtn) {
+            scrollBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const formCard = document.querySelector('.contact-form-card');
+                if (formCard) {
+                    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+
+        // Optional: Re-run lucide after dynamic changes (just in case)
+        window.addEventListener('load', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
