@@ -332,27 +332,22 @@
         {
           text: "About Executive Education",
           url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/index.html",
-          external: true
         },
         {
           text: "Our Impact",
           url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/our-impact.html",
-          external: true
         },
         {
           text: "Open Enrollment Programs",
           url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/open-enrollment-programs/index.html",
-          external: true
         },
         {
           text: "Customized Programs",
           url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/custom-programs/index.html",
-          external: true
         },
         {
           text: "Contact Us",
           url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/contact-us.html",
-          external: true
         }
       ]
     },
