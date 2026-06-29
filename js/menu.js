@@ -70,7 +70,7 @@
   // --- Event binding with Chrome compatibility
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", handleResize);
-  
+
   // Initial call with slight delay for Chrome to calculate properly
   setTimeout(updateSticky, 100);
   updateSticky();
@@ -328,9 +328,33 @@
     },
     {
       title: "Executive Education",
-      url: "https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx",
-      external: true,
-      isLink: true
+      links: [
+        {
+          text: "About Executive Education",
+          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/index.html",
+          external: true
+        },
+        {
+          text: "Our Impact",
+          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/our-impact.html",
+          external: true
+        },
+        {
+          text: "Open Enrollment Programs",
+          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/open-enrollment-programs/index.html",
+          external: true
+        },
+        {
+          text: "Customized Programs",
+          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/custom-programs/index.html",
+          external: true
+        },
+        {
+          text: "Contact Us",
+          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/contact-us.html",
+          external: true
+        }
+      ]
     },
     {
       title: "OSB Online",
@@ -423,10 +447,10 @@
       });
 
       // Chrome-friendly click handler
-      button.addEventListener("click", function(e) {
+      button.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         // Close other open menus
         document.querySelectorAll(".mobile-nav-link.has-sub.open").forEach(openBtn => {
           if (openBtn !== button) {
@@ -435,7 +459,7 @@
             if (siblingSubmenu) siblingSubmenu.classList.remove("open");
           }
         });
-        
+
         button.classList.toggle("open");
         submenu.classList.toggle("open");
       });
@@ -475,10 +499,10 @@
           submenu.appendChild(anchor);
         });
 
-        button.addEventListener("click", function(e) {
+        button.addEventListener("click", function (e) {
           e.preventDefault();
           e.stopPropagation();
-          
+
           // Close other open OSB menus
           document.querySelectorAll("#mobileOsbNav .mobile-nav-link.has-sub.open").forEach(openBtn => {
             if (openBtn !== button) {
@@ -487,7 +511,7 @@
               if (siblingSubmenu) siblingSubmenu.classList.remove("open");
             }
           });
-          
+
           button.classList.toggle("open");
           submenu.classList.toggle("open");
         });
@@ -505,7 +529,7 @@
     const container = document.getElementById("mobileUtilityGrid");
     if (!container) return;
     container.innerHTML = "";
-    
+
     utilityLinks.forEach(link => {
       const anchor = createLink(link);
       container.appendChild(anchor);
@@ -514,7 +538,7 @@
 
   // Initialize mobile menus when DOM is ready
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       buildMobileMain();
       buildMobileOsb();
       buildUtilityGrid();

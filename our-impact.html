@@ -17,49 +17,17 @@
     <!-- Main Styles -->
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/menu.css" />
-
-
     <style>
         ul {
             padding-left: 17px;
         }
 
-        /* CSP page specific styles – uses CSS variables from main.css */
         .csp-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/AUB-OSB-ExEd-Impact-Banner-Pattern.png') center / cover no-repeat;
             color: white;
             text-align: center;
             padding: 4rem 1.5rem;
             margin-bottom: 2rem;
-        }
-
-        .csp-hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .csp-hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .csp-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media (min-width: 768px) {
-            .csp-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .csp-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
         }
 
         .csp-card {
@@ -207,7 +175,6 @@
             }
         }
     </style>
-
     <script src="js/main.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script src="js/contact-form-popup.js"></script>
@@ -662,9 +629,21 @@
                         <li class="osb-nav-item has-dropdown">
                             <!-- lii replace href below -->
                             <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-                            <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\ExEd.html" target="_blank"
+                            <a href="#" target="_blank"
                                 id="executive-education-link">Executive Education</a>
                             <ul class="osb-dropdown">
+                                <li>
+                                    <!-- lii replcae href -->
+                                    <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\index.html" target="_blank"
+                                        id="about-executive-education">About Executive Education</a>
+                                </li>
+                                <li>
+                                <li>
+                                    <!-- lii replcae href -->
+                                    <a href="https://liiwaa-osb.github.io/AUB-OSB-OEP/our-impact.html" target="_blank"
+                                        id="our-impact">Our
+                                        Impact</a>
+                                </li>
                                 <li>
                                     <!-- lii replcae href -->
                                     <!-- /osb/executive-education/OEP -->
@@ -675,6 +654,11 @@
                                     <!-- lii - replace href -->
                                     <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\custom-programs\index.html"
                                         target="_blank" id="customized-programs">Customized Programs</a>
+                                </li>
+                                <li>
+                                    <!-- lii replcae href -->
+                                    <a href="https://liiwaa-osb.github.io\AUB-OSB-OEP\contact-us.html"
+                                        id="contact-us">Contact Us</a>
                                 </li>
                             </ul>
                         </li>
@@ -856,15 +840,6 @@
                             <p>The program explored strategic HR and organizational growth, combining expert insights with interactive discussions to align leadership priorities at the highest level.</p>`
             },
             {
-                title: "LEAD Program",
-                image: "images/impact/LEADProgram.png",
-                alt: "LEAD Program – online global participants",
-                content: `<b>Driving Innovation Across Borders.</b>
-                            <p>A fully online leadership program designed for 43 senior managers across 23 countries.</p>
-                            <p>Focused on agility, innovation, and collaboration, participants explored topics such as customer-centricity, business model innovation, and change leadership.</p>
-                            <p>Delivered in flexible digital format, the program enabled global participation while maintaining high engagement and impact.</p>`
-            },
-            {
                 title: "Executive Program (EP)",
                 image: "./images/impact/ExecutiveProgram.jpg",
                 alt: "Executive Program – senior management team",
@@ -888,6 +863,15 @@
                 content: `<b>Transforming Healthcare Leadership.</b>
                             <p>A tailored Leadership Pathway in Healthcare program designed for healthcare leadership team and department directors.</p>
                             <p>Delivered in Riyadh, Saudi Arabia across two cohorts, the program strengthened leadership capabilities and empowered participants to drive meaningful change within their units and across the organization.</p>`
+            },
+            {
+                title: "LEAD Program",
+                image: "images/impact/LEADProgram.png",
+                alt: "LEAD Program – online global participants",
+                content: `<b>Driving Innovation Across Borders.</b>
+                            <p>A fully online leadership program designed for 43 senior managers across 23 countries.</p>
+                            <p>Focused on agility, innovation, and collaboration, participants explored topics such as customer-centricity, business model innovation, and change leadership.</p>
+                            <p>Delivered in flexible digital format, the program enabled global participation while maintaining high engagement and impact.</p>`
             }
         ]
 
