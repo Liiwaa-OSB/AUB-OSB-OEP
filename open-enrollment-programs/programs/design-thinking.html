@@ -575,22 +575,43 @@
   </div>
   <main>
     <!-- HERO SECTION -->
-    <section class="hero hero--design-thinking">
-      <div class="hero__overlay"></div>
-      <div class="container">
-        <div class="hero__content hero__content--left">
-          <h1 class="hero__title">Business Centric Design Thinking</h1>
-          <h2 class="hero__subtitle">Innovate to Elevate</h2>
-          <p class="hero__text">Face-to-Face in Beirut, Lebanon</p>
+    <!-- ===== NEW HERO with auto-scrolling background (no arrows/dots) ===== -->
+    <section class="hero">
+      <!-- background slides (2 images) -->
+      <div class="hero-slides">
+        <div class="hero-slide hero-slide-1"></div>
+        <div class="hero-slide hero-slide-2"></div>
+      </div>
+
+      <!-- static text content (stays same) -->
+      <div class="container"
+        style="width:100%; max-width:1280px; margin:0 auto; padding:0 1.5rem; position:relative; z-index:2;">
+        <div class="hero__content" style="padding:3rem 0;">
+          <div class="hero__label">Professional Certificate</div>
+          <h1 class="hero__title">Aviation Management</h1>
+          <div class="hero__sub">In Partnership with IATA | AUB OSB</div>
+          <p class="hero__desc">The future of aviation belongs to leaders who can think globally, lead strategically,
+            and adapt rapidly. Take off toward a future in aviation with a program designed to help you lead, innovate,
+            and succeed.</p>
           <div class="hero__buttons">
-            <button class="btn btn--accent">Register Now</button>
-            <button class="btn btn--outline-light">
-              Contact Executive Education
-            </button>
+            <button class="btn btn-primary">Register Interest</button>
+            <button class="btn btn-outline">Download Brochure</button>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- (optional: lucide icons – just for demo) -->
+    <script>
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      // button alerts (optional)
+      document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          alert('Hero auto‑carousel — text stays fixed, images slide.');
+        });
+      });
+    </script>
 
     <!-- PROGRAM DETAILS -->
     <section class="section">
@@ -922,7 +943,7 @@
 
     <!-- FINAL CTA -->
     <section class="cta register-section" style="
-          background-image: url(&quot;../../images/Design-Thinking-bg.jpg&quot;);
+          background-image: url('../../images/Design-Thinking-bg.jpg');
         ">
       <div class="cta__overlay"></div>
       <div class="container">
@@ -1094,7 +1115,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__accred">
-        <img src="../../images/AUB-OSB-accreditations.jpg" alt="Accreditations" />
+        <img src="../../images/AUB-OSB-accreditations.png" alt="Accreditations" />
       </div>
       <div class="footer-grid">
         <div class="footer-item">

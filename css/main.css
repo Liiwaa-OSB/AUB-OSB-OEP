@@ -207,6 +207,24 @@ h3 {
   transform: scale(1.03);
 }
 
+.btn--primary-grey {
+  background: var(--color-text-muted);
+}
+
+.btn--primary-grey:hover {
+  background: #000;
+}
+
+.btn--secondary-grey {
+  color: var(--color-text-muted);
+  border-color: var(--color-text-muted);
+}
+
+.btn--secondary-grey:hover {
+  background: var(--color-text-muted);
+  color: #fff;
+}
+
 /* ===== HERO ===== */
 .hero {
   position: relative;
