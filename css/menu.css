@@ -127,10 +127,10 @@ body {
 }
 
 .nav-item {
-  position: relative;
+  /* position: relative; */
 }
 
-.nav-item > button {
+.nav-item>button {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -146,7 +146,7 @@ body {
   transition: opacity 0.2s;
 }
 
-.nav-item > button:hover {
+.nav-item>button:hover {
   opacity: 0.85;
 }
 
@@ -231,6 +231,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
 @media (min-width: 1024px) and (max-width: 1270px) {
   .nav-osb-container {
     display: block;
@@ -270,7 +271,7 @@ body {
   text-align: center;
 }
 
-.nav-osb-links .osb-nav-item > a {
+.nav-osb-links .osb-nav-item>a {
   display: flex;
   align-items: center;
   color: #1a202c;
@@ -284,7 +285,7 @@ body {
   white-space: nowrap;
 }
 
-.osb-nav-item.has-dropdown > a::after {
+.osb-nav-item.has-dropdown>a::after {
   content: "";
   display: inline-block;
   width: 14px;
@@ -296,7 +297,7 @@ body {
   transition: transform 0.2s;
 }
 
-.nav-osb-links .osb-nav-item > a:hover {
+.nav-osb-links .osb-nav-item>a:hover {
   color: var(--color-primary);
 }
 
@@ -341,13 +342,14 @@ body {
   .nav-osb-links {
     display: none;
   }
+
   .nav-osb-logo {
     display: none !important;
   }
 }
 
 /* ---------- STICKY BEHAVIOR (fixed OSB bar) ---------- */
-body.nav-scrolled .nav-utility,
+/* body.nav-scrolled .nav-utility,
 body.nav-scrolled .nav-main-header {
   transform: translateY(-100%);
 }
@@ -383,7 +385,6 @@ body.nav-scrolled .nav-osb-logo img {
   width: auto;
 }
 
-/* dropdowns stay readable when OSB is sticky */
 body.nav-scrolled .nav-osb .osb-dropdown {
   background: white;
 }
@@ -393,7 +394,7 @@ body.nav-scrolled .nav-osb .osb-dropdown a {
 }
 body.nav-scrolled .nav-osb .osb-dropdown a:hover {
   color: var(--color-primary-dark);
-}
+} */
 
 /* ---------- MOBILE BURGER & OVERLAY ---------- */
 .nav-mobile-btn {
@@ -552,28 +553,24 @@ body.menu-open {
 
 @media (max-width: 1023px) {
   /* On mobile, when scrolled, make the main header fixed at top */
-  body.nav-scrolled .nav-main-header {
+  /* body.nav-scrolled .nav-main-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    transform: none; /* override any transform from desktop */
+    transform: none;
   }
-  /* Add padding to body to prevent content jump when header becomes fixed */
   body.nav-scrolled {
-    padding-top: 70px; /* adjust to match your main header height */
+    padding-top: 70px;
   }
-  /* Ensure the utility bar stays hidden (it's already hidden on mobile) */
-  /* Ensure OSB row remains hidden and not sticky */
   body.nav-scrolled .nav-osb {
     position: relative;
     top: auto;
     background-color: var(--color-bg-light);
     box-shadow: none;
   }
-  /* Keep OSB logo hidden even if scrolled class is present */
   body.nav-scrolled .nav-osb-logo {
     display: none !important;
-  }
+  } */
 }
