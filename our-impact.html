@@ -18,6 +18,21 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/menu.css" />
     <style>
+        .nav-osb-links .osb-nav-item>a#executive-education-link {
+            color: var(--color-primary);
+        }
+
+        body.nav-scrolled .nav-osb .osb-nav-item>a#executive-education-link {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+        }
+
+        .nav-osb-links .osb-dropdown li a#our-impact {
+            color: var(--color-primary);
+        }
+    </style>
+    <style>
         ul {
             padding-left: 17px;
         }
@@ -629,8 +644,7 @@
                         <li class="osb-nav-item has-dropdown">
                             <!-- lii replace href below -->
                             <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-                            <a href="#" target="_blank"
-                                id="executive-education-link">Executive Education</a>
+                            <a href="#" target="_blank" id="executive-education-link">Executive Education</a>
                             <ul class="osb-dropdown">
                                 <li>
                                     <!-- lii replcae href -->
@@ -801,7 +815,7 @@
                             <p>The program culminated in growth plan presentations evaluated by experts and industry leaders.</p>`
             },
             {
-                title: "Leadership Excellence Program (LDP)",
+                title: "Leadership Excellence Program",
                 image: "./images/impact/LeadershipDevelopmentProgram.jpg",
                 alt: "Leadership Excellence Program – group of executives in a workshop",
                 content: `<b>Leading Transformation with Confidence.</b>
@@ -816,7 +830,7 @@
                             <p>Participants concluded with actionable projects aligned to the organization's strategic priorities.</p>`
             },
             {
-                title: "Next Generation of Family Members Program (NextGen)",
+                title: "Next Generation of Family Members Program",
                 image: "images/impact/NextGenerationofFamilyMembersProgram.jpg",
                 alt: "Family Business Initiative – family business stakeholders",
                 content: `<b>Preparing the Next Generation to Lead.</b>
@@ -837,10 +851,10 @@
                 alt: "Board Directors and Executive Program – boardroom discussion",
                 content: `<b>Strategic Leadership at the Top.</b>
                             <p>A focused two-day program for board members and senior executives.</p>
-                            <p>The program explored strategic HR and organizational growth, combining expert insights with interactive discussions to align leadership priorities at the highest level.</p>`
+                            <p>The program explored strategic leadership and organizational growth, combining expert insights with interactive discussions to align leadership priorities at the highest level.</p>`
             },
             {
-                title: "Executive Program (EP)",
+                title: "Executive Program",
                 image: "./images/impact/ExecutiveProgram.jpg",
                 alt: "Executive Program – senior management team",
                 content: `<b>Unlocking Growth Through Innovation.</b>

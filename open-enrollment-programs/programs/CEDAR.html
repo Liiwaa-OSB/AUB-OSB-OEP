@@ -3,162 +3,192 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Meet the Team | AUB OSB Executive Education</title>
-
-    <!-- Google Fonts + Lucide + AOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CEDAR Program · AUB OSB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <!-- Main Styles (shared with index) -->
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/menu.css" />
-
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/menu.css" />
     <style>
-        /* Additional styles for team page – uses CSS variables from main.css */
-        .team-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/AUB-OSB-ExEd-Team-Banner-Pattern.jpg') center / cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 4rem 1.5rem;
-            margin-bottom: 2rem;
+        :root {
+            --color-accent: #CC9E2B;
+            --color-accent-dark: #A67E1F;
         }
 
-        .team-hero h1 {
-            font-size: 3rem;
+        .hero--cedar {
+            background-image: url('../../images/AUB-OSB-OEP-CEDAR.jpg');
+            background-size: cover;
+            background-position: center 30%;
+        }
+
+        .nav-osb-links .osb-nav-item>a#executive-education-link {
+            color: var(--color-primary);
+        }
+
+        body.nav-scrolled .nav-osb .osb-nav-item>a#executive-education-link {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+        }
+
+        .nav-osb-links .osb-dropdown li a#open-enrollment-programs {
+            color: var(--color-primary);
+        }
+
+        /* ===== MODULES GRID ===== */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Make all cards the same height */
+        .detail-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+        }
+
+        .detail-card__image {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            background-size: cover !important;
+            background-position: center !important;
+        }
+
+        .detail-card__content {
+            flex: 1;
+            padding: 1.5rem 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .detail-card__badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #4a5f73;
+            background: #eef2f6;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
             margin-bottom: 0.5rem;
         }
 
-        .team-hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .team-category {
-            margin-bottom: 3rem;
-        }
-
-        /* Card layout: image circular, left of text */
-        .team-card {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
-        }
-
-        .team-card__image {
-            flex-shrink: 0;
-            width: 120px;
-            height: 120px;
-        }
-
-        .team-card__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        .team-card:hover .team-card__image img {
-            transform: scale(1.02);
-        }
-
-        .team-card__content {
-            flex: 1;
-        }
-
-        .team-card__name {
-            font-size: 1.4rem;
+        .detail-card__title {
+            font-size: 1.25rem;
             font-weight: 800;
-            color: #1e293b;
+            margin: 0 0 0.6rem;
+            color: #0b1a2b;
+            line-height: 1.25;
+        }
+
+        .detail-card__desc {
+            flex: 1;
+            color: #2d4055;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .detail-card__desc strong {
+            color: var(--color-accent-dark, #062233);
+            display: block;
             margin-bottom: 0.25rem;
         }
 
-        /* Removed hyperlink styling - name is plain text now */
-        .team-card__title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .team-card__bio {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #475569;
-            margin-bottom: 1rem;
-        }
-
-        .team-card__email {
-            font-size: 0.85rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .team-card__email a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .team-card__email a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .team-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .team-card__image {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 0.5rem;
-            }
-
-            .team-hero h1 {
-                font-size: 2.2rem;
+            .modules-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
             }
         }
 
-        /* Simple grid for multiple cards in a category */
-        .team-grid {
-            display: flex;
-            flex-direction: column;
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+            }
+        }
+
+        .benefit-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--color-accent);
+            border-left: 6px solid var(--color-accent);
+        }
+
+        .benefit-item h4 {
+            margin: 0.5rem 0 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .benefit-item p {
+            margin: 0;
+            color: #445566;
+            font-size: 0.95rem;
+        }
+
+        /* pillars grid */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border-bottom: 4px solid var(--color-accent);
+            border-radius: 0 0 2px 2px;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-accent-dark);
+            margin: 0 0 0.5rem;
+        }
+
+        .pillar-card p {
+            color: #2d4055;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            margin: 0;
         }
     </style>
-
-    <script src="js/main.js" defer></script>
-    <script src="js/menu.js" defer></script>
-    <script src="js/contact-form-popup.js"></script>
 </head>
 
 <body>
@@ -190,7 +220,7 @@
             <div class="nav-main-container">
                 <div class="nav-logo">
                     <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
-                        <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
+                        <img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
                     </a>
                 </div>
                 <!-- Desktop mega menu (updated with full JSON structure) -->
@@ -532,7 +562,7 @@
         <div class="nav-osb" id="osbRow">
             <div class="nav-osb-container">
                 <div class="nav-osb-logo">
-                    <a href="/"><img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a>
+                    <a href="/"><img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a>
                 </div>
                 <div class="nav-osb-links">
                     <ul class="osb-nav">
@@ -610,8 +640,6 @@
                         <li class="osb-nav-item has-dropdown">
                             <!-- lii replace href below -->
                             <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-                            <a href="#" target="_blank"
-                                id="executive-education-link">Executive Education</a>
                             <ul class="osb-dropdown">
                                 <li>
                                     <!-- lii replcae href -->
@@ -707,7 +735,7 @@
     <div class="nav-mobile-overlay" id="mobileOverlay">
         <div class="mobile-overlay-header">
             <div class="mobile-logo">
-                <img src="images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
+                <img src="../../images/AUB+OSB-Merged-Logo-white.png" alt="AUB" />
             </div>
             <button class="mobile-close-btn" id="closeOverlayBtn">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -731,27 +759,371 @@
             </div>
         </div>
     </div>
-    <div class="team-hero">
-        <div class="container">
-            <h1>Meet the Team</h1>
-            <p>Dedicated experts driving executive education excellence</p>
-        </div>
-    </div>
-
     <main>
-        <div class="container" id="team-container">
-            <!-- Categories will be injected here by JavaScript -->
-        </div>
 
-        <!-- CTA SECTION (contact) -->
+        <!-- ===== HERO ===== -->
+        <section class="hero hero--cedar">
+            <div class="hero__overlay"></div>
+            <div class="container">
+                <div class="hero__content hero__content--left">
+                    <h1 class="hero__title">CEDAR Program</h1>
+                    <h2 class="hero__subtitle">Core Executive Digital Agility & Resilience</h2>
+                    <p class="hero__text">Executive Program · Beirut, Paphos</p>
+                    <div class="hero__buttons">
+                        <button class="btn btn--accent">Register Now</button>
+                        <button class="btn btn--outline-light">
+                            Contact Executive Education
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROGRAM DETAILS ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="detail-grid">
+                    <div class="detail-item"><i data-lucide="calendar" class="detail-item__icon" width="28"
+                            height="28"></i>
+                        <div>
+                            <div class="detail-item__label">Dates</div>
+                            <div class="detail-item__value">Q4 2026</div>
+                        </div>
+                    </div>
+                    <div class="detail-item"><i data-lucide="clock" class="detail-item__icon" width="28"
+                            height="28"></i>
+                        <div>
+                            <div class="detail-item__label">Duration</div>
+                            <div class="detail-item__value">6 days in‑person</div>
+                        </div>
+                    </div>
+                    <div class="detail-item"><i data-lucide="user" class="detail-item__icon" width="28" height="28"></i>
+                        <div>
+                            <div class="detail-item__label">Format</div>
+                            <div class="detail-item__value">In‑Person</div>
+                        </div>
+                    </div>
+                    <div class="detail-item"><i data-lucide="dollar-sign" class="detail-item__icon" width="28"
+                            height="28"></i>
+                        <div>
+                            <div class="detail-item__label">Fees</div>
+                            <div class="detail-item__value">TBA</div>
+                            <div class="detail-item__sub">AUB Alumni: TBA</div>
+                        </div>
+                    </div>
+                    <div class="detail-item"><i data-lucide="map-pin" class="detail-item__icon" width="28"
+                            height="28"></i>
+                        <div>
+                            <div class="detail-item__label">Location</div>
+                            <div class="detail-item__value">AUB – OSB Beirut / Paphos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== OVERVIEW ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="overview-grid">
+                    <div class="overview-grid__image">
+                        <img src="../../images/black.png" alt="CEDAR program overview" />
+                    </div>
+                    <div class="overview-grid__text">
+                        <h2 class="section-title">Overview</h2>
+                        <p><strong>CEDAR Program</strong>, developed by the American University of Beirut, Suliman S.
+                            Olayan School of Business (OSB), is a learning experience designed specifically for C-suite
+                            leaders and senior executives. This program bridges the gap between disruptive technological
+                            forces and the timeless demands of strategic clarity and cognitive precision. Over the
+                            course
+                            of this program, participants will master three interconnected pillars crucial to modern
+                            enterprise survival: The 5th Industrial Revolution Leader, Strategy: Resilience & Value
+                            Creation, and The Architecture of Choice.</p>
+                        <p style="font-weight:700; color:var(--color-accent-dark); margin-top:1rem;">The AI revolution
+                            has fundamentally redrawn the boundaries of executive responsibility. It is no longer enough
+                            to lead digital transformation; senior leaders must now actively harmonize unprecedented AI
+                            capabilities with human-centric purpose and systemic organizational resilience with deep
+                            ethical responsibility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== THREE CORE PILLARS ===== -->
+        <section class="section" style="background:#f5f5f5;">
+            <div class="container">
+                <h2 class="section-title">The Three Core Pillars</h2>
+                <p style="max-width:700px;">Our curriculum is structured into three
+                    distinct yet reinforcing learning blocks, carefully curated to build a multidimensional leadership
+                    identity:</p>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <h3>Pillar 1: The 5th Industrial Revolution Leader</h3>
+                        <p><strong>Technology + Humanity</strong><br>Lead an AI-centered culture grounded in ethics and
+                            core values. Synthesize digital trends to prepare for a future where technology and humanity
+                            coexist harmoniously.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3>Pillar 2: Strategy: Resilience & Value Creation</h3>
+                        <p><strong>Value + Resilience</strong><br>Deconstruct the process of identifying market
+                            opportunities and challenges, crafting compelling value propositions, and mitigating
+                            high-stakes risks.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3>Pillar 3: The Architecture of Choice</h3>
+                        <p><strong>Cognitive Precision + Influence</strong><br>Dive into the psychology of cognitive
+                            biases that distort professional judgment. You will master the art of ethical influence:
+                            steering organizational outcomes through empathy and evidence-based precision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW YOU BENEFIT ===== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">How You Benefit</h2>
+                <div class="benefit-list">
+                    <div class="benefit-item"><i data-lucide="globe" width="28" height="28"
+                            style="color:var(--color-accent);"></i>
+                        <h4>Geographic Agility</h4>
+                        <p>Capitalize on the cross-border insights gained from working across major executive education
+                            hubs.</p>
+                    </div>
+                    <div class="benefit-item"><i data-lucide="brain" width="28" height="28"
+                            style="color:var(--color-accent);"></i>
+                        <h4>De‑Biased Decision Making</h4>
+                        <p>Walk away with concrete frameworks to optimize your organization's internal choice
+                            architecture.</p>
+                    </div>
+                    <div class="benefit-item"><i data-lucide="users" width="28" height="28"
+                            style="color:var(--color-accent);"></i>
+                        <h4>Lasting Professional Capital</h4>
+                        <p>Connect deeply with an elite cohort of cross‑functional C‑suite peers navigating identical
+                            corporate complexities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROGRAM DETAILS ===== -->
+        <section class="section" style="background:#f5f5f5;">
+            <div class="container">
+                <h2 class="section-title">Program Details</h2>
+
+                <div class="modules-grid">
+                    <!-- Card 1: The 5th Industrial Revolution Leader -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/CEDAR-strip1.jpg'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">2 days · Beirut Campus</span>
+                            <h3 class="detail-card__title">The 5th Industrial Revolution Leader</h3>
+                            <p class="detail-card__desc"><strong>Technology + Humanity</strong><br>This session
+                                introduces topics and tools that are central to purposeful and digital leadership.
+                                Participants will explore frameworks around ethical issues faced by managers and
+                                organizations as well as the latest findings on human behavior to inform ethical
+                                decisions and digital transformation strategies specifically involving AI.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Strategy: Resilience & Value Creation -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/CEDAR-strip2.jpg'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">2 days · Paphos Campus</span>
+                            <h3 class="detail-card__title">Strategy: Resilience &amp; Value Creation</h3>
+                            <p class="detail-card__desc"><strong>Value + Resilience</strong><br>The module focuses on
+                                the fundamental understanding of strategy formulation and implementation. Participants
+                                will be introduced to what constitutes a strategy choice of how and where to compete to
+                                create and/or leverage value. Strategy is composed of differentiators that constitute
+                                competitive advantage.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: The Architecture of Choice -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/CEDAR-strip3.jpg'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">2 days · Beirut Campus</span>
+                            <h3 class="detail-card__title">The Architecture of Choice</h3>
+                            <p class="detail-card__desc"><strong>Cognitive Precision + Influence</strong><br>This
+                                session will explore the psychological and social forces that derail our rational
+                                thinking and how often (and why) do we turn a blind eye to objective information.
+                                Participants will learn to manage our biases and those of others in decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INSTRUCTOR (Academic Overseer) ===== -->
+        <section class="section" style="background:#f5f5f5;">
+            <div class="container">
+                <h2 class="section-title">Program Academic Overseer</h2>
+                <div class="instructor-grid">
+                    <div class="instructor-grid__image">
+                        <img src="../../images/faculty/Yusuf.jpg" alt="Dr. Yusuf Sidani"
+                            onerror="this.src='https://placehold.co/300x300/1e3a5f/white?text=Y.+Sidani'" />
+                    </div>
+                    <div>
+                        <h3 class="instructor-grid__name">Yusuf Sidani, PhD (Tentative)</h3>
+                        <div class="instructor-grid__title">
+                            <p>Professor of Leadership and Business Ethics<br />Dean, Suliman S. Olayan School of
+                                Business – American University of Beirut</p>
+                        </div>
+                        <p class="instructor-grid__bio">
+                            Dr. Yusuf Sidani, who has served as associate dean of research and faculty development at
+                            the
+                            Olayan School of Business (OSB) since March 2018, interim dean of OSB since October 1, 2020,
+                            and is taking the role of dean of OSB, effective September 1, 2021. Dr. Sidani gained his
+                            BBA
+                            from AUB in 1985 and went on to graduate studies at Indiana University (MBA, '87) and
+                            University of Mississippi (PhD '93). He has extensive teaching and course development
+                            experience in business ethics, leadership, fraud prevention and control, strategic analysis
+                            and control, and organizational behavior, while his research focus also includes gender and
+                            diversity in organizations. He has authored a number of books, including Business Ethics in
+                            the Middle East (Routledge, 2018) filling an important gap in the teaching literature
+                            connecting global ethical standards and local contexts. In 2015, Dr. Sidani received the
+                            Abdul Hameed Shoman Award for Arab Researchers in the category of values and professional
+                            ethics in the arts, humanities, social sciences, and education. Dr. Sidani has started
+                            working
+                            closely with the AUB and OSB leadership to ensure that our university's school of business
+                            continues to uphold its high standards of education and service, through its stellar
+                            programs,
+                            faculty, staff, and students. The faculty has been making impressive progress with the
+                            launch
+                            this term of AUB's first fully online master's program, the Online MBA, and it has been
+                            recognized with some remarkable results in the latest QS assessment of global master's
+                            program
+                            which put it among the top business schools in the world. These include the top rank in the
+                            MENA region and #43 in the world for OSB's master's in business analytics (MSBA), top
+                            regional rank and #79 in the world for its MBA, and #62 in the world and second in the
+                            region
+                            for its master's in finance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHO SHOULD ENROLL ===== -->
+        <section class="section" style="background:#f5f5f5;">
+            <div class="container">
+                <h2 class="section-title">Who Should Enroll</h2>
+                <div class="carousel js-carousel carousel-3" data-carousel>
+                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous"
+                        disabled>&#10094;</button>
+                    <div class="carousel__container js-carousel-container">
+                        <div class="carousel__track js-carousel-track">
+                            <!-- slide 1 -->
+                            <div class="carousel__slide">
+                                <div class="participant-card">
+                                    <div class="participant-card__image"><img src="../../images/AUB-OSB-KAED-alumni.jpg"
+                                            alt="AUB Alumni"
+                                            onerror="this.src='https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
+                                    </div>
+                                    <div class="participant-card__content">
+                                        <h3 class="participant-card__title">AUB Alumni</h3>
+                                        <p class="participant-card__text">Looking to reconnect with the AUB network and
+                                            renew their learning journey.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- slide 2 -->
+                            <div class="carousel__slide">
+                                <div class="participant-card">
+                                    <div class="participant-card__image"><img
+                                            src="../../images/AUB-OSB-KAED-managers.jpg" alt="Senior to C-level peers"
+                                            onerror="this.src='https://placehold.co/400x300/2d5a27/white?text=C-Suite'" />
+                                    </div>
+                                    <div class="participant-card__content">
+                                        <h3 class="participant-card__title">Senior to C‑level Peers</h3>
+                                        <p class="participant-card__text">Navigating identical challenges in today's
+                                            complex corporate environment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- slide 3 -->
+                            <div class="carousel__slide">
+                                <div class="participant-card">
+                                    <div class="participant-card__image"><img
+                                            src="../../images/AUB-OSB-KAED-executives.jpg"
+                                            alt="Cross-functional leaders"
+                                            onerror="this.src='https://placehold.co/400x300/8b5a2b/white?text=Leaders'" />
+                                    </div>
+                                    <div class="participant-card__content">
+                                        <h3 class="participant-card__title">Cross‑Functional Leaders</h3>
+                                        <p class="participant-card__text">Participants generally come from different
+                                            sectors and industries. Proficiency in spoken and written English is
+                                            necessary.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel__btn carousel__btn--next js-carousel-next"
+                        aria-label="Next">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TIMING, FEES & LOCATION ===== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Timing, Fees &amp; Location</h2>
+                <div class="grid-5">
+                    <div class="info-card"><i data-lucide="calendar" width="40" height="40" class="info-card__icon"></i>
+                        <h3 class="info-card__title">Dates</h3>
+                        <div class="info-card__value">Q4 2026</div>
+                    </div>
+                    <div class="info-card"><i data-lucide="clock" width="40" height="40" class="info-card__icon"></i>
+                        <h3 class="info-card__title">Duration</h3>
+                        <div class="info-card__value">6 days In‑Person</div>
+                    </div>
+                    <div class="info-card"><i data-lucide="user" width="40" height="40" class="info-card__icon"></i>
+                        <h3 class="info-card__title">Format</h3>
+                        <div class="info-card__value">In‑Person</div>
+                    </div>
+                    <div class="info-card"><i data-lucide="dollar-sign" width="40" height="40"
+                            class="info-card__icon"></i>
+                        <h3 class="info-card__title">Fees</h3>
+                        <div class="info-card__value">TBA</div>
+                        <div class="info-card__sub">AUB Alumni: TBA</div>
+                    </div>
+                    <div class="info-card"><i data-lucide="map-pin" width="40" height="40" class="info-card__icon"></i>
+                        <h3 class="info-card__title">Location</h3>
+                        <div class="info-card__value">AUB – OSB, Beirut / Paphos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FINAL CTA ===== -->
+        <section class="cta register-section" style="background-image: url('../../images/KAED-cta-bg.jpg');">
+            <div class="cta__overlay"></div>
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Lead with Agility &amp; Resilience</h2>
+                    <p class="cta__text">Join the CEDAR Program and master the intersection of technology, strategy, and
+                        cognitive precision.</p>
+                    <button class="btn btn--white">Register Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
         <section class="cta contact-us-section">
-            <div class="cta__overlay" style="background: rgba(0, 0, 0, 0.2)"></div>
+            <div class="cta__overlay" style="background: rgba(0,0,0,0.2);"></div>
             <div class="container">
                 <div class="cta__content">
                     <h2 class="cta__title">Can't Find What You're Looking For?</h2>
-                    <p class="cta__text">
-                        Contact us to discuss how we can help you achieve your goals.
-                    </p>
+                    <p class="cta__text">Contact us to discuss how we can help you achieve your goals.</p>
                     <div class="cta__divider">
                         <div class="cta__contact-links">
                             <a href="tel:+9611374374,3748" class="cta__contact-link"><i data-lucide="phone" width="20"
@@ -765,11 +1137,12 @@
             </div>
         </section>
     </main>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer__accred">
-                <img src="images/AUB-OSB-accreditations.png" alt="Accreditations" />
+                <img src="../../images/AUB-OSB-accreditations.png" alt="Accreditations" />
             </div>
             <div class="footer-grid">
                 <div class="footer-item">
@@ -887,155 +1260,60 @@
                 </li>
             </ul>
         </div>
+
+        <!-- Sticky action buttons -->
+        <div class="sticky-cta">
+            <a href="../downloadables/AUB-OSB-Fact_Sheet-OEP-DESIGN_THINKING.pdf" class="sticky-cta__btn"
+                download="AUB-OSB-Fact_Sheet-OEP-DESIGN_THINKING.pdf" aria-label="Download Brochure">
+                <svg class="sticky-cta__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path
+                        d="M7 5.222V0h2v5.193l1.107-1.107L11.52 5.5 7.986 9.036 4.45 5.5l1.414-1.414L7 5.222zM16 11v5H0v-5h2v3h12v-3h2z" />
+                </svg>
+                <span class="sticky-cta__label">Download Brochure</span>
+            </a>
+            <a href="#" class="sticky-cta__btn" aria-label="Apply Now">
+                <svg class="sticky-cta__icon" viewBox="0 -0.5 21 21" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path
+                        d="M384,209.210475 L384,219 L363,219 L363,199.42095 L373.5,199.42095 L373.5,201.378855 L365.1,201.378855 L365.1,217.042095 L381.9,217.042095 L381.9,209.210475 L384,209.210475 Z M370.35,209.51395 L378.7731,201.64513 L380.4048,203.643172 L371.88195,212.147332 L370.35,212.147332 L370.35,209.51395 Z M368.25,214.105237 L372.7818,214.105237 L383.18415,203.64513 L378.8298,199 L368.25,208.687714 L368.25,214.105237 Z"
+                        transform="translate(-363 -199)" />
+                </svg>
+                <span class="sticky-cta__label">Apply Now</span>
+            </a>
+            <a href="#" class="sticky-cta__btn" aria-label="Contact Us">
+                <svg class="sticky-cta__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="miter"
+                        stroke-linecap="butt">
+                        <rect x="1" y="4" width="22" height="16" />
+                        <polyline points="1 4 12 13 23 4" />
+                    </g>
+                </svg>
+                <span class="sticky-cta__label">Contact Us</span>
+            </a>
+        </div>
     </footer>
 
     <script>
-        // Team data stored as JSON with updated images and without profile links
-        const teamData = {
-            "Leadership": [
-                {
-                    name: "Said El Fakhani, PhD",
-                    title: "Acting Director of Executive Education",
-                    bio: "Dr. Said Elfakhani is a Professor of Finance. During 2018-2022, Dr. Elfakhani served as the Associate Dean for Programs. In 2017-2018, Said had served as the Associate Dean of Executive and Continuing Education as well as the Convener for the Finance, Accounting and Managerial Economics (FAME). Prior to re-joining OSB at AUB, Dr. Elfakhani was a Professor and Ex-Dean at LAU (2011-2014), had occupied the Harvey R. Wickes Chair in International Business at Saginaw Valley State University, Michigan, USA (2007-2011). From 2000 to 2007, Said had been the Associate Dean (2000-2007) and the Finance Track Convenor (2000-2005) at AUB, Lebanon. He had taught at the U. of Saskatchewan (Canada), held visiting appointments at ISU-Indiana (1994), KFUPM-Saudi Arabia (1997) and UTD-Texas (2007). Said earned his BBA from LU (1979), MBA from UT-Arlington (1984), MSc (1987) and PhD in finance from UT-Dallas (1989). He has published numerous papers in major international refereed journals, presented academic papers in many countries, written for business magazines, and made several media appearances. Said’s current research interests include emerging markets performance, market anomalies and disturbances, portfolio performance, mutual funds performance, dividend policy, listing of derivatives and Islamic finance.",
-                    email: "se01@aub.edu.lb",
-                    image: "images/faculty/Said.jpg"
-                }
-            ],
-            "Program and Event Delivery Team": [
-                {
-                    name: "Hanaa Mounzer",
-                    title: "Program and Event Delivery Manager",
-                    bio: "Ms. Hanaa Mounzer currently holds the position of Manager, Program and Event Delivery Management at the Suliman S. Olayan School of Business at AUB. She has more than 10 years of experience managing conferences, face-to-face events, online webinars, and projects in higher education and executive programs that are delivered locally and abroad. Hanaa leads a team that manages the successful delivery and implementation of programs while ensuring an optimal learning experience that meets the expectations and needs of clients and all involved stakeholders. Hanaa holds a Bachelor of Science in Environmental Health with a minor in Public Health, as well as a Master of Business Administration from the American University of Beirut. She was also awarded the Beta Gamma Sigma certificate as part of the International Business Honor Society.She has EQ-I 2.0 and EQ 360 Certification from MHS. She teaches the Business Communication course to undergraduate students at the American University of Beirut. She is currently a member at Toastmasters International and served in several leadership roles: Area Director for Lebanon, club’s president, and club extension team for multiple countries: UAE, Lebanon, Jordan, and Oman. She had delivered trainings related to communication and leadership topics within this scope. She completed the Leadership Development path and is currently pursuing the Effective Coaching path.",
-                    email: "hm89@aub.edu.lb",
-                    image: "images/team/Hana.jpg"
-                },
-                {
-                    name: "Lara Azar",
-                    title: "Program and Event Delivery Coordinator",
-                    bio: "Lara is an Event and Project Management Specialist with 15 years of experience in event management and operations across the pharmaceutical industry and, more recently, the academic sector. Her expertise encompasses the management of face-to-face meetings, executive programs, and regional symposia, in addition to coordinating the participation of healthcare professionals from the Middle East in international congresses. She is highly experienced in collaborating with cross-functional teams to execute organizational projects, optimize operations, and deliver high-quality customer experiences. Lara also played a key role in digital transformation initiatives, including the implementation of strategic meeting management tools during the COVID-19 pandemic to enhance customer satisfaction. Currently serving as a Program & Event Delivery Coordinator at the Suliman S. Olayan School of Business at the American University of Beirut, Lara leverages her expertise in event delivery, operations, and digital solutions to support Executive Education programs and ensure a seamless learning experience for executives in today’s fast-paced environment. Lara holds a bachelor’s degree in English Language and a Master of Business Administration (MBA). She is fluent in Arabic, English, and French.",
-                    email: "la150@aub.edu.lb",
-                    image: "images/team/Lara.jpg"
-                },
-                {
-                    name: "Reina Mneimneh",
-                    title: "Program and Event Delivery Coordinator",
-                    bio: "Reina Mneimneh is a Program and Events Delivery Coordinator at the American University of Beirut (AUB), working within the Executive Education and EMBA departments at the Olayan School of Business. In her role, Reina manages the end-to-end planning and delivery of executive programs, ensuring a seamless experience for participants, faculty, and stakeholders. Her work involves coordinating logistics, overseeing program operations, and supporting both local and international initiatives, including programs delivered in Lebanon and abroad. Reina enjoys working in dynamic environments where she can contribute to creating impactful and memorable learning journeys. Event planning and organization are among her interests, and she finds fulfillment in bringing structure and clarity to complex programs while ensuring high-quality delivery. Reina is known for strong organizational skills, adaptability, and a collaborative approach. She strives to ensure that every program is delivered to the highest standard, while continuously seeking opportunities to improve efficiency and participant experience. Through her role, Reina contributes to AUB’s mission of excellence in education by supporting professionals in gaining valuable knowledge and skills that drive growth and success.",
-                    email: "rm242@aub.edu.lb",
-                    image: "images/team/Reina.jpg"
-                }
-            ],
-            "Program Design Team": [
-                {
-                    name: "Rajab Ghazzaoui",
-                    title: "Program Design Manager",
-                    bio: "Mr. Rajab Ghazzaoui is an Executive Education Program Design Manager at OSB AUB. His responsibilities vary throughout the Company Specific Programs (CSP) and Open Enrollment Programs (OEP). Experienced Program Design Manager with a Master of Public Policy degree from The University of Chicago and Bachelor of Engineering from the American University of Beirut. Skilled in designing and delivering data-driven and research-backed programs for diverse clientele. Well-versed in budgeting, strategic planning, and team collaboration. Passionate about developing impactful and resourceful executive education programs, enhancing adult learning experience, and understanding the impact of the programs. Adept at identifying potential client needs. Strong interpersonal skills developed through diverse experiences in traveling, studying abroad, and volunteering.",
-                    email: "rg41@aub.edu.lb",
-                    image: "images/team/Rajab.jpg"
-                },
-                {
-                    name: "Mohammad Shoukeir",
-                    title: "Manager, Proposal Writing and Program Design Management",
-                    bio: "Mr. Mohammad Shoukeir is a manager of program design in the executive education unit at OSB AUB. He is a people development expert with over 17 years of experience in human resources, talent management, and the learning and development fields. His career path included multiple sectors where he worked in the construction, oil & gas, and FMCG industries. As a learning and development expert, Mohammad managed people planning and training programs for a large number of employees during his previous jobs in coordination with unit heads, facilitators, and diversified providers. Holder of a bachelor’s degree in business management from the American University of Beirut, he covers a diverse range of responsibilities spanning across company-specific programs (CSP), Open-enrollment programs (OEP), and public programs. An expert in developing and putting into use reliable programs supported by research for a variety of clients. Motivated, informed, career-driven, and constantly interested in the interpersonal and self-development of people and businesses.",
-                    email: "ms424@aub.edu.lb",
-                    image: "images/team/Moh.png"
-                }
-            ],
-            "Program Management": [
-                {
-                    name: "Hiba Hamade",
-                    title: "Program Manager",
-                    bio: "Hiba Hamade holds a PhD in Management with a specialization in Leadership and Organizational Change and brings more than 18 years of experience in higher education. She is also an executive coach certified in EQ-I 2.0 and EQ-I 360 as well as an ICF member, ACC level practitioner. Throughout her career, she has had the chance to work closely in navigating team dynamics, developing well-rounded characters to thrive complex organizational settings, and managing program portfolios including MBA and MBA Online programs. She has led and contributed to key strategies and initiatives. Hiba is also a managing editor for a business review initiative at the Suliman S. Olayan School of Business and is a part-time lecturer with teaching experience in management and microeconomics. She has built collaborations with corporate clients in Lebanon and the Middle East, including the GCC. Hiba’s research focus and publications extend to leadership, management, and organizational culture with contributions to conferences and research field. She has served as a peer reviewer for the Academy of Management for two years and has a published book chapter about Women’s Leadership in Arab MENA Countries. Bridging between her academic and practical experiences, she brings to executive learning the ability to develop program offerings aligned with organizational strategies and business needs.",
-                    email: "hh62@aub.edu.lb",
-                    image: "images/team/Hiba.jpg"
-                }
-            ],
-            "Business Development": [
-                {
-                    name: "Gary Saliba",
-                    title: "Business Development Executive",
-                    bio: " Mr. Gary Saliba is the Business Development Executive at AUB Suliman S. Olayan School of Business (OSB) Executive Education. He leads growth initiatives, manages OSB’s corporate client accounts, and promotes strategic corporate partnerships throughout the MENA region. Gary ensures OSB’s Executive Education clients get the most value out of Executive Education’s Company Specific Programs, Open Enrollment Programs, and value-added services. Gary has extensive experience working with private and public sector organizations globally.  He worked at General Electric and Aspen Systems in the U.S., and in regional roles at Bull Middle East and Universant.  He brings in broad experience in business development, consulting, account management, project management and building client relationships in various countries in the Middle East, Europe, and the U.S. Gary holds a Master’s of Science degree in Business from the Johns Hopkins University",
-                    email: "gs52@aub.edu.lb",
-                    image: "images/team/Gary.jpg"
-                }
-            ]
-        };
-
-        // Function to render the entire team section without any profile hyperlinks
-        function renderTeam() {
-            const container = document.getElementById('team-container');
-            if (!container) return;
-            container.innerHTML = '';
-            for (const [category, members] of Object.entries(teamData)) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'team-category';
-                categoryDiv.setAttribute('data-aos', 'fade-up');
-                const heading = document.createElement('h2');
-                heading.textContent = category;
-                heading.className = 'section-title';
-                categoryDiv.appendChild(heading);
-                const gridDiv = document.createElement('div');
-                gridDiv.className = 'team-grid';
-                members.forEach(member => {
-                    const card = document.createElement('div');
-                    card.className = 'team-card';
-                    // Image section
-                    const imgDiv = document.createElement('div');
-                    imgDiv.className = 'team-card__image';
-                    const img = document.createElement('img');
-                    img.src = member.image;
-                    img.alt = member.name;
-                    img.loading = 'lazy';
-                    // Fallback if image fails to load (ensures robust visuals)
-                    img.onerror = function () {
-                        this.src = 'https://via.placeholder.com/120?text=Photo';
-                    };
-                    imgDiv.appendChild(img);
-                    // Content section - no hyperlink on name
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'team-card__content';
-
-                    const nameDiv = document.createElement('div');
-                    nameDiv.className = 'team-card__name';
-                    // Plain text name without any anchor/link (profile link removed entirely)
-                    nameDiv.textContent = member.name;
-                    const titleDiv = document.createElement('div');
-                    titleDiv.className = 'team-card__title';
-                    titleDiv.textContent = member.title;
-                    const emailDiv = document.createElement('div');
-                    emailDiv.className = 'team-card__email';
-                    const emailLink = document.createElement('a');
-                    emailLink.href = `mailto:${member.email}`;
-                    emailLink.textContent = member.email;
-                    emailDiv.appendChild(emailLink);
-                    const bioDiv = document.createElement('div');
-                    bioDiv.className = 'team-card__bio';
-                    bioDiv.textContent = member.bio;
-                    contentDiv.appendChild(nameDiv);
-                    contentDiv.appendChild(titleDiv);
-                    contentDiv.appendChild(emailDiv);
-                    contentDiv.appendChild(bioDiv);
-                    card.appendChild(imgDiv);
-                    card.appendChild(contentDiv);
-                    gridDiv.appendChild(card);
-                });
-                categoryDiv.appendChild(gridDiv);
-                container.appendChild(categoryDiv);
-            }
-            // Refresh AOS to animate new content
-            if (typeof AOS !== 'undefined' && AOS.refresh) {
-                AOS.refresh();
-            }
-        }
-
-        // Initialize page on DOM ready
-        document.addEventListener('DOMContentLoaded', () => {
-            renderTeam();
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 800, once: true });
-            }
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons();
-            }
+        lucide.createIcons();
+        // carousel
+        document.querySelectorAll('.js-carousel').forEach(c => {
+            const track = c.querySelector('.js-carousel-track');
+            const prev = c.querySelector('.js-carousel-prev');
+            const next = c.querySelector('.js-carousel-next');
+            let idx = 0;
+            const slides = track ? track.children : [];
+            const total = slides.length;
+            const update = () => {
+                if (!track) return;
+                const w = track.parentElement.clientWidth;
+                track.style.transform = `translateX(-${idx * w}px)`;
+                if (prev) prev.disabled = idx === 0;
+                if (next) next.disabled = idx >= total - 1;
+            };
+            if (next) next.addEventListener('click', () => { if (idx < total - 1) { idx++; update(); } });
+            if (prev) prev.addEventListener('click', () => { if (idx > 0) { idx--; update(); } });
+            window.addEventListener('resize', update);
+            update();
         });
     </script>
 </body>
