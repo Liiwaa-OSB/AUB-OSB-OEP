@@ -32,6 +32,8 @@ body {
   --color-design-thinking-accent: #854295;
   --color-ai-in-supply-chain-accent: #3aa0e2;
   --color-family-business-governance-accent: #565ebb;
+  --color-CEDAR-accent: #CC9E2B;
+  --color-KAED-accent: Grey; /* lii change KAED color*/
 
   --font-family-base: "Roboto", sans-serif;
   --spacing-unit: 1rem;
@@ -76,6 +78,14 @@ body {
 
 .family-business-governance-bg {
   background-color: var(--color-family-business-governance-accent);
+}
+
+.CEDAR-bg {
+  background-color: var(--color-CEDAR-accent);
+}
+
+.KAED-bg {
+  background-color: var(--color-KAED-accent);
 }
 
 /* ===== UTILITY CLASSES ===== */

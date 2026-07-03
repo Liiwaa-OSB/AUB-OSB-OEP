@@ -91,17 +91,6 @@
             overflow: hidden;
         }
 
-        .contact-info-panel::after {
-            content: "";
-            position: absolute;
-            right: -80px;
-            bottom: -80px;
-            width: 220px;
-            height: 220px;
-            background: rgba(132, 1, 50, 0.08);
-            border-radius: 50%;
-        }
-
         .contact-info-panel h3,
         .contact-info-panel p,
         .contact-detail-list,
@@ -458,19 +447,14 @@
 
         .contact-success-message {
             display: none;
-            padding: 2.5rem;
-            background: #ecfdf3;
-            border: 1px solid #8fe0b8;
-            border-top: 4px solid #027948;
-            color: #064e3b;
-        }
+        } 
 
         .contact-success-message.is-visible {
             display: block;
         }
 
         .contact-success-message h2 {
-            color: #027948;
+            color: var(--color-primary);
             font-size: 1.8rem;
             font-weight: 800;
             line-height: 1.25;
@@ -478,9 +462,6 @@
         }
 
         .contact-success-message p {
-            color: #064e3b;
-            font-size: 1rem;
-            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
 
@@ -907,7 +888,7 @@
                 <ul class="osb-nav">
                     <!-- About OSB with dropdown -->
                     <li class="osb-nav-item has-dropdown">
-                        <a href="#" id="about-osb-link">About OSB</a>
+                        <a id="about-osb-link">About OSB</a>
                         <ul class="osb-dropdown">
                             <li>
                                 <a href="/osb/about/Pages/Meet-the-Dean.aspx" id="meet-the-dean">Meet the Dean</a>
@@ -952,7 +933,7 @@
                     </li>
                     <!-- Academic Programs with dropdown -->
                     <li class="osb-nav-item has-dropdown">
-                        <a href="#" id="academic-programs-link">Academic Programs</a>
+                        <a id="academic-programs-link">Academic Programs</a>
                         <ul class="osb-dropdown">
                             <li>
                                 <a href="/osb/UndergradProgram" target="_blank" id="undergraduate-program">Undergraduate
@@ -979,7 +960,7 @@
                     <li class="osb-nav-item has-dropdown">
                         <!-- lii replace href below -->
                         <!-- href="https://www.aub.edu.lb/osb/executiveeducation/Pages/default.aspx" -->
-                        <a href="#" target="_blank" id="executive-education-link">Executive Education</a>
+                        <a target="_blank" id="executive-education-link">Executive Education</a>
                         <ul class="osb-dropdown">
                             <li>
                                 <!-- lii replcae href -->
@@ -1013,7 +994,7 @@
                     </li>
                     <!-- OSB Online with dropdown -->
                     <li class="osb-nav-item has-dropdown">
-                        <a href="#" id="osb-online-link">OSB Online</a>
+                        <a id="osb-online-link">OSB Online</a>
                         <ul class="osb-dropdown">
                             <li>
                                 <a href="https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx"
@@ -1172,7 +1153,7 @@
                                     value="https://liiwaa-osb.github.io/AUB-OSB-OEP/contact-us.html?thankyou=1#contact-form">
                                 <input type="hidden" name="recordType" value="0120Y000000ymGb">
                                 <!-- lii - use the Gary id -->
-                                <input type="hidden" name="Campaign_ID" value="701P500000o9UrjIAE">
+                                <input type="hidden" name="Campaign_ID" value="701060000016t8aAAA">
                                 <input type="hidden" name="member_status" value="Inquiring">
                                 <input type="hidden" name="lead_source" value="Website Contact Form">
                                 <input type="hidden" name="00N0Y00000QGkma" value="Contact Us Inquiry">
@@ -1296,7 +1277,7 @@
                         For various questions, please try contacting us via social media
                         first!
                     </p>
-                    <a href="#" class="footer-item__link">read more</a>
+                    <a class="footer-item__link">read more</a>
                 </div>
                 <div class="footer-item">
                     <h2 class="footer-item__title">Privacy Statement</h2>
@@ -1304,7 +1285,7 @@
                         We take data privacy seriously and adhere to all applicable data
                         privacy laws and regulations.
                     </p>
-                    <a href="#" class="footer-item__link">read more</a>
+                    <a class="footer-item__link">read more</a>
                 </div>
                 <div class="footer-item">
                     <h2 class="footer-item__title">Copyright and Disclaimer</h2>
@@ -1312,7 +1293,7 @@
                         Written permission is needed to copy or disseminate all or part of
                         the materials on the AUB website.
                     </p>
-                    <a href="#" class="footer-item__link">read more</a>
+                    <a class="footer-item__link">read more</a>
                 </div>
                 <div class="footer-item">
                     <h2 class="footer-item__title">
@@ -1322,7 +1303,7 @@
                         AUB is committed to providing a safe and respectful environment to
                         all members of its community.
                     </p>
-                    <a href="#" class="footer-item__link">read more</a>
+                    <a class="footer-item__link">read more</a>
                 </div>
             </div>
         </div>
@@ -1702,7 +1683,10 @@
                 setLoading(true);
                 submitBtn.dataset.submitting = "true";
 
-                // Submit the form
+                // 🔥 STOP THE LOADER BEFORE REDIRECT
+                setLoading(false);
+                submitBtn.dataset.submitting = "false";
+
                 form.submit();
             });
 
