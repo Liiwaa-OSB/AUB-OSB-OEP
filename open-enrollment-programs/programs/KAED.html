@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest"></script>
-        <link rel="icon" href="../../images/logos/favicon.ico" type="image/png">
-<link rel="stylesheet" href="../../css/main.css" />
+    <link rel="icon" href="../../images/logos/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="../../css/main.css" />
     <link rel="stylesheet" href="../../css/menu.css" />
     <style>
         :root {
@@ -36,101 +36,6 @@
 
         .nav-osb-links .osb-dropdown li a#open-enrollment-programs {
             color: var(--color-primary);
-        }
-
-        /* module detail cards */
-        .module-detail {
-            background: white;
-            padding: 1.5rem 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            border-left: 3px solid var(--color-accent);
-            border-bottom: 3px solid var(--color-accent);
-            border-radius: 2px 0 2px 0;
-        }
-
-        .module-detail__header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 0.5rem 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .module-detail__title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--color-accent-dark);
-            margin: 0;
-        }
-
-        .module-detail__meta {
-            font-weight: 600;
-            color: #556b7c;
-            background: #eef3f7;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .module-detail__desc {
-            color: #2d3f4f;
-            line-height: 1.6;
-            margin: 0.25rem 0 0;
-        }
-
-        .module-detail__desc strong {
-            color: var(--color-accent-dark);
-        }
-
-        .schematic-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .schematic-grid__image {
-            flex: 1 1 300px;
-        }
-
-        .schematic-grid__image img {
-            width: 100%;
-            height: auto;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .schematic-grid__text {
-            flex: 2 1 400px;
-        }
-
-        .benefit-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .benefit-item {
-            background: white;
-            padding: 1.5rem 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            border: 1px solid var(--color-accent);
-            border-left: 6px solid var(--color-accent);
-        }
-
-        .benefit-item h4 {
-            margin: 0.5rem 0 0.25rem;
-            font-size: 1.1rem;
-        }
-
-        .benefit-item p {
-            margin: 0;
-            color: #445566;
-            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -850,7 +755,7 @@
         </section>
 
         <!-- ===== HOW YOU BENEFIT ===== -->
-        <section class="section" style="background:#f5f5f5;">
+        <section class="section">
             <div class="container">
                 <h2 class="section-title">How You Benefit</h2>
                 <div class="benefit-list">
@@ -873,93 +778,109 @@
             </div>
         </section>
 
-        <!-- ===== PROGRAM DETAILS – MODULES ===== -->
-        <section class="section">
+        <!-- ===== PROGRAM DETAILS ===== -->
+        <section class="section" style="background:#f5f5f5;">
             <div class="container">
                 <h2 class="section-title">Program Details</h2>
 
-                <!-- Module 1 -->
-                <div class="module-detail">
-                    <div class="module-detail__header">
-                        <h3 class="module-detail__title">The 21st Century Leader</h3>
-                        <span class="module-detail__meta">2 days · Beirut Campus</span>
+                <div class="modules-grid">
+                    <!-- Card 1: The 21st Century Leader -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/black.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">2 days · Beirut Campus</span>
+                            <h3 class="detail-card__title">The 21st Century Leader</h3>
+                            <p class="detail-card__desc"><strong>Soft Skills · Hard Results</strong><br>This module
+                                focuses on the "soft" skills that yield "hard" results, showing participants how to lead
+                                with high emotional intelligence and an agile mindset in an increasingly data-driven
+                                world. Participants are introduced to many of the basic principles of human behavior and
+                                introduce intrapersonal tools and related reflective techniques as a precursor to
+                                developing the leadership capacity. Core areas of coverage aligned with this include
+                                individual differences in abilities and attitudes, perceptions, motivation, power and
+                                politics, and leadership.</p>
+                        </div>
                     </div>
-                    <p class="module-detail__desc">
-                        This module focuses on the "soft" skills that yield "hard" results, showing participants how to
-                        lead with high emotional intelligence and an agile mindset in an increasingly data-driven world.
-                        Participants are introduced to many of the basic principles of human behavior and introduce
-                        intrapersonal tools and related reflective techniques as a precursor to developing the
-                        leadership capacity. Core areas of coverage aligned with this include individual differences in
-                        abilities and attitudes, perceptions, motivation, power and politics, and leadership.
-                    </p>
-                </div>
 
-                <!-- Module 2 -->
-                <div class="module-detail">
-                    <div class="module-detail__header">
-                        <h3 class="module-detail__title">AI in the Workplace</h3>
-                        <span class="module-detail__meta">1 day (2 half-days) · LIVE Online</span>
+                    <!-- Card 2: AI in the Workplace -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/black.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">1 day (2 half-days) · LIVE Online</span>
+                            <h3 class="detail-card__title">AI in the Workplace</h3>
+                            <p class="detail-card__desc"><strong>Practical · Hands-on · Generative AI</strong><br>A
+                                practical, hands-on dive into the world of Generative AI. This online module focuses on
+                                the immediate application of AI tools to automate routine tasks, enhance creative
+                                output, and reclaim time for high-value strategic thinking. This session offers an
+                                in-depth exploration of AI applications tailored to various sectors. Participants will
+                                also focus on mitigating biases in AI systems, ensuring data security and privacy, and
+                                promoting responsible AI usage.</p>
+                        </div>
                     </div>
-                    <p class="module-detail__desc">
-                        A practical, hands-on dive into the world of Generative AI. This online module focuses on the
-                        immediate application of AI tools to automate routine tasks, enhance creative output, and
-                        reclaim time for high-value strategic thinking. This session offers an in-depth exploration of
-                        AI applications tailored to various sectors. Participants will also focus on mitigating biases
-                        in AI systems, ensuring data security and privacy, and promoting responsible AI usage.
-                    </p>
-                </div>
 
-                <!-- Module 3 -->
-                <div class="module-detail">
-                    <div class="module-detail__header">
-                        <h3 class="module-detail__title">Navigating the Digital Shift</h3>
-                        <span class="module-detail__meta">2 days · Beirut Campus</span>
+                    <!-- Card 3: Navigating the Digital Shift -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/black.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">2 days · Beirut Campus</span>
+                            <h3 class="detail-card__title">Navigating the Digital Shift</h3>
+                            <p class="detail-card__desc"><strong>Strategic · Holistic · Ecosystem</strong><br>Digital
+                                transformation is far more than just integrating technology into operations; it
+                                represents a comprehensive strategic shift in how organizations function and engage with
+                                stakeholders. This intensive session is designed to empower emerging leaders from
+                                different sectors to understand digital transformation as a holistic ecosystem that
+                                transcends simple technology adoption. By integrating practical frameworks—such as
+                                Digital Maturity and ADKAR—with strategic concepts like the S-Curve and the "Think Big,
+                                Start Small" philosophy.</p>
+                        </div>
                     </div>
-                    <p class="module-detail__desc">
-                        Digital transformation is far more than just integrating technology into operations; it
-                        represents a comprehensive strategic shift in how organizations function and engage with
-                        stakeholders. This intensive session is designed to empower emerging leaders from different
-                        sectors to understand digital transformation as a holistic ecosystem that transcends simple
-                        technology adoption. By integrating practical frameworks—such as Digital Maturity and ADKAR—with
-                        strategic concepts like the S-Curve and the "Think Big, Start Small" philosophy.
-                    </p>
-                </div>
 
-                <!-- Module 4 -->
-                <div class="module-detail">
-                    <div class="module-detail__header">
-                        <h3 class="module-detail__title">The Modern Workforce</h3>
-                        <span class="module-detail__meta">1 day (2 half-days) · LIVE Online</span>
+                    <!-- Card 4: The Modern Workforce -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/black.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">1 day (2 half-days) · LIVE Online</span>
+                            <h3 class="detail-card__title">The Modern Workforce</h3>
+                            <p class="detail-card__desc"><strong>Talent · Strategy · Performance</strong><br>This module
+                                presents a comprehensive overview of how to effectively develop a talent management
+                                strategy that can support organizational strategy, motivate multi-generational
+                                employees, and drive organizational performance. The session's orientation will be both
+                                analytical, in giving participants concepts and frameworks with which to think about the
+                                management of talent in organizations, and managerial, in considering the action plans
+                                and implementation approach necessary to put these practices and policies into effect
+                                and sustain them over time.</p>
+                        </div>
                     </div>
-                    <p class="module-detail__desc">
-                        This module presents a comprehensive overview of how to effectively develop a talent management
-                        strategy that can support organizational strategy, motivate multi-generational employees, and
-                        drive organizational performance. The session's orientation will be both analytical, in giving
-                        participants concepts and frameworks with which to think about the management of talent in
-                        organizations, and managerial, in considering the action plans and implementation approach
-                        necessary to put these practices and policies into effect and sustain them over time.
-                    </p>
-                </div>
 
-                <!-- Module 5 -->
-                <div class="module-detail">
-                    <div class="module-detail__header">
-                        <h3 class="module-detail__title">Reorienting Crisis</h3>
-                        <span class="module-detail__meta">2 days · Beirut Campus</span>
+                    <!-- Card 5: Reorienting Crisis -->
+                    <div class="detail-card">
+                        <div class="detail-card__image"
+                            style="background-image: url('../../images/black.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="detail-card__content">
+                            <span class="detail-card__badge">2 days · Beirut Campus</span>
+                            <h3 class="detail-card__title">Reorienting Crisis</h3>
+                            <p class="detail-card__desc"><strong>Resilience · Preparedness · Response</strong><br>This
+                                module introduces participants to the fundamentals of crisis management from
+                                understanding how organizations anticipate, prepare for, and respond to crises. The
+                                session bridges theory and practice through interactive discussions and analytical
+                                frameworks. Participants will analyze how leading institutions have successfully
+                                identified potential disruptions and built organizational resilience through proactive
+                                transformation, while contrasting these with examples of crisis failure, where
+                                leadership, culture, and governance breakdowns led to reputational damage. The session
+                                will also equip participants with the essential knowledge, skills, and competencies
+                                necessary for communicating effective crisis preparedness, management, and resilience to
+                                external and internal stakeholders.</p>
+                        </div>
                     </div>
-                    <p class="module-detail__desc">
-                        This module introduces participants to the fundamentals of crisis management from understanding
-                        how organizations anticipate, prepare for, and respond to crises. The session bridges theory and
-                        practice through interactive discussions and analytical frameworks. Participants will analyze
-                        how leading institutions have successfully identified potential disruptions and built
-                        organizational resilience through proactive transformation, while contrasting these with
-                        examples of crisis failure, where leadership, culture, and governance breakdowns led to
-                        reputational damage. The session will also equip participants with the essential knowledge,
-                        skills, and competencies necessary for communicating effective crisis preparedness, management,
-                        and resilience to external and internal stakeholders.
-                    </p>
                 </div>
-
             </div>
         </section>
 
@@ -1006,7 +927,7 @@
                             <!-- slide 1 -->
                             <div class="carousel__slide">
                                 <div class="participant-card">
-                                    <div class="participant-card__image"><img src="../../images/AUB-OSB-KAED-alumni.jpg"
+                                    <div class="participant-card__image"><img src="../../images/black.png"
                                             alt="AUB Alumni"
                                             onerror="this.src='https://placehold.co/400x300/1e3a5f/white?text=AUB+Alumni'" />
                                     </div>
@@ -1021,7 +942,7 @@
                             <div class="carousel__slide">
                                 <div class="participant-card">
                                     <div class="participant-card__image"><img
-                                            src="../../images/AUB-OSB-KAED-managers.jpg" alt="Mid-to-senior managers"
+                                            src="../../images/black.png" alt="Mid-to-senior managers"
                                             onerror="this.src='https://placehold.co/400x300/2d5a27/white?text=Managers'" />
                                     </div>
                                     <div class="participant-card__content">
@@ -1035,7 +956,7 @@
                             <div class="carousel__slide">
                                 <div class="participant-card">
                                     <div class="participant-card__image"><img
-                                            src="../../images/AUB-OSB-KAED-executives.jpg" alt="Executives"
+                                            src="../../images/black.png" alt="Executives"
                                             onerror="this.src='https://placehold.co/400x300/8b5a2b/white?text=Executives'" />
                                     </div>
                                     <div class="participant-card__content">
@@ -1053,7 +974,7 @@
 
                 <!-- Program requirements (exact from doc) -->
                 <div class="requirements-grid">
-                    <div class="requirements-grid__image"><img src="../../images/AUB-OSB-KAED-requirements.jpg"
+                    <div class="requirements-grid__image"><img src="../../images/black.png"
                             alt="Program requirements"
                             onerror="this.src='https://placehold.co/600x300/4a6b8a/white?text=Requirements'" /></div>
                     <div class="requirements-grid__content">
@@ -1274,250 +1195,14 @@
                             <a href="mailto:gs52@aub.edu.lb" class="cta__contact-link"><i data-lucide="mail" width="20"
                                     height="20"></i><span>gs52@aub.edu.lb</span></a>
                             <!-- Lii - replace when go live -->
-              <a href="https://liiwaa-osb.github.io/AUB-OSB-OEP/contact-us.html" class="btn btn--white">Contact Us</a>
+                            <a href="https://liiwaa-osb.github.io/AUB-OSB-OEP/contact-us.html"
+                                class="btn btn--white">Contact Us</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <section class="section program-details-section">
-            <div class="container">
-                <h2 class="section-title">Program Details</h2>
-                <div class="program-details-grid">
-
-                    <!-- 1. The 21st Century Leader – spans 2 cols -->
-                    <div class="detail-card detail-card--wide">
-                        <div class="detail-card__header">
-                            <span class="detail-card__badge">2 days · Beirut Campus</span>
-                            <div class="detail-card__icon"><i data-lucide="brain" width="32" height="32"></i></div>
-                        </div>
-                        <h3 class="detail-card__title">The 21st Century Leader</h3>
-                        <p class="detail-card__desc">
-                            This module focuses on the "soft" skills that yield "hard" results, showing participants how
-                            to lead with high emotional intelligence and an agile mindset in an increasingly data-driven
-                            world. Participants are introduced to many of the basic principles of human behavior and
-                            introduce intrapersonal tools and related reflective techniques as a precursor to developing
-                            the leadership capacity. Core areas of coverage aligned with this include individual
-                            differences in abilities and attitudes, perceptions, motivation, power and politics, and
-                            leadership.
-                        </p>
-                    </div>
-
-                    <!-- 2. AI in the Workplace – spans 1 col -->
-                    <div class="detail-card detail-card--narrow">
-                        <div class="detail-card__header">
-                            <span class="detail-card__badge">1 day (2 half-days) · LIVE Online</span>
-                            <div class="detail-card__icon"><i data-lucide="cpu" width="32" height="32"></i></div>
-                        </div>
-                        <h3 class="detail-card__title">AI in the Workplace</h3>
-                        <p class="detail-card__desc">
-                            A practical, hands-on dive into the world of Generative AI. This online module focuses on
-                            the immediate application of AI tools to automate routine tasks, enhance creative output,
-                            and reclaim time for high-value strategic thinking. This session offers an in-depth
-                            exploration of AI applications tailored to various sectors. Participants will also focus on
-                            mitigating biases in AI systems, ensuring data security and privacy, and promoting
-                            responsible AI usage.
-                        </p>
-                    </div>
-
-                    <!-- 3. Navigating the Digital Shift – spans 2 cols -->
-                    <div class="detail-card detail-card--wide">
-                        <div class="detail-card__header">
-                            <span class="detail-card__badge">2 days · Beirut Campus</span>
-                            <div class="detail-card__icon"><i data-lucide="globe" width="32" height="32"></i></div>
-                        </div>
-                        <h3 class="detail-card__title">Navigating the Digital Shift</h3>
-                        <p class="detail-card__desc">
-                            Digital transformation is far more than just integrating technology into operations; it
-                            represents a comprehensive strategic shift in how organizations function and engage with
-                            stakeholders. This intensive session is designed to empower emerging leaders from different
-                            sectors to understand digital transformation as a holistic ecosystem that transcends simple
-                            technology adoption. By integrating practical frameworks—such as Digital Maturity and
-                            ADKAR—with strategic concepts like the S-Curve and the "Think Big, Start Small" philosophy.
-                        </p>
-                    </div>
-
-                    <!-- 4. The Modern Workforce – spans 1 col -->
-                    <div class="detail-card detail-card--narrow">
-                        <div class="detail-card__header">
-                            <span class="detail-card__badge">1 day (2 half-days) · LIVE Online</span>
-                            <div class="detail-card__icon"><i data-lucide="users" width="32" height="32"></i></div>
-                        </div>
-                        <h3 class="detail-card__title">The Modern Workforce</h3>
-                        <p class="detail-card__desc">
-                            This module presents a comprehensive overview of how to effectively develop a talent
-                            management strategy that can support organizational strategy, motivate multi-generational
-                            employees, and drive organizational performance. The session's orientation will be both
-                            analytical, in giving participants concepts and frameworks with which to think about the
-                            management of talent in organizations, and managerial, in considering the action plans and
-                            implementation approach necessary to put these practices and policies into effect and
-                            sustain them over time.
-                        </p>
-                    </div>
-
-                    <!-- 5. Reorienting Crisis – spans 2 cols -->
-                    <div class="detail-card detail-card--wide">
-                        <div class="detail-card__header">
-                            <span class="detail-card__badge">2 days · Beirut Campus</span>
-                            <div class="detail-card__icon"><i data-lucide="shield-alert" width="32" height="32"></i>
-                            </div>
-                        </div>
-                        <h3 class="detail-card__title">Reorienting Crisis</h3>
-                        <p class="detail-card__desc">
-                            This module introduces participants to the fundamentals of crisis management from
-                            understanding how organizations anticipate, prepare for, and respond to crises. The session
-                            bridges theory and practice through interactive discussions and analytical frameworks.
-                            Participants will analyze how leading institutions have successfully identified potential
-                            disruptions and built organizational resilience through proactive transformation, while
-                            contrasting these with examples of crisis failure, where leadership, culture, and governance
-                            breakdowns led to reputational damage. The session will also equip participants with the
-                            essential knowledge, skills, and competencies necessary for communicating effective crisis
-                            preparedness, management, and resilience to external and internal stakeholders.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <style>
-            .program-details-section {
-                background: #f8fafc;
-                padding: 3rem 0;
-            }
-
-            .program-details-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                margin-top: 2rem;
-            }
-
-            /* Tablet: 2 columns */
-            @media (min-width: 768px) {
-                .program-details-grid {
-                    grid-template-columns: 1fr 1fr;
-                }
-
-                /* On tablet, we let cards flow naturally in 2 cols */
-                .detail-card--wide {
-                    grid-column: auto;
-                }
-
-                .detail-card--narrow {
-                    grid-column: auto;
-                }
-            }
-
-            /* Desktop: 3 columns with staggered widths */
-            @media (min-width: 1024px) {
-                .program-details-grid {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-
-                /* Card 1: spans 2 cols (cols 1-2) */
-                .detail-card:nth-child(1) {
-                    grid-column: 1 / 3;
-                }
-
-                /* Card 2: spans 1 col (col 3) */
-                .detail-card:nth-child(2) {
-                    grid-column: 3 / 4;
-                }
-
-                /* Card 3: spans 2 cols (cols 1-2) */
-                .detail-card:nth-child(3) {
-                    grid-column: 1 / 3;
-                }
-
-                /* Card 4: spans 1 col (col 3) */
-                .detail-card:nth-child(4) {
-                    grid-column: 3 / 4;
-                }
-
-                /* Card 5: spans 2 cols (cols 1-2) */
-                .detail-card:nth-child(5) {
-                    grid-column: 1 / 3;
-                }
-            }
-
-            .detail-card {
-                background: white;
-                padding: 1.8rem 1.8rem 2rem;
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-                border-left: 6px solid var(--color-accent, #0a3b5b);
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .detail-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-            }
-
-            .detail-card__header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 0.6rem;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-            }
-
-            .detail-card__badge {
-                font-size: 0.75rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.04em;
-                color: #2d4055;
-                background: #eef2f6;
-                padding: 0.2rem 1rem;
-                display: inline-block;
-            }
-
-            .detail-card__icon {
-                color: var(--color-accent, #0a3b5b);
-                background: rgba(10, 59, 91, 0.08);
-                width: 48px;
-                height: 48px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-            }
-
-            .detail-card__title {
-                font-size: 1.35rem;
-                font-weight: 800;
-                margin: 0.5rem 0 0.6rem;
-                color: #0b1a2b;
-                line-height: 1.25;
-            }
-
-            .detail-card__desc {
-                color: #2d4055;
-                line-height: 1.65;
-                font-size: 0.98rem;
-                margin: 0;
-                flex: 1;
-            }
-
-            /* All cards use the same accent color */
-            .detail-card .detail-card__icon {
-                background: rgba(10, 59, 91, 0.08);
-                color: var(--color-accent, #0a3b5b);
-            }
-
-            /* Mobile: full width for all */
-            @media (max-width: 767px) {
-                .detail-card {
-                    grid-column: auto !important;
-                }
-            }
-        </style>
 
     </main>
 
