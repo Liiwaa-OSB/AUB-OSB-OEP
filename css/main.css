@@ -33,8 +33,7 @@ body {
   --color-ai-in-supply-chain-accent: #3aa0e2;
   --color-family-business-governance-accent: #565ebb;
   --color-CEDAR-accent: #CC9E2B;
-  --color-KAED-accent: Grey;
-  /* lii change KAED color*/
+  --color-KAED-accent:  #0cefdc;
 
   --font-family-base: "Roboto", sans-serif;
   --spacing-unit: 1rem;
@@ -1125,7 +1124,6 @@ img {
 
 .requirements-grid__image {
   height: 100%;
-  max-height: 300px;
   overflow: hidden;
 }
 
