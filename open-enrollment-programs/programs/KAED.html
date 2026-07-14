@@ -888,6 +888,9 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin-top: 2rem;">
+                    <img src="../../images/AUB-OSB-OEP-KAED-Program-Details.jpg" alt="Program Details Schema" />
+                </div>
             </div>
         </section>
 
@@ -970,15 +973,17 @@
                 font-size: 1.125rem;
                 line-height: 1.5;
                 color: #374151;
+                position: relative;
+                padding-left: 1.5rem;
             }
 
-            .requirements-card__icon {
+            .requirements-card__list li::before {
+                content: "•";
                 color: var(--color-accent);
-                font-size: 1.25rem;
-                font-weight: 700;
-                line-height: 1.5;
-                flex-shrink: 0;
-                margin-top: 1px;
+                font-size: 45px;
+                position: absolute;
+                left: 0px;
+                top: -20px;
             }
         </style>
         <!-- ===== WHO SHOULD ENROLL (two-column layout) ===== -->
@@ -1008,15 +1013,12 @@
                             <h3 class="requirements-card__title">Program Requirements</h3>
                             <ul class="requirements-card__list">
                                 <li>
-                                    <span class="requirements-card__icon">•</span>
                                     <span>Participants generally come from different sectors and industries</span>
                                 </li>
                                 <li>
-                                    <span class="requirements-card__icon">•</span>
                                     <span>Proficiency in spoken and written English is necessary</span>
                                 </li>
                                 <li>
-                                    <span class="requirements-card__icon">•</span>
                                     <span>2 to 7 years of experience</span>
                                 </li>
                             </ul>
