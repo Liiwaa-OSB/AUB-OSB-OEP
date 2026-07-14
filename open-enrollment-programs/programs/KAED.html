@@ -922,48 +922,105 @@
             </div>
         </section>
 
-        <!-- ===== WHO SHOULD ENROLL (carousel) ===== -->
+        <style>
+            /* ===== ENROLL GRID (two‑column layout) ===== */
+            .enroll-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                align-items: stretch;
+            }
+
+            @media (min-width: 1024px) {
+                .enroll-grid {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2.5rem;
+                }
+            }
+
+            /* ===== REQUIREMENTS CARD (no image, clean list) ===== */
+            .requirements-card {
+                background: #fff;
+                border: 1px solid var(--color-border-light, #e5e7eb);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                padding: 2rem;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            @media (min-width: 1024px) {
+                .requirements-card {
+                    padding: 2.5rem;
+                }
+            }
+
+            .requirements-card__title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--color-text-muted, #1f2937);
+                margin-bottom: 2rem;
+            }
+
+            .requirements-card__list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+                font-size: 1.125rem;
+                line-height: 1.5;
+                color: #374151;
+            }
+
+            .requirements-card__icon {
+                color: var(--color-accent);
+                font-size: 1.25rem;
+                font-weight: 700;
+                line-height: 1.5;
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+        </style>
+        <!-- ===== WHO SHOULD ENROLL (two-column layout) ===== -->
         <section class="section" style="background:#f5f5f5;">
             <div class="container">
                 <h2 class="section-title">Who Should Enroll</h2>
-                <div class="carousel js-carousel carousel-2" data-carousel>
-                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous"
-                        disabled>&#10094;</button>
-                    <div class="carousel__container js-carousel-container">
-                        <div class="carousel__track js-carousel-track">
-                            <!-- slide -->
-                            <div class="carousel__slide">
-                                <div class="participant-card">
-                                    <div class="participant-card__image"><img
-                                            src="../../images/AUB-OSB-OEP-KAED-managers.jpg"
-                                            alt="Mid-to-senior managers"
-                                            onerror="this.src='https://placehold.co/400x300/2d5a27/white?text=Managers'" />
-                                    </div>
-                                    <div class="participant-card__content">
-                                        <h3 class="participant-card__title">Junior to Middle Management</h3>
-                                        <p class="participant-card__text">Responsible for driving growth and steering
-                                            digital transformation.</p>
-                                    </div>
-                                </div>
+
+                <div class="enroll-grid">
+                    <!-- Card — left side -->
+                    <div class="enroll-grid__card">
+                        <div class="participant-card">
+                            <div class="participant-card__image">
+                                <img src="../../images/AUB-OSB-OEP-KAED-managers.jpg" alt="Mid-to-senior managers"
+                                    onerror="this.src='https://placehold.co/600x400/2d5a27/white?text=Managers'" />
+                            </div>
+                            <div class="participant-card__content">
+                                <h3 class="participant-card__title">Junior to Middle Management</h3>
+                                <p class="participant-card__text">Responsible for driving growth and steering digital
+                                    transformation.</p>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel__btn carousel__btn--next js-carousel-next"
-                        aria-label="Next">&#10095;</button>
-                </div>
 
-                <!-- Program requirements (exact from doc) -->
-                <div class="requirements-grid">
-                    <div class="requirements-grid__image"><img src="../../images/AUB-OSB-OEP-KAED-Requirements.jpg"
-                            alt="Program requirements"
-                            onerror="this.src='https://placehold.co/600x300/4a6b8a/white?text=Requirements'" /></div>
-                    <div class="requirements-grid__content">
-                        <h3 class="requirements-grid__title">Program Requirements</h3>
-                        <ul class="requirements-grid__list">
-                            <li><span>Participants generally come from different sectors and industries</span></li>
-                            <li><span>Proficiency in spoken and written English is necessary</span></li>
-                            <li><span>2 to 7 years of experience</span></li>
-                        </ul>
+                    <!-- Requirements — right side (no image) -->
+                    <div class="enroll-grid__requirements">
+                        <div class="requirements-card">
+                            <h3 class="requirements-card__title">Program Requirements</h3>
+                            <ul class="requirements-card__list">
+                                <li>
+                                    <span class="requirements-card__icon">•</span>
+                                    <span>Participants generally come from different sectors and industries</span>
+                                </li>
+                                <li>
+                                    <span class="requirements-card__icon">•</span>
+                                    <span>Proficiency in spoken and written English is necessary</span>
+                                </li>
+                                <li>
+                                    <span class="requirements-card__icon">•</span>
+                                    <span>2 to 7 years of experience</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
