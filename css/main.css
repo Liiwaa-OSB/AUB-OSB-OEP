@@ -548,6 +548,11 @@ h3 {
   /* This makes all cards stretch to the same height */
 }
 
+.program-details-wrapper {
+  margin-top: 7rem;
+  margin-bottom: 3rem;
+}
+
 .detail-card {
   flex: 0 0 calc(33.333% - 1rem);
   min-width: 250px;
