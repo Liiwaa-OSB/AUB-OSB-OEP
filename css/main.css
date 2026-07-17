@@ -549,8 +549,8 @@ h3 {
 }
 
 .program-details-wrapper {
-  margin-top: 7rem;
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
 }
 
 .detail-card {
@@ -629,8 +629,11 @@ h3 {
 @media (max-width: 768px) {
   .modules-grid {
     grid-template-columns: 1fr;
-    max-width: 500px;
+    /* max-width: 500px; */
     margin: 0 auto;
+  }
+  .detail-card {
+    flex: 0 0 100%;
   }
 }
 
@@ -638,6 +641,10 @@ h3 {
   .modules-grid {
     grid-template-columns: repeat(2, 1fr);
     max-width: 700px;
+  }
+
+  .detail-card {
+    flex: 0 0 calc(50% - 1rem);
   }
 }
 

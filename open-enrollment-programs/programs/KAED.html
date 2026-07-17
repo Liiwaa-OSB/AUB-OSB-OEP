@@ -691,7 +691,7 @@
                             workforce, the strategic foresight to govern digital transformations, the agility to manage
                             sudden organizational crises, and the technical literacy to leverage AI for productivity.
                         </p>
-                        <p><strong>KAED Program</strong>, developed by the American University of Beirut, Suliman S.
+                        <p>The <strong>KAED Program</strong>, developed by the American University of Beirut, Suliman S.
                             Olayan School of Business (OSB), is a hybrid learning journey designed for forward-thinking
                             leaders navigating an AI-centric, data-driven business landscape. By combining emotional
                             intelligence and crisis resilience with digital governance and practical AI workplace tools,
@@ -789,7 +789,295 @@
         <section class="section" style="background:#f5f5f5;">
             <div class="container">
                 <h2 class="section-title">Program Details</h2>
+                <style>
+                    /* Main card layout */
+                    .box-row {
+                        position: relative;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        align-items: stretch;
+                        justify-content: center;
+                        width: 100%;
+                        margin-bottom: 3rem;
+                    }
 
+                    /* Individual card */
+                    .box-item {
+                        position: relative;
+                        display: flex;
+                        flex: 1 1 0;
+                        flex-direction: column;
+                        min-width: 0;
+                        margin: 0 0.1rem 3rem;
+                        padding: 1.5rem 1rem 1rem;
+                        box-sizing: border-box;
+                        border: 1px solid rgba(0, 0, 0, 0.4);
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+                        text-align: center;
+                        transition: box-shadow 0.1s ease;
+                    }
+
+                    /* Arrow between desktop cards */
+
+                    .box-item:hover {
+                        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+                    }
+
+                    /* Card content */
+                    .box-content {
+                        display: flex;
+                        flex: 1;
+                        flex-direction: column;
+                        height: 100%;
+                    }
+
+                    .box-content h3 {
+                        margin-bottom: 0.2rem;
+                        color: var(--color-accent-dark);
+                        font-size: clamp(1.2rem, 1.15vw, 1.4rem);
+                        font-weight: 600;
+                        letter-spacing: -0.01em;
+                        line-height: 1;
+                        white-space: nowrap;
+                    }
+
+                    .duration {
+                        margin-bottom: 0.75rem;
+                        color: rgba(0, 0, 0, 0.7);
+                        font-size: 0.9rem;
+                        font-weight: 500;
+                        letter-spacing: 0.02em;
+                    }
+
+                    .box-content p {
+                        flex: 1;
+                        margin: 0.5rem 0 0.8rem;
+                        color: #000;
+                        font-size: 0.95rem;
+                        line-height: 1.5;
+                    }
+
+                    /* Session label area */
+                    .bottom-wrap {
+                        position: absolute;
+                        bottom: -20px;
+                        left: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin-top: auto;
+                        transform: translateX(-50%);
+                        white-space: nowrap;
+                    }
+
+                    .session-tag {
+                        display: inline-block;
+                        width: fit-content;
+                        margin: 0.5rem 0 0.25rem;
+                        padding: 0.35rem 1rem;
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 40px;
+                        background-color: var(--color-primary);
+                        color: #fff;
+                        font-size: 0.85rem;
+                        font-weight: 600;
+                        letter-spacing: 0.1em;
+                        text-transform: uppercase;
+                    }
+
+                    .box-item--online .session-tag {
+                        background-color: var(--color-accent-dark);
+                    }
+
+                    .live-online {
+                        position: absolute;
+                        bottom: -29px;
+                        display: block;
+                        margin-top: 0.15rem;
+                        color: var(--color-accent-dark);
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        letter-spacing: 0.04em;
+                    }
+
+                    .arrow {
+                        display: flex;
+                        flex: 0 0 2rem;
+                        align-items: center;
+                        justify-content: center;
+                        width: 2rem;
+                        padding: 0 0.1rem;
+                        color: rgba(0, 0, 0, 0.3);
+                        font-size: 3.8rem;
+                        font-weight: 300;
+                        line-height: 1;
+                        user-select: none;
+                        transition: color 0.2s ease;
+                    }
+
+                    .arrow::before {
+                        display: inline-block;
+                        content: "❯";
+                    }
+
+                    /*
+ * Below 1024px:
+ * 3 equal cards on the first row.
+ * 2 equal cards centered on the second row.
+ */
+                    @media screen and (max-width: 1023px) {
+                        .box-row {
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            align-items: stretch;
+                            column-gap: 1rem;
+                            row-gap: 0;
+                        }
+
+                        /*
+     * Arrows are hidden because they are separate flex items
+     * and would interfere with the three-card layout.
+     */
+                        .arrow {
+                            display: none;
+                        }
+
+                        .box-item {
+                            flex: 0 0 calc((100% - 2rem) / 3);
+                            width: calc((100% - 2rem) / 3);
+                            max-width: calc((100% - 2rem) / 3);
+                            min-width: 0;
+                            max-width: 360px;
+                            margin: 0 0 3rem;
+                        }
+                    }
+
+                    /* Below 700px: one card per row */
+                    @media screen and (max-width: 699px) {
+                        .box-row {
+                            flex-direction: column;
+                            flex-wrap: nowrap;
+                            align-items: stretch;
+                            gap: 0;
+                        }
+
+                        .box-item {
+                            flex: 0 0 auto;
+                            width: 100%;
+                            max-width: none;
+                            margin: 0 0 3rem;
+                        }
+                    }
+
+                    /* Small mobile adjustments */
+                    @media screen and (max-width: 480px) {
+                        .box-item {
+                            padding: 1.2rem 1rem;
+                        }
+
+                        .box-item--online {
+                            margin-bottom: 4rem;
+                        }
+
+                        .box-content h3 {
+                            font-size: 1rem;
+                        }
+                    }
+                </style>
+
+                <div class="box-row">
+                    <!-- Box 1 -->
+                    <div class="box-item">
+                        <div class="box-content">
+                            <h3>The 21st<br>Century Leader</h3>
+                            <div class="duration">Duration: 2 days</div>
+                            <p>
+                                Transition from a traditional manager to a modern leader by mastering
+                                the psychological and behavioral drivers of success.
+                            </p>
+
+                            <div class="bottom-wrap">
+                                <span class="session-tag">Session 1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="arrow" aria-hidden="true"></span>
+
+                    <!-- Box 2 -->
+                    <div class="box-item box-item--online">
+                        <div class="box-content">
+                            <h3>AI in the<br>Workplace</h3>
+                            <div class="duration">Duration: 1 day</div>
+                            <p>
+                                A practical, hands-on dive into the world of Generative AI. This online
+                                module focuses on the immediate application of AI tools to automate.
+                            </p>
+
+                            <div class="bottom-wrap">
+                                <span class="session-tag">Session 2</span>
+                                <span class="live-online">Live Online</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="arrow" aria-hidden="true"></span>
+
+                    <!-- Box 3 -->
+                    <div class="box-item">
+                        <div class="box-content">
+                            <h3>Navigating the<br>Digital Shift</h3>
+                            <div class="duration">Duration: 2 days</div>
+                            <p>
+                                Digital technologies are constantly transforming the way organizations
+                                operate. Industries are being disrupted by new challengers such as
+                                web-based platforms and AI to deliver new products and services.
+                            </p>
+
+                            <div class="bottom-wrap">
+                                <span class="session-tag">Session 3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="arrow" aria-hidden="true"></span>
+
+                    <!-- Box 4 -->
+                    <div class="box-item box-item--online">
+                        <div class="box-content">
+                            <h3>The Modern<br>Workforce</h3>
+                            <div class="duration">Duration: 1 day</div>
+                            <p>
+                                Leading a multi-generational workforce is sophisticated. Explore how to
+                                attract top talent and create a culture that rewards innovation and loyalty.
+                            </p>
+
+                            <div class="bottom-wrap">
+                                <span class="session-tag">Session 4</span>
+                                <span class="live-online">Live Online</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="arrow" aria-hidden="true"></span>
+
+                    <!-- Box 5 -->
+                    <div class="box-item">
+                        <div class="box-content">
+                            <h3>Reorienting<br>Crisis</h3>
+                            <div class="duration">Duration: 2 days</div>
+                            <p>
+                                In an era of &quot;permacrisis,&quot; leadership is defined by how to
+                                handle the unexpected. Learn to identify vulnerabilities, communicate
+                                with clarity, and turn challenges into opportunity.
+                            </p>
+
+                            <div class="bottom-wrap">
+                                <span class="session-tag">Session 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="modules-grid">
                     <!-- Card 1: The 21st Century Leader -->
                     <div class="detail-card">
@@ -881,21 +1169,15 @@
                                 frameworks. Participants will analyze how leading institutions have successfully
                                 identified potential disruptions and built organizational resilience through proactive
                                 transformation, while contrasting these with examples of crisis failure, where
-                                leadership, culture, and governance breakdowns led to reputational damage. The session
-                                will also equip participants with the essential knowledge, skills, and competencies
-                                necessary for communicating effective crisis preparedness, management, and resilience to
-                                external and internal stakeholders.</p>
+                                leadership, culture, and governance breakdowns led to reputational damage.</p>
                         </div>
                     </div>
-                </div>
-                <div class="program-details-wrapper">
-                    <img src="../../images/AUB-OSB-OEP-KAED-Program-Details.png" alt="Program Details Schema" />
                 </div>
             </div>
         </section>
 
         <!-- ===== INSTRUCTOR (Academic Overseer) ===== -->
-        <section class="section" style="background:#f5f5f5;">
+        <section class="section" style="background:#f5f5f5; display:none;">
             <div class="container">
                 <h2 class="section-title">Program Academic Overseer</h2>
                 <div class="instructor-grid">

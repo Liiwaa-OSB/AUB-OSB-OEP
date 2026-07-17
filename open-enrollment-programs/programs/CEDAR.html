@@ -691,7 +691,8 @@
                             to lead digital transformation; senior leaders must now actively harmonize unprecedented AI
                             capabilities with human-centric purpose and systemic organizational resilience with deep
                             ethical responsibility.</p>
-                        <p><strong>CEDAR Program</strong>, developed by the American University of Beirut, Suliman S.
+                        <p>The <strong>CEDAR Program</strong>, developed by the American University of Beirut, Suliman
+                            S.
                             Olayan School of Business (OSB), is a learning experience designed specifically for Senior
                             Management and Executives leaders and senior executives. This program bridges the gap
                             between disruptive technological forces and the timeless demands of strategic clarity and
@@ -766,6 +767,290 @@
             <div class="container">
                 <h2 class="section-title">Program Details</h2>
 
+                <style>
+                    .leadership-flow {
+                        width: 100%;
+                        box-sizing: border-box;
+                        overflow: visible;
+                        margin-top: 1rem;
+                        margin-bottom: 5rem;
+                    }
+
+                    .leadership-flow__grid {
+                        width: 100%;
+                        margin: 0 auto;
+                        display: grid;
+
+                        /* Large screens: all 6 cards in one row */
+                        grid-template-columns: repeat(6, minmax(190px, 1fr));
+
+                        column-gap: 12px;
+                        row-gap: 64px;
+                        align-items: start;
+                    }
+
+                    .flow-card {
+                        position: relative;
+                        width: 100%;
+                        min-width: 0;
+                        min-height: 180px;
+                        box-sizing: border-box;
+                        border: 1px solid var(--color-dark-gray);
+                    }
+
+                    .flow-card--lower {
+                        margin-top: 51px;
+                    }
+
+                    .flow-card--support {
+                        padding: 38px 16px 24px;
+                    }
+
+                    .flow-card--session {
+                        padding: 29px 17px 34px;
+                        text-align: center;
+                    }
+
+                    .flow-card__support-title {
+                        margin: 0;
+                        color: var(--color-text-muted);
+                        font-size: 1rem;
+                        line-height: 1.15;
+                        font-weight: 700;
+                        text-align: center;
+                        text-transform: unset;
+                    }
+
+                    .flow-card__support-list {
+                        margin: 20px 0 0;
+                        padding: 0;
+                        list-style: none;
+                        font-size: 0.85rem;
+                        line-height: 1.38;
+                    }
+
+                    .flow-card__support-list li {
+                        position: relative;
+                        padding-left: 9px;
+                    }
+
+                    .flow-card__support-list li::before {
+                        content: "•";
+                        position: absolute;
+                        left: 0;
+                    }
+
+                    .flow-card__title {
+                        margin: 0;
+                        color: var(--color-accent-dark);
+                        font-size: 1rem;
+                        line-height: 0.98;
+                        font-weight: 700;
+                        text-transform: unset;
+                    }
+
+                    .flow-card__duration {
+                        margin-top: 5px;
+                        color: var(--color-text-muted);
+                        font-size: 0.9rem;
+                        line-height: 1.1;
+                    }
+
+                    .flow-card__description {
+                        margin: 29px 0 0;
+                        font-size: 0.85rem;
+                        line-height: 1.19;
+                        font-weight: 400;
+                    }
+
+                    .flow-card__online,
+                    .flow-card__session {
+                        position: absolute;
+                        left: 50%;
+                        z-index: 2;
+                        transform: translateX(-50%);
+                        white-space: nowrap;
+                    }
+
+                    .flow-card__online {
+                        bottom: -8px;
+                        padding: 0 7px;
+                        background: #f5f5f5;
+                        color: var(--color-accent-dark);
+                        font-size: 1.1rem;
+                        line-height: 1;
+                        font-weight: 700;
+                    }
+
+                    .flow-card__session {
+                        bottom: -20px;
+                        min-width: 124px;
+                        padding: 7px 16px 8px;
+                        border-radius: 999px;
+                        background: var(--color-primary);
+                        color: #ffffff;
+                        font-size: 1.1rem;
+                        line-height: 1;
+                        font-weight: 700;
+                        text-align: center;
+                    }
+
+                    .flow-card--arrow::before,
+                    .flow-card--arrow::after {
+                        content: "";
+                        position: absolute;
+                        right: -13px;
+                        z-index: 3;
+                        width: 28px;
+                        height: 8px;
+                        border-radius: 6px;
+                        background: var(--flow-arrow);
+                        transform-origin: right center;
+                    }
+
+                    .flow-card--arrow::before {
+                        top: calc(50% - 10px);
+                        transform: rotate(45deg);
+                    }
+
+                    .flow-card--arrow::after {
+                        top: calc(50% + 10px);
+                        transform: rotate(-45deg);
+                    }
+
+                    /*
+                        * Once the cards wrap, horizontal arrows can point into empty space
+                        * at the end of a row, so they are hidden on narrower layouts.
+                        */
+                    @media (max-width: 1499px) {
+
+                        .flow-card--arrow::before,
+                        .flow-card--arrow::after {
+                            display: none;
+                        }
+                    }
+
+                    /* Medium screens: exactly 3 cards per row */
+                    @media (max-width: 1200px) {
+                        .leadership-flow__grid {
+                            grid-template-columns: repeat(3, minmax(190px, 1fr));
+                        }
+
+                        /* Hide horizontal arrows after the cards wrap */
+                        .flow-card--arrow::before,
+                        .flow-card--arrow::after {
+                            display: none;
+                        }
+                    }
+
+                    /* Small screens: exactly 1 card per row */
+                    @media (max-width: 640px) {
+                        .leadership-flow {
+                            padding: 30px 16px 50px;
+                        }
+
+                        .leadership-flow__grid {
+                            grid-template-columns: 1fr;
+                            row-gap: 42px;
+                        }
+
+                        .flow-card,
+                        .flow-card--lower {
+                            min-height: 200px;
+                            margin-top: 0;
+                        }
+                    }
+
+                    @media (max-width: 560px) {
+                        .leadership-flow {
+                            padding: 30px 16px 50px;
+                        }
+                    }
+                </style>
+                <section class="leadership-flow" aria-label="Leadership program structure">
+                    <div class="leadership-flow__grid">
+
+                        <article class="flow-card flow-card--support">
+                            <h3 class="flow-card__support-title">Pre-Program</h3>
+                            <ul class="flow-card__support-list">
+                                <li>Psychometric Assessment</li>
+                                <li>Coaching Introduction</li>
+                                <li>Program Welcome</li>
+                                <li>Pre-Session Preparations</li>
+                            </ul>
+                            <span class="flow-card__online">Online</span>
+                        </article>
+
+                        <article class="flow-card flow-card--session flow-card--lower flow-card--arrow">
+                            <h2 class="flow-card__title">The 5th Industrial<br>Revolution Leader</h2>
+                            <div class="flow-card__duration">Duration: 2 days</div>
+                            <p class="flow-card__description">
+                                Lead an AI-centered
+                                culture grounded in ethics
+                                and core values. Synthesize
+                                digital trends to prepare for
+                                a future where technology
+                                and humanity coexist
+                                harmoniously.
+                            </p>
+                            <span class="flow-card__session">Session 1</span>
+                        </article>
+
+                        <article class="flow-card flow-card--support flow-card--arrow">
+                            <h3 class="flow-card__support-title">Inter-Modular</h3>
+                            <ul class="flow-card__support-list">
+                                <li>1-1 Coaching Sessions</li>
+                                <li>Conversation with<br>Experts</li>
+                                <li>Pre- and Post- Session<br>Preparations</li>
+                            </ul>
+                            <span class="flow-card__online">Online</span>
+                        </article>
+
+                        <article class="flow-card flow-card--session flow-card--lower flow-card--arrow">
+                            <h2 class="flow-card__title">Strategy: Resilience<br>&amp; Value Creation</h2>
+                            <div class="flow-card__duration">Duration: 2 days</div>
+                            <p class="flow-card__description">
+                                Deconstruct the
+                                process of identifying
+                                market opportunities and
+                                challenges, crafting
+                                compelling value
+                                propositions, and
+                                mitigating high-stakes
+                                risks.
+                            </p>
+                            <span class="flow-card__session">Session 2</span>
+                        </article>
+
+                        <article class="flow-card flow-card--support flow-card--arrow">
+                            <h3 class="flow-card__support-title">Inter-Modular</h3>
+                            <ul class="flow-card__support-list">
+                                <li>1-1 Coaching Sessions</li>
+                                <li>Conversation with<br>Experts</li>
+                                <li>Pre- and Post- Session<br>Preparations</li>
+                            </ul>
+                            <span class="flow-card__online">Online</span>
+                        </article>
+
+                        <article class="flow-card flow-card--session flow-card--lower">
+                            <h2 class="flow-card__title">The Architecture<br>of Choice</h2>
+                            <div class="flow-card__duration">Duration: 2 days</div>
+                            <p class="flow-card__description">
+                                Dive into the psychology
+                                of cognitive biases that
+                                distort professional
+                                judgment. You will master
+                                the art of ethical influence:
+                                steering organizational
+                                outcomes through empathy
+                                and evidence-based
+                                precision.
+                            </p>
+                            <span class="flow-card__session">Session 3</span>
+                        </article>
+
+                    </div>
+                </section>
                 <div class="modules-grid">
                     <!-- Card 1: The 5th Industrial Revolution Leader -->
                     <div class="detail-card">
@@ -820,14 +1105,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="program-details-wrapper">
-                    <img src="../../images/AUB-OSB-OEP-CEDAR-Program-Details.png" alt="Program Details Schema" />
-                </div>
+
             </div>
         </section>
 
         <!-- ===== INSTRUCTOR (Academic Overseer) ===== -->
-        <section class="section" style="background:#f5f5f5;">
+        <section class="section" style="background:#f5f5f5; display:none;">
             <div class="container">
                 <h2 class="section-title">Program Academic Overseer</h2>
                 <div class="instructor-grid">
