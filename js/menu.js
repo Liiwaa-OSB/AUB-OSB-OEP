@@ -331,23 +331,23 @@
       links: [
         {
           text: "About Executive Education",
-          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/index.html",
+          url: "https://www.aub.edu.lb/osb/executiveeducation/Site/index.html",
         },
         {
           text: "Our Impact",
-          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/our-impact.html",
+          url: "https://www.aub.edu.lb/osb/executiveeducation/Site/our-impact.html",
         },
         {
           text: "Open Enrollment Programs",
-          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/open-enrollment-programs/index.html",
+          url: "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/index.html",
         },
         {
           text: "Customized Programs",
-          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/custom-programs/index.html",
+          url: "https://www.aub.edu.lb/osb/executiveeducation/Site/custom-programs/index.html",
         },
         {
           text: "Contact Us",
-          url: "https://liiwaa-osb.github.io/AUB-OSB-OEP/contact-us.html",
+          url: "https://www.aub.edu.lb/osb/executiveeducation/Site/contact-us.html",
         }
       ]
     },
