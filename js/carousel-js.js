@@ -1,4 +1,4 @@
-// carousel.js
+// carousel-js.js
 // Implements an auto-sliding, infinite loop carousel with arrow controls.
 // When all slides fit, the carousel becomes static (no buttons, no auto‑slide).
 

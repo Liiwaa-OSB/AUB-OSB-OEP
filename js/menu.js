@@ -352,12 +352,12 @@
       ]
     },
     {
-      title: "OSB Online",
+      title: "OSB Online Programs",
       links: [
-        { text: "Entrepreneurship & Innovation Online Graduate Professional Diploma", url: "https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx", external: true },
-        { text: "Combating Trade-Based Financial Crime Online Certificate", url: "https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx", external: true },
-        { text: "Strategic Branding in the Digital Era Online Diploma", url: "https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx", external: true },
-        { text: "Investment Analysis and Modern Portfolio Management Online Graduate Professional Diploma", url: "https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx", external: true }
+        { text: "Entrepreneurship & Innovation", url: "https://www.aub.edu.lb/online/Entrepreneurship-Innovation-online-diploma/Pages/default.aspx", external: true },
+        { text: "Combating Trade-Based Financial Crime", url: "https://www.aub.edu.lb/osb/online/combating-trade-based-financial-crime-certificate/Pages/default.aspx", external: true },
+        { text: "Strategic Branding in the Digital Era", url: "https://www.aub.edu.lb/osb/online/strategic_branding/Pages/default.aspx", external: true },
+        { text: "Investment Analysis and Modern Portfolio Management", url: "https://www.aub.edu.lb/osb/online/investment-analysis-modern-portfolio-management/Pages/default.aspx", external: true }
       ]
     },
     {
