@@ -12,23 +12,21 @@ class Carousel {
 
     if (!this.track || !this.container) return;
 
-    // Store original slides (clean copies for later rebuilds)
-    this.originalSlideNodes = Array.from(this.track.children);
-    this.slideCount = this.originalSlideNodes.length;
+    // Store original slides
+    this.originalSlides = Array.from(this.track.children);
+    this.slideCount = this.originalSlides.length;
     if (this.slideCount === 0) return;
 
-    // Deep copies to restore when rebuilding
-    this.originalSlidesCopy = this.originalSlideNodes.map(slide => slide.cloneNode(true));
-
     // Configuration
-    this.autoSlideInterval = 3000;   // 3 seconds
-    this.transitionDuration = 300;   // ms (must match CSS transition)
+    this.autoSlideInterval = 3000;
+    this.transitionDuration = 300;
     this.currentIndex = 0;
     this.slideWidth = 0;
     this.isTransitioning = false;
     this.autoTimer = null;
     this.isInfiniteEnabled = false;
     this.visibleCount = 0;
+    this.totalSlidesWithClones = 0;
 
     // Bind methods
     this.handlePrevClick = () => this.prevSlide();
@@ -36,16 +34,16 @@ class Carousel {
     this.handleTransitionEnd = this.onTransitionEnd.bind(this);
     this.handleResize = this.onWindowResize.bind(this);
 
-    // Initial build (may clone or not depending on visible count)
+    // Initial build
     this.buildCarousel();
 
-    // Event listeners (always attached, but guarded by isInfiniteEnabled)
+    // Event listeners
     this.prevBtn.addEventListener('click', this.handlePrevClick);
     this.nextBtn.addEventListener('click', this.handleNextClick);
     this.track.addEventListener('transitionend', this.handleTransitionEnd);
     window.addEventListener('resize', this.handleResize);
 
-    // Pause auto-slide on hover (only if infinite mode is active)
+    // Pause on hover
     this.carousel.addEventListener('mouseenter', () => this.stopAutoSlide());
     this.carousel.addEventListener('mouseleave', () => this.startAutoSlide());
   }
@@ -54,32 +52,29 @@ class Carousel {
   //  Core: decide mode & build DOM
   // ----------------------------------------------------------------------
   buildCarousel() {
-    // Reset track to original (clean) slides
+    // Reset track to original slides
     this.track.innerHTML = '';
-    this.originalSlidesCopy.forEach(slide => this.track.appendChild(slide.cloneNode(true)));
+    this.originalSlides.forEach(slide => {
+      this.track.appendChild(slide.cloneNode(true));
+    });
 
-    // Re‑query slides (they are fresh)
-    this.allSlides = Array.from(this.track.children);
-    this.slideCount = this.allSlides.length;  // same as original count
-
-    // Measure slide width and visible count using current DOM
+    // Measure
     this.recalculateSlideWidth();
     this.visibleCount = this.getVisibleCount();
 
     const allFit = this.slideCount <= this.visibleCount;
 
     if (allFit) {
-      // ----- STATIC MODE: no scrolling, no clones -----
+      // STATIC MODE
       this.isInfiniteEnabled = false;
       this.currentIndex = 0;
       this.updateTransform(false);
       this.disableCarouselMode();
     } else {
-      // ----- INFINITE LOOP MODE: clone for seamless sliding -----
+      // INFINITE LOOP MODE
       this.isInfiniteEnabled = true;
       this.cloneSlidesForInfiniteLoop();
-      this.recalculateSlideWidth();     // width may change after cloning
-      // Start from the first original slide (after leading clones)
+      this.recalculateSlideWidth();
       this.currentIndex = this.slideCount;
       this.updateTransform(false);
       this.enableCarouselMode();
@@ -87,11 +82,9 @@ class Carousel {
     }
   }
 
-  // Rebuild when mode changes (e.g. resize across breakpoints)
   rebuildCarousel() {
     this.stopAutoSlide();
     this.isTransitioning = false;
-    // Re‑build from scratch using the stored original slides
     this.buildCarousel();
   }
 
@@ -99,28 +92,34 @@ class Carousel {
   //  DOM helpers for infinite loop
   // ----------------------------------------------------------------------
   cloneSlidesForInfiniteLoop() {
-    // Clear track
     this.track.innerHTML = '';
-    // Clone all original slides (before + after)
-    const clonesBefore = this.originalSlidesCopy.map(slide => slide.cloneNode(true));
-    const clonesAfter = this.originalSlidesCopy.map(slide => slide.cloneNode(true));
-
+    
+    // Clone all slides (3 copies total: before + original + after)
+    const clonesBefore = this.originalSlides.map(s => s.cloneNode(true));
+    const clonesAfter = this.originalSlides.map(s => s.cloneNode(true));
+    
     clonesBefore.forEach(clone => this.track.appendChild(clone));
-    this.originalSlidesCopy.forEach(original => this.track.appendChild(original.cloneNode(true)));
+    this.originalSlides.forEach(original => this.track.appendChild(original.cloneNode(true)));
     clonesAfter.forEach(clone => this.track.appendChild(clone));
-
-    this.allSlides = Array.from(this.track.children);
-    this.totalSlidesWithClones = this.allSlides.length;
+    
+    this.totalSlidesWithClones = this.track.children.length;
   }
 
   recalculateSlideWidth() {
-    if (this.allSlides.length === 0) return;
-    const slide = this.allSlides[0];
-    const style = window.getComputedStyle(slide);
+    const firstSlide = this.track.querySelector('.carousel__slide');
+    if (!firstSlide) return;
+    
+    // Get the actual width including margins
+    const rect = firstSlide.getBoundingClientRect();
+    const style = window.getComputedStyle(firstSlide);
     const marginLeft = parseFloat(style.marginLeft) || 0;
     const marginRight = parseFloat(style.marginRight) || 0;
-    const width = slide.offsetWidth;
-    this.slideWidth = width + marginLeft + marginRight;
+    
+    // Get the gap from the track
+    const trackStyle = window.getComputedStyle(this.track);
+    const gap = parseFloat(trackStyle.gap) || 0;
+    
+    this.slideWidth = rect.width + marginLeft + marginRight + gap;
   }
 
   getVisibleCount() {
@@ -133,11 +132,9 @@ class Carousel {
   //  UI & mode switching
   // ----------------------------------------------------------------------
   disableCarouselMode() {
-    // Hide buttons, disable auto‑slide, prevent any sliding action
     this.prevBtn.style.display = 'none';
     this.nextBtn.style.display = 'none';
     this.stopAutoSlide();
-    // Ensure track is at start
     this.currentIndex = 0;
     this.updateTransform(false);
   }
@@ -145,28 +142,31 @@ class Carousel {
   enableCarouselMode() {
     this.prevBtn.style.display = '';
     this.nextBtn.style.display = '';
-    // Buttons are always interactive; infinite loop guard prevents invalid moves
     this.prevBtn.removeAttribute('disabled');
     this.nextBtn.removeAttribute('disabled');
   }
 
   // ----------------------------------------------------------------------
-  //  Transform & sliding (guarded by isInfiniteEnabled)
+  //  Transform & sliding
   // ----------------------------------------------------------------------
   updateTransform(useTransition = true) {
     if (!this.track) return;
+    
     const translateX = -this.currentIndex * this.slideWidth;
+    
     if (useTransition) {
       this.track.style.transition = `transform ${this.transitionDuration}ms ease-out`;
     } else {
       this.track.style.transition = 'none';
     }
+    
     this.track.style.transform = `translateX(${translateX}px)`;
   }
 
   goToSlide(index, useTransition = true) {
-    if (!this.isInfiniteEnabled) return;          // No sliding in static mode
+    if (!this.isInfiniteEnabled) return;
     if (this.isTransitioning || index === this.currentIndex) return;
+    
     this.isTransitioning = true;
     this.currentIndex = index;
     this.updateTransform(useTransition);
@@ -190,18 +190,19 @@ class Carousel {
       this.isTransitioning = false;
       return;
     }
+    
     this.isTransitioning = false;
 
     const firstOriginalIdx = this.slideCount;
     const lastOriginalIdx = this.slideCount + this.slideCount - 1;
 
     if (this.currentIndex > lastOriginalIdx) {
-      // Moved into trailing clones → jump back to the beginning
+      // Jump back to the beginning
       const newIndex = firstOriginalIdx + (this.currentIndex - lastOriginalIdx - 1);
       this.currentIndex = newIndex;
       this.updateTransform(false);
     } else if (this.currentIndex < firstOriginalIdx) {
-      // Moved into leading clones → jump to the end
+      // Jump to the end
       const offset = firstOriginalIdx - this.currentIndex;
       const newIndex = lastOriginalIdx - (offset - 1);
       this.currentIndex = newIndex;
@@ -215,6 +216,7 @@ class Carousel {
   startAutoSlide() {
     if (!this.isInfiniteEnabled) return;
     if (this.autoTimer) clearInterval(this.autoTimer);
+    
     this.autoTimer = setInterval(() => {
       if (!this.isTransitioning && document.contains(this.carousel)) {
         this.nextSlide();
@@ -235,23 +237,33 @@ class Carousel {
   }
 
   // ----------------------------------------------------------------------
-  //  Resize handling – rebuild if mode changes
+  //  Resize handling
   // ----------------------------------------------------------------------
   onWindowResize() {
     if (!this.container) return;
-    // Re‑measure slide width and visible count
-    this.recalculateSlideWidth();
-    const newVisibleCount = this.getVisibleCount();
-    const nowAllFit = this.slideCount <= newVisibleCount;
-
-    if (nowAllFit !== !this.isInfiniteEnabled) {
-      // Mode changed → complete rebuild
-      this.rebuildCarousel();
-    } else {
-      // Same mode, just reposition
-      this.updateTransform(false);
-      this.visibleCount = newVisibleCount;
+    
+    // Debounce resize
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
     }
+    
+    this.resizeTimeout = setTimeout(() => {
+      this.recalculateSlideWidth();
+      const newVisibleCount = this.getVisibleCount();
+      const nowAllFit = this.slideCount <= newVisibleCount;
+
+      if (nowAllFit !== !this.isInfiniteEnabled) {
+        // Mode changed → rebuild
+        this.rebuildCarousel();
+      } else if (this.isInfiniteEnabled) {
+        // Same mode, just reposition
+        this.currentIndex = this.slideCount;
+        this.updateTransform(false);
+        this.visibleCount = newVisibleCount;
+      }
+      
+      this.resizeTimeout = null;
+    }, 150);
   }
 
   // ----------------------------------------------------------------------
@@ -265,8 +277,6 @@ class Carousel {
     if (this.track) {
       this.track.removeEventListener('transitionend', this.handleTransitionEnd);
     }
-    this.carousel.removeEventListener('mouseenter', () => this.stopAutoSlide());
-    this.carousel.removeEventListener('mouseleave', () => this.startAutoSlide());
   }
 }
 
@@ -283,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ----------------------------------------------------------------------
-//  Continuous logos carousel – seamless infinite scroll (JS driven)
+//  Continuous logos carousel – seamless infinite scroll
 // ----------------------------------------------------------------------
 (function initContinuousCarousel() {
   const carousel = document.getElementById('logoCarousel');
@@ -295,116 +305,113 @@ document.addEventListener('DOMContentLoaded', () => {
   const originalSlides = Array.from(track.children);
   if (originalSlides.length === 0) return;
 
-  // ─────────────────────────────────────────────────────────────────
-  // 1. Clone the original set enough times to create a long scrollable strip
-  //    (minimum 2 full copies, but 3 are safer for high speeds)
-  // ─────────────────────────────────────────────────────────────────
+  let allSlides = [];
+  let originalSetWidth = 0;
+  let translateX = 0;
+  let animationId = null;
+  let speed = 1.5;
+  let isPaused = false;
+
   function buildLongTrack() {
-    // Clear any existing content
     track.innerHTML = '';
-    // Add three copies of the original slides
+    // Add three copies for seamless scrolling
     for (let i = 0; i < 3; i++) {
       originalSlides.forEach(slide => {
         track.appendChild(slide.cloneNode(true));
       });
     }
+    allSlides = Array.from(track.children);
   }
-  buildLongTrack();
 
-  // Refresh the list of slides
-  let allSlides = Array.from(track.children);
-  const originalSetCount = originalSlides.length;
-  const totalSlides = allSlides.length;
-
-  // ─────────────────────────────────────────────────────────────────
-  // 2. Measure the width of one original set (important for resetting)
-  // ─────────────────────────────────────────────────────────────────
   function getOriginalSetWidth() {
     let width = 0;
-    // Use the first 'originalSetCount' slides in the current track
-    for (let i = 0; i < originalSetCount; i++) {
+    for (let i = 0; i < originalSlides.length; i++) {
       const slide = allSlides[i];
+      if (!slide) break;
       const style = window.getComputedStyle(slide);
       const marginLeft = parseFloat(style.marginLeft) || 0;
       const marginRight = parseFloat(style.marginRight) || 0;
       width += slide.offsetWidth + marginLeft + marginRight;
     }
+    // Add gap if exists
+    const trackStyle = window.getComputedStyle(track);
+    const gap = parseFloat(trackStyle.gap) || 0;
+    width += gap * (originalSlides.length - 1);
     return width;
   }
 
-  let originalSetWidth = getOriginalSetWidth();
-  let translateX = 0;
-  let animationId = null;
-  let speed = 1.5; // pixels per frame (adjust for desired speed)
-
-  // ─────────────────────────────────────────────────────────────────
-  // 3. The animation loop – moves the track and resets seamlessly
-  // ─────────────────────────────────────────────────────────────────
   function scrollStep() {
+    if (isPaused) {
+      animationId = requestAnimationFrame(scrollStep);
+      return;
+    }
+    
     if (!carousel || !track) return;
 
-    // Move left by 'speed' pixels
     translateX -= speed;
-    // Apply transform
     track.style.transform = `translateX(${translateX}px)`;
 
-    // If we have scrolled more than the width of one original set,
-    // jump forward by exactly that width (no visual jump because the
-    // content is duplicated)
+    // Reset when we've scrolled past one full set
     if (Math.abs(translateX) >= originalSetWidth) {
       translateX += originalSetWidth;
-      // No transition, just instantly reposition
+      track.style.transition = 'none';
       track.style.transform = `translateX(${translateX}px)`;
+      // Force reflow
+      void track.offsetHeight;
+      track.style.transition = 'transform 0.1s linear';
     }
 
     animationId = requestAnimationFrame(scrollStep);
   }
 
-  // Start / stop on hover (same user expectation)
   function startScroll() {
     if (animationId) cancelAnimationFrame(animationId);
+    isPaused = false;
+    track.style.transition = 'transform 0.1s linear';
     animationId = requestAnimationFrame(scrollStep);
   }
 
   function stopScroll() {
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-      animationId = null;
-    }
+    isPaused = true;
   }
 
-  // ─────────────────────────────────────────────────────────────────
-  // 4. Recalculate width and reset position on window resize
-  // ─────────────────────────────────────────────────────────────────
   function onResize() {
-    // Rebuild track to avoid gaps (clones might have outdated sizes)
+    const wasPaused = isPaused;
+    stopScroll();
+    
     buildLongTrack();
-    allSlides = Array.from(track.children);
     originalSetWidth = getOriginalSetWidth();
-
-    // Reset position to zero
     translateX = 0;
+    track.style.transition = 'none';
     track.style.transform = `translateX(0px)`;
-
-    // Restart animation if it was running
-    if (animationId) {
-      stopScroll();
+    void track.offsetHeight;
+    track.style.transition = 'transform 0.1s linear';
+    
+    if (!wasPaused) {
       startScroll();
     }
   }
 
-  window.addEventListener('resize', onResize);
+  // Build initial track
+  buildLongTrack();
+  originalSetWidth = getOriginalSetWidth();
+  track.style.transition = 'transform 0.1s linear';
 
-  // Attach hover events
+  // Event listeners
   carousel.addEventListener('mouseenter', stopScroll);
   carousel.addEventListener('mouseleave', startScroll);
+  window.addEventListener('resize', onResize);
 
-  // Start the infinite scroll
+  // Start the animation
   startScroll();
 
-  // Optional: expose cleanup (e.g., if you need to destroy later)
+  // Cleanup
   window.cleanupContinuousCarousel = function() {
     stopScroll();
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
     window.removeEventListener('resize', onResize);
     carousel.removeEventListener('mouseenter', stopScroll);
     carousel.removeEventListener('mouseleave', startScroll);

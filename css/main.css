@@ -945,8 +945,9 @@ h3 {
 /* flex track – holds all slides */
 .carousel__track {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.6rem;
   align-items: stretch;
+  will-change: transform;
 }
 
 /* Base slide styles – width will be overridden by media queries */
@@ -967,8 +968,6 @@ h3 {
 
 /* Tablet: 2 slides per view */
 @media (max-width: 1024px) {
-
-  /* adjust breakpoint as needed */
   .carousel__slide {
     width: calc((100% - 1.5rem) / 2);
     /* 2 slides → 1 gap of 1.5rem */
@@ -995,11 +994,8 @@ h3 {
 
 /* Tablet: 2 slides per view */
 @media (max-width: 1024px) {
-
-  /* adjust breakpoint as needed */
   .carousel__slide.two-slides {
     width: calc((100% - 1.5rem) / 2);
-    /* 2 slides → 1 gap of 1.5rem */
   }
 }
 
@@ -1007,7 +1003,6 @@ h3 {
 @media (max-width: 640px) {
   .carousel__slide.two-slides {
     width: 100% !important;
-    /* 1 slide – gap only between slides when scrolling */
   }
 }
 
@@ -1054,7 +1049,6 @@ h3 {
   right: 0.5rem;
 }
 
-/* optional: hide buttons on small screens if you like */
 @media (max-width: 640px) {
   .carousel__btn {
     width: 36px;
@@ -1074,7 +1068,6 @@ h3 {
 @media (max-width: 1024px) {
   .carousel-3 .carousel__btn {
     display: flex;
-    /* matches the button’s original display value */
   }
 }
 
