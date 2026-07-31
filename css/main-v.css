@@ -324,7 +324,7 @@ h3 {
   margin-top: 10px;
 }
 
-/* CSP page specific styles – uses CSS variables from main.css */
+/* CSP page specific styles – uses CSS variables from main-v.css */
 .csp-hero h1 {
   font-size: 2.8rem;
   margin-bottom: 0.5rem;

@@ -361,6 +361,12 @@
       ]
     },
     {
+      title: "Lifelong Learning Institute",
+      links: [
+        { text: "Aviation program", url: "https://www.aub.edu.lb/osb/lifelong_learning_institute/programs/Aviation-Certificate.html", external: true },
+      ]
+    },
+    {
       title: "Faculty",
       url: "/osb/Pages/Faculty.aspx",
       isLink: true
