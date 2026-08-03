@@ -814,16 +814,16 @@
                 </li>
               </ul>
             </li>
-                    <!-- OSB LLI with dropdown -->
-                    <li class="osb-nav-item has-dropdown">
-                        <a id="osb-lli-link">Lifelong Learning Institute</a>
-                        <ul class="osb-dropdown">
-                            <li>
-                                <a href="https://www.aub.edu.lb/osb/lifelong_learning_institute/programs/Aviation-Certificate.html"
-                                    target="_blank" id="aviation-program">Aviation program</a>
-                            </li>
-                        </ul>
-                    </li>
+            <!-- OSB LLI with dropdown -->
+            <li class="osb-nav-item has-dropdown">
+              <a id="osb-lli-link">Lifelong Learning Institute</a>
+              <ul class="osb-dropdown">
+                <li>
+                  <a href="https://www.aub.edu.lb/osb/lifelong_learning_institute/programs/Aviation-Certificate.html"
+                    target="_blank" id="aviation-program">Aviation program</a>
+                </li>
+              </ul>
+            </li>
             <!-- Faculty -->
             <li class="osb-nav-item">
               <a href="/osb/Pages/Faculty.aspx" id="faculty">Faculty</a>
@@ -909,40 +909,52 @@
 
         <div class="programs-container">
           <div class="exec-option-grid" data-aos="fade-up" data-aos-delay="100">
-            <div class="exec-option-card">
+            <div class="exec-option-card"
+              data-url="https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/index.html">
+
               <div class="exec-option-card__image">
                 <img src="images/AUB-OSB-CP-card.jpg" alt="Open Enrollment Programs - professionals collaborating"
                   loading="lazy" />
               </div>
+
               <div class="exec-option-card__content">
                 <div class="exec-option-card__title">Open Enrollment Programs</div>
                 <div class="exec-option-card__category">For Individuals</div>
                 <div class="exec-option-card__desc">
-                  Build the skills and growth mindset needed to accelerate your career and succeed in a rapidly evolving
-                  business landscape.
+                  Build the skills and growth mindset needed to accelerate your career and
+                  succeed in a rapidly evolving business landscape.
                 </div>
+
                 <div class="exec-option-card__actions">
                   <a href="https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/index.html"
-                    class="btn btn--primary" style="width:200px;">Learn more</a>
+                    class="btn btn--primary" style="width:200px;">
+                    Learn More
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div class="exec-option-card">
+            <div class="exec-option-card"
+              data-url="https://www.aub.edu.lb/osb/executiveeducation/Site/custom-programs/index.html">
+
               <div class="exec-option-card__image">
                 <img src="images/AUB-OSB-OEP-crad.jpg" alt="Customized Programs - team strategy meeting"
                   loading="lazy" />
               </div>
+
               <div class="exec-option-card__content">
                 <div class="exec-option-card__title">Customized Programs</div>
                 <div class="exec-option-card__category">For Organizations</div>
                 <div class="exec-option-card__desc">
-                  We partner closely with organizations to design high-impact learning experiences aligned with
-                  strategic priorities and business challenges.
+                  We partner closely with organizations to design high-impact learning
+                  experiences aligned with strategic priorities and business challenges.
                 </div>
+
                 <div class="exec-option-card__actions">
                   <a href="https://www.aub.edu.lb/osb/executiveeducation/Site/custom-programs/index.html"
-                    class="btn btn--primary btn--primary-grey" style="width:200px;">Learn more</a>
+                    class="btn btn--primary btn--primary-grey" style="width:200px;">
+                    Learn More
+                  </a>
                 </div>
               </div>
             </div>
@@ -1301,7 +1313,7 @@
             <div class="cta__contact-links">
               <a href="tel:+9611374374,3748" class="cta__contact-link"><i data-lucide="phone" width="20"
                   height="20"></i><span>+961-1-374 374 ext. 3748</span></a>
-              <a href="mailto:gs52@aub.edu.lb" class="cta__contact-link"><i data-lucide="mail" width="20"
+              <a href="mailto:gs52@aub.edu.lb" target="_blank" class="cta__contact-link"><i data-lucide="mail" width="20"
                   height="20"></i><span>gs52@aub.edu.lb</span></a>
               <a href="https://www.aub.edu.lb/osb/executiveeducation/Site/contact-us.html"
                 class="btn btn--white">Contact Form</a>
@@ -1462,6 +1474,16 @@
       if (typeof lucide !== "undefined") {
         lucide.createIcons();
       }
+    });
+
+    /* click on card*/
+    document.querySelectorAll("[data-url]").forEach(card => {
+      card.style.cursor = "pointer";
+
+      card.addEventListener("click", e => {
+        if (e.target.closest("a")) return;
+        window.location.href = card.dataset.url;
+      });
     });
   </script>
 </body>
