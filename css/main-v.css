@@ -420,7 +420,7 @@ h3 {
   align-items: stretch;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .overview-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1210,7 +1210,8 @@ img {
 
 /* ===== INFO CARDS (Timing, Fees & Location) ===== */
 .grid-5,
-.grid-4 {
+.grid-4,
+.grid-3 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
@@ -1219,12 +1220,17 @@ img {
 @media (min-width: 640px) {
 
   .grid-5,
-  .grid-4 {
+  .grid-4,
+  .grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
+  .grid-3{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .grid-4 {
     grid-template-columns: repeat(4, 1fr);
   }
