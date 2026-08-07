@@ -48,6 +48,88 @@
     <script src="../../js/main.js" defer></script>
     <script src="../../js/menu-V1.1.js" defer></script>
 
+    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+            "@type": "CollegeOrUniversity",
+            "@id": "https://www.aub.edu.lb/#aub",
+            "name": "American University of Beirut",
+            "url": "https://www.aub.edu.lb/",
+            "department": {
+                "@type": "CollegeOrUniversity",
+                "@id": "https://www.aub.edu.lb/osb/#osb",
+                "name": "Suliman S. Olayan School of Business",
+                "url": "https://www.aub.edu.lb/osb/"
+            }
+            },
+            {
+            "@type": "WebSite",
+            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/#website",
+            "url": "https://www.aub.edu.lb/osb/executiveeducation/Site/index.html",
+            "name": "AUB OSB Executive Education",
+            "publisher": {
+                "@id": "https://www.aub.edu.lb/#aub"
+            }
+            },
+            {
+            "@type": "Course",
+            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#course",
+            "name": "KAED Management Program",
+            "alternateName": "Kinetic Adaptability & Executive Development",
+            "url": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html",
+            "provider": {
+                "@id": "https://www.aub.edu.lb/osb/#osb"
+            },
+            "isPartOf": {
+                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/#website"
+            }
+            },
+            {
+            "@type": "WebPage",
+            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#webpage",
+            "url": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html",
+            "name": "KAED Management Program",
+            "isPartOf": {
+                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/#website"
+            },
+            "about": {
+                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#course"
+            },
+            "breadcrumb": {
+                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#breadcrumb"
+            }
+            },
+            {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#breadcrumb",
+            "itemListElement": [
+                {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Executive Education",
+                "item": "https://www.aub.edu.lb/osb/executiveeducation/Site/index.html"
+                },
+                {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Open Enrollment Programs"
+                },
+                {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "KAED Management Program",
+                "item": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html"
+                }
+            ]
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --color-accent: #2bc4b0;
@@ -1623,86 +1705,6 @@
             window.addEventListener('resize', update);
             update();
         });
-    </script>
-
-    <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-            "@type": "CollegeOrUniversity",
-            "@id": "https://www.aub.edu.lb/#aub",
-            "name": "American University of Beirut",
-            "url": "https://www.aub.edu.lb/",
-            "department": {
-                "@type": "CollegeOrUniversity",
-                "@id": "https://www.aub.edu.lb/osb/#osb",
-                "name": "Suliman S. Olayan School of Business",
-                "url": "https://www.aub.edu.lb/osb/"
-            }
-            },
-            {
-            "@type": "WebSite",
-            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/#website",
-            "url": "https://www.aub.edu.lb/osb/executiveeducation/Site/index.html",
-            "name": "AUB OSB Executive Education",
-            "publisher": {
-                "@id": "https://www.aub.edu.lb/#aub"
-            }
-            },
-            {
-            "@type": "Course",
-            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#course",
-            "name": "KAED Management Program",
-            "alternateName": "Kinetic Adaptability & Executive Development",
-            "url": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html",
-            "provider": {
-                "@id": "https://www.aub.edu.lb/osb/#osb"
-            },
-            "isPartOf": {
-                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/#website"
-            }
-            },
-            {
-            "@type": "WebPage",
-            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#webpage",
-            "url": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html",
-            "name": "KAED Management Program",
-            "isPartOf": {
-                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/#website"
-            },
-            "about": {
-                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#course"
-            },
-            "breadcrumb": {
-                "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#breadcrumb"
-            }
-            },
-            {
-            "@type": "BreadcrumbList",
-            "@id": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html#breadcrumb",
-            "itemListElement": [
-                {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Executive Education",
-                "item": "https://www.aub.edu.lb/osb/executiveeducation/Site/index.html"
-                },
-                {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Open Enrollment Programs"
-                },
-                {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "KAED Management Program",
-                "item": "https://www.aub.edu.lb/osb/executiveeducation/Site/open-enrollment-programs/programs/KAED.html"
-                }
-            ]
-            }
-        ]
-        }
     </script>
 </body>
 
