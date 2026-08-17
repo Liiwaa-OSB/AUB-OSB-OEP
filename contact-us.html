@@ -584,15 +584,16 @@
                             <input type="hidden" name="oid" value="00D0Y000001Xrwc">
                             <input type="hidden" name="retURL"
                                 value="https://www.aub.edu.lb/osb/executiveeducation/Site/contact-us.html?thankyou=1#contact-form">
-                            <input type="hidden" name="recordType" value="0120Y000000ymGb">
+                            <input type="hidden" name="recordType" value="0120Y000000yifH">
                             <input type="hidden" name="Campaign_ID" value="701060000016t8aAAA">
                             <input type="hidden" name="member_status" value="Inquiring">
-                            <input type="hidden" name="lead_source" value="Website Contact Form">
+                            <input type=hidden name="lead_source" id="lead_source" value="Website">
+                            <input type=hidden name="00N0Y00000QGkma" id="00N0Y00000QGkma" value="Contact Us Page">
                             <input type="hidden" name="00N0Y00000QGkma" value="Contact Us Inquiry">
                             <input type="hidden" name="rating" value="Cold">
                             <input type="hidden" name="country_code" id="country_code" value="LB">
-                            <input type="hidden" name="00N0Y00000RODiR" value="Work Email">
-                            <input type="hidden" name="00N0Y00000RODr9" value="Work Phone">
+                            <input type="hidden" name="00N0Y00000RODiR" value="Personal Email">
+                            <input type="hidden" name="00N0Y00000RODr9" value="Personal Phone">
 
                             <!-- Hidden field for description (populated by JS) -->
                             <input type="hidden" name="description" id="description" value="">
@@ -629,7 +630,7 @@
 
                                 <div class="form-group" data-field="company">
                                     <label for="company">Company / Organization</label>
-                                    <input type="text" id="company" name="company" maxlength="80"
+                                    <input type="text" id="company" name="00N0Y00000QGku0" maxlength="80"
                                         placeholder="Company Name">
                                 </div>
                             </div>
@@ -729,7 +730,7 @@
 
         var iti = window.intlTelInput(phoneInput, {
             excludeCountries: ["il"],
-            hiddenInput: "phone",  // This will create a hidden input with the full number
+            hiddenInput: "00N0Y00000QGl8g",  // Dedicated Salesforce custom field for Phone
             preferredCountries: [defaultCountry],
             initialCountry: defaultCountry,
             separateDialCode: true,
@@ -901,6 +902,17 @@
             feedback.textContent = "";
         }
 
+        function setPhoneHiddenValue() {
+            // intl-tel-input normally populates its own hidden "phone" input
+            // by listening for the form's native "submit" event. But since we
+            // call form.submit() programmatically below, that event never fires,
+            // so we have to populate it ourselves here or it goes to Salesforce empty.
+            var phoneHiddenInput = form.querySelector('input[type="hidden"][name="00N0Y00000QGl8g"]');
+            if (phoneHiddenInput && iti) {
+                phoneHiddenInput.value = iti.getNumber();
+            }
+        }
+
         function getCleanPageUrl() {
             return window.location.origin + window.location.pathname;
         }
@@ -935,8 +947,7 @@
 
         function buildDescription() {
             var parts = [
-                "Job Title: " + valueOf(fields.title),
-                "Company / Organization: " + valueOf(fields.company),
+                // "Company / Organization: " + valueOf(fields.company),
                 "Message: " + valueOf(fields.message)
             ];
 
@@ -989,6 +1000,7 @@
 
             setSalesforceReturnUrl();
             buildDescription();
+            setPhoneHiddenValue();
             saveLocalFields();
             setLoading(true);
             submitBtn.dataset.submitting = "true";
