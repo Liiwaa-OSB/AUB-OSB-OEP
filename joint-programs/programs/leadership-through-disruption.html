@@ -62,9 +62,20 @@
             --program-cta-gradient: linear-gradient(120deg, var(--program-primary) 0%, var(--program-primary-dark) 40%, var(--program-primary) 100%);
             --program-cta-ink: #000;
         }
+
+        .sticky-cta__btn {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .sticky-cta__btn:hover {
+            background-color: var(--color-primary-dark);
+        }
     </style>
 
     <script src="../../js/main.js" defer></script>
+    <script src="../../js/carousel-js.js" defer></script>
+
 
     <!-- lii - remove when pixels are set on GTM - Rita/Affan -->
     <!-- Meta Pixel Code -->
@@ -209,10 +220,22 @@
             <div class="hero__overlay"></div>
             <div class="container">
                 <div class="hero__content hero__content--left">
+
+                    <!-- Partner logos: moved from strip below the hero, left-aligned above text -->
+                    <div class="hero__partners">
+                        <img src="../../images/logos/auc-logo.png"
+                            alt="The American University in Cairo, Onsi Sawiris School of Business" />
+                        <span class="hero__partner-divider" aria-hidden="true"></span>
+                        <img src="../../images/logos/koc-logo.png" alt="Koç University Graduate School of Business" />
+                        <span class="hero__partner-divider" aria-hidden="true"></span>
+                        <img src="../../images/logos/aub-logo.png"
+                            alt="American University of Beirut, Suliman S. Olayan School of Business" />
+                    </div>
+
                     <h1 class="hero__title">Leading Through Disruption</h1>
                     <span class="hero__rule" aria-hidden="true"></span>
-                    <h2 class="hero__subtitle"><span>Diagnose the Landscape.</span> <span>Set the Strategy.</span>
-                        <span>Lead the Execution.</span></h2>
+                    <h2 class="hero__subtitle">Diagnose the Landscape. Set the Strategy.<br /> Lead the Execution.
+                    </h2>
                     <p class="hero__text">A Joint Executive Program by AUC, Koç University &amp; AUB OSB</p>
                     <div class="hero__buttons">
                         <a href="https://www.aub.edu.lb/osb/Landing/Pages/OEP-LTD-Apply.html" class="btn btn--highlight"
@@ -225,64 +248,39 @@
             </div>
         </section>
 
-        <!-- ===== PARTNER LOGOS BAR ===== -->
-        <section class="partner-strip" aria-label="Partner schools">
-            <div class="container">
-                <div class="partner-strip__list">
-                    <div class="partner-strip__item">
-                        <img src="../../images/logos/auc-logo.png"
-                            alt="The American University in Cairo, Onsi Sawiris School of Business" />
-                    </div>
-                    <div class="partner-strip__divider"></div>
-                    <div class="partner-strip__item">
-                        <img src="../../images/logos/koc-logo.png" alt="Koç University Graduate School of Business" />
-                    </div>
-                    <div class="partner-strip__divider"></div>
-                    <div class="partner-strip__item">
-                        <img src="../../images/logos/aub-logo.png"
-                            alt="American University of Beirut, Suliman S. Olayan School of Business" />
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PROGRAM DETAILS ===== -->
+        <!-- ===== PROGRAM DETAILS (icons removed) ===== -->
         <section class="section">
             <div class="container">
                 <div class="detail-grid">
-                    <div class="detail-item"><i data-lucide="calendar" class="detail-item__icon" width="28"
-                            height="28"></i>
+                    <div class="detail-item">
                         <div>
                             <div class="detail-item__label">Duration</div>
                             <div class="detail-item__value">11&nbsp;Weeks</div>
                             <div class="detail-item__sub">6&nbsp;modules</div>
                         </div>
                     </div>
-                    <div class="detail-item"><i data-lucide="clock" class="detail-item__icon" width="28"
-                            height="28"></i>
+                    <div class="detail-item">
                         <div>
                             <div class="detail-item__label">Format</div>
                             <div class="detail-item__value">Live (Online)</div>
                             <div class="detail-item__sub">13 sessions</div>
                         </div>
                     </div>
-                    <div class="detail-item"><i data-lucide="users" class="detail-item__icon" width="28"
-                            height="28"></i>
+                    <div class="detail-item">
                         <div>
                             <div class="detail-item__label">Partnership</div>
                             <div class="detail-item__value">3 Schools</div>
                             <div class="detail-item__sub">AUC · Koç · AUB</div>
                         </div>
                     </div>
-                    <a href="#program-fees" class="detail-item"><i data-lucide="dollar-sign" class="detail-item__icon"
-                            width="28" height="28"></i>
+                    <a href="#program-fees" class="detail-item">
                         <div>
                             <div class="detail-item__label">Fees</div>
                             <div class="detail-item__value">$1,970</div>
                             <div class="detail-item__sub">Reduced fees apply</div>
                         </div>
                     </a>
-                    <div class="detail-item"><i data-lucide="mail" class="detail-item__icon" width="28" height="28"></i>
+                    <div class="detail-item">
                         <div>
                             <div class="detail-item__label">Contact</div>
                             <div class="detail-item__value f-size-17">exed-bd@aub.edu.lb</div>
@@ -297,7 +295,7 @@
             <div class="container">
                 <div class="overview-grid">
                     <div class="overview-grid__image">
-                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png    "
+                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
                             alt="Leading Through Disruption program overview" />
                     </div>
                     <div class="overview-grid__text">
@@ -362,9 +360,9 @@
             </div>
         </section>
 
-        <!-- ===== PROGRAM OUTLINE (MODULES) ===== -->
+        <!-- ===== PROGRAM OUTLINE (MODULES) — image overlay kept ===== -->
         <section class="section section--dark section--image"
-            style="background-image: url('../../images/AUB-OSB-ExEd-Leadership-banner-bw.png');">
+            style="background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(10,10,10,0.7) 100%), url('../../images/AUB-OSB-ExEd-Leadership-banner-bw.png')">
             <div class="container">
                 <h2 class="section-title">Program Outline</h2>
                 <p class="section-lead">Six modules delivered across 11 weeks in a live online
@@ -466,7 +464,44 @@
             </div>
         </section>
 
-        <!-- ===== WHO SHOULD ENROLL & REQUIREMENTS ===== -->
+
+        <!-- INSTRUCTOR -->
+        <section class="section" style="background: #f5f5f5">
+            <div class="container">
+                <h2 class="section-title">Program Instructor</h2>
+                <div class="instructor-grid">
+                    <div class="instructor-grid__image">
+                        <img src="../../images/faculty/Imad.jpg" alt="Dr. George" />
+                    </div>
+                    <div>
+                        <h3 class="instructor-grid__name"> IMAD BOU HAMAD, PhD</h3>
+                        <div class="instructor-grid__title">
+                            <p>
+                                Associate Professor<br />
+                                Olayan School of Business – American University of Beirut
+                            </p>
+                        </div>
+                        <p class="instructor-grid__bio">
+                            Dr. Imad Bou-Hamad is a Tenured Associate Professor of Statistics and Data Analytics at the
+                            Suliman S. Olayan School of Business (OSB), American University of Beirut (AUB). He holds a
+                            Ph.D. in Business Administration, with a concentration in Business Intelligence, from HEC
+                            Montréal, and a master’s degree in Statistics from Université de Montréal.<br>
+                            His research focuses on statistical modeling and data analytics, particularly predictive
+                            analytics, with applications in consumer behavior, youth studies, and wellbeing. His work
+                            combines the development of analytical frameworks with their practical application to
+                            real-world challenges.<br>
+                            Beyond academia, Dr. Bou-Hamad is actively involved in media and science communication,
+                            developing initiatives that bridge academic knowledge with public engagement. He created and
+                            hosted Researcher, a scientific infotainment show aired on LBCI, recognized by AACSB through
+                            its Innovations That Inspire initiative for its innovative approach to science
+                            communication.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHO SHOULD ATTEND — 4 cards in a carousel ===== -->
         <section class="section">
             <div class="container">
                 <h2 class="section-title">Who Should Attend</h2>
@@ -476,33 +511,88 @@
                     and seek to sharpen their strategic thinking, identify risks earlier, and lead resilient
                     organizations through disruption.</p>
 
-                <div class="split-grid">
-                    <!-- Left side: Participant profiles -->
-                    <div class="participant-card">
-                        <div class="participant-card__image">
-                            <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
-                                alt="Senior executives and business leaders"
-                                onerror="this.onerror=null;this.src='https://placehold.co/800x400/5E5E60/ffffff?text=Senior-Executives'" />
-                        </div>
-                        <div class="participant-card__content">
-                            <h3 class="participant-card__title">Target Profiles</h3>
-                            <ul class="requirements-grid__list">
-                                <li><span><strong>Senior Executives:</strong> Seeking to navigate uncertainty, lead
-                                        transformation, and build agile organizations</span></li>
-                                <li><span><strong>Business Leaders:</strong> Aiming to build leadership capabilities and
-                                        their ability to drive innovation</span></li>
-                                <li><span><strong>Strategy Professionals:</strong> Interpreting and assessing
-                                        competitive
-                                        markets to develop effective strategies</span></li>
-                                <li><span><strong>Decision-makers:</strong> Leveraging data and analytics, applying
-                                        customer-centric solutions, and responding to evolving business
-                                        environments</span></li>
-                            </ul>
+                <div class="carousel js-carousel carousel-4" data-carousel>
+                    <button class="carousel__btn carousel__btn--prev js-carousel-prev" aria-label="Previous" disabled>
+                        &#10094;
+                    </button>
+
+                    <div class="carousel__container js-carousel-container">
+                        <div class="carousel__track js-carousel-track">
+                            <div class="carousel__slide">
+                                <div class="participant-card">
+                                    <div class="participant-card__image">
+                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                            alt="Senior Executives"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Senior+Executives'" />
+                                    </div>
+                                    <div class="participant-card__content">
+                                        <h3 class="participant-card__title">Senior Executives</h3>
+                                        <p class="participant-card__text">Seeking to navigate uncertainty, lead
+                                            transformation, and build agile organizations</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel__slide">
+                                <div class="participant-card">
+                                    <div class="participant-card__image">
+                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                            alt="Business Leaders"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Business+Leaders'" />
+                                    </div>
+                                    <div class="participant-card__content">
+                                        <h3 class="participant-card__title">Business Leaders</h3>
+                                        <p class="participant-card__text">Aiming to build leadership capabilities and
+                                            their ability to drive innovation</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel__slide">
+                                <div class="participant-card">
+                                    <div class="participant-card__image">
+                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                            alt="Strategy Professionals"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Strategy+Professionals'" />
+                                    </div>
+                                    <div class="participant-card__content">
+                                        <h3 class="participant-card__title">Strategy Professionals</h3>
+                                        <p class="participant-card__text">Interpreting and assessing competitive
+                                            markets to develop effective strategies</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel__slide">
+                                <div class="participant-card">
+                                    <div class="participant-card__image">
+                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                            alt="Decision-makers"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Decision-makers'" />
+                                    </div>
+                                    <div class="participant-card__content">
+                                        <h3 class="participant-card__title">Decision-makers</h3>
+                                        <p class="participant-card__text">Leveraging data and analytics, applying
+                                            customer-centric solutions, and responding to evolving business
+                                            environments</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Right side: Requirements -->
-                    <div class="requirements-card">
+                    <button class="carousel__btn carousel__btn--next js-carousel-next" aria-label="Next">
+                        &#10095;
+                    </button>
+                </div>
+
+                <!-- ===== PROGRAM REQUIREMENTS ===== -->
+                <div class="requirements-grid">
+                    <div class="requirements-grid__image">
+                        <img src="../../images/AUB-OSB-OEP-Family-Business-Requirements.jpg" alt="Professional Learning"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x300/4a6b8a/white?text=Requirements'" />
+                    </div>
+                    <div class="requirements-grid__content">
                         <h3 class="requirements-grid__title">Admissions Requirements</h3>
                         <ul class="requirements-grid__list">
                             <li>
@@ -582,11 +672,6 @@
                 <div class="partner-grid">
                     <!-- AUC -->
                     <div class="partner-card">
-                        <div class="partner-card__logo">
-                            <!-- <img src="../../images/logos/auc-logo.png" -->
-                            <img src="../../images/logos/AUB+OSB-Merged-Logo-white.png"
-                                alt="The American University in Cairo, Onsi Sawiris School of Business" />
-                        </div>
                         <h3 class="partner-card__title">AUC Onsi Sawiris School of Business</h3>
                         <p class="partner-card__text">Committed to shaping the business leaders, entrepreneurs and
                             change agents of tomorrow. With a history of over seven decades, it is placed among the
@@ -595,11 +680,6 @@
                     </div>
                     <!-- Koç -->
                     <div class="partner-card">
-                        <div class="partner-card__logo">
-                            <!-- <img src="../../images/logos/koc-logo.png" -->
-                            <img src="../../images/logos/AUB+OSB-Merged-Logo-white.png"
-                                alt="Koç University Graduate School of Business" />
-                        </div>
                         <h3 class="partner-card__title">Koç University Graduate School of Business</h3>
                         <p class="partner-card__text">Türkiye's premier institution for management education,
                             distinguished as the first and only school in Türkiye and its region to earn the
@@ -608,11 +688,6 @@
                     </div>
                     <!-- AUB -->
                     <div class="partner-card">
-                        <div class="partner-card__logo">
-                            <!-- <img src="../../images/logos/aub-logo.png" -->
-                            <img src="../../images/logos/AUB+OSB-Merged-Logo-white.png"
-                                alt="American University of Beirut, Suliman S. Olayan School of Business" />
-                        </div>
                         <h3 class="partner-card__title">AUB Suliman S. Olayan School of Business</h3>
                         <p class="partner-card__text">Highly regarded within the international community with rankings
                             consistently placing it as a MENA leader. AACSB International-accredited and now also Equis
@@ -623,13 +698,13 @@
         </section>
 
         <!-- ===== FINAL CTA ===== -->
-        <section class="cta cta--gradient">
+        <section class="cta register-section" style="background-image: url('../../images/CEDAR-bg.jpg');">
+            <div class="cta__overlay"></div>
             <div class="container">
                 <div class="cta__content">
                     <h2 class="cta__title">Lead Through Disruption</h2>
                     <p class="cta__text">Build the capabilities to navigate complexity with confidence.</p>
-                    <a href="https://www.aub.edu.lb/osb/Landing/Pages/OEP-LTD-Apply.html"
-                        class="btn btn--primary btn--primary-grey" target="_blank">Register Now</a>
+                    <a href="#" class="btn btn--white" target="_blank">Register Now</a>
                 </div>
             </div>
         </section>
