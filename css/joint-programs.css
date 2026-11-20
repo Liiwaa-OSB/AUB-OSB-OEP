@@ -174,12 +174,6 @@ a.detail-item {
     object-fit: contain;
 }
 
-.hero__partner-divider {
-    width: 1px;
-    height: 48px;
-    background: rgba(255, 255, 255, 0.45);
-}
-
 @media (max-width: 768px) {
     .hero__partners {
         flex-direction: column;
@@ -189,11 +183,6 @@ a.detail-item {
 
     .hero__partners img {
         height: 48px;
-    }
-
-    .hero__partner-divider {
-        width: 80%;
-        height: 1px;
     }
 }
 
@@ -470,4 +459,11 @@ body.nav-scrolled .nav-osb .osb-nav-item>a#executive-education-link {
     .info-card:hover {
         transform: none;
     }
+}
+
+
+
+/* override multi instrutors css  */
+.instructor-card {
+    border-top: 6px solid var(--program-primary);
 }

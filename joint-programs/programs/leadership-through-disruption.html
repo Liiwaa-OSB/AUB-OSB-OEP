@@ -71,6 +71,112 @@
         .sticky-cta__btn:hover {
             background-color: var(--color-primary-dark);
         }
+
+        /* Keep temp till main-v2 is updated - START */
+        .instructor-grid--2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        @media (min-width: 768px) {
+            .instructor-grid--2 {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        /* Each instructor is its own card-like block */
+        .instructor-card {
+            /* display: grid; */
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            padding: 1.75rem;
+            background: #fff;
+            border: 1px solid var(--color-border-light);
+            border-top: 6px solid var(--program-primary);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 640px) and (max-width: 767px) {
+            .instructor-card {
+                grid-template-columns: auto 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .instructor-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .instructor-card__image {
+            width: 100%;
+            max-width: 200px;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            margin: 0 auto 2rem;
+        }
+
+        .instructor-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .instructor-card__body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .instructor-card__name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .instructor-card__title {
+            font-size: 15px;
+            color: var(--color-accent);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .instructor-card__bio {
+            font-size: 15px;
+            line-height: 1.75;
+            color: #374151;
+            margin-top: 0.5rem;
+        }
+
+        @media (min-width: 640px) and (max-width: 767px) {
+            .instructor-card__image {
+                max-width: 140px;
+                margin: 0 0 2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .instructor-card {
+                grid-template-columns: 1fr;
+            }
+
+            .instructor-card__image {
+                max-width: 180px;
+                margin: 0 auto 2rem;
+            }
+        }
+
+        /* Keep temp till main-v2 is updated - END */
     </style>
 
     <script src="../../js/main.js" defer></script>
@@ -216,20 +322,15 @@
 
         <!-- ===== HERO ===== -->
         <section class="hero hero--program"
-            style="background-image: url('../../images/AUB-OSB-ExEd-Leadership-banner-bw.png');">
+            style="background-image: url('../../images/AUB-OSB-JP-Leadership-Th-Disruption.jpg');">
             <div class="hero__overlay"></div>
             <div class="container">
                 <div class="hero__content hero__content--left">
 
                     <!-- Partner logos: moved from strip below the hero, left-aligned above text -->
                     <div class="hero__partners">
-                        <img src="../../images/logos/auc-logo.png"
-                            alt="The American University in Cairo, Onsi Sawiris School of Business" />
-                        <span class="hero__partner-divider" aria-hidden="true"></span>
-                        <img src="../../images/logos/koc-logo.png" alt="Koç University Graduate School of Business" />
-                        <span class="hero__partner-divider" aria-hidden="true"></span>
-                        <img src="../../images/logos/aub-logo.png"
-                            alt="American University of Beirut, Suliman S. Olayan School of Business" />
+                        <img src="../../images/logos/OSB+AUC+KOC-logos.png"
+                            alt="AUC - OSB - KOC" />
                     </div>
 
                     <h1 class="hero__title">Leading Through Disruption</h1>
@@ -295,7 +396,7 @@
             <div class="container">
                 <div class="overview-grid">
                     <div class="overview-grid__image">
-                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                        <img src="../../images/AUB-OSB-JP-Leadership-Th-Disruption-Program.jpg"
                             alt="Leading Through Disruption program overview" />
                     </div>
                     <div class="overview-grid__text">
@@ -362,7 +463,7 @@
 
         <!-- ===== PROGRAM OUTLINE (MODULES) — image overlay kept ===== -->
         <section class="section section--dark section--image"
-            style="background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(10,10,10,0.7) 100%), url('../../images/AUB-OSB-ExEd-Leadership-banner-bw.png')">
+            style="background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(10,10,10,0.5) 100%)">
             <div class="container">
                 <h2 class="section-title">Program Outline</h2>
                 <p class="section-lead">Six modules delivered across 11 weeks in a live online
@@ -468,35 +569,67 @@
         <!-- INSTRUCTOR -->
         <section class="section" style="background: #f5f5f5">
             <div class="container">
-                <h2 class="section-title">Program Instructor</h2>
-                <div class="instructor-grid">
-                    <div class="instructor-grid__image">
-                        <img src="../../images/faculty/Imad.jpg" alt="Dr. George" />
-                    </div>
-                    <div>
-                        <h3 class="instructor-grid__name"> IMAD BOU HAMAD, PhD</h3>
-                        <div class="instructor-grid__title">
-                            <p>
+                <h2 class="section-title">Program Instructors</h2>
+
+                <div class="instructor-grid--2">
+
+                    <!-- Instructor 1 -->
+                    <div class="instructor-card">
+                        <div class="instructor-card__image">
+                            <img src="../../images/faculty/Imad.jpg" alt="Dr. Imad Bou Hamad" />
+                        </div>
+                        <div class="instructor-card__body">
+                            <h3 class="instructor-card__name">Imad Bou Hamad, <span style="text-transform: none;">PhD</span></h3>
+                            <p class="instructor-card__title">
                                 Associate Professor<br />
                                 Olayan School of Business – American University of Beirut
                             </p>
+                            <p class="instructor-card__bio">
+                                Dr. Imad Bou-Hamad is a Tenured Associate Professor of Statistics and Data Analytics at
+                                the
+                                Suliman S. Olayan School of Business (OSB), American University of Beirut (AUB). He
+                                holds a
+                                Ph.D. in Business Administration, with a concentration in Business Intelligence, from
+                                HEC
+                                Montréal, and a master’s degree in Statistics from Université de Montréal.<br>
+                                His research focuses on statistical modeling and data analytics, particularly predictive
+                                analytics, with applications in consumer behavior, youth studies, and wellbeing. His
+                                work
+                                combines the development of analytical frameworks with their practical application to
+                                real-world challenges.<br>
+                                Beyond academia, Dr. Bou-Hamad is actively involved in media and science communication,
+                                developing initiatives that bridge academic knowledge with public engagement. He created
+                                and
+                                hosted Researcher, a scientific infotainment show aired on LBCI, recognized by AACSB
+                                through
+                                its Innovations That Inspire initiative for its innovative approach to science
+                                communication.
+                            </p>
                         </div>
-                        <p class="instructor-grid__bio">
-                            Dr. Imad Bou-Hamad is a Tenured Associate Professor of Statistics and Data Analytics at the
-                            Suliman S. Olayan School of Business (OSB), American University of Beirut (AUB). He holds a
-                            Ph.D. in Business Administration, with a concentration in Business Intelligence, from HEC
-                            Montréal, and a master’s degree in Statistics from Université de Montréal.<br>
-                            His research focuses on statistical modeling and data analytics, particularly predictive
-                            analytics, with applications in consumer behavior, youth studies, and wellbeing. His work
-                            combines the development of analytical frameworks with their practical application to
-                            real-world challenges.<br>
-                            Beyond academia, Dr. Bou-Hamad is actively involved in media and science communication,
-                            developing initiatives that bridge academic knowledge with public engagement. He created and
-                            hosted Researcher, a scientific infotainment show aired on LBCI, recognized by AACSB through
-                            its Innovations That Inspire initiative for its innovative approach to science
-                            communication.
-                        </p>
                     </div>
+
+                    <!-- Instructor 2 (dummy content) -->
+                    <div class="instructor-card">
+                        <div class="instructor-card__image">
+                            <img src="../../images/faculty/Fouad.jpg" alt="Dr. Fouad Zablith" />
+                        </div>
+                        <div class="instructor-card__body">
+                            <h3 class="instructor-card__name">Fouad Zablith, <span style="text-transform: none;">PhD</span></h3>
+                            <p class="instructor-card__title">
+                                Associate Professor & Associate Dean for <br />
+                                Online Learning and Program Development Business
+                            </p>
+                            <p class="instructor-card__bio">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -521,7 +654,7 @@
                             <div class="carousel__slide">
                                 <div class="participant-card">
                                     <div class="participant-card__image">
-                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                        <img src="../../images/AUB-OSB-JP-Leadership-Th-Disruption-who-SE.jpg"
                                             alt="Senior Executives"
                                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Senior+Executives'" />
                                     </div>
@@ -536,7 +669,7 @@
                             <div class="carousel__slide">
                                 <div class="participant-card">
                                     <div class="participant-card__image">
-                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                        <img src="../../images/AUB-OSB-JP-Leadership-Th-Disruption-who-BL.jpg"
                                             alt="Business Leaders"
                                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Business+Leaders'" />
                                     </div>
@@ -551,7 +684,7 @@
                             <div class="carousel__slide">
                                 <div class="participant-card">
                                     <div class="participant-card__image">
-                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                        <img src="../../images/AUB-OSB-JP-Leadership-Th-Disruption-who-SP.jpg"
                                             alt="Strategy Professionals"
                                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Strategy+Professionals'" />
                                     </div>
@@ -566,7 +699,7 @@
                             <div class="carousel__slide">
                                 <div class="participant-card">
                                     <div class="participant-card__image">
-                                        <img src="../../images/AUB-OSB-ExEd-Leadership-banner-bw.png"
+                                        <img src="../../images/AUB-OSB-JP-Leadership-Th-Disruption-who-DM.jpg"
                                             alt="Decision-makers"
                                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/5E5E60/ffffff?text=Decision-makers'" />
                                     </div>
@@ -698,7 +831,7 @@
         </section>
 
         <!-- ===== FINAL CTA ===== -->
-        <section class="cta register-section" style="background-image: url('../../images/CEDAR-bg.jpg');">
+        <section class="cta register-section" style="background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)) ,url('../../images/CEDAR-bg.jpg');">
             <div class="cta__overlay"></div>
             <div class="container">
                 <div class="cta__content">

@@ -755,6 +755,123 @@ h3 {
   opacity: 0.9;
 }
 
+/* more than one instructor design */
+/* ---------- instructor grid: two-instructor variant ---------- */
+/* 
+   Default single-instructor layout is inherited from main-V2.css.
+   Add class .instructor-grid--2 to support two instructors side by side.
+*/
+
+.instructor-grid--2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .instructor-grid--2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+    }
+}
+
+/* Each instructor is its own card-like block */
+.instructor-card {
+    /* display: grid; */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.75rem;
+    background: #fff;
+    border: 1px solid var(--color-border-light);
+    border-top: 6px solid var(--color-accent);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+    .instructor-card {
+        grid-template-columns: auto 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .instructor-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Image block inside the card */
+.instructor-card__image {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin: 0 auto 2rem;
+}
+
+.instructor-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text block inside the card */
+.instructor-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.instructor-card__name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.instructor-card__title {
+    font-size: 15px;
+    color: var(--color-accent);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.instructor-card__bio {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #374151;
+    margin-top: 0.5rem;
+}
+
+/* On wide cards, keep image left and text right on tablet */
+@media (min-width: 640px) and (max-width: 767px) {
+    .instructor-card__image {
+        max-width: 140px;
+        margin: 0 0 2rem;
+    }
+}
+
+/* At desktop (2-col grid), stack image above text in each card */
+@media (min-width: 768px) {
+    .instructor-card {
+        grid-template-columns: 1fr;
+    }
+
+    .instructor-card__image {
+        max-width: 180px;
+        margin: 0 auto 2rem;
+    }
+}
+
+/* Respect reduced motion (already handled globally, no transitions here) */
+
 /* ===== Participants CARD STYLES (exactly as provided, untouched) ===== */
 .participant-card,
 .csp-card {
