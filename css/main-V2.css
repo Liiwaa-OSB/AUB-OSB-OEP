@@ -302,6 +302,7 @@ h3 {
 .hero__title {
   font-size: var(--hero-title-size);
   font-weight: 800;
+  line-height: 1.05;
 }
 
 .hero__subtitle {
@@ -810,7 +811,7 @@ h3 {
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: var(--border-radius);
-    margin: 0 auto 2rem;
+    margin: 0 0 2rem;
 }
 
 .instructor-card__image img {

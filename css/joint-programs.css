@@ -41,7 +41,9 @@
     --color-accent-dark: #2f3030;
 }
 
-/* ---------- shared ---------- */
+/* =============================================================================
+   SHARED SECTION HELPERS
+   ============================================================================= */
 .section--light {
     background: var(--color-bg-light);
 }
@@ -51,7 +53,6 @@
     color: var(--program-dark-ink);
 }
 
-/* section with a photo background (set inline), no overlay */
 .section--image {
     background-size: cover;
     background-position: center;
@@ -62,9 +63,8 @@
     color: var(--program-primary);
 }
 
-.info-card__title,
-.participant-card__title{
-    color: #000;
+.section--dark .section-lead {
+    color: #e8e8e8;
 }
 
 .section-lead {
@@ -74,10 +74,14 @@
     color: var(--color-text-muted);
 }
 
-.section--dark .section-lead {
-    color: #e8e8e8;
+.info-card__title,
+.participant-card__title {
+    color: #000;
 }
 
+/* =============================================================================
+   BUTTONS / FOCUS
+   ============================================================================= */
 .btn--highlight {
     background: var(--program-primary);
     color: var(--program-primary-ink);
@@ -103,6 +107,9 @@ a:focus-visible {
     outline-color: #000;
 }
 
+/* =============================================================================
+   SUB-LABEL / LINK DETAIL ITEMS
+   ============================================================================= */
 .detail-item__sub,
 .info-card__sub {
     opacity: 1;
@@ -114,7 +121,8 @@ a.detail-item {
     text-decoration: none;
 }
 
-/* icons sit in a highlight circle */
+/* Icons sit in a highlight circle (detail-item__icon no longer used on this page,
+   but kept for other program pages that still use it). */
 .detail-item__icon,
 .info-card__icon {
     box-sizing: content-box;
@@ -124,7 +132,9 @@ a.detail-item {
     color: var(--program-primary-ink);
 }
 
-/* floating buttons use the highlight colour */
+/* =============================================================================
+   STICKY CTA
+   ============================================================================= */
 .sticky-cta__btn {
     background-color: var(--program-primary);
     color: var(--program-primary-ink);
@@ -134,7 +144,17 @@ a.detail-item {
     background-color: var(--program-primary-dark);
 }
 
-/* ---------- hero ---------- */
+/* =============================================================================
+   HERO
+   ============================================================================= */
+.hero {
+    padding: 0;
+}
+
+.hero__title {
+    line-height: 1.05;
+}
+
 .hero--program {
     background-size: cover;
     background-position: center 45%;
@@ -153,11 +173,7 @@ a.detail-item {
     background: var(--program-primary);
 }
 
-.hero__subtitle span {
-    display: block;
-}
-
-/* ---------- hero partner logos (above the title, left-aligned) ---------- */
+/* Partner logos — full opacity, no fade */
 .hero__partners {
     display: flex;
     justify-content: flex-start;
@@ -165,13 +181,19 @@ a.detail-item {
     gap: 2.5rem;
     flex-wrap: wrap;
     margin-bottom: 1.75rem;
+    position: relative;
+    z-index: 5;
+    opacity: 1;
 }
 
 .hero__partners img {
+    display: block;
     width: auto;
     max-width: 100%;
-    height: 56px;
+    height: 70px;
     object-fit: contain;
+    opacity: 1;
+    filter: none;
 }
 
 @media (max-width: 768px) {
@@ -186,7 +208,79 @@ a.detail-item {
     }
 }
 
-/* ---------- takeaways: neutral / highlight checkerboard ---------- */
+/* ---------- Hero: logos on top, content bottom-aligned & evenly spaced ---------- */
+.hero--stacked {
+    display: flex;
+    align-items: stretch;
+}
+
+.hero__container--stacked {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+    gap: 2rem;
+    position: relative;
+    z-index: 5;
+}
+
+.hero__partners--top {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.hero__content--bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+    padding-bottom: 0;
+}
+
+.hero__content--bottom .hero__title,
+.hero__content--bottom .hero__subtitle,
+.hero__content--bottom .hero__text {
+    margin: 0;
+}
+
+.hero__content--bottom .hero__rule {
+    margin: 0.5rem 0;
+}
+
+.hero__content--bottom .hero__buttons {
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .hero__container--stacked {
+        padding-top: 2.5rem;
+        padding-bottom: 3.5rem;
+        gap: 2.5rem;
+    }
+
+    .hero__content--bottom {
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero__container--stacked {
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+        gap: 1.5rem;
+    }
+
+    .hero__partners--top {
+        align-items: flex-start;
+    }
+}
+
+/* =============================================================================
+   KEY TAKEAWAYS — checkerboard neutral / highlight
+   ============================================================================= */
 .takeaway-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -232,18 +326,20 @@ a.detail-item {
     color: inherit;
 }
 
-/* ---------- module cards: yellow cards (extends main-V2 .detail-card) ---------- */
+/* =============================================================================
+   MODULE CARDS (extends main-V2 .detail-card)
+   ============================================================================= */
 .modules-grid {
     margin-top: 0;
 }
 
 .detail-card {
-        background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 28px 24px;
     transition: all 0.25s;
     backdrop-filter: blur(2px);
-    color: white;
+    color: #fff;
 }
 
 .detail-card:hover {
@@ -253,7 +349,7 @@ a.detail-item {
 }
 
 .detail-card__title {
-  color: var(--program-primary-dark);;
+    color: var(--program-primary-dark);
 }
 
 .detail-card__content {
@@ -262,7 +358,6 @@ a.detail-item {
     padding: 1.75rem 1.5rem;
 }
 
-/* tag 1: "Module 1 · Koç University" reads as a plain label */
 .detail-card__badge {
     padding: 0;
     margin-bottom: 0.75rem;
@@ -278,7 +373,6 @@ a.detail-item {
     margin-bottom: 1.5rem;
 }
 
-/* tag 2: hours / format sit on the card, separated by a hairline */
 .detail-card__meta {
     display: flex;
     flex-wrap: wrap;
@@ -298,86 +392,84 @@ a.detail-item {
     color: var(--program-primary);
 }
 
-/* ---------- program details: full-width fees row ---------- */
-.info-card--wide {
+/* =============================================================================
+   PROGRAM DETAILS — no icons variant
+   ============================================================================= */
+.info-grid--no-icons .info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.info-grid--no-icons .info-card__icon {
+    display: none;
+}
+
+.info-grid--no-icons .info-card__title {
+    margin-top: 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--program-neutral);
+    margin-bottom: 0.5rem;
+}
+
+.info-grid--no-icons .info-card__value {
+    font-size: 22px;
+}
+
+/* Wide (fees) card — no icon, plain block */
+.info-grid--no-icons .info-card--wide {
     grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 1.5rem;
-    align-items: center;
+    display: block;
 }
 
-.info-card--wide .info-card__icon {
-    grid-row: 1 / span 3;
-    margin: 0;
-}
-
-.info-card--wide .info-card__title {
+.info-grid--no-icons .info-card--wide .info-card__title {
     margin-bottom: 0.25rem;
 }
 
-.info-card--wide .info-card__sub {
+.info-grid--no-icons .info-card--wide .info-card__sub {
     margin-top: 0.25rem;
 }
 
-/* ---------- two-column block (profile + requirements) ---------- */
-.split-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: stretch;
-    margin-top: 1.5rem;
-}
-
-@media (min-width: 1024px) {
-    .split-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 2.5rem;
-    }
-}
-
-.requirements-card {
+/* =============================================================================
+   CERTIFICATE CARD
+   ============================================================================= */
+.certificate-card {
     background: #fff;
-    border: 1px solid var(--color-border-light);
-    border-top: 6px solid var(--program-dark);
+    border: 2px solid var(--color-border-light);
+    border-top: 6px solid var(--program-primary);
     border-radius: var(--border-radius);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 @media (min-width: 1024px) {
-    .requirements-card {
+    .certificate-card {
         padding: 2.5rem;
     }
 }
 
-.requirements-card .requirements-grid__list li span {
-    color: #374151;
-    font-size: 1.125rem;
-    line-height: 1.5;
-}
-
-/* ---------- callout (certificate etc.) ---------- */
-.callout {
-    padding-left: 1.5rem;
-    border-left: 6px solid var(--program-dark);
-}
-
-.callout__main {
+.certificate-card__main {
     font-size: 1.1rem;
     line-height: 1.8;
+    color: #374151;
+    margin-bottom: 1.25rem;
 }
 
-.callout__note {
-    margin-top: 1rem;
+.certificate-card__note {
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-light);
+    border-left: 4px solid var(--program-primary);
     font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--color-text-muted);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
-/* ---------- partner cards: no card background, on a dark section ---------- */
+/* =============================================================================
+   PARTNER CARDS
+   ============================================================================= */
 .partner-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -394,10 +486,9 @@ a.detail-item {
 .partner-card {
     display: flex;
     flex-direction: column;
-    padding: 1.75rem 0 0;
-    background-color: var(--program-neutral);
     padding: 2rem;
-    color: white;
+    background-color: var(--program-neutral);
+    color: #fff;
 }
 
 .partner-card__title {
@@ -413,7 +504,9 @@ a.detail-item {
     color: #e8e8e8;
 }
 
-/* ---------- closing call-to-action ---------- */
+/* =============================================================================
+   CLOSING CTA
+   ============================================================================= */
 .cta--gradient {
     background: var(--program-cta-gradient);
     color: var(--program-cta-ink);
@@ -425,12 +518,13 @@ a.detail-item {
     opacity: 1;
 }
 
-/* white button on the contact banner: neutral text instead of main's accent */
 .contact-us-section .btn--white {
     color: var(--program-neutral);
 }
 
-/* ---------- Executive Education nav highlight ---------- */
+/* =============================================================================
+   EXECUTIVE EDUCATION NAV HIGHLIGHT
+   ============================================================================= */
 .nav-osb-links .osb-nav-item>a#executive-education-link {
     color: var(--color-primary);
 }
@@ -445,6 +539,16 @@ body.nav-scrolled .nav-osb .osb-nav-item>a#executive-education-link {
     color: var(--color-primary);
 }
 
+/* =============================================================================
+   INSTRUCTOR CARD ACCENT
+   ============================================================================= */
+.instructor-card {
+    border-top: 6px solid var(--program-primary);
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
 @media (prefers-reduced-motion: reduce) {
 
     .btn,
@@ -462,8 +566,6 @@ body.nav-scrolled .nav-osb .osb-nav-item>a#executive-education-link {
 }
 
 
-
-/* override multi instrutors css  */
-.instructor-card {
-    border-top: 6px solid var(--program-primary);
+.cta__overlay {
+    background: rgba(0, 0, 0, 0.2);
 }

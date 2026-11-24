@@ -63,15 +63,6 @@
             --program-cta-ink: #000;
         }
 
-        .sticky-cta__btn {
-            background-color: var(--color-primary);
-            color: white;
-        }
-
-        .sticky-cta__btn:hover {
-            background-color: var(--color-primary-dark);
-        }
-
         /* Keep temp till main-v2 is updated - START */
         .instructor-grid--2 {
             display: grid;
@@ -119,7 +110,7 @@
             aspect-ratio: 1 / 1;
             overflow: hidden;
             border-radius: var(--border-radius);
-            margin: 0 auto 2rem;
+            margin: 0 0 2rem;
         }
 
         .instructor-card__image img {
@@ -321,29 +312,27 @@
     <main>
 
         <!-- ===== HERO ===== -->
-        <section class="hero hero--program"
+        <section class="hero hero--program hero--stacked"
             style="background-image: url('../../images/AUB-OSB-JP-Leadership-Th-Disruption.jpg');">
             <div class="hero__overlay"></div>
-            <div class="container">
-                <div class="hero__content hero__content--left">
+            <div class="container hero__container--stacked">
 
-                    <!-- Partner logos: moved from strip below the hero, left-aligned above text -->
-                    <div class="hero__partners">
-                        <img src="../../images/logos/OSB+AUC+KOC-logos.png"
-                            alt="AUC - OSB - KOC" />
-                    </div>
+                <!-- Partner logos: top of section -->
+                <div class="hero__partners hero__partners--top">
+                    <img src="../../images/logos/OSB+AUC+KOC-logos.png" alt="AUC - OSB - KOC" />
+                </div>
 
-                    <h1 class="hero__title">Leading Through Disruption</h1>
+                <!-- Bottom-aligned content with even spacing -->
+                <div class="hero__content hero__content--bottom hero__content--left">
+                    <h1 class="hero__title">Leading Through <br /> Disruption</h1>
                     <span class="hero__rule" aria-hidden="true"></span>
-                    <h2 class="hero__subtitle">Diagnose the Landscape. Set the Strategy.<br /> Lead the Execution.
-                    </h2>
+                    <h2 class="hero__subtitle">Diagnose the Landscape. Set the Strategy.<br /> Lead the Execution.</h2>
                     <p class="hero__text">A Joint Executive Program by AUC, Koç University &amp; AUB OSB</p>
                     <div class="hero__buttons">
                         <a href="https://www.aub.edu.lb/osb/Landing/Pages/OEP-LTD-Apply.html" class="btn btn--highlight"
                             target="_blank">Register Now</a>
                         <a href="https://www.aub.edu.lb/osb/executiveeducation/Site/contact-us.html"
-                            class="btn btn--outline-light"> Contact Executive Education
-                        </a>
+                            class="btn btn--outline-light"> Contact Executive Education </a>
                     </div>
                 </div>
             </div>
@@ -579,7 +568,8 @@
                             <img src="../../images/faculty/Imad.jpg" alt="Dr. Imad Bou Hamad" />
                         </div>
                         <div class="instructor-card__body">
-                            <h3 class="instructor-card__name">Imad Bou Hamad, <span style="text-transform: none;">PhD</span></h3>
+                            <h3 class="instructor-card__name">Imad Bou Hamad, <span
+                                    style="text-transform: none;">PhD</span></h3>
                             <p class="instructor-card__title">
                                 Associate Professor<br />
                                 Olayan School of Business – American University of Beirut
@@ -614,7 +604,8 @@
                             <img src="../../images/faculty/Fouad.jpg" alt="Dr. Fouad Zablith" />
                         </div>
                         <div class="instructor-card__body">
-                            <h3 class="instructor-card__name">Fouad Zablith, <span style="text-transform: none;">PhD</span></h3>
+                            <h3 class="instructor-card__name">Fouad Zablith, <span
+                                    style="text-transform: none;">PhD</span></h3>
                             <p class="instructor-card__title">
                                 Associate Professor & Associate Dean for <br />
                                 Online Learning and Program Development Business
@@ -744,59 +735,25 @@
             </div>
         </section>
 
-        <!-- ===== TIMING, FEES & FORMAT ===== -->
-        <section class="section section--light" id="program-fees">
-            <div class="container">
-                <h2 class="section-title">Program Details</h2>
-                <div class="grid-4">
-                    <div class="info-card"><i data-lucide="calendar" width="40" height="40" class="info-card__icon"></i>
-                        <h3 class="info-card__title">Duration</h3>
-                        <div class="info-card__value f-size-17">39 Hours<br />11 Weeks</div>
-                    </div>
-                    <div class="info-card"><i data-lucide="clock" width="40" height="40" class="info-card__icon"></i>
-                        <h3 class="info-card__title">Format</h3>
-                        <div class="info-card__value">Live (Online)</div>
-                        <div class="info-card__sub">6:00 – 9:00 PM (GMT+2)</div>
-                    </div>
-                    <div class="info-card"><i data-lucide="users" width="40" height="40" class="info-card__icon"></i>
-                        <h3 class="info-card__title">Partnership</h3>
-                        <div class="info-card__value f-size-17">AUC · Koç · AUB</div>
-                        <div class="info-card__sub">Three leading business schools</div>
-                    </div>
-                    <div class="info-card"><i data-lucide="mail" width="40" height="40" class="info-card__icon"></i>
-                        <h3 class="info-card__title">Contact</h3>
-                        <div class="info-card__value f-size-17">exed-bd@aub.edu.lb</div>
-                    </div>
-                    <div class="info-card info-card--wide"><i data-lucide="dollar-sign" width="40" height="40"
-                            class="info-card__icon"></i>
-                        <h3 class="info-card__title">Fees</h3>
-                        <div class="info-card__value">$1,970</div>
-                        <div class="info-card__sub">Reduced fees for AUB alumni, corporate groups, or early-bird
-                            registrations.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- ===== CERTIFICATE ===== -->
         <section class="section">
             <div class="container">
                 <h2 class="section-title">Certificate</h2>
-                <div class="callout">
-                    <p class="callout__main">
+                <div class="certificate-card">
+                    <p class="certificate-card__main">
                         Participants who successfully fulfil the program graduation requirements will be granted a
                         <strong>'Certificate of Attendance' from the three schools:</strong> AUC Onsi Sawiris School of
                         Business, Koç University Graduate School of Business, and AUB Suliman S. Olayan School of
                         Business.
                     </p>
-                    <p class="callout__note">
+                    <div class="certificate-card__note">
                         <strong>Attendance Requirements:</strong> A minimum attendance of 75% is required in the program
-                        to
-                        qualify for graduation.
-                    </p>
+                        to qualify for graduation.
+                    </div>
                 </div>
             </div>
         </section>
+
 
         <!-- ===== PARTNER SCHOOLS ===== -->
         <section class="section">
@@ -830,8 +787,44 @@
             </div>
         </section>
 
+
+
+        <!-- ===== TIMING, FEES & FORMAT ===== -->
+        <section class="section section--light" id="program-fees">
+            <div class="container">
+                <h2 class="section-title">Program Details</h2>
+                <div class="grid-4 info-grid--no-icons">
+                    <div class="info-card">
+                        <h3 class="info-card__title">Duration</h3>
+                        <div class="info-card__value f-size-17">39 Hours<br />11 Weeks</div>
+                    </div>
+                    <div class="info-card">
+                        <h3 class="info-card__title">Format</h3>
+                        <div class="info-card__value">Live (Online)</div>
+                        <div class="info-card__sub">6:00 – 9:00 PM (GMT+2)</div>
+                    </div>
+                    <div class="info-card">
+                        <h3 class="info-card__title">Partnership</h3>
+                        <div class="info-card__value f-size-17">AUC · Koç · AUB</div>
+                        <div class="info-card__sub">Three leading business schools</div>
+                    </div>
+                    <div class="info-card">
+                        <h3 class="info-card__title">Contact</h3>
+                        <div class="info-card__value f-size-17">exed-bd@aub.edu.lb</div>
+                    </div>
+                    <div class="info-card info-card--wide">
+                        <h3 class="info-card__title">Fees</h3>
+                        <div class="info-card__value">$1,970</div>
+                        <div class="info-card__sub">Reduced fees for AUB alumni, corporate groups, or early-bird
+                            registrations.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== FINAL CTA ===== -->
-        <section class="cta register-section" style="background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)) ,url('../../images/CEDAR-bg.jpg');">
+        <section class="cta register-section"
+            style="background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)) ,url('../../images/CEDAR-bg.jpg');">
             <div class="cta__overlay"></div>
             <div class="container">
                 <div class="cta__content">
