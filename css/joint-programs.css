@@ -141,15 +141,10 @@ a.detail-item {
 
 /* =============================================================================
    HERO
+   Layout: logos + content are one group separated by a fixed gap and centred
+   vertically. Horizontal spacing mirrors .section (1.5rem on .hero + the .container's own
+   padding from main), so hero text/logo line up with every section below.
    ============================================================================= */
-.hero {
-    padding: 0;
-}
-
-.hero__title {
-    line-height: 1.05;
-}
-
 .hero--program {
     background-size: cover;
     background-position: center 45%;
@@ -160,82 +155,74 @@ a.detail-item {
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.55) 55%, rgba(0, 0, 0, 0.3) 100%);
 }
 
+.hero--stacked {
+    display: flex;
+    align-items: stretch;
+    padding: 2rem 1.5rem;          /* same inline padding as .section */
+    min-height: 680px;
+}
+
+@media (min-width: 768px) {
+    .hero--stacked {
+        padding-block: 3rem;
+    }
+}
+
+.hero__title {
+    line-height: 1.05;
+}
+
 .hero__rule {
     display: block;
     width: 72px;
     height: 4px;
-    margin: 1.5rem 0;
+    margin: 0.5rem 0;
     background: var(--program-primary);
 }
 
-/* Partner logos — full opacity, no fade */
-.hero__partners {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.75rem;
+/* Container: logo + content form one group, centred vertically as a unit */
+.hero__container--stacked {
     position: relative;
     z-index: 5;
-    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
 }
 
-.hero__partners img {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    height: 70px;
-    object-fit: contain;
-    opacity: 1;
-    filter: none;
+/* Partner logos — fixed distance above the content */
+.hero__partners {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 0;                  /* lets the flex child shrink instead of overflowing */
+    margin-bottom: 3.75rem;        /* the fixed gap between the two parts */
 }
 
 @media (max-width: 768px) {
     .hero__partners {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-    }
-
-    .hero__partners img {
-        height: 48px;
+        margin-bottom: 2.5rem;
     }
 }
 
-/* ---------- Hero: logos vertically centered in remaining space, content bottom-aligned ---------- */
-.hero--stacked {
-    display: flex;
-    align-items: stretch;
-}
-
-.hero__container--stacked {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    width: 100%;
-    padding-top: 2rem;
-    padding-bottom: 2.5rem;
-    position: relative;
-    z-index: 5;
-}
-
-.hero__partners--top {
-    flex: 1 1 auto;            /* take all remaining space above the content */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;   /* vertical centering only (column axis) */
-    align-items: flex-start;   /* keep logos left-aligned horizontally */
-    margin-bottom: 0;
-    flex-shrink: 0;
+.hero__partners img {
+    display: block;
+    width: min(710px, 100%);       /* never wider than the available column */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .hero__content--bottom {
+    flex: 0 0 auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding-bottom: 0;
-    flex-shrink: 0;            /* content keeps its natural height at the bottom */
 }
 
 .hero__content--bottom .hero__title,
@@ -244,29 +231,13 @@ a.detail-item {
     margin: 0;
 }
 
-.hero__content--bottom .hero__rule {
-    margin: 0.5rem 0;
-}
-
 .hero__content--bottom .hero__buttons {
     margin-top: 0.5rem;
 }
 
 @media (min-width: 768px) {
-    .hero__container--stacked {
-        padding-top: 0;
-        padding-bottom: 3.5rem;
-    }
-
     .hero__content--bottom {
         gap: 1.25rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero__container--stacked {
-        padding-top: 0;
-        padding-bottom: 2rem;
     }
 }
 
