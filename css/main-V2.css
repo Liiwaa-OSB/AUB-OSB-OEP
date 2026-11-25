@@ -123,6 +123,10 @@ h3 {
   text-transform: uppercase;
 }
 
+h2 {
+  line-height: 1.05;
+}
+
 .section-title {
   font-size: var(--section-title-size);
   font-weight: 700;
@@ -1057,7 +1061,7 @@ h3 {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0.25rem 0 1rem 0;
+  padding: 0.25rem 0 1.6rem 0;
 }
 
 .carousel__container::-webkit-scrollbar {
